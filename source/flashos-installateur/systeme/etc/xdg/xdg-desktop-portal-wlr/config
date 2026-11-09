@@ -1,0 +1,4 @@
+# SoleOS : partage de l'écran entier, sans fenêtre de choix supplémentaire
+[screencast]
+chooser_type=none
+max_fps=30

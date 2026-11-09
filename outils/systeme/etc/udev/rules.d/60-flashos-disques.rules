@@ -1,0 +1,6 @@
+# SoleOS : ordonnanceur des disques adapté à chaque type de disque (tous les PC) :
+# NVMe : aucun (le disque gère lui-même) ; SSD SATA / eMMC / carte : mq-deadline ;
+# disque dur à plateaux : BFQ (l'interface reste fluide pendant les grosses copies)
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ENV{DEVTYPE}=="disk", ATTR{queue/scheduler}="none"
+ACTION=="add|change", KERNEL=="sd[a-z]*|mmcblk[0-9]*", ENV{DEVTYPE}=="disk", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+ACTION=="add|change", KERNEL=="sd[a-z]*", ENV{DEVTYPE}=="disk", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"

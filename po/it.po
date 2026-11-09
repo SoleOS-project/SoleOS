@@ -1,0 +1,2257 @@
+# FlashOS — traduction (it)
+# © 2026 GDH (Giuseppe D'Arco Holding) — LicenseRef-SoleOS
+msgid ""
+msgstr ""
+"Project-Id-Version: FlashOS\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "{prog} ne répond pas."
+msgstr "{prog} non risponde."
+
+msgid "Imprimante"
+msgstr "Stampante"
+
+msgid "Arrêtée"
+msgstr "Ferma"
+
+msgid "Impression en cours…"
+msgstr "Stampa in corso…"
+
+msgid "Prête"
+msgstr "Pronta"
+
+msgid "Aucun pilote ne convient à cette imprimante."
+msgstr "Nessun driver adatto a questa stampante."
+
+msgid "Page de test introuvable."
+msgstr "Pagina di prova non trovata."
+
+msgid "L'association a échoué. Mettez l'appareil en mode « association » (souvent un appui long sur son bouton) et réessayez."
+msgstr "Associazione non riuscita. Metti il dispositivo in modalità «associazione» (spesso una pressione lunga sul suo pulsante) e riprova."
+
+msgid "Casque"
+msgstr "Cuffie"
+
+msgid "Enceinte"
+msgstr "Altoparlante"
+
+msgid "Souris"
+msgstr "Mouse"
+
+msgid "Clavier"
+msgstr "Tastiera"
+
+msgid "Manette"
+msgstr "Controller"
+
+msgid "Téléphone"
+msgstr "Telefono"
+
+msgid "Ordinateur"
+msgstr "Computer"
+
+msgid "Aucun deuxième écran branché."
+msgstr "Nessun secondo schermo collegato."
+
+msgid "Imprimantes et scanner"
+msgstr "Stampanti e scanner"
+
+msgid "↻ Rechercher"
+msgstr "↻ Cerca"
+
+msgid "Numériser un document"
+msgstr "Scansiona un documento"
+
+msgid "Imprimantes"
+msgstr "Stampanti"
+
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+msgid "↻ Rechercher des appareils"
+msgstr "↻ Cerca dispositivi"
+
+msgid "Deuxième écran"
+msgstr "Secondo schermo"
+
+msgid "Écran"
+msgstr "Schermo"
+
+msgid "« {nom} » est prête."
+msgstr "«{nom}» è pronta."
+
+msgid "Activation…"
+msgstr "Attivazione…"
+
+msgid "Désactivation…"
+msgstr "Disattivazione…"
+
+msgid "Recherche d'autres imprimantes à proximité…"
+msgstr "Ricerca di altre stampanti nelle vicinanze…"
+
+msgid "L'impression n'est pas installée sur ce système."
+msgstr "La stampa non è installata su questo sistema."
+
+msgid "Le service d'impression ne répond pas."
+msgstr "Il servizio di stampa non risponde."
+
+msgid "Aucune imprimante trouvée. Allumez-la et branchez-la (USB) ou reliez-la au même réseau, puis « Rechercher »."
+msgstr "Nessuna stampante trovata. Accendila e collegala (USB) o alla stessa rete, poi «Cerca»."
+
+msgid "Mes imprimantes"
+msgstr "Le mie stampanti"
+
+msgid "par défaut"
+msgstr "predefinita"
+
+msgid "Test"
+msgstr "Prova"
+
+msgid "Imprimer une page de test"
+msgstr "Stampa una pagina di prova"
+
+msgid "Par défaut"
+msgstr "Predefinita"
+
+msgid "✕"
+msgstr "✕"
+
+msgid "Retirer cette imprimante"
+msgstr "Rimuovi questa stampante"
+
+msgid "Page de test envoyée."
+msgstr "Pagina di prova inviata."
+
+msgid "Trouvées à proximité"
+msgstr "Trovate nelle vicinanze"
+
+msgid "Ajouter"
+msgstr "Aggiungi"
+
+msgid "Branchée en USB"
+msgstr "Collegata via USB"
+
+msgid "Sur le réseau"
+msgstr "In rete"
+
+msgid "…"
+msgstr "…"
+
+msgid "Ajout de « {nom} »…"
+msgstr "Aggiunta di «{nom}»…"
+
+msgid "Échec : {e}"
+msgstr "Errore: {e}"
+
+msgid "erreur inconnue"
+msgstr "errore sconosciuto"
+
+msgid "Lecture…"
+msgstr "Lettura…"
+
+msgid "Recherche des appareils à proximité…"
+msgstr "Ricerca dei dispositivi nelle vicinanze…"
+
+msgid "Le Bluetooth n'est pas installé sur ce système."
+msgstr "Il Bluetooth non è installato su questo sistema."
+
+msgid "Pas de Bluetooth sur cet ordinateur."
+msgstr "Nessun Bluetooth su questo computer."
+
+msgid "Le Bluetooth est désactivé."
+msgstr "Il Bluetooth è disattivato."
+
+msgid "Aucun appareil. Mettez votre casque, souris… en mode « association », puis « Rechercher »."
+msgstr "Nessun dispositivo. Metti cuffie, mouse… in modalità «associazione», poi «Cerca»."
+
+msgid "Mes appareils"
+msgstr "I miei dispositivi"
+
+msgid "À proximité"
+msgstr "Nelle vicinanze"
+
+msgid "Connecté"
+msgstr "Connesso"
+
+msgid "Non connecté"
+msgstr "Non connesso"
+
+msgid "Déconnecter"
+msgstr "Disconnetti"
+
+msgid "Connecter"
+msgstr "Connetti"
+
+msgid "Connexion impossible : l'appareil est-il allumé et à proximité ?"
+msgstr "Connessione impossibile: il dispositivo è acceso e vicino?"
+
+msgid "Oublier cet appareil"
+msgstr "Dimentica questo dispositivo"
+
+msgid "Associer"
+msgstr "Associa"
+
+msgid "Association avec « {nom} »…"
+msgstr "Associazione con «{nom}»…"
+
+msgid "Un seul écran. Branchez un écran ou un vidéoprojecteur : l'image y sera dupliquée automatiquement."
+msgstr "Un solo schermo. Collega uno schermo o un proiettore: l'immagine verrà duplicata automaticamente."
+
+msgid "Deuxième écran : {nom}"
+msgstr "Secondo schermo: {nom}"
+
+msgid "Dupliquer"
+msgstr "Duplica"
+
+msgid "La même image sur les deux écrans (présentations)"
+msgstr "La stessa immagine sui due schermi (presentazioni)"
+
+msgid "Étendre"
+msgstr "Estendi"
+
+msgid "Le deuxième écran prolonge celui-ci, à droite"
+msgstr "Il secondo schermo prolunga questo, a destra"
+
+msgid "Deuxième écran seulement"
+msgstr "Solo il secondo schermo"
+
+msgid "L'écran du PC s'éteint"
+msgstr "Lo schermo del PC si spegne"
+
+msgid "Cet écran seulement"
+msgstr "Solo questo schermo"
+
+msgid "Le deuxième écran reste éteint"
+msgstr "Il secondo schermo resta spento"
+
+msgid "Choisir"
+msgstr "Scegli"
+
+msgid "Suite Craft"
+msgstr "Suite Craft"
+
+msgid "Photos et création"
+msgstr "Foto e creatività"
+
+msgid "Vidéo et musique"
+msgstr "Video e musica"
+
+msgid "Communication"
+msgstr "Comunicazione"
+
+msgid "Documents"
+msgstr "Documenti"
+
+msgid "Travail"
+msgstr "Lavoro"
+
+msgid "Sécurité et outils"
+msgstr "Sicurezza e strumenti"
+
+msgid "Enfants et école"
+msgstr "Bambini e scuola"
+
+msgid "Jeux"
+msgstr "Giochi"
+
+msgid "Autres navigateurs"
+msgstr "Altri browser"
+
+msgid "Retoucher ses photos"
+msgstr "Ritocca le tue foto"
+
+msgid "Dessin et peinture"
+msgstr "Disegno e pittura"
+
+msgid "Logos, affiches, dessins vectoriels"
+msgstr "Loghi, manifesti, disegni vettoriali"
+
+msgid "Ranger et retrouver ses photos"
+msgstr "Organizza e ritrova le tue foto"
+
+msgid "Montage vidéo"
+msgstr "Montaggio video"
+
+msgid "Enregistrer et modifier du son"
+msgstr "Registra e modifica l'audio"
+
+msgid "Musique en ligne"
+msgstr "Musica online"
+
+msgid "Réunions en visio"
+msgstr "Riunioni video"
+
+msgid "Messagerie privée"
+msgstr "Messaggistica privata"
+
+msgid "Messagerie"
+msgstr "Messaggistica"
+
+msgid "Discussions et appels en groupe"
+msgstr "Chat e chiamate di gruppo"
+
+msgid "Logiciel de messagerie (mails)"
+msgstr "Programma di posta"
+
+msgid "Lire et annoter les PDF"
+msgstr "Leggi e annota i PDF"
+
+msgid "Fusionner, découper, réordonner des PDF"
+msgstr "Unisci, dividi, riordina PDF"
+
+msgid "Bibliothèque de livres numériques"
+msgstr "Biblioteca di e-book"
+
+msgid "Liseuse de livres numériques"
+msgstr "Lettore di e-book"
+
+msgid "Bureau à distance"
+msgstr "Desktop remoto"
+
+msgid "Utiliser un PC ou un serveur Windows à distance"
+msgstr "Usa un PC o un server Windows a distanza"
+
+msgid "Coffre-fort de mots de passe"
+msgstr "Cassaforte delle password"
+
+msgid "Mots de passe, sans compte en ligne"
+msgstr "Password, senza account online"
+
+msgid "Sauvegarder ses fichiers sur un disque USB"
+msgstr "Salva i tuoi file su un disco USB"
+
+msgid "Calculatrice"
+msgstr "Calcolatrice"
+
+msgid "Calculs simples et scientifiques"
+msgstr "Calcoli semplici e scientifici"
+
+msgid "Activités éducatives de 2 à 10 ans"
+msgstr "Attività educative da 2 a 10 anni"
+
+msgid "Dessin pour les enfants"
+msgstr "Disegno per bambini"
+
+msgid "Mathématiques : géométrie, courbes"
+msgstr "Matematica: geometria, grafici"
+
+msgid "Le ciel étoilé"
+msgstr "Il cielo stellato"
+
+msgid "Boutique et bibliothèque de jeux"
+msgstr "Negozio e libreria di giochi"
+
+msgid "Course de karts"
+msgstr "Corse di kart"
+
+msgid "Solitaire"
+msgstr "Solitario"
+
+msgid "Jeux de cartes"
+msgstr "Giochi di carte"
+
+msgid "Grilles de sudoku"
+msgstr "Griglie di sudoku"
+
+msgid "Navigateur web"
+msgstr "Browser web"
+
+msgid "Navigateur web de Google"
+msgstr "Il browser web di Google"
+
+msgid "Traitement de texte (fichiers Word .docx)"
+msgstr "Videoscrittura (file Word .docx)"
+
+msgid "Tableur (fichiers Excel .xlsx)"
+msgstr "Foglio di calcolo (file Excel .xlsx)"
+
+msgid "Présentations (diaporamas)"
+msgstr "Presentazioni"
+
+msgid "Lire, organiser et protéger des PDF"
+msgstr "Leggi, organizza e proteggi i PDF"
+
+msgid "Retouche photo avec calques"
+msgstr "Fotoritocco con livelli"
+
+msgid "Photothèque et développement RAW"
+msgstr "Fototeca e sviluppo RAW"
+
+msgid "Dessin vectoriel, logos"
+msgstr "Disegno vettoriale, loghi"
+
+msgid "Mise en page et publication"
+msgstr "Impaginazione e pubblicazione"
+
+msgid "Maquettes d'écrans et d'applis"
+msgstr "Prototipi di schermate e app"
+
+msgid "Animations et effets visuels"
+msgstr "Animazioni ed effetti visivi"
+
+msgid "Studio d'enregistrement audio"
+msgstr "Studio di registrazione audio"
+
+msgid "Dessin technique (CAO)"
+msgstr "Disegno tecnico (CAD)"
+
+msgid "curl est introuvable."
+msgstr "curl non trovato."
+
+msgid "Pas de connexion à Internet : impossible de joindre GitHub."
+msgstr "Nessuna connessione a Internet: impossibile raggiungere GitHub."
+
+msgid "Le téléchargement a échoué. Vérifiez la connexion à Internet et réessayez."
+msgstr "Il download non è riuscito. Controlla la connessione a Internet e riprova."
+
+msgid "Images"
+msgstr "Immagini"
+
+msgid "Numériser"
+msgstr "Scansiona"
+
+msgid "Disques"
+msgstr "Dischi"
+
+msgid "Flatpak n'est pas installé sur ce système."
+msgstr "Flatpak non è installato su questo sistema."
+
+msgid "Pas de connexion à Internet : impossible de joindre la boutique."
+msgstr "Nessuna connessione a Internet: impossibile raggiungere il negozio."
+
+msgid "Impossible de joindre la boutique. Détail : {detail}"
+msgstr "Impossibile raggiungere il negozio. Dettagli: {detail}"
+
+msgid "Application introuvable dans la boutique."
+msgstr "Applicazione non trovata nel negozio."
+
+msgid "Pas assez de place sur le disque."
+msgstr "Spazio su disco insufficiente."
+
+msgid "L'installation a échoué. Vérifiez la connexion à Internet et réessayez."
+msgstr "L'installazione non è riuscita. Controlla la connessione a Internet e riprova."
+
+msgid "Cette application fait partie de SoleOS."
+msgstr "Questa applicazione fa parte di SoleOS."
+
+msgid "Fichier introuvable."
+msgstr "File non trovato."
+
+msgid "Copie impossible (place disque ?)"
+msgstr "Copia impossibile (spazio su disco?)"
+
+msgid "Distrobox n'est pas installé sur ce système."
+msgstr "Distrobox non è installato su questo sistema."
+
+msgid "Pas de connexion à Internet : impossible de télécharger l'espace Debian."
+msgstr "Nessuna connessione a Internet: impossibile scaricare lo spazio Debian."
+
+msgid "Création de l'espace Debian impossible. Détail : {detail}"
+msgstr "Impossibile creare lo spazio Debian. Dettagli: {detail}"
+
+msgid "Démarrage de l'espace Debian impossible. Détail : {detail}"
+msgstr "Impossibile avviare lo spazio Debian. Dettagli: {detail}"
+
+msgid "Nom de fichier invalide."
+msgstr "Nome di file non valido."
+
+msgid "L'installation du paquet a échoué. Détail : {detail}"
+msgstr "L'installazione del pacchetto non è riuscita. Dettagli: {detail}"
+
+msgid "le paquet"
+msgstr "il pacchetto"
+
+msgid "Adresse invalide (exemple : lemonde.fr)."
+msgstr "Indirizzo non valido (esempio: corriere.it)."
+
+msgid "Étape {n} sur 3"
+msgstr "Passaggio {n} di 3"
+
+msgid "Bienvenue sur SoleOS"
+msgstr "Benvenuto in SoleOS"
+
+msgid "Quelques secondes pour protéger vos fichiers, et c'est prêt."
+msgstr "Pochi secondi per proteggere i tuoi file, ed è pronto."
+
+msgid "Comment vous appelez-vous ?"
+msgstr "Come ti chiami?"
+
+msgid "Votre prénom"
+msgstr "Il tuo nome"
+
+msgid "Suivant"
+msgstr "Avanti"
+
+msgid "Tapez-le une deuxième fois"
+msgstr "Digitalo una seconda volta"
+
+msgid "Choisissez un nouveau code"
+msgstr "Scegli un nuovo codice"
+
+msgid "Choisissez votre code"
+msgstr "Scegli il tuo codice"
+
+msgid "Pour être sûr qu'il n'y a pas de faute de frappe."
+msgstr "Per essere sicuri che non ci siano errori di battitura."
+
+msgid "6 chiffres, à taper à chaque démarrage et pour déverrouiller l'écran. Évitez 123456 ou votre date de naissance."
+msgstr "6 cifre, da digitare a ogni avvio e per sbloccare lo schermo. Evita 123456 o la tua data di nascita."
+
+msgid "Recommencer"
+msgstr "Ricomincia"
+
+msgid "Retour"
+msgstr "Indietro"
+
+msgid "Ce code est trop facile à deviner. Choisissez-en un autre."
+msgstr "Questo codice è troppo facile da indovinare. Scegline un altro."
+
+msgid "Les deux codes sont différents. Recommencez."
+msgstr "I due codici sono diversi. Ricomincia."
+
+msgid "Choisissez un nouveau mot de passe"
+msgstr "Scegli una nuova password"
+
+msgid "Choisissez votre mot de passe"
+msgstr "Scegli la tua password"
+
+msgid "Au moins 8 caractères, à taper à chaque démarrage et pour déverrouiller l'écran. (Cet ordinateur n'a pas de puce de sécurité : un code à 6 chiffres ne suffirait pas.)"
+msgstr "Almeno 8 caratteri, da digitare a ogni avvio e per sbloccare lo schermo. (Questo computer non ha un chip di sicurezza: un codice di 6 cifre non basterebbe.)"
+
+msgid "Mot de passe"
+msgstr "Password"
+
+msgid "Encore une fois"
+msgstr "Ancora una volta"
+
+msgid "Encore un peu : au moins 8 caractères."
+msgstr "Ancora un po': almeno 8 caratteri."
+
+msgid "Les deux mots de passe sont différents."
+msgstr "Le due password sono diverse."
+
+msgid "Votre clé de secours"
+msgstr "La tua chiave di recupero"
+
+msgid "La clé de secours n'a pas pu être créée."
+msgstr "Non è stato possibile creare la chiave di recupero."
+
+msgid "Si un jour vous oubliez votre code, cette clé est le seul moyen d'ouvrir vos fichiers. Écrivez-la sur papier et rangez-la en lieu sûr, pas dans l'ordinateur."
+msgstr "Se un giorno dimentichi il tuo codice, questa chiave è l'unico modo per aprire i tuoi file. Scrivila su carta e conservala in un luogo sicuro, non nel computer."
+
+msgid "Si un jour vous oubliez votre mot de passe, cette clé est le seul moyen d'ouvrir vos fichiers. Écrivez-la sur papier et rangez-la en lieu sûr, pas dans l'ordinateur."
+msgstr "Se un giorno dimentichi la tua password, questa chiave è l'unico modo per aprire i tuoi file. Scrivila su carta e conservala in un luogo sicuro, non nel computer."
+
+msgid "Uniquement des lettres minuscules. Au démarrage, on la tape à la place du code."
+msgstr "Solo lettere minuscole. All'avvio, si digita al posto del codice."
+
+msgid "Uniquement des lettres minuscules. Au démarrage, on la tape à la place du mot de passe."
+msgstr "Solo lettere minuscole. All'avvio, si digita al posto della password."
+
+msgid "Je l'ai écrite sur papier"
+msgstr "L'ho scritta su carta"
+
+msgid "Continuer"
+msgstr "Continua"
+
+msgid "Vérifions votre papier"
+msgstr "Controlliamo il tuo foglio"
+
+msgid "Recopiez le premier groupe de votre clé de secours (8 lettres)."
+msgstr "Ricopia il primo gruppo della tua chiave di recupero (8 lettere)."
+
+msgid "Revoir la clé"
+msgstr "Rivedi la chiave"
+
+msgid "Valider"
+msgstr "Conferma"
+
+msgid "Ce n'est pas tout à fait ça. Vérifiez votre papier (ou revoyez la clé)."
+msgstr "Non è proprio così. Controlla il tuo foglio (o rivedi la chiave)."
+
+msgid "Protection de vos fichiers…"
+msgstr "Protezione dei tuoi file…"
+
+msgid "Nouveau code enregistré"
+msgstr "Nuovo codice salvato"
+
+msgid "Votre clé de secours reste la même : gardez votre papier. Au prochain démarrage, tapez votre nouveau code."
+msgstr "La tua chiave di recupero resta la stessa: conserva il foglio. Al prossimo avvio, digita il nuovo codice."
+
+msgid "Votre clé de secours reste la même : gardez votre papier. Au prochain démarrage, tapez votre nouveau mot de passe."
+msgstr "La tua chiave di recupero resta la stessa: conserva il foglio. Al prossimo avvio, digita la nuova password."
+
+msgid "C'est prêt, {prenom} !"
+msgstr "È tutto pronto, {prenom}!"
+
+msgid "Vos fichiers sont protégés."
+msgstr "I tuoi file sono protetti."
+
+msgid "Au démarrage, tapez votre code pour ouvrir SoleOS. Sans utilisation pendant 10 minutes, l'écran se verrouille (réglable dans Réglages)."
+msgstr "All'avvio, digita il codice per aprire SoleOS. Dopo 10 minuti di inattività, lo schermo si blocca (regolabile in Impostazioni)."
+
+msgid "Au démarrage, tapez votre mot de passe pour ouvrir SoleOS. Sans utilisation pendant 10 minutes, l'écran se verrouille (réglable dans Réglages)."
+msgstr "All'avvio, digita la password per aprire SoleOS. Dopo 10 minuti di inattività, lo schermo si blocca (regolabile in Impostazioni)."
+
+msgid "Commencer"
+msgstr "Inizia"
+
+msgid "Un problème est survenu"
+msgstr "Si è verificato un problema"
+
+msgid "Rien n'a été perdu : vos fichiers restent accessibles comme avant."
+msgstr "Non è andato perso nulla: i tuoi file restano accessibili come prima."
+
+msgid "Réessayer"
+msgstr "Riprova"
+
+msgid "Vous avez ouvert SoleOS avec votre clé de secours"
+msgstr "Hai aperto SoleOS con la chiave di recupero"
+
+msgid "Choisissez maintenant un nouveau code : il remplacera celui que vous avez oublié."
+msgstr "Ora scegli un nuovo codice: sostituirà quello che hai dimenticato."
+
+msgid "Choisissez maintenant un nouveau mot de passe : il remplacera celui que vous avez oublié."
+msgstr "Ora scegli una nuova password: sostituirà quella che hai dimenticato."
+
+msgid "Aucune application ajoutée pour l'instant. Touchez « Ajouter » pour en choisir."
+msgstr "Nessuna applicazione aggiunta per ora. Tocca «Aggiungi» per sceglierne."
+
+msgid "Clic droit (ou appui long) sur une application : désinstaller."
+msgstr "Clic destro (o pressione prolungata) su un'applicazione: disinstalla."
+
+msgid "sur l'accueil"
+msgstr "nella home"
+
+msgid "Retirer de l'accueil"
+msgstr "Rimuovi dalla home"
+
+msgid "Épingler à l'accueil"
+msgstr "Fissa nella home"
+
+msgid "Désinstaller…"
+msgstr "Disinstalla…"
+
+msgid "Désinstaller « {nom} » ?"
+msgstr "Disinstallare «{nom}»?"
+
+msgid "Désinstaller"
+msgstr "Disinstalla"
+
+msgid "Annuler"
+msgstr "Annulla"
+
+msgid "Logiciels libres et rapides, écrits en Rust par l'équipe ArtCraft. Encore jeunes : gardez Bureautique pour les documents importants."
+msgstr "Software libero e veloce, scritto in Rust dal team ArtCraft. Ancora giovane: usa Ufficio per i documenti importanti."
+
+msgid "Installation…"
+msgstr "Installazione…"
+
+msgid "En attente…"
+msgstr "In attesa…"
+
+msgid "Après installation"
+msgstr "Dopo l'installazione"
+
+msgid "Ouvrir"
+msgstr "Apri"
+
+msgid "Installer"
+msgstr "Installa"
+
+msgid "Une installation est en cours : la suivante démarrera juste après."
+msgstr "È in corso un'installazione: la prossima partirà subito dopo."
+
+msgid "Téléchargement en cours… La première application peut prendre quelques minutes (éléments communs à télécharger)."
+msgstr "Download in corso… La prima applicazione può richiedere qualche minuto (componenti comuni da scaricare)."
+
+msgid "Téléchargement en cours… ({n} en attente)"
+msgstr "Download in corso… ({n} in attesa)"
+
+msgid "Installée : elle est dans « Mes applications »."
+msgstr "Installata: è in «Le mie app»."
+
+msgid "Résultats de toute la logithèque Flathub : ces applications ne sont pas vérifiées par SoleOS. Elles ne peuvent pas abîmer le système, mais installez seulement celles que vous connaissez."
+msgstr "Risultati da tutto il catalogo Flathub: queste applicazioni non sono verificate da SoleOS. Non possono danneggiare il sistema, ma installa solo quelle che conosci."
+
+msgid "Recherche…"
+msgstr "Ricerca…"
+
+msgid "Aucune application trouvée (ou pas de connexion à Internet)."
+msgstr "Nessuna applicazione trovata (o nessuna connessione a Internet)."
+
+msgid "sélection SoleOS"
+msgstr "selezione SoleOS"
+
+msgid "Quelle messagerie utilisez-vous ?"
+msgstr "Quale posta elettronica usi?"
+
+msgid "La tuile « Mail » l'ouvrira directement. Vous en avez plusieurs (par exemple Gmail et Orange) ?\nAjoutez la deuxième ensuite : clic droit (ou appui long) sur la tuile « Mail »."
+msgstr "Il riquadro «Posta» la aprirà direttamente. Ne hai più di una (per esempio Gmail e Libero)?\nAggiungi la seconda dopo: clic destro (o pressione lunga) sul riquadro «Posta»."
+
+msgid "Ajouter une messagerie"
+msgstr "Aggiungi una casella di posta"
+
+msgid "Déjà dans la tuile « Mail » : {noms}. En cliquant sur « Mail », vous choisirez laquelle ouvrir."
+msgstr "Già nel riquadro «Posta»: {noms}. Cliccando su «Posta», sceglierai quale aprire."
+
+msgid "Autre messagerie : adresse du site (ex. webmail.monentreprise.fr)"
+msgstr "Altra posta: indirizzo del sito (es. webmail.miaazienda.it)"
+
+msgid "J'utilise le logiciel Thunderbird"
+msgstr "Uso il programma Thunderbird"
+
+msgid "Installation de Thunderbird… (quelques minutes)"
+msgstr "Installazione di Thunderbird… (qualche minuto)"
+
+msgid "Applications"
+msgstr "App"
+
+msgid "Fermer"
+msgstr "Chiudi"
+
+msgid "✕  Retour à l'accueil"
+msgstr "✕  Torna alla home"
+
+msgid "Mes applications"
+msgstr "Le mie app"
+
+msgid "Chercher parmi des milliers d'applications (VLC, GIMP, Steam…)"
+msgstr "Cerca tra migliaia di applicazioni (VLC, GIMP, Steam…)"
+
+msgid "Mode essai : installez SoleOS sur l'ordinateur pour ajouter des applications."
+msgstr "Modalità prova: installa SoleOS sul computer per aggiungere applicazioni."
+
+msgid "Installer SoleOS"
+msgstr "Installa SoleOS"
+
+msgid "Une application n'est pas dans la sélection ? Tapez son nom : toute la logithèque Flathub est disponible."
+msgstr "Un'applicazione non è nella selezione? Digita il suo nome: tutto il catalogo Flathub è disponibile."
+
+msgid "Depuis un fichier"
+msgstr "Da un file"
+
+msgid "Une application téléchargée sur le site de son éditeur (Steam, Spotify, TeamViewer…) : fichier .deb ou .AppImage. Les .deb s'installent dans un espace Debian séparé, qui ne peut pas abîmer SoleOS."
+msgstr "Un'applicazione scaricata dal sito del suo editore (Steam, Spotify, TeamViewer…): file .deb o .AppImage. I .deb si installano in uno spazio Debian separato, che non può danneggiare SoleOS."
+
+msgid "Installer un fichier téléchargé…"
+msgstr "Installa un file scaricato…"
+
+msgid "Sélection SoleOS : des applications vérifiées, installées en un clic."
+msgstr "Selezione SoleOS: applicazioni verificate, installate con un clic."
+
+msgid "Ajouter des applications"
+msgstr "Aggiungi applicazioni"
+
+msgid "Installer une application"
+msgstr "Installa un'applicazione"
+
+msgid "Applications (.deb, .AppImage)"
+msgstr "Applicazioni (.deb, .AppImage)"
+
+msgid "Installation du paquet dans une fenêtre à part…"
+msgstr "Installazione del pacchetto in una finestra a parte…"
+
+msgid "Ajout…"
+msgstr "Aggiunta…"
+
+msgid "« {nom} » est dans « Mes applications »."
+msgstr "«{nom}» è in «Le mie app»."
+
+msgid "Installer un paquet"
+msgstr "Installa un pacchetto"
+
+msgid "Installer « {nom} » ?"
+msgstr "Installare «{nom}»?"
+
+msgid "Ce paquet sera installé dans un espace Debian séparé : il ne peut pas abîmer SoleOS. La première fois, cet espace est téléchargé (environ 50 Mo) : comptez quelques minutes."
+msgstr "Questo pacchetto verrà installato in uno spazio Debian separato: non può danneggiare SoleOS. La prima volta, questo spazio viene scaricato (circa 50 MB): ci vorranno alcuni minuti."
+
+msgid "Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter flashos-debian »."
+msgstr "Questo pacchetto non contiene applicazioni da mostrare (strumento a riga di comando): sarà utilizzabile nella Console con «distrobox enter flashos-debian»."
+
+msgid "En mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur."
+msgstr "In modalità prova (chiavetta USB), installa prima SoleOS sul computer."
+
+msgid "Docker n'a pas besoin d'être installé : SoleOS contient déjà Podman, qui fait la même chose. Dans la Console, tapez simplement les commandes « docker » habituelles (docker run, docker ps…)."
+msgstr "Non serve installare Docker: SoleOS include già Podman, che fa la stessa cosa. Nella Console digita semplicemente i soliti comandi «docker» (docker run, docker ps…)."
+
+msgid "Installation en cours…"
+msgstr "Installazione in corso…"
+
+msgid "Installation en cours… la première fois, l'espace Debian se prépare"
+msgstr "Installazione in corso… la prima volta, lo spazio Debian viene preparato"
+
+msgid "{m} min {s} s"
+msgstr "{m} min {s} s"
+
+msgid "« {nom} » est installé. Ses applications sont dans « Applications » et dans le menu SoleOS."
+msgstr "«{nom}» è installato. Le sue applicazioni sono in «Applicazioni» e nel menu SoleOS."
+
+msgid "Pas installée"
+msgstr "Non installata"
+
+msgid "en mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur."
+msgstr "in modalità prova (chiavetta USB), installa prima SoleOS sul computer."
+
+msgid "Application ajoutée"
+msgstr "Applicazione aggiunta"
+
+msgid "« {nom} » a été ajoutée à vos applications."
+msgstr "«{nom}» è stata aggiunta alle tue applicazioni."
+
+msgid "Retrouvez-la dans la tuile « Applications » de l'accueil."
+msgstr "La trovi nel riquadro «App» della home."
+
+msgid "Impossible d'ajouter cette application : {e}"
+msgstr "Impossibile aggiungere questa applicazione: {e}"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Tapez {code} sur le clavier « {nom} », puis Entrée."
+msgstr "Digita {code} sulla tastiera «{nom}», poi Invio."
+
+msgid "Il manque un clavier ou une souris : si c'est un appareil Bluetooth, mettez-le en mode association (souvent un appui long sur son bouton)."
+msgstr "Manca una tastiera o un mouse: se è un dispositivo Bluetooth, mettilo in modalità associazione (spesso una pressione lunga sul suo pulsante)."
+
+msgid "Il manque un clavier : si c'est un appareil Bluetooth, mettez-le en mode association (souvent un appui long sur son bouton)."
+msgstr "Manca una tastiera: se è un dispositivo Bluetooth, mettila in modalità associazione (spesso una pressione lunga sul suo pulsante)."
+
+msgid "Il manque une souris : si c'est un appareil Bluetooth, mettez-la en mode association (souvent un appui long sur son bouton)."
+msgstr "Manca un mouse: se è un dispositivo Bluetooth, mettilo in modalità associazione (spesso una pressione lunga sul suo pulsante)."
+
+msgid "Association de « {nom} »…"
+msgstr "Associazione di «{nom}»…"
+
+msgid "« {nom} » est associé."
+msgstr "«{nom}» è associato."
+
+msgid "L'association de « {nom} » n'a pas abouti : remettez-le en mode association."
+msgstr "L'associazione di «{nom}» non è riuscita: rimettilo in modalità associazione."
+
+msgid "Recherche d'une souris… Souris Bluetooth : mettez-la en mode association."
+msgstr "Ricerca di un mouse… Mouse Bluetooth: mettilo in modalità associazione."
+
+msgid "Recherche d'un clavier… Clavier Bluetooth : mettez-le en mode association."
+msgstr "Ricerca di una tastiera… Tastiera Bluetooth: mettila in modalità associazione."
+
+msgid "Recherche d'un clavier et d'une souris… Bluetooth : mettez-les en mode association."
+msgstr "Ricerca di una tastiera e di un mouse… Bluetooth: mettili in modalità associazione."
+
+msgid "Bienvenue dans SoleOS"
+msgstr "Benvenuto in SoleOS"
+
+msgid "Rapide et simple."
+msgstr "Veloce e semplice."
+
+msgid "Vos documents"
+msgstr "I tuoi documenti"
+
+msgid "Textes, tableaux et présentations, compatibles Word, Excel et PowerPoint — même sans Internet."
+msgstr "Testi, fogli di calcolo e presentazioni, compatibili con Word, Excel e PowerPoint — anche senza Internet."
+
+msgid "Votre messagerie"
+msgstr "La tua posta"
+
+msgid "Tous vos comptes mail réunis au même endroit."
+msgstr "Tutti i tuoi account di posta nello stesso posto."
+
+msgid "Le web en un clic"
+msgstr "Il web in un clic"
+
+msgid "Un navigateur moderne et rapide, avec vos favoris prêts à l'emploi."
+msgstr "Un browser moderno e veloce, con i preferiti pronti all'uso."
+
+msgid "Vos fichiers"
+msgstr "I tuoi file"
+
+msgid "Documents, photos et clés USB, rangés simplement."
+msgstr "Documenti, foto e chiavette USB, ordinati in modo semplice."
+
+msgid "{n} To"
+msgstr "{n} TB"
+
+msgid "{n} Go"
+msgstr "{n} GB"
+
+msgid "Aucun disque trouvé."
+msgstr "Nessun disco trovato."
+
+msgid "Le moteur d'installation n'a pas répondu correctement."
+msgstr "Il motore di installazione non ha risposto correttamente."
+
+msgid "Recherche du disque de cet ordinateur…"
+msgstr "Ricerca del disco di questo computer…"
+
+msgid "SoleOS ne peut pas s'installer ici"
+msgstr "SoleOS non può essere installato qui"
+
+msgid "Sur certains ordinateurs (Dell, HP, Lenovo…), le disque n'est visible qu'en mode « AHCI » :\nau démarrage, entrez dans le BIOS (F2 ou Échap) et changez « RAID » en « AHCI » dans le stockage."
+msgstr "Su alcuni computer (Dell, HP, Lenovo…), il disco è visibile solo in modalità «AHCI»:\nall'avvio, entra nel BIOS (F2 o Esc) e cambia «RAID» in «AHCI» nelle impostazioni di archiviazione."
+
+msgid "Avant d'installer SoleOS"
+msgstr "Prima di installare SoleOS"
+
+msgid "SoleOS est gratuit pour les particuliers, les associations, les écoles, les administrations et l'usage interne des entreprises. Toute utilisation commerciale demande une licence de GDH."
+msgstr "SoleOS è gratuito per privati, associazioni, scuole, pubbliche amministrazioni e uso interno delle aziende. Ogni uso commerciale richiede una licenza di GDH."
+
+msgid "SoleOS est fourni « tel quel », sans aucune garantie : ni de bon fonctionnement, ni d'adaptation à un usage particulier, ni de compatibilité avec votre matériel."
+msgstr "SoleOS è fornito «così com'è», senza alcuna garanzia: né di buon funzionamento, né di idoneità a un uso particolare, né di compatibilità con il tuo hardware."
+
+msgid "L'installation efface le disque choisi. Sauvegardez vos données avant de continuer."
+msgstr "L'installazione cancella il disco scelto. Salva i tuoi dati prima di continuare."
+
+msgid "Vous utilisez SoleOS sous votre seule responsabilité. Dans toute la mesure permise par la loi, GDH, son créateur et les contributeurs ne pourront être tenus responsables d'aucun dommage : perte de données, panne, perte d'exploitation, ou problème lié aux logiciels tiers et aux sites visités."
+msgstr "Usi SoleOS sotto la tua esclusiva responsabilità. Nei limiti consentiti dalla legge, GDH, il suo creatore e i contributori non potranno essere ritenuti responsabili di alcun danno: perdita di dati, guasto, perdita di attività o problemi legati a software di terzi e ai siti visitati."
+
+msgid "« Signaler un problème » ne vaut pas engagement d'assistance ni de délai de correction."
+msgstr "«Segnala un problema» non costituisce impegno di assistenza né di tempi di correzione."
+
+msgid "Lire la licence complète"
+msgstr "Leggi la licenza completa"
+
+msgid "J'ai lu et j'accepte ces conditions"
+msgstr "Ho letto e accetto queste condizioni"
+
+msgid "Arrêter l'installation"
+msgstr "Interrompi l'installazione"
+
+msgid "Installer SoleOS{version} sur cet ordinateur"
+msgstr "Installa SoleOS{version} su questo computer"
+
+msgid "SoleOS va s'installer sur ce disque :"
+msgstr "SoleOS verrà installato su questo disco:"
+
+msgid "(le plus grand des {n} disques de cet ordinateur)"
+msgstr "(il più grande dei {n} dischi di questo computer)"
+
+msgid "⚠  Toutes les données de ce disque seront définitivement effacées, y compris Windows et vos fichiers."
+msgstr "⚠  Tutti i dati di questo disco verranno cancellati definitivamente, compresi Windows e i tuoi file."
+
+msgid "Effacer et installer SoleOS"
+msgstr "Cancella e installa SoleOS"
+
+msgid "Pensez à sauvegarder vos fichiers importants avant de continuer."
+msgstr "Ricordati di salvare i tuoi file importanti prima di continuare."
+
+msgid "Démarrage de l'installation…"
+msgstr "Avvio dell'installazione…"
+
+msgid "N'éteignez pas l'ordinateur et ne retirez pas la clé USB."
+msgstr "Non spegnere il computer e non rimuovere la chiavetta USB."
+
+msgid "Réparer SoleOS"
+msgstr "Ripara SoleOS"
+
+msgid "Vos fichiers sont protégés. Pour les garder pendant la réparation,\ntapez votre code SoleOS (ou votre clé de secours)."
+msgstr "I tuoi file sono protetti. Per conservarli durante la riparazione,\ndigita il tuo codice SoleOS (o la chiave di recupero)."
+
+msgid "Afficher ce que je tape"
+msgstr "Mostra ciò che digito"
+
+msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico."
+
+msgid "Réparer"
+msgstr "Ripara"
+
+msgid "Code oublié et clé de secours perdue : seul « Tout effacer » reste possible."
+msgstr "Codice dimenticato e chiave di recupero persa: è possibile solo «Cancella tutto»."
+
+msgid "Démarrage de la réparation…"
+msgstr "Avvio della riparazione…"
+
+msgid "N'éteignez pas l'ordinateur."
+msgstr "Non spegnere il computer."
+
+msgid "Lancement impossible : {e}"
+msgstr "Avvio impossibile: {e}"
+
+msgid "Le moteur s'est arrêté de façon inattendue ({code})."
+msgstr "Il motore si è fermato inaspettatamente ({code})."
+
+msgid "Code incorrect. Réessayez, ou tapez votre clé de secours."
+msgstr "Codice errato. Riprova, oppure digita la chiave di recupero."
+
+msgid "Trop d'essais : la puce de sécurité patiente quelques minutes. Vous pouvez aussi taper votre clé de secours."
+msgstr "Troppi tentativi: il chip di sicurezza attende qualche minuto. Puoi anche digitare la chiave di recupero."
+
+msgid "SoleOS est remis à neuf !"
+msgstr "SoleOS è come nuovo!"
+
+msgid "Redémarrez l'ordinateur pour l'utiliser."
+msgstr "Riavvia il computer per usarlo."
+
+msgid "SoleOS est installé !"
+msgstr "SoleOS è installato!"
+
+msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
+msgstr "Rimuovi la chiavetta USB, poi riavvia il computer."
+
+msgid "Redémarrer maintenant"
+msgstr "Riavvia ora"
+
+msgid "Réparer ou réinitialiser SoleOS"
+msgstr "Ripara o reimposta SoleOS"
+
+msgid "⚙  Réparer SoleOS"
+msgstr "⚙  Ripara SoleOS"
+
+msgid "Le système est remis à neuf. Vos fichiers, vos applications, vos réglages et vos réseaux Wi-Fi sont conservés.\n\nLe navigateur est remis à zéro (extensions et réglages) ; vos favoris restent."
+msgstr "Il sistema viene rimesso a nuovo. I tuoi file, le applicazioni, le impostazioni e le reti Wi-Fi vengono conservati.\n\nIl browser viene azzerato (estensioni e impostazioni); i preferiti restano."
+
+msgid "Votre code (ou votre clé de secours) vous sera demandé."
+msgstr "Ti verrà chiesto il codice (o la chiave di recupero)."
+
+msgid "⚠  Tout effacer"
+msgstr "⚠  Cancella tutto"
+
+msgid "Retour au premier jour : tous vos fichiers, photos, applications, réglages et comptes seront supprimés définitivement.\n\nAucun code n'est demandé : à utiliser aussi si vous avez oublié votre code et perdu votre clé de secours."
+msgstr "Ritorno al primo giorno: tutti i tuoi file, foto, applicazioni, impostazioni e account verranno eliminati definitivamente.\n\nNon viene chiesto alcun codice: da usare anche se hai dimenticato il codice e perso la chiave di recupero."
+
+msgid "Tapez EFFACER pour confirmer"
+msgstr "Digita CANCELLA per confermare"
+
+msgid "Tout effacer"
+msgstr "Cancella tutto"
+
+msgid "EFFACER"
+msgstr "CANCELLA"
+
+msgid "Disque : {modele}  —  {taille}"
+msgstr "Disco: {modele}  —  {taille}"
+
+msgid "Annuler et redémarrer normalement"
+msgstr "Annulla e riavvia normalmente"
+
+msgid "Démarrage de la réinitialisation…"
+msgstr "Avvio del ripristino…"
+
+msgid "L'ordinateur va redémarrer sur l'outil de réparation de SoleOS.\nVous pourrez y choisir :"
+msgstr "Il computer si riavvierà sullo strumento di riparazione di SoleOS.\nPotrai scegliere:"
+
+msgid "⚙  Réparer — le système est remis à neuf, vos fichiers et vos applications sont conservés"
+msgstr "⚙  Ripara — il sistema viene rimesso a nuovo, file e applicazioni vengono conservati"
+
+msgid "⚠  Tout effacer — retour au premier jour"
+msgstr "⚠  Cancella tutto — ritorno al primo giorno"
+
+msgid "Pensez à enregistrer vos documents ouverts."
+msgstr "Ricordati di salvare i documenti aperti."
+
+msgid "Redémarrer vers la réparation"
+msgstr "Riavvia per la riparazione"
+
+msgid "Impossible de préparer l'outil de réparation."
+msgstr "Impossibile preparare lo strumento di riparazione."
+
+msgid "L'opération n'a pas pu se terminer"
+msgstr "L'operazione non è stata completata"
+
+msgid "Détails : /var/log/flashos-installation.log"
+msgstr "Dettagli: /var/log/flashos-installation.log"
+
+msgid "Réduire la barre"
+msgstr "Riduci la barra"
+
+msgid "Réglages"
+msgstr "Impostazioni"
+
+msgid "Garder la barre affichée"
+msgstr "Mostra sempre la barra"
+
+msgid "Corbeille"
+msgstr "Cestino"
+
+msgid "Corbeille (vide)"
+msgstr "Cestino (vuoto)"
+
+msgid "Corbeille : {n} élément(s)"
+msgstr "Cestino: {n} elemento/i"
+
+msgid "Vider la corbeille ? Les éléments seront effacés définitivement."
+msgstr "Svuotare il cestino? Gli elementi saranno eliminati definitivamente."
+
+msgid "Vider"
+msgstr "Svuota"
+
+msgid "Vider la corbeille"
+msgstr "Svuota il cestino"
+
+msgid "Rechercher, applications, éteindre (touche Windows)"
+msgstr "Cerca, applicazioni, spegni (tasto Windows)"
+
+msgid "%a %-e %b"
+msgstr "%a %-e %b"
+
+msgid "Rechercher"
+msgstr "Cerca"
+
+msgid "Rechercher une application ou sur le web…"
+msgstr "Cerca un'applicazione o sul web…"
+
+msgid "Verrouiller"
+msgstr "Blocca"
+
+msgid "Veille"
+msgstr "Sospendi"
+
+msgid "Redémarrer"
+msgstr "Riavvia"
+
+msgid "Éteindre"
+msgstr "Spegni"
+
+msgid "Capture d'écran"
+msgstr "Screenshot"
+
+msgid "Signaler un problème"
+msgstr "Segnala un problema"
+
+msgid "Ajouter au bureau"
+msgstr "Aggiungi al desktop"
+
+msgid "« {nom} » est sur le bureau"
+msgstr "«{nom}» è sul desktop"
+
+msgid "Impossible d'ajouter le raccourci"
+msgstr "Impossibile aggiungere il collegamento"
+
+msgid "Console"
+msgstr "Console"
+
+msgid "Console (avancé) — Ctrl + Alt + T"
+msgstr "Console (avanzata) — Ctrl + Alt + T"
+
+msgid "Rechercher « {q} » sur le web"
+msgstr "Cerca «{q}» sul web"
+
+msgid "À gauche"
+msgstr "A sinistra"
+
+msgid "À droite"
+msgstr "A destra"
+
+msgid "Tout l'écran"
+msgstr "Tutto lo schermo"
+
+msgid "aujourd'hui"
+msgstr "oggi"
+
+msgid "hier"
+msgstr "ieri"
+
+msgid "Bureautique"
+msgstr "Ufficio"
+
+msgid "Créer un document ou en ouvrir un"
+msgstr "Crea un documento o aprine uno"
+
+msgid "Texte"
+msgstr "Testo"
+
+msgid ".docx, .odt"
+msgstr ".docx, .odt"
+
+msgid "Tableur"
+msgstr "Foglio di calcolo"
+
+msgid ".xlsx, .ods, .csv"
+msgstr ".xlsx, .ods, .csv"
+
+msgid "Présentation"
+msgstr "Presentazione"
+
+msgid ".pptx, .odp"
+msgstr ".pptx, .odp"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "lire un PDF"
+msgstr "leggi un PDF"
+
+msgid "Documents récents"
+msgstr "Documenti recenti"
+
+msgid "Ouvrir un PDF"
+msgstr "Apri un PDF"
+
+msgid "Documents PDF"
+msgstr "Documenti PDF"
+
+msgid "Essai du son"
+msgstr "Prova dell'audio"
+
+msgid "Si les haut-parleurs ou le casque restent muets, SoleOS peut essayer les réglages connus pour la puce son de cet ordinateur. À chaque essai, un son est joué : dites simplement si vous l'entendez. Rien n'est gardé sans votre accord."
+msgstr "Se gli altoparlanti o le cuffie restano muti, SoleOS può provare le impostazioni note per il chip audio di questo computer. A ogni prova viene riprodotto un suono: dite semplicemente se lo sentite. Nulla viene conservato senza il vostro consenso."
+
+msgid "Durée : 2 à 5 minutes. Le son des applications est coupé pendant l'essai."
+msgstr "Durata: da 2 a 5 minuti. L'audio delle applicazioni è disattivato durante la prova."
+
+msgid "Commencer l'essai"
+msgstr "Avvia la prova"
+
+msgid "Un réglage du son est déjà appliqué sur cet ordinateur (recettes {r})."
+msgstr "Su questo computer è già applicata un'impostazione audio (ricette {r})."
+
+msgid "Revenir au réglage d'origine"
+msgstr "Torna all'impostazione originale"
+
+msgid "Préparation…"
+msgstr "Preparazione…"
+
+msgid "Puce son : {p}."
+msgstr "Chip audio: {p}."
+
+msgid "Aucune puce son à régler n'a été trouvée sur cet ordinateur."
+msgstr "Nessun chip audio da regolare è stato trovato su questo computer."
+
+msgid "Créer un relevé pour l'assistance"
+msgstr "Crea un rapporto per l'assistenza"
+
+msgid "Haut-parleurs — essai {n} sur {t}. Débranchez le casque s'il y en a un. Un son va être joué (gauche puis droite)."
+msgstr "Altoparlanti — prova {n} di {t}. Scollegate le cuffie, se ci sono. Verrà riprodotto un suono (sinistra, poi destra)."
+
+msgid "Lecture du son…"
+msgstr "Riproduzione del suono…"
+
+msgid "Avez-vous entendu le son dans les haut-parleurs ?"
+msgstr "Avete sentito il suono dagli altoparlanti?"
+
+msgid "Ce réglage n'a pas pu être appliqué."
+msgstr "Non è stato possibile applicare questa impostazione."
+
+msgid "Oui, je l'entends"
+msgstr "Sì, lo sento"
+
+msgid "Non"
+msgstr "No"
+
+msgid "Rejouer"
+msgstr "Riproduci di nuovo"
+
+msgid "Casque — branchez un casque ou des écouteurs dans la prise de l'ordinateur."
+msgstr "Cuffie — collegate delle cuffie o degli auricolari alla presa del computer."
+
+msgid "Pas de casque sous la main ? Vous pouvez passer cette étape."
+msgstr "Non avete cuffie a portata di mano? Potete saltare questo passaggio."
+
+msgid "C'est branché"
+msgstr "È collegato"
+
+msgid "Passer"
+msgstr "Salta"
+
+msgid "Casque — un son va être joué dans le casque."
+msgstr "Cuffie — verrà riprodotto un suono nelle cuffie."
+
+msgid "SoleOS voit bien le casque branché."
+msgstr "SoleOS rileva le cuffie collegate."
+
+msgid "SoleOS ne voit pas le casque branché."
+msgstr "SoleOS non rileva le cuffie collegate."
+
+msgid "Avez-vous entendu le son dans le casque ?"
+msgstr "Avete sentito il suono nelle cuffie?"
+
+msgid "Le son fonctionne : haut-parleurs et casque."
+msgstr "L'audio funziona: altoparlanti e cuffie."
+
+msgid "Les haut-parleurs fonctionnent. Le casque n'a pas été réglé (passé, ou aucun réglage n'a marché)."
+msgstr "Gli altoparlanti funzionano. Le cuffie non sono state regolate (passaggio saltato o nessuna impostazione ha funzionato)."
+
+msgid "Le casque fonctionne, mais aucun réglage connu ne fait marcher les haut-parleurs de cet ordinateur."
+msgstr "Le cuffie funzionano, ma nessuna impostazione nota fa funzionare gli altoparlanti di questo computer."
+
+msgid "Aucun réglage connu ne fait marcher le son de cet ordinateur."
+msgstr "Nessuna impostazione nota fa funzionare l'audio di questo computer."
+
+msgid "Remise en route du son…"
+msgstr "Riavvio dell'audio…"
+
+msgid "Rien n'a été changé. Un relevé pour l'assistance aidera à trouver le bon réglage pour ce modèle."
+msgstr "Non è stato modificato nulla. Un rapporto per l'assistenza aiuterà a trovare l'impostazione giusta per questo modello."
+
+msgid "Ce réglage est gardé pour cet ordinateur et sera appliqué à chaque démarrage."
+msgstr "Questa impostazione viene conservata per questo computer e sarà applicata a ogni avvio."
+
+msgid "Retour au réglage d'origine…"
+msgstr "Ritorno all'impostazione originale…"
+
+msgid "Le son est revenu au réglage d'origine."
+msgstr "L'audio è tornato all'impostazione originale."
+
+msgid "Création du relevé…"
+msgstr "Creazione del rapporto…"
+
+msgid "Le relevé n'a pas pu être créé."
+msgstr "Non è stato possibile creare il rapporto."
+
+msgid "Soleil"
+msgstr "Sole"
+
+msgid "Circuit"
+msgstr "Circuito"
+
+msgid "Synapse"
+msgstr "Sinapsi"
+
+msgid "Onde"
+msgstr "Onda"
+
+msgid "Aurore"
+msgstr "Aurora"
+
+msgid "Nuit (uni)"
+msgstr "Notte (tinta unita)"
+
+msgid "Dossier personnel introuvable."
+msgstr "Cartella personale non trovata."
+
+msgid "La photo n'a pas pu être copiée."
+msgstr "Non è stato possibile copiare la foto."
+
+msgid "l'imprimante ne répond pas"
+msgstr "la stampante non risponde"
+
+msgid "Imprimante ({a})"
+msgstr "Stampante ({a})"
+
+msgid "Choisissez d'abord un pilote."
+msgstr "Scegliete prima un driver."
+
+msgid "＋  Ajouter une imprimante manuellement…"
+msgstr "＋  Aggiungi una stampante manualmente…"
+
+msgid "L'adresse de l'imprimante est dans son menu réseau, ou sur la page de configuration qu'elle imprime."
+msgstr "L'indirizzo della stampante si trova nel suo menu di rete o nella pagina di configurazione che stampa."
+
+msgid "Adresse IP ou nom (ex. 192.168.1.20)"
+msgstr "Indirizzo IP o nome (es. 192.168.1.20)"
+
+msgid "Automatique"
+msgstr "Automatico"
+
+msgid "IPP"
+msgstr "IPP"
+
+msgid "Port 9100 (JetDirect)"
+msgstr "Porta 9100 (JetDirect)"
+
+msgid "LPD"
+msgstr "LPD"
+
+msgid "Pilote : sans pilote si l'imprimante le permet. Sinon, tapez sa marque et son modèle :"
+msgstr "Driver: senza driver se la stampante lo consente. Altrimenti, digitate marca e modello:"
+
+msgid "Marque et modèle (ex. Brother HL-2130)"
+msgstr "Marca e modello (es. Brother HL-2130)"
+
+msgid "Fichier pilote (PPD)…"
+msgstr "File del driver (PPD)…"
+
+msgid "Pilote choisi : {p}"
+msgstr "Driver scelto: {p}"
+
+msgid "Fichier pilote (PPD)"
+msgstr "File del driver (PPD)"
+
+msgid "Pilote d'imprimante (PPD)"
+msgstr "Driver della stampante (PPD)"
+
+msgid "Cette imprimante demande un pilote : choisissez son modèle dans la liste, puis « Ajouter »."
+msgstr "Questa stampante richiede un driver: scegliete il modello nell'elenco, poi «Aggiungi»."
+
+msgid "Tapez l'adresse IP ou le nom de l'imprimante."
+msgstr "Digitate l'indirizzo IP o il nome della stampante."
+
+msgid "Ajout de l'imprimante…"
+msgstr "Aggiunta della stampante…"
+
+msgid "Avec ce protocole, choisissez le pilote de l'imprimante (marque et modèle)."
+msgstr "Con questo protocollo, scegliete il driver della stampante (marca e modello)."
+
+msgid "Cette imprimante ne fonctionne pas sans pilote, ou ne répond pas. Vérifiez l'adresse, puis choisissez son modèle dans la liste."
+msgstr "Questa stampante non funziona senza driver o non risponde. Verificate l'indirizzo, poi scegliete il modello nell'elenco."
+
+msgid "Français (AZERTY)"
+msgstr "Francese (AZERTY)"
+
+msgid "Français (AZERTY) sur clavier QWERTY : < > avec AltGr + W / X"
+msgstr "Francese (AZERTY) su tastiera QWERTY: < > con AltGr + W / X"
+
+msgid "Belge (AZERTY)"
+msgstr "Belga (AZERTY)"
+
+msgid "Suisse romand (QWERTZ)"
+msgstr "Svizzero francese (QWERTZ)"
+
+msgid "Canadien français"
+msgstr "Francese canadese"
+
+msgid "Anglais, États-Unis (QWERTY)"
+msgstr "Inglese, Stati Uniti (QWERTY)"
+
+msgid "Anglais international (avec accents)"
+msgstr "Inglese internazionale (con accenti)"
+
+msgid "Anglais, Royaume-Uni"
+msgstr "Inglese, Regno Unito"
+
+msgid "Italien"
+msgstr "Italiano"
+
+msgid "Espagnol"
+msgstr "Spagnolo"
+
+msgid "Espagnol, Amérique latine"
+msgstr "Spagnolo, America Latina"
+
+msgid "Allemand (QWERTZ)"
+msgstr "Tedesco (QWERTZ)"
+
+msgid "Suisse alémanique (QWERTZ)"
+msgstr "Svizzero tedesco (QWERTZ)"
+
+msgid "Portugais"
+msgstr "Portoghese"
+
+msgid "Portugais, Brésil"
+msgstr "Portoghese, Brasile"
+
+msgid "Le réglage n'a pas pu être appliqué."
+msgstr "Non è stato possibile applicare l'impostazione."
+
+msgid "Tapez ici pour essayer le clavier"
+msgstr "Scrivi qui per provare la tastiera"
+
+msgid "Choisissez votre langue et votre clavier"
+msgstr "Scegli la lingua e la tastiera"
+
+msgid "Langue et clavier"
+msgstr "Lingua e tastiera"
+
+msgid "Le clavier change tout de suite. Le bureau et les applications passeront dans la nouvelle langue au prochain démarrage de l'ordinateur."
+msgstr "La tastiera cambia subito. Il desktop e le app passeranno alla nuova lingua al prossimo avvio del computer."
+
+msgid "L'accueil s'ouvre aussitôt dans la nouvelle langue. Les applications déjà ouvertes la prendront quand vous les rouvrirez."
+msgstr "La home si apre subito nella nuova lingua. Le applicazioni già aperte la useranno quando le riaprirai."
+
+msgid "Appliquer"
+msgstr "Applica"
+
+msgid "Mail"
+msgstr "Posta"
+
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Fichiers"
+msgstr "File"
+
+msgid "↻ Mise à jour prête"
+msgstr "↻ Aggiornamento pronto"
+
+msgid "Elle s'installera toute seule au prochain redémarrage."
+msgstr "Si installerà da solo al prossimo riavvio."
+
+msgid "Installer SoleOS sur cet ordinateur"
+msgstr "Installa SoleOS su questo computer"
+
+msgid "Vous essayez SoleOS depuis la clé USB : rien n'est modifié sur cet ordinateur."
+msgstr "Stai provando SoleOS dalla chiavetta USB: nulla viene modificato su questo computer."
+
+msgid "Continuer l'essai"
+msgstr "Continua la prova"
+
+msgid "Ouverture…"
+msgstr "Apertura…"
+
+msgid "Capture d'écran enregistrée dans Images"
+msgstr "Screenshot salvato in Immagini"
+
+msgid "À droite :"
+msgstr "A destra:"
+
+msgid "Applis ouvertes"
+msgstr "App aperte"
+
+msgid "{nom} ({n} fenêtres)"
+msgstr "{nom} ({n} finestre)"
+
+msgid "Tout fermer"
+msgstr "Chiudi tutto"
+
+msgid "Y aller"
+msgstr "Vai"
+
+msgid "Tout fermer ({n})"
+msgstr "Chiudi tutto ({n})"
+
+msgid "Wi-Fi connecté (signal {q} %)"
+msgstr "Wi-Fi connesso (segnale {q}%)"
+
+msgid "Connecté par câble"
+msgstr "Connesso via cavo"
+
+msgid "Pas de connexion"
+msgstr "Nessuna connessione"
+
+msgid "{info} — cliquer pour choisir un réseau"
+msgstr "{info} — clicca per scegliere una rete"
+
+msgid "Batterie : {n}, en charge"
+msgstr "Batteria: {n}, in carica"
+
+msgid "Batterie : {n}"
+msgstr "Batteria: {n}"
+
+msgid "Son coupé"
+msgstr "Audio disattivato"
+
+msgid "Volume"
+msgstr "Volume"
+
+msgid "Rétablir le son"
+msgstr "Riattiva l'audio"
+
+msgid "Couper le son"
+msgstr "Disattiva l'audio"
+
+msgid "%A %-e %B"
+msgstr "%A %-e %B"
+
+msgid "Bonjour {prenom}"
+msgstr "Buongiorno {prenom}"
+
+msgid "Bonsoir {prenom}"
+msgstr "Buonasera {prenom}"
+
+msgid "Accueil"
+msgstr "Home"
+
+msgid "Réseau"
+msgstr "Rete"
+
+msgid "Son"
+msgstr "Audio"
+
+msgid "Réglages : imprimantes, Bluetooth, écran, code…"
+msgstr "Impostazioni: stampanti, Bluetooth, schermo, codice…"
+
+msgid "Éteindre, redémarrer…"
+msgstr "Spegni, riavvia…"
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+msgid "Choisir un réseau"
+msgstr "Scegli una rete"
+
+msgid "Le son ne marche pas ?"
+msgstr "L'audio non funziona?"
+
+msgid "Réglages : Wi-Fi, son, Bluetooth, écran, imprimantes, code…"
+msgstr "Impostazioni: Wi-Fi, audio, Bluetooth, schermo, stampanti, codice…"
+
+msgid "--:--"
+msgstr "--:--"
+
+msgid "Rechercher sur le web…"
+msgstr "Cerca sul web…"
+
+msgid "Touche Windows : l'accueil par-dessus les fenêtres  ·  Alt + Tab : changer d'appli  ·  Glisser une fenêtre sur un bord : la moitié de l'écran"
+msgstr "Tasto Windows: la home sopra le finestre  ·  Alt + Tab: cambia app  ·  Trascina una finestra su un bordo: metà schermo"
+
+msgid "Touche Windows ou Ctrl + Alt + A : revenir à l'accueil  ·  Alt + Tab : changer d'appli"
+msgstr "Tasto Windows o Ctrl + Alt + A: torna alla home  ·  Alt + Tab: cambia app"
+
+msgid "Mode réparation de SoleOS"
+msgstr "Modalità di riparazione di SoleOS"
+
+msgid "Ouvrir l'outil de réparation"
+msgstr "Apri lo strumento di riparazione"
+
+msgid "Sauvegarde automatique terminée"
+msgstr "Backup automatico completato"
+
+msgid "La sauvegarde automatique n'a pas pu se faire (Réglages → Sauvegarde)"
+msgstr "Il backup automatico non è riuscito (Impostazioni → Backup)"
+
+msgid "＋  Ajouter une messagerie…"
+msgstr "＋  Aggiungi una casella di posta…"
+
+msgid "Retirer « {nom} »"
+msgstr "Rimuovi «{nom}»"
+
+msgid "Ouvrir quelle messagerie ?"
+msgstr "Quale posta aprire?"
+
+msgid "🔒  Verrouiller l'écran"
+msgstr "🔒  Blocca lo schermo"
+
+msgid "⏻  Éteindre"
+msgstr "⏻  Spegni"
+
+msgid "↻  Redémarrer"
+msgstr "↻  Riavvia"
+
+msgid "☾  Mettre en veille"
+msgstr "☾  Sospendi"
+
+msgid "⚠  Réparer ou réinitialiser…"
+msgstr "⚠  Ripara o reimposta…"
+
+msgid "Dossier introuvable."
+msgstr "Cartella non trovata."
+
+msgid "Impossible de mettre l'ancien profil de côté ({e})."
+msgstr "Impossibile mettere da parte il vecchio profilo ({e})."
+
+msgid "Navigateur remis à neuf : extensions, notifications des sites et réglages effacés. Favoris, mots de passe et historique sont gardés."
+msgstr "Browser rimesso a nuovo: estensioni, notifiche dei siti e impostazioni cancellate. Preferiti, password e cronologia sono conservati."
+
+msgid "Bureau"
+msgstr "Desktop"
+
+msgid "Raccourci"
+msgstr "Collegamento"
+
+msgid "Renommer"
+msgstr "Rinomina"
+
+msgid "Retirer du bureau"
+msgstr "Rimuovi dal desktop"
+
+msgid "Mettre à la corbeille"
+msgstr "Sposta nel cestino"
+
+msgid "Paris, Bruxelles, Genève, Luxembourg"
+msgstr "Parigi, Bruxelles, Ginevra, Lussemburgo"
+
+msgid "Rome, Madrid, Berlin, Vienne"
+msgstr "Roma, Madrid, Berlino, Vienna"
+
+msgid "Londres, Lisbonne, Dublin"
+msgstr "Londra, Lisbona, Dublino"
+
+msgid "Athènes, Helsinki, Bucarest"
+msgstr "Atene, Helsinki, Bucarest"
+
+msgid "Moscou, Istanbul"
+msgstr "Mosca, Istanbul"
+
+msgid "Casablanca"
+msgstr "Casablanca"
+
+msgid "Alger, Tunis"
+msgstr "Algeri, Tunisi"
+
+msgid "Dakar, Abidjan"
+msgstr "Dakar, Abidjan"
+
+msgid "Douala, Kinshasa, Libreville"
+msgstr "Douala, Kinshasa, Libreville"
+
+msgid "Johannesburg, Le Caire"
+msgstr "Johannesburg, Il Cairo"
+
+msgid "La Réunion, Maurice"
+msgstr "Riunione, Mauritius"
+
+msgid "Mayotte"
+msgstr "Mayotte"
+
+msgid "Guadeloupe, Martinique"
+msgstr "Guadalupa, Martinica"
+
+msgid "Guyane"
+msgstr "Guyana francese"
+
+msgid "Saint-Pierre-et-Miquelon"
+msgstr "Saint-Pierre e Miquelon"
+
+msgid "Montréal, Québec, Toronto"
+msgstr "Montréal, Québec, Toronto"
+
+msgid "New York"
+msgstr "New York"
+
+msgid "Chicago, Mexico"
+msgstr "Chicago, Città del Messico"
+
+msgid "Los Angeles, Vancouver"
+msgstr "Los Angeles, Vancouver"
+
+msgid "São Paulo, Buenos Aires"
+msgstr "San Paolo, Buenos Aires"
+
+msgid "Tahiti"
+msgstr "Tahiti"
+
+msgid "Nouvelle-Calédonie"
+msgstr "Nuova Caledonia"
+
+msgid "Dubaï"
+msgstr "Dubai"
+
+msgid "Inde"
+msgstr "India"
+
+msgid "Pékin, Shanghai"
+msgstr "Pechino, Shanghai"
+
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+msgid "Taipei"
+msgstr "Taipei"
+
+msgid "Singapour, Kuala Lumpur"
+msgstr "Singapore, Kuala Lumpur"
+
+msgid "Tokyo, Séoul"
+msgstr "Tokyo, Seul"
+
+msgid "Sydney"
+msgstr "Sydney"
+
+msgid "Temps universel (UTC)"
+msgstr "Tempo universale (UTC)"
+
+msgid "Luminosité"
+msgstr "Luminosità"
+
+msgid "Mode nuit"
+msgstr "Modalità notte"
+
+msgid "Couleurs plus chaudes, plus reposantes le soir."
+msgstr "Colori più caldi, più riposanti la sera."
+
+msgid "Fermer (Échap)"
+msgstr "Chiudi (Esc)"
+
+msgid "Écran et luminosité"
+msgstr "Schermo e luminosità"
+
+msgid "Fond d'écran"
+msgstr "Sfondo"
+
+msgid "Taille d'affichage"
+msgstr "Dimensione dello schermo"
+
+msgid "Date et heure"
+msgstr "Data e ora"
+
+msgid "Rail des applications"
+msgstr "Barra delle applicazioni"
+
+msgid "Batterie"
+msgstr "Batteria"
+
+msgid "Code et verrouillage"
+msgstr "Codice e blocco"
+
+msgid "Navigateur"
+msgstr "Browser"
+
+msgid "Console (avancé)"
+msgstr "Console (avanzato)"
+
+msgid "Caméra"
+msgstr "Fotocamera"
+
+msgid "Sauvegarde"
+msgstr "Backup"
+
+msgid "À propos de SoleOS"
+msgstr "Informazioni su SoleOS"
+
+msgid "Plus de réglages"
+msgstr "Altre impostazioni"
+
+msgid "‹  Réglages"
+msgstr "‹  Impostazioni"
+
+msgid "Ma photo"
+msgstr "La mia foto"
+
+msgid "Mes images"
+msgstr "Le mie immagini"
+
+msgid "Recherche des photos…"
+msgstr "Ricerca delle foto…"
+
+msgid "Aucune photo dans votre dossier Images."
+msgstr "Nessuna foto nella cartella Immagini."
+
+msgid "Choisir une autre image…"
+msgstr "Scegli un'altra immagine…"
+
+msgid "Astuce : dans Fichiers, clic droit sur une photo → « Définir comme arrière-plan »."
+msgstr "Suggerimento: in File, clic destro su una foto → «Imposta come sfondo»."
+
+msgid "Choisir une image de fond"
+msgstr "Scegli un'immagine di sfondo"
+
+msgid "chargeur branché"
+msgstr "caricabatterie collegato"
+
+msgid "sur batterie"
+msgstr "a batteria"
+
+msgid "Pas de batterie détectée"
+msgstr "Nessuna batteria rilevata"
+
+msgid "Consommation actuelle : {w} W"
+msgstr "Consumo attuale: {w} W"
+
+msgid "Autonomie restante estimée : {h} h {m}"
+msgstr "Autonomia residua stimata: {h} h {m}"
+
+msgid "Consommation : non mesurée pendant la charge complète."
+msgstr "Consumo: non misurato a carica completa."
+
+msgid "Consommation : non disponible sur cet ordinateur."
+msgstr "Consumo: non disponibile su questo computer."
+
+msgid "Baisser la luminosité sur batterie"
+msgstr "Riduci la luminosità a batteria"
+
+msgid "Quand le chargeur est débranché, l'écran baisse de 30 % ; il revient à sa luminosité en le rebranchant."
+msgstr "Quando il caricabatterie è scollegato, lo schermo si abbassa del 30%; torna alla sua luminosità quando lo ricolleghi."
+
+msgid "Sur batterie, SoleOS passe automatiquement le processeur en mode économie, et le navigateur réduit le travail des onglets en arrière-plan. Les vidéos sont décodées par la carte graphique."
+msgstr "A batteria, SoleOS passa automaticamente il processore in modalità risparmio e il browser riduce il lavoro delle schede in background. I video sono decodificati dalla scheda grafica."
+
+msgid "Créé par Giuseppe D'Arco"
+msgstr "Creato da Giuseppe D'Arco"
+
+msgid "© 2026 GDH"
+msgstr "© 2026 GDH"
+
+msgid "Gratuit pour les particuliers, les associations, les écoles, les administrations et l'usage interne des entreprises. Toute utilisation commerciale demande une licence de GDH. Basé sur Debian 13."
+msgstr "Gratuito per privati, associazioni, scuole, pubbliche amministrazioni e uso interno delle aziende. Ogni uso commerciale richiede una licenza di GDH. Basato su Debian 13."
+
+msgid "Votre vie privée"
+msgstr "La tua privacy"
+
+msgid "SoleOS n'envoie aucune donnée sur vous : aucun suivi, aucune publicité, aucun compte obligatoire. Vos fichiers sont chiffrés sur le disque et protégés par votre code."
+msgstr "SoleOS non invia alcun dato su di te: nessun tracciamento, nessuna pubblicità, nessun account obbligatorio. I tuoi file sono cifrati sul disco e protetti dal tuo codice."
+
+msgid "Lire la licence"
+msgstr "Leggi la licenza"
+
+msgid "Cet ordinateur"
+msgstr "Questo computer"
+
+msgid "Utilisateur : {prenom}"
+msgstr "Utente: {prenom}"
+
+msgid "inconnu"
+msgstr "sconosciuto"
+
+msgid "inconnue"
+msgstr "sconosciuta"
+
+msgid "Processeur : {processeur}"
+msgstr "Processore: {processeur}"
+
+msgid "Mémoire : {memoire}"
+msgstr "Memoria: {memoire}"
+
+msgid "Disque : {go} Go ({mo} Mo), libre : {libre_go} Go ({libre_mo} Mo)"
+msgstr "Disco: {go} GB ({mo} MB), libero: {libre_go} GB ({libre_mo} MB)"
+
+msgid ", {d} pouces"
+msgstr ", {d} pollici"
+
+msgid "{l} × {h}{pouces}, affichage à {z} %"
+msgstr "{l} × {h}{pouces}, visualizzazione al {z}%"
+
+msgid "Vos Documents, Images, Musique, Vidéos, Téléchargements et Bureau sont copiés sur une clé USB, un disque ou un dossier du NAS. Rien n'est jamais effacé dans la sauvegarde : un fichier supprimé par erreur s'y retrouve."
+msgstr "Documenti, Immagini, Musica, Video, Download e Scrivania vengono copiati su una chiavetta USB, un disco o una cartella del NAS. Nel backup non viene mai cancellato nulla: un file eliminato per errore si ritrova lì."
+
+msgid "Destination : {d}"
+msgstr "Destinazione: {d}"
+
+msgid "Aucune destination choisie."
+msgstr "Nessuna destinazione scelta."
+
+msgid "Choisir la destination…"
+msgstr "Scegli la destinazione…"
+
+msgid "Chaque semaine, automatiquement (quand la destination est branchée)"
+msgstr "Ogni settimana, automaticamente (quando la destinazione è collegata)"
+
+msgid "Dernière sauvegarde : {t}"
+msgstr "Ultimo backup: {t}"
+
+msgid "Aucune sauvegarde pour l'instant."
+msgstr "Nessun backup per ora."
+
+msgid "Sauvegarder maintenant"
+msgstr "Esegui backup ora"
+
+msgid "Ouvrir la sauvegarde (restaurer)"
+msgstr "Apri il backup (ripristina)"
+
+msgid "Où ranger la sauvegarde ?"
+msgstr "Dove salvare il backup?"
+
+msgid "Choisissez d'abord une destination."
+msgstr "Scegli prima una destinazione."
+
+msgid "Sauvegarde en cours… vous pouvez continuer à travailler."
+msgstr "Backup in corso… puoi continuare a lavorare."
+
+msgid "Sauvegarde terminée."
+msgstr "Backup completato."
+
+msgid "La sauvegarde n'a pas pu se faire : {e}"
+msgstr "Il backup non è riuscito: {e}"
+
+msgid "Aucune caméra détectée. Une webcam USB fonctionne dès qu'on la branche."
+msgstr "Nessuna fotocamera rilevata. Una webcam USB funziona appena collegata."
+
+msgid "{nom} : prête (pilote standard)"
+msgstr "{nom}: pronta (driver standard)"
+
+msgid "Tester la caméra"
+msgstr "Prova la fotocamera"
+
+msgid "Ouverture de l'application Caméra…"
+msgstr "Apertura dell'app Fotocamera…"
+
+msgid "L'application Caméra n'a pas pu être installée (connexion à Internet ?)."
+msgstr "Impossibile installare l'app Fotocamera (connessione a Internet?)."
+
+msgid "Les applications (navigateur, visio) demandent la permission avant d'utiliser la caméra."
+msgstr "Le applicazioni (browser, videochiamate) chiedono il permesso prima di usare la fotocamera."
+
+msgid "{n} extensions installées"
+msgstr "{n} estensioni installate"
+
+msgid "{n} extension installée"
+msgstr "{n} estensione installata"
+
+msgid "{n} sites autorisés à envoyer des notifications"
+msgstr "{n} siti autorizzati a inviare notifiche"
+
+msgid "{n} site autorisé à envoyer des notifications"
+msgstr "{n} sito autorizzato a inviare notifiche"
+
+msgid "{constat}. Si vous ne les reconnaissez pas, ils peuvent afficher des publicités."
+msgstr "{constat}. Se non li riconosci, potrebbero mostrare pubblicità."
+
+msgid " et "
+msgstr " e "
+
+msgid "Des publicités ou des pages s'ouvrent toutes seules ? Le navigateur peut être remis à neuf : extensions, notifications des sites, page d'accueil et moteur de recherche sont effacés. Vos favoris, mots de passe et historique sont gardés."
+msgstr "Pubblicità o pagine che si aprono da sole? Il browser può essere rimesso a nuovo: estensioni, notifiche dei siti, pagina iniziale e motore di ricerca vengono cancellati. Preferiti, password e cronologia vengono conservati."
+
+msgid "Remettre le navigateur à neuf"
+msgstr "Rimetti a nuovo il browser"
+
+msgid "Fermeture du navigateur et remise à neuf…"
+msgstr "Chiusura del browser e ripristino…"
+
+msgid "Les applications ouvertes, la batterie et le bouton marche/arrêt."
+msgstr "Le applicazioni aperte, la batteria e il pulsante di accensione."
+
+msgid "Position"
+msgstr "Posizione"
+
+msgid "En bas"
+msgstr "In basso"
+
+msgid "Masquer quand une application occupe l'écran"
+msgstr "Nascondi quando un'applicazione occupa lo schermo"
+
+msgid "Le rail se replie en une fine languette contre le bord de l'écran : approchez la souris pour le faire revenir. En plein écran (vidéo, présentation), il disparaît complètement."
+msgstr "La barra si riduce a una sottile linguetta sul bordo dello schermo: avvicina il mouse per farla tornare. A schermo intero (video, presentazione) scompare del tutto."
+
+msgid "Agrandit tout l'écran : textes, boutons et fenêtres."
+msgstr "Ingrandisce tutto lo schermo: testi, pulsanti e finestre."
+
+msgid "Mode grand confort"
+msgstr "Modalità comfort"
+
+msgid "Textes plus grands et curseur plus visible, dans toutes les applications."
+msgstr "Testi più grandi e puntatore più visibile, in tutte le applicazioni."
+
+msgid "Automatique (selon l'écran)"
+msgstr "Automatica (in base allo schermo)"
+
+msgid "Normale (100 %)"
+msgstr "Normale (100%)"
+
+msgid "Grande (125 %)"
+msgstr "Grande (125%)"
+
+msgid "Très grande (150 %)"
+msgstr "Molto grande (150%)"
+
+msgid "Maximale (200 %)"
+msgstr "Massima (200%)"
+
+msgid "Personnalisée"
+msgstr "Personalizzata"
+
+msgid "−"
+msgstr "−"
+
+msgid "+"
+msgstr "+"
+
+msgid "%A %e %B %Y, %H:%M"
+msgstr "%A %e %B %Y, %H:%M"
+
+msgid "Réglage automatique (par Internet)"
+msgstr "Impostazione automatica (via Internet)"
+
+msgid "Année-mois-jour heure:minutes"
+msgstr "Anno-mese-giorno ore:minuti"
+
+msgid "Régler"
+msgstr "Imposta"
+
+msgid "Fuseau horaire"
+msgstr "Fuso orario"
+
+msgid "Verrouiller l'écran après"
+msgstr "Blocca lo schermo dopo"
+
+msgid "5 min"
+msgstr "5 min"
+
+msgid "10 min"
+msgstr "10 min"
+
+msgid "30 min"
+msgstr "30 min"
+
+msgid "1 h"
+msgstr "1 h"
+
+msgid "Jamais"
+msgstr "Mai"
+
+msgid "L'écran se verrouille aussi quand l'ordinateur se met en veille (capot fermé). Raccourci : touche Windows + L."
+msgstr "Lo schermo si blocca anche quando il computer va in sospensione (coperchio chiuso). Scorciatoia: tasto Windows + L."
+
+msgid "🔒  Verrouiller maintenant"
+msgstr "🔒  Blocca ora"
+
+msgid "Essai depuis la clé USB : le code se choisit après l'installation de SoleOS."
+msgstr "Prova dalla chiavetta USB: il codice si sceglie dopo l'installazione di SoleOS."
+
+msgid "Les fichiers de cet ordinateur ne sont pas chiffrés (SoleOS installé avant la version 9). « Réparer → Tout effacer » active la protection."
+msgstr "I file di questo computer non sono cifrati (SoleOS installato prima della versione 9). «Ripara → Cancella tutto» attiva la protezione."
+
+msgid "Le code se choisit dans l'assistant de bienvenue."
+msgstr "Il codice si sceglie nell'assistente di benvenuto."
+
+msgid "Ouvrir l'assistant"
+msgstr "Apri l'assistente"
+
+msgid "Vos fichiers sont chiffrés. Ils s'ouvrent au démarrage avec votre code (protégé par la puce de sécurité de l'ordinateur)."
+msgstr "I tuoi file sono cifrati. Si aprono all'avvio con il tuo codice (protetto dal chip di sicurezza del computer)."
+
+msgid "Vos fichiers sont chiffrés. Ils s'ouvrent au démarrage avec votre mot de passe."
+msgstr "I tuoi file sono cifrati. Si aprono all'avvio con la tua password."
+
+msgid "Changer mon code…"
+msgstr "Cambia il mio codice…"
+
+msgid "Changer mon mot de passe…"
+msgstr "Cambia la mia password…"
+
+msgid "Code actuel (ou clé de secours)"
+msgstr "Codice attuale (o chiave di recupero)"
+
+msgid "Mot de passe actuel (ou clé de secours)"
+msgstr "Password attuale (o chiave di recupero)"
+
+msgid "Nouveau code (6 chiffres)"
+msgstr "Nuovo codice (6 cifre)"
+
+msgid "Nouveau mot de passe (8 caractères ou plus)"
+msgstr "Nuova password (8 caratteri o più)"
+
+msgid "Enregistrer"
+msgstr "Salva"
+
+msgid "Tapez d'abord votre code actuel."
+msgstr "Digita prima il codice attuale."
+
+msgid "Tapez d'abord votre mot de passe actuel."
+msgstr "Digita prima la password attuale."
+
+msgid "Le nouveau code doit contenir exactement 6 chiffres."
+msgstr "Il nuovo codice deve contenere esattamente 6 cifre."
+
+msgid "Le nouveau mot de passe doit contenir au moins 8 caractères."
+msgstr "La nuova password deve contenere almeno 8 caratteri."
+
+msgid "Les deux nouveaux ne sont pas identiques."
+msgstr "I due nuovi non sono identici."
+
+msgid "Enregistrement…"
+msgstr "Salvataggio…"
+
+msgid "Nouveau code enregistré. Il servira dès le prochain démarrage."
+msgstr "Nuovo codice salvato. Verrà usato dal prossimo avvio."
+
+msgid "Nouveau mot de passe enregistré. Il servira dès le prochain démarrage."
+msgstr "Nuova password salvata. Verrà usata dal prossimo avvio."
+
+msgid "Nouvelle clé de secours…"
+msgstr "Nuova chiave di recupero…"
+
+msgid "Si vous avez perdu votre papier, ou si quelqu'un a pu le voir : la clé actuelle ne fonctionnera plus."
+msgstr "Se hai perso il foglio, o se qualcuno potrebbe averlo visto: la chiave attuale non funzionerà più."
+
+msgid "Votre code"
+msgstr "Il tuo codice"
+
+msgid "Votre mot de passe"
+msgstr "La tua password"
+
+msgid "Créer une nouvelle clé"
+msgstr "Crea una nuova chiave"
+
+msgid "Création…"
+msgstr "Creazione…"
+
+msgid "Voici votre nouvelle clé de secours. Écrivez-la sur papier et rangez-la en lieu sûr :"
+msgstr "Ecco la tua nuova chiave di recupero. Scrivila su carta e conservala in un luogo sicuro:"
+
+msgid "La clé n'a pas pu être créée."
+msgstr "Non è stato possibile creare la chiave."
+
+msgid "%A %-e %B à %H:%M"
+msgstr "%A %-e %B alle %H:%M"
+
+msgid "Une sauvegarde est déjà en cours."
+msgstr "Un backup è già in corso."
+
+msgid "La destination n'est pas disponible (clé débranchée ou NAS non ouvert ?)."
+msgstr "La destinazione non è disponibile (chiavetta scollegata o NAS non aperto?)."
+
+msgid "Outil de sécurité introuvable ({e})."
+msgstr "Strumento di sicurezza non trovato ({e})."
+
+msgid "L'opération a échoué."
+msgstr "L'operazione non è riuscita."
+
+msgid "Décrivez en une phrase ce qui ne marche pas. SoleOS prépare un message pour l'assistance, avec un relevé technique (sans mot de passe ni contenu personnel). Vous le relisez avant de l'envoyer."
+msgstr "Descrivete in una frase cosa non funziona. SoleOS prepara un messaggio per l'assistenza, con un rapporto tecnico (senza password né contenuti personali). Lo rileggete prima di inviarlo."
+
+msgid "Préparer le message"
+msgstr "Prepara il messaggio"
+
+msgid "Décrivez d'abord le problème en une phrase."
+msgstr "Descrivete prima il problema in una frase."
+
+msgid "Préparation du relevé et du message…"
+msgstr "Preparazione del rapporto e del messaggio…"
+
+msgid "Le message est prêt dans Mail : relisez-le puis touchez « Envoyer ». Relevé joint : {f}"
+msgstr "Il messaggio è pronto in Mail: rileggetelo, poi toccate «Invia». Rapporto allegato: {f}"
+
+msgid "Mail n'a pas pu s'ouvrir. Écrivez à {a} en joignant le fichier {f}."
+msgstr "Impossibile aprire Mail. Scrivete a {a} allegando il file {f}."
+
+msgid "{n} %"
+msgstr "{n}%"
+
+msgid "Le réseau ne répond pas. Réessayez plus près de la box."
+msgstr "La rete non risponde. Riprova più vicino al modem."
+
+msgid "Connexion impossible : {e}"
+msgstr "Connessione impossibile: {e}"
+
+msgid "Aucun réseau de ce nom n'a répondu. Vérifiez le nom (majuscules comprises)."
+msgstr "Nessuna rete con questo nome ha risposto. Verificate il nome (maiuscole comprese)."
+
+msgid "Se connecter"
+msgstr "Connetti"
+
+msgid "Réseau masqué…"
+msgstr "Rete nascosta…"
+
+msgid "Nom du réseau (SSID)"
+msgstr "Nome della rete (SSID)"
+
+msgid "Mot de passe (vide si réseau ouvert)"
+msgstr "Password (vuota se rete aperta)"
+
+msgid "Chiffrement : automatique (conseillé)"
+msgstr "Cifratura: automatica (consigliata)"
+
+msgid "WPA / WPA2 personnel"
+msgstr "WPA / WPA2 Personal"
+
+msgid "WPA3 personnel"
+msgstr "WPA3 Personal"
+
+msgid "Aucun (réseau ouvert)"
+msgstr "Nessuna (rete aperta)"
+
+msgid "Réseau masqué : tapez son nom exact et son mot de passe."
+msgstr "Rete nascosta: digitate il nome esatto e la password."
+
+msgid "Activation du Wi-Fi…"
+msgstr "Attivazione del Wi-Fi…"
+
+msgid "Désactivation du Wi-Fi…"
+msgstr "Disattivazione del Wi-Fi…"
+
+msgid "Ce chiffrement demande un mot de passe d'au moins 8 caractères."
+msgstr "Questa cifratura richiede una password di almeno 8 caratteri."
+
+msgid "Connexion à « {ssid} »…"
+msgstr "Connessione a «{ssid}»…"
+
+msgid "Mot de passe refusé. Réessayez."
+msgstr "Password rifiutata. Riprovate."
+
+msgid "Recherche des réseaux…"
+msgstr "Ricerca delle reti…"
+
+msgid "Le gestionnaire de réseau n'est pas installé."
+msgstr "Il gestore di rete non è installato."
+
+msgid "Aucune carte Wi-Fi détectée sur cet ordinateur."
+msgstr "Nessuna scheda Wi-Fi rilevata su questo computer."
+
+msgid "Le Wi-Fi est désactivé."
+msgstr "Il Wi-Fi è disattivato."
+
+msgid "Aucun réseau trouvé à proximité."
+msgstr "Nessuna rete trovata nelle vicinanze."
+
+msgid "🔒"
+msgstr "🔒"
+
+msgid "Signal : {n}"
+msgstr "Segnale: {n}"
+
+msgid "Mot de passe pour « {nom} »"
+msgstr "Password per «{nom}»"
+
+msgid "Connexion à « {nom} »…"
+msgstr "Connessione a «{nom}»…"
+
+msgid "Connecté à « {nom} »."
+msgstr "Connesso a «{nom}»."
+
+msgid "Mot de passe incorrect. Réessayez."
+msgstr "Password errata. Riprova."
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=SoleOS : pavé numérique actif dès le démarrage (Verr Num)
+DefaultDependencies=no
+After=systemd-vconsole-setup.service keyboard-setup.service
+Before=flashos-deverrouiller.service sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'for t in /dev/tty1 /dev/tty2 /dev/tty3 /dev/tty4 /dev/tty5 /dev/tty6; do [ -e "$t" ] && setleds -D +num < "$t"; done; true'
+
+[Install]
+WantedBy=sysinit.target

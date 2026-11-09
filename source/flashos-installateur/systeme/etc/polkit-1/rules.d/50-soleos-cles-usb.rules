@@ -1,0 +1,13 @@
+// SoleOS v1.0.2 – © 2026 GDH – LicenseRef-SoleOS
+// Clés USB sans compte administrateur, pour l'utilisateur assis devant l'ordinateur :
+// - écrire une image (Impression, Disques : créer une clé démarrable) ;
+// - formater, renommer, partitionner (Fichiers → Formater…, Disques).
+// Seulement les clés et disques amovibles : le disque du système relève d'autres actions
+// (« open-device-system », « modify-device-system »), qui restent refusées.
+polkit.addRule(function (action, subject) {
+  if ((action.id == "org.freedesktop.udisks2.open-device" ||
+       action.id == "org.freedesktop.udisks2.modify-device") &&
+      subject.local && subject.active) {
+    return polkit.Result.YES;
+  }
+});

@@ -1,0 +1,110 @@
+440	Moscow, Istanbul	Mosca, Istanbul	Moscú, Estambul	Moskau, Istanbul	莫斯科、伊斯坦布尔
+441	Casablanca	Casablanca	Casablanca	Casablanca	卡萨布兰卡
+442	Algiers, Tunis	Algeri, Tunisi	Argel, Túnez	Algier, Tunis	阿尔及尔、突尼斯
+443	Dakar, Abidjan	Dakar, Abidjan	Dakar, Abiyán	Dakar, Abidjan	达喀尔、阿比让
+444	Douala, Kinshasa, Libreville	Douala, Kinshasa, Libreville	Duala, Kinsasa, Libreville	Douala, Kinshasa, Libreville	杜阿拉、金沙萨、利伯维尔
+445	Johannesburg, Cairo	Johannesburg, Il Cairo	Johannesburgo, El Cairo	Johannesburg, Kairo	约翰内斯堡、开罗
+446	Réunion, Mauritius	Riunione, Mauritius	Reunión, Mauricio	Réunion, Mauritius	留尼汪、毛里求斯
+447	Mayotte	Mayotte	Mayotte	Mayotte	马约特
+448	Guadeloupe, Martinique	Guadalupa, Martinica	Guadalupe, Martinica	Guadeloupe, Martinique	瓜德罗普、马提尼克
+449	French Guiana	Guyana francese	Guayana Francesa	Französisch-Guayana	法属圭亚那
+450	Saint Pierre and Miquelon	Saint-Pierre e Miquelon	San Pedro y Miquelón	Saint-Pierre und Miquelon	圣皮埃尔和密克隆
+451	Montreal, Quebec, Toronto	Montréal, Québec, Toronto	Montreal, Quebec, Toronto	Montreal, Québec, Toronto	蒙特利尔、魁北克、多伦多
+452	New York	New York	Nueva York	New York	纽约
+453	Chicago, Mexico City	Chicago, Città del Messico	Chicago, Ciudad de México	Chicago, Mexiko-Stadt	芝加哥、墨西哥城
+454	Los Angeles, Vancouver	Los Angeles, Vancouver	Los Ángeles, Vancouver	Los Angeles, Vancouver	洛杉矶、温哥华
+455	São Paulo, Buenos Aires	San Paolo, Buenos Aires	São Paulo, Buenos Aires	São Paulo, Buenos Aires	圣保罗、布宜诺斯艾利斯
+456	Tahiti	Tahiti	Tahití	Tahiti	塔希提
+457	New Caledonia	Nuova Caledonia	Nueva Caledonia	Neukaledonien	新喀里多尼亚
+458	Dubai	Dubai	Dubái	Dubai	迪拜
+459	India	India	India	Indien	印度
+460	Beijing, Shanghai	Pechino, Shanghai	Pekín, Shanghái	Peking, Shanghai	北京、上海
+461	Hong Kong	Hong Kong	Hong Kong	Hongkong	香港
+462	Taipei	Taipei	Taipéi	Taipeh	台北
+463	Singapore, Kuala Lumpur	Singapore, Kuala Lumpur	Singapur, Kuala Lumpur	Singapur, Kuala Lumpur	新加坡、吉隆坡
+464	Tokyo, Seoul	Tokyo, Seul	Tokio, Seúl	Tokio, Seoul	东京、首尔
+465	Sydney	Sydney	Sídney	Sydney	悉尼
+466	Universal time (UTC)	Tempo universale (UTC)	Tiempo universal (UTC)	Weltzeit (UTC)	协调世界时（UTC）
+467	Close (Esc)	Chiudi (Esc)	Cerrar (Esc)	Schließen (Esc)	关闭（Esc）
+468	Wallpaper	Sfondo	Fondo de pantalla	Hintergrundbild	壁纸
+469	Display size	Dimensione dello schermo	Tamaño de la pantalla	Anzeigegröße	显示大小
+470	Date and time	Data e ora	Fecha y hora	Datum und Uhrzeit	日期和时间
+471	Battery	Batteria	Batería	Akku	电池
+472	Code and lock	Codice e blocco	Código y bloqueo	Code und Sperre	密码与锁屏
+473	Browser	Browser	Navegador	Browser	浏览器
+474	Console (advanced)	Console (avanzato)	Consola (avanzado)	Konsole (fortgeschritten)	终端（高级）
+475	About SoleOS	Informazioni su SoleOS	Acerca de SoleOS	Über SoleOS	关于 SoleOS
+476	‹  Settings	‹  Impostazioni	‹  Ajustes	‹  Einstellungen	‹  设置
+477	My photo	La mia foto	Mi foto	Mein Foto	我的照片
+478	My pictures	Le mie immagini	Mis imágenes	Meine Bilder	我的图片
+479	Looking for photos…	Ricerca delle foto…	Buscando fotos…	Suche nach Fotos…	正在查找照片…
+480	No photo in your Pictures folder.	Nessuna foto nella cartella Immagini.	No hay fotos en tu carpeta Imágenes.	Keine Fotos in Ihrem Ordner Bilder.	您的“图片”文件夹中没有照片。
+481	Choose another picture…	Scegli un'altra immagine…	Elegir otra imagen…	Anderes Bild wählen…	选择其他图片…
+482	Tip: in Files, right-click a photo → “Set as Background”.	Suggerimento: in File, clic destro su una foto → «Imposta come sfondo».	Consejo: en Archivos, clic derecho en una foto → «Establecer como fondo».	Tipp: In Dateien Rechtsklick auf ein Foto → „Als Hintergrund festlegen“.	提示：在“文件”中右键点击照片 →“设为背景”。
+483	Choose a wallpaper picture	Scegli un'immagine di sfondo	Elegir una imagen de fondo	Hintergrundbild wählen	选择壁纸图片
+484	charger plugged in	caricabatterie collegato	cargador conectado	Ladegerät angeschlossen	已接通电源
+485	on battery	a batteria	con batería	im Akkubetrieb	使用电池
+486	No battery detected	Nessuna batteria rilevata	No se ha detectado ninguna batería	Kein Akku erkannt	未检测到电池
+487	Current consumption: {w} W	Consumo attuale: {w} W	Consumo actual: {w} W	Aktueller Verbrauch: {w} W	当前功耗：{w} W
+488	Estimated time remaining: {h} h {m}	Autonomia residua stimata: {h} h {m}	Autonomía restante estimada: {h} h {m}	Geschätzte Restlaufzeit: {h} h {m}	预计剩余续航：{h} 小时 {m} 分
+489	Consumption: not measured while fully charged.	Consumo: non misurato a carica completa.	Consumo: no se mide con la carga completa.	Verbrauch: bei voller Ladung nicht gemessen.	功耗：充满电时不测量。
+490	Consumption: not available on this computer.	Consumo: non disponibile su questo computer.	Consumo: no disponible en este ordenador.	Verbrauch: auf diesem Computer nicht verfügbar.	功耗：此电脑不支持。
+491	Dim the screen on battery	Riduci la luminosità a batteria	Bajar el brillo con batería	Bildschirm im Akkubetrieb abdunkeln	使用电池时降低亮度
+492	When the charger is unplugged, the screen dims by 30%; it returns to its brightness when you plug it back in.	Quando il caricabatterie è scollegato, lo schermo si abbassa del 30%; torna alla sua luminosità quando lo ricolleghi.	Al desconectar el cargador, la pantalla baja un 30 %; recupera su brillo al volver a conectarlo.	Wenn das Ladegerät getrennt wird, wird der Bildschirm um 30 % dunkler; beim erneuten Anschließen kehrt die Helligkeit zurück.	拔下充电器时，屏幕亮度降低 30%；重新接上后恢复原亮度。
+493	On battery, SoleOS automatically switches the processor to power-saving mode, and the browser reduces background tab work. Videos are decoded by the graphics card.	A batteria, SoleOS passa automaticamente il processore in modalità risparmio e il browser riduce il lavoro delle schede in background. I video sono decodificati dalla scheda grafica.	Con batería, SoleOS pone automáticamente el procesador en modo ahorro y el navegador reduce el trabajo de las pestañas en segundo plano. Los vídeos los decodifica la tarjeta gráfica.	Im Akkubetrieb schaltet SoleOS den Prozessor automatisch in den Sparmodus, und der Browser reduziert die Arbeit von Hintergrund-Tabs. Videos werden von der Grafikkarte dekodiert.	使用电池时，SoleOS 会自动将处理器切换到节能模式，浏览器也会减少后台标签页的工作。视频由显卡解码。
+494	Created by Giuseppe D'Arco	Creato da Giuseppe D'Arco	Creado por Giuseppe D'Arco	Erstellt von Giuseppe D'Arco	由 Giuseppe D'Arco 创建
+495	© 2026 GDH	© 2026 GDH	© 2026 GDH	© 2026 GDH	© 2026 GDH
+496	Free software, distributed under the GNU GPL version 3: you can use, study, modify and share it. Based on Debian 13.	Software libero, distribuito con licenza GNU GPL versione 3: puoi usarlo, studiarlo, modificarlo e condividerlo. Basato su Debian 13.	Software libre, distribuido bajo la licencia GNU GPL versión 3: puedes usarlo, estudiarlo, modificarlo y compartirlo. Basado en Debian 13.	Freie Software unter der GNU GPL Version 3: Sie dürfen sie nutzen, untersuchen, verändern und weitergeben. Basiert auf Debian 13.	自由软件，依据 GNU GPL 第 3 版发布：您可以使用、研究、修改和分享。基于 Debian 13。
+497	This computer	Questo computer	Este ordenador	Dieser Computer	这台电脑
+498	unknown	sconosciuto	desconocido	unbekannt	未知
+499	unknown	sconosciuta	desconocida	unbekannt	未知
+500	Processor: {processeur}\nMemory: {memoire}	Processore: {processeur}\nMemoria: {memoire}	Procesador: {processeur}\nMemoria: {memoire}	Prozessor: {processeur}\nArbeitsspeicher: {memoire}	处理器：{processeur}\n内存：{memoire}
+501	, {d} inches	, {d} pollici	, {d} pulgadas	, {d} Zoll	，{d} 英寸
+502	{l} × {h}{pouces}, display at {z}%	{l} × {h}{pouces}, visualizzazione al {z}%	{l} × {h}{pouces}, visualización al {z} %	{l} × {h}{pouces}, Anzeige mit {z} %	{l} × {h}{pouces}，显示比例 {z}%
+503	{n} extensions installed	{n} estensioni installate	{n} extensiones instaladas	{n} Erweiterungen installiert	已安装 {n} 个扩展
+504	{n} extension installed	{n} estensione installata	{n} extensión instalada	{n} Erweiterung installiert	已安装 {n} 个扩展
+505	{n} sites allowed to send notifications	{n} siti autorizzati a inviare notifiche	{n} sitios autorizados a enviar notificaciones	{n} Websites dürfen Benachrichtigungen senden	{n} 个网站可以发送通知
+506	{n} site allowed to send notifications	{n} sito autorizzato a inviare notifiche	{n} sitio autorizado a enviar notificaciones	{n} Website darf Benachrichtigungen senden	{n} 个网站可以发送通知
+507	{constat}. If you don't recognize them, they may show ads.	{constat}. Se non li riconosci, potrebbero mostrare pubblicità.	{constat}. Si no los reconoces, pueden mostrar publicidad.	{constat}. Wenn Sie sie nicht kennen, können sie Werbung anzeigen.	{constat}。如果您不认识它们，它们可能会显示广告。
+508	 and 	 e 	 y 	 und 	和
+509	Ads or pages opening on their own? The browser can be reset: extensions, site notifications, home page and search engine are erased. Your bookmarks, passwords and history are kept.	Pubblicità o pagine che si aprono da sole? Il browser può essere rimesso a nuovo: estensioni, notifiche dei siti, pagina iniziale e motore di ricerca vengono cancellati. Preferiti, password e cronologia vengono conservati.	¿Anuncios o páginas que se abren solas? El navegador se puede restablecer: se borran las extensiones, las notificaciones de los sitios, la página de inicio y el buscador. Se conservan tus favoritos, contraseñas e historial.	Werbung oder Seiten, die sich von selbst öffnen? Der Browser kann zurückgesetzt werden: Erweiterungen, Website-Benachrichtigungen, Startseite und Suchmaschine werden gelöscht. Lesezeichen, Passwörter und Verlauf bleiben erhalten.	出现广告或页面自动打开？可以重置浏览器：扩展、网站通知、主页和搜索引擎将被清除。书签、密码和历史记录会保留。
+510	Reset the browser	Rimetti a nuovo il browser	Restablecer el navegador	Browser zurücksetzen	重置浏览器
+511	Closing the browser and resetting…	Chiusura del browser e ripristino…	Cerrando el navegador y restableciendo…	Browser wird geschlossen und zurückgesetzt…	正在关闭并重置浏览器…
+512	Enlarges the whole screen: text, buttons and windows.	Ingrandisce tutto lo schermo: testi, pulsanti e finestre.	Amplía toda la pantalla: textos, botones y ventanas.	Vergrößert den ganzen Bildschirm: Texte, Schaltflächen und Fenster.	放大整个屏幕：文字、按钮和窗口。
+513	Automatic (depending on the screen)	Automatica (in base allo schermo)	Automático (según la pantalla)	Automatisch (je nach Bildschirm)	自动（根据屏幕）
+514	Normal (100%)	Normale (100%)	Normal (100 %)	Normal (100 %)	正常（100%）
+515	Large (125%)	Grande (125%)	Grande (125 %)	Groß (125 %)	大（125%）
+516	Very large (150%)	Molto grande (150%)	Muy grande (150 %)	Sehr groß (150 %)	特大（150%）
+517	Maximum (200%)	Massima (200%)	Máximo (200 %)	Maximal (200 %)	最大（200%）
+518	Custom	Personalizzata	Personalizado	Benutzerdefiniert	自定义
+519	−	−	−	−	−
+520	+	+	+	+	+
+521	Set automatically (over the Internet)	Impostazione automatica (via Internet)	Ajuste automático (por Internet)	Automatisch einstellen (über das Internet)	自动设置（通过网络）
+522	Year-month-day hour:minutes	Anno-mese-giorno ore:minuti	Año-mes-día hora:minutos	Jahr-Monat-Tag Stunde:Minuten	年-月-日 时:分
+523	Set	Imposta	Ajustar	Einstellen	设置
+524	Time zone	Fuso orario	Zona horaria	Zeitzone	时区
+525	Lock the screen after	Blocca lo schermo dopo	Bloquear la pantalla tras	Bildschirm sperren nach	多久后锁屏
+526	5 min	5 min	5 min	5 Min.	5 分钟
+527	10 min	10 min	10 min	10 Min.	10 分钟
+528	30 min	30 min	30 min	30 Min.	30 分钟
+529	1 h	1 h	1 h	1 Std.	1 小时
+530	Never	Mai	Nunca	Nie	从不
+531	The screen also locks when the computer goes to sleep (lid closed). Shortcut: Windows key + L.	Lo schermo si blocca anche quando il computer va in sospensione (coperchio chiuso). Scorciatoia: tasto Windows + L.	La pantalla también se bloquea cuando el ordenador entra en suspensión (tapa cerrada). Atajo: tecla Windows + L.	Der Bildschirm wird auch gesperrt, wenn der Computer in den Ruhezustand geht (Deckel zu). Tastenkürzel: Windows-Taste + L.	电脑进入睡眠（合上盖子）时也会锁屏。快捷键：Windows 键 + L。
+532	🔒  Lock now	🔒  Blocca ora	🔒  Bloquear ahora	🔒  Jetzt sperren	🔒  立即锁定
+533	Trial from the USB key: the code is chosen after installing SoleOS.	Prova dalla chiavetta USB: il codice si sceglie dopo l'installazione di SoleOS.	Prueba desde la memoria USB: el código se elige después de instalar SoleOS.	Test vom USB-Stick: Der Code wird nach der Installation von SoleOS gewählt.	正在通过 U 盘试用：安装 SoleOS 后才能设置密码。
+534	The files on this computer are not encrypted (SoleOS installed before version 9). “Repair → Erase everything” turns on protection.	I file di questo computer non sono cifrati (SoleOS installato prima della versione 9). «Ripara → Cancella tutto» attiva la protezione.	Los archivos de este ordenador no están cifrados (SoleOS instalado antes de la versión 9). «Reparar → Borrar todo» activa la protección.	Die Dateien auf diesem Computer sind nicht verschlüsselt (SoleOS vor Version 9 installiert). „Reparieren → Alles löschen“ aktiviert den Schutz.	这台电脑上的文件未加密（SoleOS 安装于第 9 版之前）。“修复 → 全部清除”将启用保护。
+535	The code is chosen in the welcome assistant.	Il codice si sceglie nell'assistente di benvenuto.	El código se elige en el asistente de bienvenida.	Der Code wird im Willkommensassistenten gewählt.	密码在欢迎向导中设置。
+536	Open the assistant	Apri l'assistente	Abrir el asistente	Assistent öffnen	打开向导
+537	Your files are encrypted. They open at startup with your code (protected by the computer's security chip).	I tuoi file sono cifrati. Si aprono all'avvio con il tuo codice (protetto dal chip di sicurezza del computer).	Tus archivos están cifrados. Se abren al arrancar con tu código (protegido por el chip de seguridad del ordenador).	Ihre Dateien sind verschlüsselt. Sie werden beim Start mit Ihrem Code geöffnet (geschützt durch den Sicherheitschip des Computers).	您的文件已加密。开机时用密码打开（由电脑的安全芯片保护）。
+538	Your files are encrypted. They open at startup with your password.	I tuoi file sono cifrati. Si aprono all'avvio con la tua password.	Tus archivos están cifrados. Se abren al arrancar con tu contraseña.	Ihre Dateien sind verschlüsselt. Sie werden beim Start mit Ihrem Passwort geöffnet.	您的文件已加密。开机时用密码打开。
+539	Change my code…	Cambia il mio codice…	Cambiar mi código…	Meinen Code ändern…	更改密码…
+540	Change my password…	Cambia la mia password…	Cambiar mi contraseña…	Mein Passwort ändern…	更改密码…
+541	Current code (or recovery key)	Codice attuale (o chiave di recupero)	Código actual (o clave de recuperación)	Aktueller Code (oder Wiederherstellungsschlüssel)	当前密码（或恢复密钥）
+542	Current password (or recovery key)	Password attuale (o chiave di recupero)	Contraseña actual (o clave de recuperación)	Aktuelles Passwort (oder Wiederherstellungsschlüssel)	当前密码（或恢复密钥）
+543	New code (6 digits)	Nuovo codice (6 cifre)	Nuevo código (6 cifras)	Neuer Code (6 Ziffern)	新密码（6 位数字）
+544	New password (8 characters or more)	Nuova password (8 caratteri o più)	Nueva contraseña (8 caracteres o más)	Neues Passwort (8 Zeichen oder mehr)	新密码（至少 8 个字符）
+545	Save	Salva	Guardar	Speichern	保存
+546	First type your current code.	Digita prima il codice attuale.	Escribe primero tu código actual.	Geben Sie zuerst Ihren aktuellen Code ein.	请先输入当前密码。
+547	First type your current password.	Digita prima la password attuale.	Escribe primero tu contraseña actual.	Geben Sie zuerst Ihr aktuelles Passwort ein.	请先输入当前密码。
+548	The new code must contain exactly 6 digits.	Il nuovo codice deve contenere esattamente 6 cifre.	El nuevo código debe tener exactamente 6 cifras.	Der neue Code muss genau 6 Ziffern enthalten.	新密码必须正好是 6 位数字。
+549	The new password must contain at least 8 characters.	La nuova password deve contenere almeno 8 caratteri.	La nueva contraseña debe tener al menos 8 caracteres.	Das neue Passwort muss mindestens 8 Zeichen enthalten.	新密码至少需要 8 个字符。

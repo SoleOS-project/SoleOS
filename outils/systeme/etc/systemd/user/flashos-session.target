@@ -1,0 +1,8 @@
+# SoleOS : session graphique (labwc) déclarée à systemd, pour les services qui l'attendent
+# (portail GNOME : boîtes « Ouvrir / Enregistrer » de Nautilus, fond d'écran)
+[Unit]
+Description=Session graphique SoleOS
+Documentation=man:systemd.special(7)
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target

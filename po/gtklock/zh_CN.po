@@ -1,0 +1,20 @@
+# Écran verrouillé SoleOS (gtklock) — zh_CN
+msgid ""
+msgstr ""
+"Project-Id-Version: gtklock\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Login failed"
+msgstr "错误，请重试"
+
+msgid "Caps Lock is on"
+msgstr "大写锁定已开启"
+
+msgid "Password:"
+msgstr "您的密码："
+
+msgid "Unlock"
+msgstr "解锁"

@@ -1,0 +1,13 @@
+[Unit]
+Description=SoleOS : préparation des mises à jour (en arrière-plan)
+ConditionKernelCommandLine=flashos.slot
+Wants=network-online.target
+After=network-online.target flashos-confirmer.service
+RequiresMountsFor=/flashos/demarrage
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=idle
+CPUSchedulingPolicy=idle
+ExecStart=/usr/local/sbin/flashos-systeme maj

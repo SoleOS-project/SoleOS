@@ -1,0 +1,4 @@
+# SoleOS : luminosité de l'écran réglable par l'utilisateur (groupe « video »), sans mot de passe
+# (touches Fn et Réglages : sans elle, « Permission denied » et la luminosité ne bougeait pas)
+ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="leds", KERNEL=="*kbd_backlight*", RUN+="/bin/chgrp video /sys/class/leds/%k/brightness", RUN+="/bin/chmod g+w /sys/class/leds/%k/brightness"

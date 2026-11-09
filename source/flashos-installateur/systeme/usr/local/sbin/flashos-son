@@ -1,0 +1,148 @@
+#!/bin/bash
+# =====================================================================
+#  SoleOS – réglages du son propres à un modèle d'ordinateur
+#  © 2026 GDH – créé par Giuseppe D'Arco – LicenseRef-SoleOS
+#
+#  Certaines puces son (HDA) sont câblées autrement que la norme par le fabricant :
+#  haut-parleurs alimentés par une sortie « GPIO », sorties non déclarées, prise casque
+#  mal détectée. Ces « recettes » se règlent sans rien installer, par le noyau
+#  (/sys/class/sound/hwC*D* : init_verbs, user_pin_configs, hints, reconfig).
+#
+#    flashos-son etat                 puce trouvée, recettes possibles, recettes gardées
+#    flashos-son essayer <n> [<n>…]   applique ces recettes tout de suite (son arrêté)
+#    flashos-son annuler              revient au réglage d'origine
+#    flashos-son garder <n> [<n>…]    garde ces recettes (appliquées à chaque démarrage)
+#    flashos-son oublier              efface les recettes gardées
+#    flashos-son appliquer            au démarrage (service flashos-son)
+#
+#  Recettes : 1 sorties GPIO allumées · 2 sorties non déclarées = haut-parleurs ·
+#             3 = 1 + 2 · 4 prise casque sans détection · 5 détection de la prise inversée
+# =====================================================================
+set -uo pipefail
+export LC_ALL=C PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+if [ -d /home/.flashos ]; then FICHIER=/home/.flashos/son; else FICHIER=/run/flashos/son; fi
+
+# La puce son analogique (pas celle de l'HDMI) : hwC<carte>D<puce>
+trouver_puce() {
+  local h c d f
+  for h in /sys/class/sound/hwC*D*; do
+    [ -e "$h/vendor_id" ] || continue
+    c="${h##*hwC}"; d="${c#*D}"; c="${c%%D*}"
+    f="/proc/asound/card$c/codec#$d"
+    [ -r "$f" ] || continue
+    grep -qE 'Speaker at|HP Out at|Line Out at' "$f" || continue
+    echo "$h $c $d $f"
+    return 0
+  done
+  return 1
+}
+
+PUCE="$(trouver_puce)" || PUCE=""
+HW="" CARTE="" ADR="" PROC=""
+[ -n "$PUCE" ] && read -r HW CARTE ADR PROC <<< "$PUCE"
+
+identite() { echo "$(cat "$HW/vendor_id" 2>/dev/null):$(cat "$HW/subsystem_id" 2>/dev/null)"; }
+
+# Nombre de GPIO de la puce (« GPIO: io=8 »)
+nb_gpio() { sed -n 's/^GPIO: io=\([0-9]*\).*/\1/p' "$PROC" | head -1; }
+
+# Sorties analogiques non déclarées (« [N/A] ») capables de sortir du son
+sorties_libres() {
+  awk '
+    /^Node 0x[0-9a-f]+ \[Pin Complex\]/ { if (n!="" && sortie && libre && !numerique) print n
+                                          n=$2; sortie=0; libre=0; numerique=($0 ~ /Digital/); next }
+    /^Node / { if (n!="" && sortie && libre && !numerique) print n; n=""; next }
+    n!="" && /Pincap/ && / OUT/ { sortie=1 }
+    n!="" && /Pin Default/ && /\[N\/A\]/ { libre=1 }
+    END { if (n!="" && sortie && libre && !numerique) print n }
+  ' "$PROC"
+}
+
+valider() {  # recettes : chiffres 1 à 5 seulement
+  local r
+  [ $# -ge 1 ] || { echo "aucune recette" >&2; exit 2; }
+  for r in "$@"; do [[ "$r" =~ ^[1-5]$ ]] || { echo "recette inconnue : $r" >&2; exit 2; }; done
+}
+
+# Une écriture = un réglage (le noyau n'en lit qu'un à la fois)
+verbe() { echo "$1 $2 $3" > "$HW/init_verbs"; }
+indice() { echo "$1" > "$HW/hints"; }
+
+remettre() { echo 1 > "$HW/clear" 2>/dev/null || true; }
+
+reconfigurer() {
+  if ! echo 1 > "$HW/reconfig" 2>/dev/null; then
+    echo "occupé : le son est en cours d'utilisation" >&2
+    return 3
+  fi
+}
+
+appliquer_recettes() {
+  local r p n=0 masque=0 io seq=1
+  remettre
+  for r in "$@"; do
+    case "$r" in
+      1|3)
+        io="$(nb_gpio)"; io="${io:-0}"
+        if [ "$io" -gt 0 ]; then
+          masque=$(( (1 << io) - 1 ))
+          verbe 0x01 0x716 "$(printf '0x%x' "$masque")"   # masque des GPIO
+          verbe 0x01 0x717 "$(printf '0x%x' "$masque")"   # en sortie
+          verbe 0x01 0x715 "$(printf '0x%x' "$masque")"   # allumées
+        fi ;;
+    esac
+    case "$r" in
+      2|3)
+        for p in $(sorties_libres); do
+          printf '%s 0x9017011%x\n' "$p" "$seq" > "$HW/user_pin_configs"
+          verbe "$p" 0x70c 0x2                              # amplificateur (EAPD) allumé
+          seq=$((seq + 1)); n=$((n + 1))
+        done ;;
+      4) indice 'jack_detect = no'; indice 'auto_mute = no' ;;
+      5) indice 'inv_jack_detect = yes' ;;
+    esac
+  done
+  reconfigurer
+}
+
+case "${1:-etat}" in
+  etat)
+    if [ -z "$PUCE" ]; then echo "puce=aucune"; exit 1; fi
+    echo "puce=$(sed -n 's/^Codec: //p' "$PROC" | head -1)"
+    echo "carte=$CARTE"
+    echo "identite=$(identite)"
+    echo "gpio=$(nb_gpio)"
+    echo "sorties_libres=$(sorties_libres | paste -sd, -)"
+    echo "reglable=$([ -w "$HW/reconfig" ] && [ -e "$HW/init_verbs" ] && echo oui || echo non)"
+    if [ -f "$FICHIER" ]; then echo "gardees=$(sed -n 's/^RECETTES=//p' "$FICHIER")"; else echo "gardees="; fi
+    ;;
+  essayer)
+    shift; valider "$@"
+    [ -n "$PUCE" ] || { echo "aucune puce son" >&2; exit 1; }
+    appliquer_recettes "$@"
+    ;;
+  annuler)
+    [ -n "$PUCE" ] || exit 0
+    remettre; reconfigurer
+    ;;
+  garder)
+    shift; valider "$@"
+    [ -n "$PUCE" ] || { echo "aucune puce son" >&2; exit 1; }
+    mkdir -p "$(dirname "$FICHIER")"
+    printf 'IDENTITE=%s\nRECETTES=%s\n' "$(identite)" "$*" > "$FICHIER"
+    chmod 644 "$FICHIER"
+    ;;
+  oublier)
+    rm -f "$FICHIER"
+    ;;
+  appliquer)
+    [ -n "$PUCE" ] && [ -f "$FICHIER" ] || exit 0
+    # Seulement sur l'ordinateur pour lequel les recettes ont été trouvées
+    [ "$(sed -n 's/^IDENTITE=//p' "$FICHIER")" = "$(identite)" ] || exit 0
+    read -ra liste <<< "$(sed -n 's/^RECETTES=//p' "$FICHIER")"
+    for r in "${liste[@]}"; do [[ "$r" =~ ^[1-5]$ ]] || exit 0; done
+    [ ${#liste[@]} -gt 0 ] && appliquer_recettes "${liste[@]}"
+    ;;
+  *) echo "usage : flashos-son etat | essayer <n>… | annuler | garder <n>… | oublier | appliquer" >&2; exit 2 ;;
+esac

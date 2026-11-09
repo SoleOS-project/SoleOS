@@ -1,0 +1,4650 @@
+{
+"{prog} ne répond pas.": [
+"{prog} is not responding.",
+"{prog} non risponde.",
+"{prog} no responde.",
+"{prog} antwortet nicht.",
+"{prog} 没有响应。"
+],
+"Imprimante": [
+"Printer",
+"Stampante",
+"Impresora",
+"Drucker",
+"打印机"
+],
+"Arrêtée": [
+"Stopped",
+"Ferma",
+"Detenida",
+"Angehalten",
+"已停止"
+],
+"Impression en cours…": [
+"Printing…",
+"Stampa in corso…",
+"Imprimiendo…",
+"Druckt…",
+"正在打印…"
+],
+"Prête": [
+"Ready",
+"Pronta",
+"Lista",
+"Bereit",
+"就绪"
+],
+"Aucun pilote ne convient à cette imprimante.": [
+"No driver fits this printer.",
+"Nessun driver adatto a questa stampante.",
+"Ningún controlador sirve para esta impresora.",
+"Kein passender Treiber für diesen Drucker.",
+"没有适合此打印机的驱动程序。"
+],
+"Page de test introuvable.": [
+"Test page not found.",
+"Pagina di prova non trovata.",
+"No se encuentra la página de prueba.",
+"Testseite nicht gefunden.",
+"找不到测试页。"
+],
+"L'association a échoué. Mettez l'appareil en mode « association » (souvent un appui long sur son bouton) et réessayez.": [
+"Pairing failed. Put the device in “pairing” mode (often a long press on its button) and try again.",
+"Associazione non riuscita. Metti il dispositivo in modalità «associazione» (spesso una pressione lunga sul suo pulsante) e riprova.",
+"La vinculación ha fallado. Pon el dispositivo en modo «vinculación» (a menudo una pulsación larga en su botón) y vuelve a intentarlo.",
+"Kopplung fehlgeschlagen. Versetzen Sie das Gerät in den „Kopplungsmodus“ (oft durch langes Drücken seiner Taste) und versuchen Sie es erneut.",
+"配对失败。请将设备置于“配对”模式（通常长按其按钮），然后重试。"
+],
+"Casque": [
+"Headphones",
+"Cuffie",
+"Auriculares",
+"Kopfhörer",
+"耳机"
+],
+"Enceinte": [
+"Speaker",
+"Altoparlante",
+"Altavoz",
+"Lautsprecher",
+"音箱"
+],
+"Souris": [
+"Mouse",
+"Mouse",
+"Ratón",
+"Maus",
+"鼠标"
+],
+"Clavier": [
+"Keyboard",
+"Tastiera",
+"Teclado",
+"Tastatur",
+"键盘"
+],
+"Manette": [
+"Gamepad",
+"Controller",
+"Mando",
+"Gamepad",
+"游戏手柄"
+],
+"Téléphone": [
+"Phone",
+"Telefono",
+"Teléfono",
+"Telefon",
+"手机"
+],
+"Ordinateur": [
+"Computer",
+"Computer",
+"Ordenador",
+"Computer",
+"电脑"
+],
+"Aucun deuxième écran branché.": [
+"No second screen connected.",
+"Nessun secondo schermo collegato.",
+"No hay ninguna segunda pantalla conectada.",
+"Kein zweiter Bildschirm angeschlossen.",
+"未连接第二块屏幕。"
+],
+"Imprimantes et scanner": [
+"Printers and scanner",
+"Stampanti e scanner",
+"Impresoras y escáner",
+"Drucker und Scanner",
+"打印机和扫描仪"
+],
+"↻ Rechercher": [
+"↻ Search",
+"↻ Cerca",
+"↻ Buscar",
+"↻ Suchen",
+"↻ 搜索"
+],
+"Numériser un document": [
+"Scan a document",
+"Scansiona un documento",
+"Escanear un documento",
+"Dokument scannen",
+"扫描文档"
+],
+"Imprimantes": [
+"Printers",
+"Stampanti",
+"Impresoras",
+"Drucker",
+"打印机"
+],
+"Bluetooth": [
+"Bluetooth",
+"Bluetooth",
+"Bluetooth",
+"Bluetooth",
+"蓝牙"
+],
+"↻ Rechercher des appareils": [
+"↻ Search for devices",
+"↻ Cerca dispositivi",
+"↻ Buscar dispositivos",
+"↻ Nach Geräten suchen",
+"↻ 搜索设备"
+],
+"Deuxième écran": [
+"Second screen",
+"Secondo schermo",
+"Segunda pantalla",
+"Zweiter Bildschirm",
+"第二块屏幕"
+],
+"Écran": [
+"Screen",
+"Schermo",
+"Pantalla",
+"Bildschirm",
+"屏幕"
+],
+"Activation…": [
+"Turning on…",
+"Attivazione…",
+"Activando…",
+"Wird eingeschaltet…",
+"正在开启…"
+],
+"Désactivation…": [
+"Turning off…",
+"Disattivazione…",
+"Desactivando…",
+"Wird ausgeschaltet…",
+"正在关闭…"
+],
+"Recherche d'autres imprimantes à proximité…": [
+"Looking for other printers nearby…",
+"Ricerca di altre stampanti nelle vicinanze…",
+"Buscando otras impresoras cercanas…",
+"Suche nach weiteren Druckern in der Nähe…",
+"正在搜索附近的其他打印机…"
+],
+"L'impression n'est pas installée sur ce système.": [
+"Printing is not installed on this system.",
+"La stampa non è installata su questo sistema.",
+"La impresión no está instalada en este sistema.",
+"Drucken ist auf diesem System nicht installiert.",
+"此系统未安装打印功能。"
+],
+"Le service d'impression ne répond pas.": [
+"The printing service is not responding.",
+"Il servizio di stampa non risponde.",
+"El servicio de impresión no responde.",
+"Der Druckdienst antwortet nicht.",
+"打印服务没有响应。"
+],
+"Aucune imprimante trouvée. Allumez-la et branchez-la (USB) ou reliez-la au même réseau, puis « Rechercher ».": [
+"No printer found. Turn it on and plug it in (USB) or connect it to the same network, then “Search”.",
+"Nessuna stampante trovata. Accendila e collegala (USB) o alla stessa rete, poi «Cerca».",
+"No se ha encontrado ninguna impresora. Enciéndela y conéctala (USB) o a la misma red, y luego «Buscar».",
+"Kein Drucker gefunden. Schalten Sie ihn ein und schließen Sie ihn an (USB) oder verbinden Sie ihn mit demselben Netzwerk, dann „Suchen“.",
+"未找到打印机。请打开打印机并连接（USB）或连接到同一网络，然后点击“搜索”。"
+],
+"Mes imprimantes": [
+"My printers",
+"Le mie stampanti",
+"Mis impresoras",
+"Meine Drucker",
+"我的打印机"
+],
+"par défaut": [
+"default",
+"predefinita",
+"predeterminada",
+"Standard",
+"默认"
+],
+"Test": [
+"Test",
+"Prova",
+"Prueba",
+"Test",
+"测试"
+],
+"Imprimer une page de test": [
+"Print a test page",
+"Stampa una pagina di prova",
+"Imprimir una página de prueba",
+"Testseite drucken",
+"打印测试页"
+],
+"Par défaut": [
+"Default",
+"Predefinita",
+"Predeterminada",
+"Standard",
+"设为默认"
+],
+"✕": [
+"✕",
+"✕",
+"✕",
+"✕",
+"✕"
+],
+"Retirer cette imprimante": [
+"Remove this printer",
+"Rimuovi questa stampante",
+"Quitar esta impresora",
+"Diesen Drucker entfernen",
+"移除此打印机"
+],
+"Page de test envoyée.": [
+"Test page sent.",
+"Pagina di prova inviata.",
+"Página de prueba enviada.",
+"Testseite gesendet.",
+"测试页已发送。"
+],
+"Trouvées à proximité": [
+"Found nearby",
+"Trovate nelle vicinanze",
+"Encontradas cerca",
+"In der Nähe gefunden",
+"在附近找到"
+],
+"Ajouter": [
+"Add",
+"Aggiungi",
+"Añadir",
+"Hinzufügen",
+"添加"
+],
+"Branchée en USB": [
+"Connected by USB",
+"Collegata via USB",
+"Conectada por USB",
+"Per USB angeschlossen",
+"通过 USB 连接"
+],
+"Sur le réseau": [
+"On the network",
+"In rete",
+"En la red",
+"Im Netzwerk",
+"在网络上"
+],
+"…": [
+"…",
+"…",
+"…",
+"…",
+"…"
+],
+"Ajout de « {nom} »…": [
+"Adding “{nom}”…",
+"Aggiunta di «{nom}»…",
+"Añadiendo «{nom}»…",
+"„{nom}“ wird hinzugefügt…",
+"正在添加“{nom}”…"
+],
+"« {nom} » est prête.": [
+"“{nom}” is ready.",
+"«{nom}» è pronta.",
+"«{nom}» está lista.",
+"„{nom}“ ist bereit.",
+"“{nom}”已就绪。"
+],
+"Échec : {e}": [
+"Failed: {e}",
+"Errore: {e}",
+"Error: {e}",
+"Fehlgeschlagen: {e}",
+"失败：{e}"
+],
+"erreur inconnue": [
+"unknown error",
+"errore sconosciuto",
+"error desconocido",
+"unbekannter Fehler",
+"未知错误"
+],
+"Lecture…": [
+"Reading…",
+"Lettura…",
+"Leyendo…",
+"Wird gelesen…",
+"正在读取…"
+],
+"Recherche des appareils à proximité…": [
+"Looking for nearby devices…",
+"Ricerca dei dispositivi nelle vicinanze…",
+"Buscando dispositivos cercanos…",
+"Suche nach Geräten in der Nähe…",
+"正在搜索附近的设备…"
+],
+"Le Bluetooth n'est pas installé sur ce système.": [
+"Bluetooth is not installed on this system.",
+"Il Bluetooth non è installato su questo sistema.",
+"El Bluetooth no está instalado en este sistema.",
+"Bluetooth ist auf diesem System nicht installiert.",
+"此系统未安装蓝牙。"
+],
+"Pas de Bluetooth sur cet ordinateur.": [
+"No Bluetooth on this computer.",
+"Nessun Bluetooth su questo computer.",
+"Este ordenador no tiene Bluetooth.",
+"Kein Bluetooth auf diesem Computer.",
+"此电脑没有蓝牙。"
+],
+"Le Bluetooth est désactivé.": [
+"Bluetooth is turned off.",
+"Il Bluetooth è disattivato.",
+"El Bluetooth está desactivado.",
+"Bluetooth ist ausgeschaltet.",
+"蓝牙已关闭。"
+],
+"Aucun appareil. Mettez votre casque, souris… en mode « association », puis « Rechercher ».": [
+"No devices. Put your headphones, mouse… in “pairing” mode, then “Search”.",
+"Nessun dispositivo. Metti cuffie, mouse… in modalità «associazione», poi «Cerca».",
+"Ningún dispositivo. Pon tus auriculares, ratón… en modo «vinculación» y luego «Buscar».",
+"Keine Geräte. Versetzen Sie Kopfhörer, Maus… in den „Kopplungsmodus“, dann „Suchen“.",
+"没有设备。请将耳机、鼠标等置于“配对”模式，然后点击“搜索”。"
+],
+"Mes appareils": [
+"My devices",
+"I miei dispositivi",
+"Mis dispositivos",
+"Meine Geräte",
+"我的设备"
+],
+"À proximité": [
+"Nearby",
+"Nelle vicinanze",
+"Cerca",
+"In der Nähe",
+"附近"
+],
+"Connecté": [
+"Connected",
+"Connesso",
+"Conectado",
+"Verbunden",
+"已连接"
+],
+"Non connecté": [
+"Not connected",
+"Non connesso",
+"No conectado",
+"Nicht verbunden",
+"未连接"
+],
+"Déconnecter": [
+"Disconnect",
+"Disconnetti",
+"Desconectar",
+"Trennen",
+"断开"
+],
+"Connecter": [
+"Connect",
+"Connetti",
+"Conectar",
+"Verbinden",
+"连接"
+],
+"Connexion impossible : l'appareil est-il allumé et à proximité ?": [
+"Unable to connect: is the device on and nearby?",
+"Connessione impossibile: il dispositivo è acceso e vicino?",
+"No se puede conectar: ¿el dispositivo está encendido y cerca?",
+"Verbindung nicht möglich: Ist das Gerät eingeschaltet und in der Nähe?",
+"无法连接：设备是否已开启并在附近？"
+],
+"Oublier cet appareil": [
+"Forget this device",
+"Dimentica questo dispositivo",
+"Olvidar este dispositivo",
+"Dieses Gerät vergessen",
+"忘记此设备"
+],
+"Associer": [
+"Pair",
+"Associa",
+"Vincular",
+"Koppeln",
+"配对"
+],
+"Association avec « {nom} »…": [
+"Pairing with “{nom}”…",
+"Associazione con «{nom}»…",
+"Vinculando con «{nom}»…",
+"Kopplung mit „{nom}“…",
+"正在与“{nom}”配对…"
+],
+"Un seul écran. Branchez un écran ou un vidéoprojecteur : l'image y sera dupliquée automatiquement.": [
+"Only one screen. Plug in a screen or a projector: the picture will be duplicated automatically.",
+"Un solo schermo. Collega uno schermo o un proiettore: l'immagine verrà duplicata automaticamente.",
+"Una sola pantalla. Conecta una pantalla o un proyector: la imagen se duplicará automáticamente.",
+"Nur ein Bildschirm. Schließen Sie einen Bildschirm oder Beamer an: Das Bild wird automatisch dupliziert.",
+"只有一块屏幕。连接显示器或投影仪后，画面会自动复制过去。"
+],
+"Deuxième écran : {nom}": [
+"Second screen: {nom}",
+"Secondo schermo: {nom}",
+"Segunda pantalla: {nom}",
+"Zweiter Bildschirm: {nom}",
+"第二块屏幕：{nom}"
+],
+"Dupliquer": [
+"Duplicate",
+"Duplica",
+"Duplicar",
+"Duplizieren",
+"复制"
+],
+"La même image sur les deux écrans (présentations)": [
+"The same picture on both screens (presentations)",
+"La stessa immagine sui due schermi (presentazioni)",
+"La misma imagen en las dos pantallas (presentaciones)",
+"Dasselbe Bild auf beiden Bildschirmen (Präsentationen)",
+"两块屏幕显示相同画面（演示）"
+],
+"Étendre": [
+"Extend",
+"Estendi",
+"Extender",
+"Erweitern",
+"扩展"
+],
+"Le deuxième écran prolonge celui-ci, à droite": [
+"The second screen extends this one, to the right",
+"Il secondo schermo prolunga questo, a destra",
+"La segunda pantalla prolonga esta, a la derecha",
+"Der zweite Bildschirm erweitert diesen nach rechts",
+"第二块屏幕在右侧扩展本屏幕"
+],
+"Deuxième écran seulement": [
+"Second screen only",
+"Solo il secondo schermo",
+"Solo la segunda pantalla",
+"Nur zweiter Bildschirm",
+"仅第二块屏幕"
+],
+"L'écran du PC s'éteint": [
+"The PC screen turns off",
+"Lo schermo del PC si spegne",
+"La pantalla del PC se apaga",
+"Der PC-Bildschirm wird ausgeschaltet",
+"电脑屏幕关闭"
+],
+"Cet écran seulement": [
+"This screen only",
+"Solo questo schermo",
+"Solo esta pantalla",
+"Nur dieser Bildschirm",
+"仅本屏幕"
+],
+"Le deuxième écran reste éteint": [
+"The second screen stays off",
+"Il secondo schermo resta spento",
+"La segunda pantalla permanece apagada",
+"Der zweite Bildschirm bleibt aus",
+"第二块屏幕保持关闭"
+],
+"Choisir": [
+"Choose",
+"Scegli",
+"Elegir",
+"Auswählen",
+"选择"
+],
+"Suite Craft": [
+"Craft suite",
+"Suite Craft",
+"Suite Craft",
+"Craft-Suite",
+"Craft 套件"
+],
+"Photos et création": [
+"Photos and creativity",
+"Foto e creatività",
+"Fotos y creación",
+"Fotos und Kreatives",
+"照片与创作"
+],
+"Vidéo et musique": [
+"Video and music",
+"Video e musica",
+"Vídeo y música",
+"Video und Musik",
+"视频与音乐"
+],
+"Communication": [
+"Communication",
+"Comunicazione",
+"Comunicación",
+"Kommunikation",
+"沟通"
+],
+"Documents": [
+"Documents",
+"Documenti",
+"Documentos",
+"Dokumente",
+"文档"
+],
+"Travail": [
+"Work",
+"Lavoro",
+"Trabajo",
+"Arbeit",
+"工作"
+],
+"Sécurité et outils": [
+"Security and tools",
+"Sicurezza e strumenti",
+"Seguridad y herramientas",
+"Sicherheit und Werkzeuge",
+"安全与工具"
+],
+"Enfants et école": [
+"Kids and school",
+"Bambini e scuola",
+"Niños y escuela",
+"Kinder und Schule",
+"儿童与学习"
+],
+"Jeux": [
+"Games",
+"Giochi",
+"Juegos",
+"Spiele",
+"游戏"
+],
+"Autres navigateurs": [
+"Other browsers",
+"Altri browser",
+"Otros navegadores",
+"Andere Browser",
+"其他浏览器"
+],
+"Retoucher ses photos": [
+"Edit your photos",
+"Ritocca le tue foto",
+"Retocar tus fotos",
+"Fotos bearbeiten",
+"编辑照片"
+],
+"Dessin et peinture": [
+"Drawing and painting",
+"Disegno e pittura",
+"Dibujo y pintura",
+"Zeichnen und Malen",
+"绘画"
+],
+"Logos, affiches, dessins vectoriels": [
+"Logos, posters, vector drawings",
+"Loghi, manifesti, disegni vettoriali",
+"Logotipos, carteles, dibujos vectoriales",
+"Logos, Plakate, Vektorgrafiken",
+"标志、海报、矢量图"
+],
+"Ranger et retrouver ses photos": [
+"Organize and find your photos",
+"Organizza e ritrova le tue foto",
+"Ordenar y encontrar tus fotos",
+"Fotos ordnen und wiederfinden",
+"整理和查找照片"
+],
+"Lire toutes les vidéos et musiques": [
+"Play all videos and music",
+"Riproduci tutti i video e la musica",
+"Reproducir todos los vídeos y la música",
+"Alle Videos und Musik abspielen",
+"播放所有视频和音乐"
+],
+"Montage vidéo": [
+"Video editing",
+"Montaggio video",
+"Edición de vídeo",
+"Videoschnitt",
+"视频剪辑"
+],
+"Enregistrer et modifier du son": [
+"Record and edit sound",
+"Registra e modifica l'audio",
+"Grabar y editar sonido",
+"Ton aufnehmen und bearbeiten",
+"录制和编辑音频"
+],
+"Musique en ligne": [
+"Online music",
+"Musica online",
+"Música en línea",
+"Online-Musik",
+"在线音乐"
+],
+"Réunions en visio": [
+"Video meetings",
+"Riunioni video",
+"Videoconferencias",
+"Videokonferenzen",
+"视频会议"
+],
+"Messagerie privée": [
+"Private messaging",
+"Messaggistica privata",
+"Mensajería privada",
+"Private Nachrichten",
+"私密聊天"
+],
+"Messagerie": [
+"Messaging",
+"Messaggistica",
+"Mensajería",
+"Nachrichten",
+"聊天"
+],
+"Discussions et appels en groupe": [
+"Group chats and calls",
+"Chat e chiamate di gruppo",
+"Chats y llamadas en grupo",
+"Gruppenchats und Anrufe",
+"群聊与通话"
+],
+"Logiciel de messagerie (mails)": [
+"Email program",
+"Programma di posta",
+"Programa de correo",
+"E-Mail-Programm",
+"电子邮件客户端"
+],
+"Lire et annoter les PDF": [
+"Read and annotate PDFs",
+"Leggi e annota i PDF",
+"Leer y anotar PDF",
+"PDFs lesen und kommentieren",
+"阅读和批注 PDF"
+],
+"Fusionner, découper, réordonner des PDF": [
+"Merge, split, reorder PDFs",
+"Unisci, dividi, riordina PDF",
+"Combinar, dividir, reordenar PDF",
+"PDFs zusammenfügen, teilen, sortieren",
+"合并、拆分、重排 PDF"
+],
+"Bibliothèque de livres numériques": [
+"E-book library",
+"Biblioteca di e-book",
+"Biblioteca de libros electrónicos",
+"E-Book-Bibliothek",
+"电子书库"
+],
+"Liseuse de livres numériques": [
+"E-book reader",
+"Lettore di e-book",
+"Lector de libros electrónicos",
+"E-Book-Reader",
+"电子书阅读器"
+],
+"Bureau à distance": [
+"Remote desktop",
+"Desktop remoto",
+"Escritorio remoto",
+"Fernzugriff",
+"远程桌面"
+],
+"Utiliser un PC ou un serveur Windows à distance": [
+"Use a Windows PC or server remotely",
+"Usa un PC o un server Windows a distanza",
+"Usar un PC o un servidor Windows a distancia",
+"Einen Windows-PC oder -Server aus der Ferne nutzen",
+"远程使用 Windows 电脑或服务器"
+],
+"Coffre-fort de mots de passe": [
+"Password vault",
+"Cassaforte delle password",
+"Caja fuerte de contraseñas",
+"Passwort-Tresor",
+"密码保险箱"
+],
+"Mots de passe, sans compte en ligne": [
+"Passwords, without an online account",
+"Password, senza account online",
+"Contraseñas, sin cuenta en línea",
+"Passwörter, ohne Online-Konto",
+"密码管理，无需在线账号"
+],
+"Sauvegarder ses fichiers sur un disque USB": [
+"Back up your files to a USB drive",
+"Salva i tuoi file su un disco USB",
+"Hacer copia de tus archivos en un disco USB",
+"Dateien auf einem USB-Laufwerk sichern",
+"将文件备份到 USB 磁盘"
+],
+"Calculatrice": [
+"Calculator",
+"Calcolatrice",
+"Calculadora",
+"Rechner",
+"计算器"
+],
+"Calculs simples et scientifiques": [
+"Simple and scientific calculations",
+"Calcoli semplici e scientifici",
+"Cálculos simples y científicos",
+"Einfache und wissenschaftliche Berechnungen",
+"简单和科学计算"
+],
+"Activités éducatives de 2 à 10 ans": [
+"Learning activities for ages 2 to 10",
+"Attività educative da 2 a 10 anni",
+"Actividades educativas de 2 a 10 años",
+"Lernspiele für 2 bis 10 Jahre",
+"2 至 10 岁的益智活动"
+],
+"Dessin pour les enfants": [
+"Drawing for kids",
+"Disegno per bambini",
+"Dibujo para niños",
+"Malen für Kinder",
+"儿童绘画"
+],
+"Mathématiques : géométrie, courbes": [
+"Maths: geometry, graphs",
+"Matematica: geometria, grafici",
+"Matemáticas: geometría, gráficas",
+"Mathematik: Geometrie, Funktionen",
+"数学：几何、函数图像"
+],
+"Le ciel étoilé": [
+"The starry sky",
+"Il cielo stellato",
+"El cielo estrellado",
+"Der Sternenhimmel",
+"星空"
+],
+"Boutique et bibliothèque de jeux": [
+"Game store and library",
+"Negozio e libreria di giochi",
+"Tienda y biblioteca de juegos",
+"Spieleshop und -bibliothek",
+"游戏商店与游戏库"
+],
+"Course de karts": [
+"Kart racing",
+"Corse di kart",
+"Carreras de karts",
+"Kartrennen",
+"卡丁车赛车"
+],
+"Solitaire": [
+"Solitaire",
+"Solitario",
+"Solitario",
+"Solitär",
+"纸牌"
+],
+"Jeux de cartes": [
+"Card games",
+"Giochi di carte",
+"Juegos de cartas",
+"Kartenspiele",
+"纸牌游戏"
+],
+"Grilles de sudoku": [
+"Sudoku puzzles",
+"Griglie di sudoku",
+"Sudokus",
+"Sudoku-Rätsel",
+"数独"
+],
+"Navigateur web": [
+"Web browser",
+"Browser web",
+"Navegador web",
+"Webbrowser",
+"网页浏览器"
+],
+"Navigateur web de Google": [
+"Google's web browser",
+"Il browser web di Google",
+"El navegador web de Google",
+"Der Webbrowser von Google",
+"谷歌网页浏览器"
+],
+"Traitement de texte (fichiers Word .docx)": [
+"Word processor (Word .docx files)",
+"Videoscrittura (file Word .docx)",
+"Procesador de textos (archivos Word .docx)",
+"Textverarbeitung (Word-Dateien .docx)",
+"文字处理（Word .docx 文件）"
+],
+"Tableur (fichiers Excel .xlsx)": [
+"Spreadsheet (Excel .xlsx files)",
+"Foglio di calcolo (file Excel .xlsx)",
+"Hoja de cálculo (archivos Excel .xlsx)",
+"Tabellenkalkulation (Excel-Dateien .xlsx)",
+"电子表格（Excel .xlsx 文件）"
+],
+"Présentations (diaporamas)": [
+"Presentations (slideshows)",
+"Presentazioni",
+"Presentaciones",
+"Präsentationen",
+"演示文稿（幻灯片）"
+],
+"Lire, organiser et protéger des PDF": [
+"Read, organize and protect PDFs",
+"Leggi, organizza e proteggi i PDF",
+"Leer, organizar y proteger PDF",
+"PDFs lesen, ordnen und schützen",
+"阅读、整理和保护 PDF"
+],
+"Retouche photo avec calques": [
+"Photo editing with layers",
+"Fotoritocco con livelli",
+"Retoque fotográfico con capas",
+"Fotobearbeitung mit Ebenen",
+"支持图层的照片编辑"
+],
+"Photothèque et développement RAW": [
+"Photo library and RAW development",
+"Fototeca e sviluppo RAW",
+"Fototeca y revelado RAW",
+"Fotobibliothek und RAW-Entwicklung",
+"照片库与 RAW 冲印"
+],
+"Dessin vectoriel, logos": [
+"Vector drawing, logos",
+"Disegno vettoriale, loghi",
+"Dibujo vectorial, logotipos",
+"Vektorzeichnung, Logos",
+"矢量绘图、标志"
+],
+"Mise en page et publication": [
+"Page layout and publishing",
+"Impaginazione e pubblicazione",
+"Maquetación y publicación",
+"Layout und Publishing",
+"排版与出版"
+],
+"Maquettes d'écrans et d'applis": [
+"Screen and app mockups",
+"Prototipi di schermate e app",
+"Maquetas de pantallas y apps",
+"Entwürfe für Bildschirme und Apps",
+"界面与应用原型"
+],
+"Animations et effets visuels": [
+"Animations and visual effects",
+"Animazioni ed effetti visivi",
+"Animaciones y efectos visuales",
+"Animationen und visuelle Effekte",
+"动画与视觉特效"
+],
+"Studio d'enregistrement audio": [
+"Audio recording studio",
+"Studio di registrazione audio",
+"Estudio de grabación de audio",
+"Tonstudio",
+"录音棚"
+],
+"Dessin technique (CAO)": [
+"Technical drawing (CAD)",
+"Disegno tecnico (CAD)",
+"Dibujo técnico (CAD)",
+"Technisches Zeichnen (CAD)",
+"工程制图（CAD）"
+],
+"curl est introuvable.": [
+"curl was not found.",
+"curl non trovato.",
+"No se encuentra curl.",
+"curl wurde nicht gefunden.",
+"找不到 curl。"
+],
+"Pas de connexion à Internet : impossible de joindre GitHub.": [
+"No Internet connection: unable to reach GitHub.",
+"Nessuna connessione a Internet: impossibile raggiungere GitHub.",
+"Sin conexión a Internet: no se puede acceder a GitHub.",
+"Keine Internetverbindung: GitHub ist nicht erreichbar.",
+"没有网络连接：无法访问 GitHub。"
+],
+"Le téléchargement a échoué. Vérifiez la connexion à Internet et réessayez.": [
+"The download failed. Check the Internet connection and try again.",
+"Il download non è riuscito. Controlla la connessione a Internet e riprova.",
+"La descarga ha fallado. Comprueba la conexión a Internet y vuelve a intentarlo.",
+"Der Download ist fehlgeschlagen. Prüfen Sie die Internetverbindung und versuchen Sie es erneut.",
+"下载失败。请检查网络连接后重试。"
+],
+"Images": [
+"Images",
+"Immagini",
+"Imágenes",
+"Bilder",
+"图片"
+],
+"Flatpak n'est pas installé sur ce système.": [
+"Flatpak is not installed on this system.",
+"Flatpak non è installato su questo sistema.",
+"Flatpak no está instalado en este sistema.",
+"Flatpak ist auf diesem System nicht installiert.",
+"此系统未安装 Flatpak。"
+],
+"Pas de connexion à Internet : impossible de joindre la boutique.": [
+"No Internet connection: unable to reach the store.",
+"Nessuna connessione a Internet: impossibile raggiungere il negozio.",
+"Sin conexión a Internet: no se puede acceder a la tienda.",
+"Keine Internetverbindung: Der Store ist nicht erreichbar.",
+"没有网络连接：无法访问应用商店。"
+],
+"Impossible de joindre la boutique. Détail : {detail}": [
+"Unable to reach the store. Details: {detail}",
+"Impossibile raggiungere il negozio. Dettagli: {detail}",
+"No se puede acceder a la tienda. Detalles: {detail}",
+"Der Store ist nicht erreichbar. Details: {detail}",
+"无法访问应用商店。详情：{detail}"
+],
+"Application introuvable dans la boutique.": [
+"App not found in the store.",
+"Applicazione non trovata nel negozio.",
+"Aplicación no encontrada en la tienda.",
+"App im Store nicht gefunden.",
+"应用商店中找不到该应用。"
+],
+"Pas assez de place sur le disque.": [
+"Not enough space on the disk.",
+"Spazio su disco insufficiente.",
+"No hay suficiente espacio en el disco.",
+"Nicht genug Speicherplatz.",
+"磁盘空间不足。"
+],
+"L'installation a échoué. Vérifiez la connexion à Internet et réessayez.": [
+"Installation failed. Check the Internet connection and try again.",
+"L'installazione non è riuscita. Controlla la connessione a Internet e riprova.",
+"La instalación ha fallado. Comprueba la conexión a Internet y vuelve a intentarlo.",
+"Die Installation ist fehlgeschlagen. Prüfen Sie die Internetverbindung und versuchen Sie es erneut.",
+"安装失败。请检查网络连接后重试。"
+],
+"Cette application fait partie de SoleOS.": [
+"This app is part of SoleOS.",
+"Questa applicazione fa parte di SoleOS.",
+"Esta aplicación forma parte de SoleOS.",
+"Diese App gehört zu SoleOS.",
+"此应用是 SoleOS 的一部分。"
+],
+"Fichier introuvable.": [
+"File not found.",
+"File non trovato.",
+"Archivo no encontrado.",
+"Datei nicht gefunden.",
+"找不到文件。"
+],
+"Copie impossible (place disque ?)": [
+"Copy impossible (disk space?)",
+"Copia impossibile (spazio su disco?)",
+"No se puede copiar (¿espacio en disco?)",
+"Kopieren nicht möglich (Speicherplatz?)",
+"无法复制（磁盘空间不足？）"
+],
+"Distrobox n'est pas installé sur ce système.": [
+"Distrobox is not installed on this system.",
+"Distrobox non è installato su questo sistema.",
+"Distrobox no está instalado en este sistema.",
+"Distrobox ist auf diesem System nicht installiert.",
+"此系统未安装 Distrobox。"
+],
+"Pas de connexion à Internet : impossible de télécharger l'espace Debian.": [
+"No Internet connection: unable to download the Debian space.",
+"Nessuna connessione a Internet: impossibile scaricare lo spazio Debian.",
+"Sin conexión a Internet: no se puede descargar el espacio Debian.",
+"Keine Internetverbindung: Der Debian-Bereich kann nicht heruntergeladen werden.",
+"没有网络连接：无法下载 Debian 空间。"
+],
+"Création de l'espace Debian impossible. Détail : {detail}": [
+"Unable to create the Debian space. Details: {detail}",
+"Impossibile creare lo spazio Debian. Dettagli: {detail}",
+"No se puede crear el espacio Debian. Detalles: {detail}",
+"Der Debian-Bereich kann nicht erstellt werden. Details: {detail}",
+"无法创建 Debian 空间。详情：{detail}"
+],
+"Démarrage de l'espace Debian impossible. Détail : {detail}": [
+"Unable to start the Debian space. Details: {detail}",
+"Impossibile avviare lo spazio Debian. Dettagli: {detail}",
+"No se puede iniciar el espacio Debian. Detalles: {detail}",
+"Der Debian-Bereich kann nicht gestartet werden. Details: {detail}",
+"无法启动 Debian 空间。详情：{detail}"
+],
+"Nom de fichier invalide.": [
+"Invalid file name.",
+"Nome di file non valido.",
+"Nombre de archivo no válido.",
+"Ungültiger Dateiname.",
+"文件名无效。"
+],
+"L'installation du paquet a échoué. Détail : {detail}": [
+"Package installation failed. Details: {detail}",
+"L'installazione del pacchetto non è riuscita. Dettagli: {detail}",
+"La instalación del paquete ha fallado. Detalles: {detail}",
+"Die Installation des Pakets ist fehlgeschlagen. Details: {detail}",
+"软件包安装失败。详情：{detail}"
+],
+"le paquet": [
+"the package",
+"il pacchetto",
+"el paquete",
+"das Paket",
+"该软件包"
+],
+"Adresse invalide (exemple : lemonde.fr).": [
+"Invalid address (example: bbc.co.uk).",
+"Indirizzo non valido (esempio: corriere.it).",
+"Dirección no válida (ejemplo: elpais.com).",
+"Ungültige Adresse (Beispiel: spiegel.de).",
+"地址无效（例如：baidu.com）。"
+],
+"Étape {n} sur 3": [
+"Step {n} of 3",
+"Passaggio {n} di 3",
+"Paso {n} de 3",
+"Schritt {n} von 3",
+"第 {n} 步，共 3 步"
+],
+"Bienvenue sur SoleOS": [
+"Welcome to SoleOS",
+"Benvenuto in SoleOS",
+"Bienvenido a SoleOS",
+"Willkommen bei SoleOS",
+"欢迎使用 SoleOS"
+],
+"Quelques secondes pour protéger vos fichiers, et c'est prêt.": [
+"A few seconds to protect your files, and you're ready.",
+"Pochi secondi per proteggere i tuoi file, ed è pronto.",
+"Unos segundos para proteger tus archivos y listo.",
+"Ein paar Sekunden, um Ihre Dateien zu schützen, dann ist alles bereit.",
+"只需几秒钟保护您的文件，即可开始使用。"
+],
+"Comment vous appelez-vous ?": [
+"What's your name?",
+"Come ti chiami?",
+"¿Cómo te llamas?",
+"Wie heißen Sie?",
+"您叫什么名字？"
+],
+"Votre prénom": [
+"Your first name",
+"Il tuo nome",
+"Tu nombre",
+"Ihr Vorname",
+"您的名字"
+],
+"Suivant": [
+"Next",
+"Avanti",
+"Siguiente",
+"Weiter",
+"下一步"
+],
+"Tapez-le une deuxième fois": [
+"Type it a second time",
+"Digitalo una seconda volta",
+"Escríbelo otra vez",
+"Geben Sie ihn ein zweites Mal ein",
+"请再输入一次"
+],
+"Choisissez un nouveau code": [
+"Choose a new code",
+"Scegli un nuovo codice",
+"Elige un nuevo código",
+"Wählen Sie einen neuen Code",
+"请选择新的密码"
+],
+"Choisissez votre code": [
+"Choose your code",
+"Scegli il tuo codice",
+"Elige tu código",
+"Wählen Sie Ihren Code",
+"请选择您的密码"
+],
+"Pour être sûr qu'il n'y a pas de faute de frappe.": [
+"To make sure there's no typo.",
+"Per essere sicuri che non ci siano errori di battitura.",
+"Para asegurarnos de que no hay errores al escribir.",
+"Damit kein Tippfehler passiert.",
+"以确保没有输入错误。"
+],
+"6 chiffres, à taper à chaque démarrage et pour déverrouiller l'écran. Évitez 123456 ou votre date de naissance.": [
+"6 digits, to type at every startup and to unlock the screen. Avoid 123456 or your date of birth.",
+"6 cifre, da digitare a ogni avvio e per sbloccare lo schermo. Evita 123456 o la tua data di nascita.",
+"6 cifras, para escribir en cada arranque y para desbloquear la pantalla. Evita 123456 o tu fecha de nacimiento.",
+"6 Ziffern, bei jedem Start und zum Entsperren des Bildschirms einzugeben. Vermeiden Sie 123456 oder Ihr Geburtsdatum.",
+"6 位数字，每次开机和解锁屏幕时输入。请避免使用 123456 或您的生日。"
+],
+"Recommencer": [
+"Start over",
+"Ricomincia",
+"Empezar de nuevo",
+"Neu beginnen",
+"重新开始"
+],
+"Retour": [
+"Back",
+"Indietro",
+"Atrás",
+"Zurück",
+"返回"
+],
+"Ce code est trop facile à deviner. Choisissez-en un autre.": [
+"This code is too easy to guess. Choose another one.",
+"Questo codice è troppo facile da indovinare. Scegline un altro.",
+"Este código es demasiado fácil de adivinar. Elige otro.",
+"Dieser Code ist zu leicht zu erraten. Wählen Sie einen anderen.",
+"这个密码太容易被猜到，请换一个。"
+],
+"Les deux codes sont différents. Recommencez.": [
+"The two codes are different. Start over.",
+"I due codici sono diversi. Ricomincia.",
+"Los dos códigos son distintos. Empieza de nuevo.",
+"Die beiden Codes sind unterschiedlich. Beginnen Sie neu.",
+"两次输入的密码不一致，请重新开始。"
+],
+"Choisissez un nouveau mot de passe": [
+"Choose a new password",
+"Scegli una nuova password",
+"Elige una nueva contraseña",
+"Wählen Sie ein neues Passwort",
+"请选择新的密码"
+],
+"Choisissez votre mot de passe": [
+"Choose your password",
+"Scegli la tua password",
+"Elige tu contraseña",
+"Wählen Sie Ihr Passwort",
+"请选择您的密码"
+],
+"Au moins 8 caractères, à taper à chaque démarrage et pour déverrouiller l'écran. (Cet ordinateur n'a pas de puce de sécurité : un code à 6 chiffres ne suffirait pas.)": [
+"At least 8 characters, to type at every startup and to unlock the screen. (This computer has no security chip: a 6-digit code would not be enough.)",
+"Almeno 8 caratteri, da digitare a ogni avvio e per sbloccare lo schermo. (Questo computer non ha un chip di sicurezza: un codice di 6 cifre non basterebbe.)",
+"Al menos 8 caracteres, para escribir en cada arranque y para desbloquear la pantalla. (Este ordenador no tiene chip de seguridad: un código de 6 cifras no sería suficiente.)",
+"Mindestens 8 Zeichen, bei jedem Start und zum Entsperren des Bildschirms einzugeben. (Dieser Computer hat keinen Sicherheitschip: Ein 6-stelliger Code würde nicht ausreichen.)",
+"至少 8 个字符，每次开机和解锁屏幕时输入。（此电脑没有安全芯片：6 位数字密码不够安全。）"
+],
+"Mot de passe": [
+"Password",
+"Password",
+"Contraseña",
+"Passwort",
+"密码"
+],
+"Encore une fois": [
+"Once more",
+"Ancora una volta",
+"Una vez más",
+"Noch einmal",
+"再输入一次"
+],
+"Encore un peu : au moins 8 caractères.": [
+"A little more: at least 8 characters.",
+"Ancora un po': almeno 8 caratteri.",
+"Un poco más: al menos 8 caracteres.",
+"Noch etwas: mindestens 8 Zeichen.",
+"再长一些：至少 8 个字符。"
+],
+"Les deux mots de passe sont différents.": [
+"The two passwords are different.",
+"Le due password sono diverse.",
+"Las dos contraseñas son distintas.",
+"Die beiden Passwörter sind unterschiedlich.",
+"两次输入的密码不一致。"
+],
+"Votre clé de secours": [
+"Your recovery key",
+"La tua chiave di recupero",
+"Tu clave de recuperación",
+"Ihr Wiederherstellungsschlüssel",
+"您的恢复密钥"
+],
+"La clé de secours n'a pas pu être créée.": [
+"The recovery key could not be created.",
+"Non è stato possibile creare la chiave di recupero.",
+"No se ha podido crear la clave de recuperación.",
+"Der Wiederherstellungsschlüssel konnte nicht erstellt werden.",
+"无法创建恢复密钥。"
+],
+"Si un jour vous oubliez votre code, cette clé est le seul moyen d'ouvrir vos fichiers. Écrivez-la sur papier et rangez-la en lieu sûr, pas dans l'ordinateur.": [
+"If one day you forget your code, this key is the only way to open your files. Write it down on paper and keep it in a safe place, not in the computer.",
+"Se un giorno dimentichi il tuo codice, questa chiave è l'unico modo per aprire i tuoi file. Scrivila su carta e conservala in un luogo sicuro, non nel computer.",
+"Si algún día olvidas tu código, esta clave es la única forma de abrir tus archivos. Escríbela en papel y guárdala en un lugar seguro, no en el ordenador.",
+"Wenn Sie Ihren Code einmal vergessen, ist dieser Schlüssel die einzige Möglichkeit, Ihre Dateien zu öffnen. Schreiben Sie ihn auf Papier und bewahren Sie ihn sicher auf, nicht im Computer.",
+"如果有一天您忘记了密码，这把密钥是打开文件的唯一方法。请把它抄在纸上并妥善保管，不要存放在电脑里。"
+],
+"Si un jour vous oubliez votre mot de passe, cette clé est le seul moyen d'ouvrir vos fichiers. Écrivez-la sur papier et rangez-la en lieu sûr, pas dans l'ordinateur.": [
+"If one day you forget your password, this key is the only way to open your files. Write it down on paper and keep it in a safe place, not in the computer.",
+"Se un giorno dimentichi la tua password, questa chiave è l'unico modo per aprire i tuoi file. Scrivila su carta e conservala in un luogo sicuro, non nel computer.",
+"Si algún día olvidas tu contraseña, esta clave es la única forma de abrir tus archivos. Escríbela en papel y guárdala en un lugar seguro, no en el ordenador.",
+"Wenn Sie Ihr Passwort einmal vergessen, ist dieser Schlüssel die einzige Möglichkeit, Ihre Dateien zu öffnen. Schreiben Sie ihn auf Papier und bewahren Sie ihn sicher auf, nicht im Computer.",
+"如果有一天您忘记了密码，这把密钥是打开文件的唯一方法。请把它抄在纸上并妥善保管，不要存放在电脑里。"
+],
+"Uniquement des lettres minuscules. Au démarrage, on la tape à la place du code.": [
+"Lowercase letters only. At startup, you type it instead of the code.",
+"Solo lettere minuscole. All'avvio, si digita al posto del codice.",
+"Solo letras minúsculas. Al arrancar, se escribe en lugar del código.",
+"Nur Kleinbuchstaben. Beim Start geben Sie ihn anstelle des Codes ein.",
+"仅包含小写字母。开机时，用它代替密码输入。"
+],
+"Uniquement des lettres minuscules. Au démarrage, on la tape à la place du mot de passe.": [
+"Lowercase letters only. At startup, you type it instead of the password.",
+"Solo lettere minuscole. All'avvio, si digita al posto della password.",
+"Solo letras minúsculas. Al arrancar, se escribe en lugar de la contraseña.",
+"Nur Kleinbuchstaben. Beim Start geben Sie ihn anstelle des Passworts ein.",
+"仅包含小写字母。开机时，用它代替密码输入。"
+],
+"Je l'ai écrite sur papier": [
+"I wrote it down on paper",
+"L'ho scritta su carta",
+"La he escrito en papel",
+"Ich habe ihn auf Papier notiert",
+"我已抄在纸上"
+],
+"Continuer": [
+"Continue",
+"Continua",
+"Continuar",
+"Weiter",
+"继续"
+],
+"Vérifions votre papier": [
+"Let's check your paper",
+"Controlliamo il tuo foglio",
+"Comprobemos tu papel",
+"Prüfen wir Ihre Notiz",
+"核对一下您的纸条"
+],
+"Recopiez le premier groupe de votre clé de secours (8 lettres).": [
+"Copy the first group of your recovery key (8 letters).",
+"Ricopia il primo gruppo della tua chiave di recupero (8 lettere).",
+"Copia el primer grupo de tu clave de recuperación (8 letras).",
+"Geben Sie die erste Gruppe Ihres Wiederherstellungsschlüssels ein (8 Buchstaben).",
+"请输入恢复密钥的第一组（8 个字母）。"
+],
+"Revoir la clé": [
+"See the key again",
+"Rivedi la chiave",
+"Ver la clave otra vez",
+"Schlüssel erneut anzeigen",
+"再看一遍密钥"
+],
+"Valider": [
+"Confirm",
+"Conferma",
+"Confirmar",
+"Bestätigen",
+"确认"
+],
+"Ce n'est pas tout à fait ça. Vérifiez votre papier (ou revoyez la clé).": [
+"That's not quite it. Check your paper (or look at the key again).",
+"Non è proprio così. Controlla il tuo foglio (o rivedi la chiave).",
+"No es del todo correcto. Revisa tu papel (o vuelve a ver la clave).",
+"Das stimmt noch nicht ganz. Prüfen Sie Ihre Notiz (oder sehen Sie sich den Schlüssel erneut an).",
+"不太对。请核对纸条（或再看一遍密钥）。"
+],
+"Protection de vos fichiers…": [
+"Protecting your files…",
+"Protezione dei tuoi file…",
+"Protegiendo tus archivos…",
+"Ihre Dateien werden geschützt…",
+"正在保护您的文件…"
+],
+"Nouveau code enregistré": [
+"New code saved",
+"Nuovo codice salvato",
+"Nuevo código guardado",
+"Neuer Code gespeichert",
+"新密码已保存"
+],
+"Votre clé de secours reste la même : gardez votre papier. Au prochain démarrage, tapez votre nouveau code.": [
+"Your recovery key stays the same: keep your paper. At the next startup, type your new code.",
+"La tua chiave di recupero resta la stessa: conserva il foglio. Al prossimo avvio, digita il nuovo codice.",
+"Tu clave de recuperación sigue siendo la misma: guarda tu papel. En el próximo arranque, escribe tu nuevo código.",
+"Ihr Wiederherstellungsschlüssel bleibt gleich: Bewahren Sie Ihre Notiz auf. Geben Sie beim nächsten Start Ihren neuen Code ein.",
+"您的恢复密钥保持不变：请保留纸条。下次开机时，请输入新密码。"
+],
+"Votre clé de secours reste la même : gardez votre papier. Au prochain démarrage, tapez votre nouveau mot de passe.": [
+"Your recovery key stays the same: keep your paper. At the next startup, type your new password.",
+"La tua chiave di recupero resta la stessa: conserva il foglio. Al prossimo avvio, digita la nuova password.",
+"Tu clave de recuperación sigue siendo la misma: guarda tu papel. En el próximo arranque, escribe tu nueva contraseña.",
+"Ihr Wiederherstellungsschlüssel bleibt gleich: Bewahren Sie Ihre Notiz auf. Geben Sie beim nächsten Start Ihr neues Passwort ein.",
+"您的恢复密钥保持不变：请保留纸条。下次开机时，请输入新密码。"
+],
+"C'est prêt, {prenom} !": [
+"All set, {prenom}!",
+"È tutto pronto, {prenom}!",
+"¡Todo listo, {prenom}!",
+"Alles bereit, {prenom}!",
+"准备就绪，{prenom}！"
+],
+"Vos fichiers sont protégés.": [
+"Your files are protected.",
+"I tuoi file sono protetti.",
+"Tus archivos están protegidos.",
+"Ihre Dateien sind geschützt.",
+"您的文件已受到保护。"
+],
+"Au démarrage, tapez votre code pour ouvrir SoleOS. Sans utilisation pendant 10 minutes, l'écran se verrouille (réglable dans Réglages).": [
+"At startup, type your code to open SoleOS. After 10 minutes without use, the screen locks (adjustable in Settings).",
+"All'avvio, digita il codice per aprire SoleOS. Dopo 10 minuti di inattività, lo schermo si blocca (regolabile in Impostazioni).",
+"Al arrancar, escribe tu código para abrir SoleOS. Tras 10 minutos sin uso, la pantalla se bloquea (ajustable en Ajustes).",
+"Geben Sie beim Start Ihren Code ein, um SoleOS zu öffnen. Nach 10 Minuten ohne Nutzung wird der Bildschirm gesperrt (in den Einstellungen änderbar).",
+"开机时输入密码即可打开 SoleOS。10 分钟无操作后屏幕会锁定（可在“设置”中调整）。"
+],
+"Au démarrage, tapez votre mot de passe pour ouvrir SoleOS. Sans utilisation pendant 10 minutes, l'écran se verrouille (réglable dans Réglages).": [
+"At startup, type your password to open SoleOS. After 10 minutes without use, the screen locks (adjustable in Settings).",
+"All'avvio, digita la password per aprire SoleOS. Dopo 10 minuti di inattività, lo schermo si blocca (regolabile in Impostazioni).",
+"Al arrancar, escribe tu contraseña para abrir SoleOS. Tras 10 minutos sin uso, la pantalla se bloquea (ajustable en Ajustes).",
+"Geben Sie beim Start Ihr Passwort ein, um SoleOS zu öffnen. Nach 10 Minuten ohne Nutzung wird der Bildschirm gesperrt (in den Einstellungen änderbar).",
+"开机时输入密码即可打开 SoleOS。10 分钟无操作后屏幕会锁定（可在“设置”中调整）。"
+],
+"Commencer": [
+"Get started",
+"Inizia",
+"Empezar",
+"Los geht's",
+"开始使用"
+],
+"Un problème est survenu": [
+"Something went wrong",
+"Si è verificato un problema",
+"Se ha producido un problema",
+"Ein Problem ist aufgetreten",
+"出现了问题"
+],
+"Rien n'a été perdu : vos fichiers restent accessibles comme avant.": [
+"Nothing was lost: your files are still accessible as before.",
+"Non è andato perso nulla: i tuoi file restano accessibili come prima.",
+"No se ha perdido nada: tus archivos siguen accesibles como antes.",
+"Nichts ist verloren: Ihre Dateien sind weiterhin wie bisher zugänglich.",
+"没有任何数据丢失：您的文件仍可像以前一样访问。"
+],
+"Réessayer": [
+"Try again",
+"Riprova",
+"Reintentar",
+"Erneut versuchen",
+"重试"
+],
+"Vous avez ouvert SoleOS avec votre clé de secours": [
+"You opened SoleOS with your recovery key",
+"Hai aperto SoleOS con la chiave di recupero",
+"Has abierto SoleOS con tu clave de recuperación",
+"Sie haben SoleOS mit Ihrem Wiederherstellungsschlüssel geöffnet",
+"您使用恢复密钥打开了 SoleOS"
+],
+"Choisissez maintenant un nouveau code : il remplacera celui que vous avez oublié.": [
+"Now choose a new code: it will replace the one you forgot.",
+"Ora scegli un nuovo codice: sostituirà quello che hai dimenticato.",
+"Ahora elige un nuevo código: sustituirá al que olvidaste.",
+"Wählen Sie jetzt einen neuen Code: Er ersetzt den vergessenen.",
+"现在请选择新密码，它将替换您忘记的那个。"
+],
+"Choisissez maintenant un nouveau mot de passe : il remplacera celui que vous avez oublié.": [
+"Now choose a new password: it will replace the one you forgot.",
+"Ora scegli una nuova password: sostituirà quella che hai dimenticato.",
+"Ahora elige una nueva contraseña: sustituirá a la que olvidaste.",
+"Wählen Sie jetzt ein neues Passwort: Es ersetzt das vergessene.",
+"现在请选择新密码，它将替换您忘记的那个。"
+],
+"Aucune application ajoutée pour l'instant. Touchez « Ajouter » pour en choisir.": [
+"No apps added yet. Tap “Add” to choose some.",
+"Nessuna applicazione aggiunta per ora. Tocca «Aggiungi» per sceglierne.",
+"Todavía no has añadido ninguna aplicación. Toca «Añadir» para elegir.",
+"Noch keine Apps hinzugefügt. Tippen Sie auf „Hinzufügen“, um welche auszuwählen.",
+"还没有添加任何应用。点击“添加”来选择。"
+],
+"Clic droit (ou appui long) sur une application : épingler à l'accueil, désinstaller.": [
+"Right-click (or long press) on an app: pin to home, uninstall.",
+"Clic destro (o pressione lunga) su un'applicazione: fissa nella home, disinstalla.",
+"Clic derecho (o pulsación larga) en una aplicación: fijar en el inicio, desinstalar.",
+"Rechtsklick (oder langes Drücken) auf eine App: an die Startseite anheften, deinstallieren.",
+"右键点击（或长按）应用：固定到主页、卸载。"
+],
+"sur l'accueil": [
+"on the home screen",
+"nella home",
+"en el inicio",
+"auf der Startseite",
+"在主页上"
+],
+"Retirer de l'accueil": [
+"Remove from home",
+"Rimuovi dalla home",
+"Quitar del inicio",
+"Von der Startseite entfernen",
+"从主页移除"
+],
+"Épingler à l'accueil": [
+"Pin to home",
+"Fissa nella home",
+"Fijar en el inicio",
+"An die Startseite anheften",
+"固定到主页"
+],
+"Désinstaller…": [
+"Uninstall…",
+"Disinstalla…",
+"Desinstalar…",
+"Deinstallieren…",
+"卸载…"
+],
+"Désinstaller « {nom} » ?": [
+"Uninstall “{nom}”?",
+"Disinstallare «{nom}»?",
+"¿Desinstalar «{nom}»?",
+"„{nom}“ deinstallieren?",
+"卸载“{nom}”？"
+],
+"Désinstaller": [
+"Uninstall",
+"Disinstalla",
+"Desinstalar",
+"Deinstallieren",
+"卸载"
+],
+"Annuler": [
+"Cancel",
+"Annulla",
+"Cancelar",
+"Abbrechen",
+"取消"
+],
+"Logiciels libres et rapides, écrits en Rust par l'équipe ArtCraft. Encore jeunes : gardez Bureautique pour les documents importants.": [
+"Free and fast software, written in Rust by the ArtCraft team. Still young: keep Office for important documents.",
+"Software libero e veloce, scritto in Rust dal team ArtCraft. Ancora giovane: usa Ufficio per i documenti importanti.",
+"Software libre y rápido, escrito en Rust por el equipo ArtCraft. Aún joven: usa Ofimática para los documentos importantes.",
+"Freie und schnelle Software, in Rust geschrieben vom ArtCraft-Team. Noch jung: Nutzen Sie Büro für wichtige Dokumente.",
+"由 ArtCraft 团队用 Rust 编写的自由、快速的软件。目前还比较新：重要文档请使用“办公”。"
+],
+"Installation…": [
+"Installing…",
+"Installazione…",
+"Instalando…",
+"Wird installiert…",
+"正在安装…"
+],
+"En attente…": [
+"Waiting…",
+"In attesa…",
+"En espera…",
+"Wartet…",
+"等待中…"
+],
+"Après installation": [
+"After installation",
+"Dopo l'installazione",
+"Después de la instalación",
+"Nach der Installation",
+"安装完成后"
+],
+"Ouvrir": [
+"Open",
+"Apri",
+"Abrir",
+"Öffnen",
+"打开"
+],
+"Installer": [
+"Install",
+"Installa",
+"Instalar",
+"Installieren",
+"安装"
+],
+"Une installation est en cours : la suivante démarrera juste après.": [
+"An installation is in progress: the next one will start right after.",
+"È in corso un'installazione: la prossima partirà subito dopo.",
+"Hay una instalación en curso: la siguiente empezará justo después.",
+"Eine Installation läuft: Die nächste beginnt direkt danach.",
+"正在进行一项安装：下一项将紧接着开始。"
+],
+"Téléchargement en cours… La première application peut prendre quelques minutes (éléments communs à télécharger).": [
+"Downloading… The first app may take a few minutes (shared components to download).",
+"Download in corso… La prima applicazione può richiedere qualche minuto (componenti comuni da scaricare).",
+"Descargando… La primera aplicación puede tardar unos minutos (componentes comunes que descargar).",
+"Wird heruntergeladen… Die erste App kann einige Minuten dauern (gemeinsame Komponenten werden geladen).",
+"正在下载… 第一个应用可能需要几分钟（需要下载公共组件）。"
+],
+"Téléchargement en cours… ({n} en attente)": [
+"Downloading… ({n} waiting)",
+"Download in corso… ({n} in attesa)",
+"Descargando… ({n} en espera)",
+"Wird heruntergeladen… ({n} wartend)",
+"正在下载…（{n} 个等待中）"
+],
+"Installée : elle est dans « Mes applications ».": [
+"Installed: it's in “My apps”.",
+"Installata: è in «Le mie app».",
+"Instalada: está en «Mis aplicaciones».",
+"Installiert: Sie ist unter „Meine Apps“.",
+"已安装：可在“我的应用”中找到。"
+],
+"Résultats de toute la logithèque Flathub : ces applications ne sont pas vérifiées par SoleOS. Elles ne peuvent pas abîmer le système, mais installez seulement celles que vous connaissez.": [
+"Results from the whole Flathub catalog: these apps are not checked by SoleOS. They cannot damage the system, but only install the ones you know.",
+"Risultati da tutto il catalogo Flathub: queste applicazioni non sono verificate da SoleOS. Non possono danneggiare il sistema, ma installa solo quelle che conosci.",
+"Resultados de todo el catálogo de Flathub: estas aplicaciones no están verificadas por SoleOS. No pueden dañar el sistema, pero instala solo las que conozcas.",
+"Ergebnisse aus dem gesamten Flathub-Katalog: Diese Apps werden nicht von SoleOS geprüft. Sie können das System nicht beschädigen, aber installieren Sie nur die, die Sie kennen.",
+"来自整个 Flathub 应用库的结果：这些应用未经 SoleOS 检查。它们不会损坏系统，但请只安装您了解的应用。"
+],
+"Recherche…": [
+"Searching…",
+"Ricerca…",
+"Buscando…",
+"Suche…",
+"正在搜索…"
+],
+"Aucune application trouvée (ou pas de connexion à Internet).": [
+"No app found (or no Internet connection).",
+"Nessuna applicazione trovata (o nessuna connessione a Internet).",
+"No se ha encontrado ninguna aplicación (o no hay conexión a Internet).",
+"Keine App gefunden (oder keine Internetverbindung).",
+"未找到应用（或没有网络连接）。"
+],
+"sélection SoleOS": [
+"SoleOS selection",
+"selezione SoleOS",
+"selección SoleOS",
+"SoleOS-Auswahl",
+"SoleOS 精选"
+],
+"Quelle messagerie utilisez-vous ?": [
+"Which email do you use?",
+"Quale posta elettronica usi?",
+"¿Qué correo usas?",
+"Welches E-Mail-Konto nutzen Sie?",
+"您使用哪个邮箱？"
+],
+"La tuile « Mail » l'ouvrira directement. Vous en avez plusieurs (par exemple Gmail et Orange) ?\\nAjoutez la deuxième ensuite : clic droit (ou appui long) sur la tuile « Mail ».": [
+"The “Mail” tile will open it directly. Do you have several (for example Gmail and Outlook)?\\nAdd the second one afterwards: right-click (or long press) on the “Mail” tile.",
+"Il riquadro «Posta» la aprirà direttamente. Ne hai più di una (per esempio Gmail e Libero)?\\nAggiungi la seconda dopo: clic destro (o pressione lunga) sul riquadro «Posta».",
+"El mosaico «Correo» lo abrirá directamente. ¿Tienes varios (por ejemplo Gmail y Outlook)?\\nAñade el segundo después: clic derecho (o pulsación larga) en el mosaico «Correo».",
+"Die Kachel „E-Mail“ öffnet es direkt. Sie haben mehrere (zum Beispiel Gmail und GMX)?\\nFügen Sie das zweite danach hinzu: Rechtsklick (oder langes Drücken) auf die Kachel „E-Mail“.",
+"“邮件”磁贴会直接打开它。您有多个邮箱（例如 QQ 邮箱和 163 邮箱）？\\n之后再添加第二个：右键点击（或长按）“邮件”磁贴。"
+],
+"Ajouter une messagerie": [
+"Add an email account",
+"Aggiungi una casella di posta",
+"Añadir un correo",
+"E-Mail-Konto hinzufügen",
+"添加邮箱"
+],
+"Déjà dans la tuile « Mail » : {noms}. En cliquant sur « Mail », vous choisirez laquelle ouvrir.": [
+"Already in the “Mail” tile: {noms}. When you click “Mail”, you'll choose which one to open.",
+"Già nel riquadro «Posta»: {noms}. Cliccando su «Posta», sceglierai quale aprire.",
+"Ya en el mosaico «Correo»: {noms}. Al hacer clic en «Correo», elegirás cuál abrir.",
+"Bereits in der Kachel „E-Mail“: {noms}. Beim Klick auf „E-Mail“ wählen Sie, welches geöffnet wird.",
+"已在“邮件”磁贴中：{noms}。点击“邮件”时，您可以选择要打开哪一个。"
+],
+"Autre messagerie : adresse du site (ex. webmail.monentreprise.fr)": [
+"Other email: website address (e.g. webmail.mycompany.com)",
+"Altra posta: indirizzo del sito (es. webmail.miaazienda.it)",
+"Otro correo: dirección del sitio (p. ej. webmail.miempresa.es)",
+"Anderes E-Mail-Konto: Adresse der Website (z. B. webmail.meinefirma.de)",
+"其他邮箱：网站地址（例如 mail.mycompany.cn）"
+],
+"J'utilise le logiciel Thunderbird": [
+"I use the Thunderbird program",
+"Uso il programma Thunderbird",
+"Uso el programa Thunderbird",
+"Ich nutze das Programm Thunderbird",
+"我使用 Thunderbird 客户端"
+],
+"Installation de Thunderbird… (quelques minutes)": [
+"Installing Thunderbird… (a few minutes)",
+"Installazione di Thunderbird… (qualche minuto)",
+"Instalando Thunderbird… (unos minutos)",
+"Thunderbird wird installiert… (einige Minuten)",
+"正在安装 Thunderbird…（需要几分钟）"
+],
+"Applications": [
+"Apps",
+"App",
+"Aplicaciones",
+"Apps",
+"应用"
+],
+"✕  Retour à l'accueil": [
+"✕  Back to home",
+"✕  Torna alla home",
+"✕  Volver al inicio",
+"✕  Zurück zur Startseite",
+"✕  返回主页"
+],
+"Mes applications": [
+"My apps",
+"Le mie app",
+"Mis aplicaciones",
+"Meine Apps",
+"我的应用"
+],
+"Chercher parmi des milliers d'applications (VLC, GIMP, Steam…)": [
+"Search among thousands of apps (VLC, GIMP, Steam…)",
+"Cerca tra migliaia di applicazioni (VLC, GIMP, Steam…)",
+"Busca entre miles de aplicaciones (VLC, GIMP, Steam…)",
+"Unter Tausenden Apps suchen (VLC, GIMP, Steam…)",
+"在数千款应用中搜索（VLC、GIMP、Steam…）"
+],
+"Mode essai : installez SoleOS sur l'ordinateur pour ajouter des applications.": [
+"Trial mode: install SoleOS on the computer to add apps.",
+"Modalità prova: installa SoleOS sul computer per aggiungere applicazioni.",
+"Modo de prueba: instala SoleOS en el ordenador para añadir aplicaciones.",
+"Testmodus: Installieren Sie SoleOS auf dem Computer, um Apps hinzuzufügen.",
+"试用模式：请先将 SoleOS 安装到电脑上，才能添加应用。"
+],
+"Installer SoleOS": [
+"Install SoleOS",
+"Installa SoleOS",
+"Instalar SoleOS",
+"SoleOS installieren",
+"安装 SoleOS"
+],
+"Une application n'est pas dans la sélection ? Tapez son nom : toute la logithèque Flathub est disponible.": [
+"An app isn't in the selection? Type its name: the whole Flathub catalog is available.",
+"Un'applicazione non è nella selezione? Digita il suo nome: tutto il catalogo Flathub è disponibile.",
+"¿Una aplicación no está en la selección? Escribe su nombre: todo el catálogo de Flathub está disponible.",
+"Eine App ist nicht in der Auswahl? Geben Sie ihren Namen ein: Der gesamte Flathub-Katalog steht zur Verfügung.",
+"想要的应用不在精选中？输入它的名称：整个 Flathub 应用库都可使用。"
+],
+"Depuis un fichier": [
+"From a file",
+"Da un file",
+"Desde un archivo",
+"Aus einer Datei",
+"从文件安装"
+],
+"Une application téléchargée sur le site de son éditeur (Steam, Spotify, TeamViewer…) : fichier .deb ou .AppImage. Les .deb s'installent dans un espace Debian séparé, qui ne peut pas abîmer SoleOS.": [
+"An app downloaded from its publisher's website (Steam, Spotify, TeamViewer…): .deb or .AppImage file. .deb files are installed in a separate Debian space, which cannot damage SoleOS.",
+"Un'applicazione scaricata dal sito del suo editore (Steam, Spotify, TeamViewer…): file .deb o .AppImage. I .deb si installano in uno spazio Debian separato, che non può danneggiare SoleOS.",
+"Una aplicación descargada del sitio de su editor (Steam, Spotify, TeamViewer…): archivo .deb o .AppImage. Los .deb se instalan en un espacio Debian separado, que no puede dañar SoleOS.",
+"Eine App von der Website ihres Herstellers (Steam, Spotify, TeamViewer…): .deb- oder .AppImage-Datei. .deb-Pakete werden in einem separaten Debian-Bereich installiert, der SoleOS nicht beschädigen kann.",
+"从开发者网站下载的应用（Steam、Spotify、TeamViewer…）：.deb 或 .AppImage 文件。.deb 会安装在独立的 Debian 空间中，不会损坏 SoleOS。"
+],
+"Installer un fichier téléchargé…": [
+"Install a downloaded file…",
+"Installa un file scaricato…",
+"Instalar un archivo descargado…",
+"Heruntergeladene Datei installieren…",
+"安装已下载的文件…"
+],
+"Sélection SoleOS : des applications vérifiées, installées en un clic.": [
+"SoleOS selection: checked apps, installed in one click.",
+"Selezione SoleOS: applicazioni verificate, installate con un clic.",
+"Selección SoleOS: aplicaciones verificadas, instaladas con un clic.",
+"SoleOS-Auswahl: geprüfte Apps, mit einem Klick installiert.",
+"SoleOS 精选：经过检查的应用，一键安装。"
+],
+"Ajouter des applications": [
+"Add apps",
+"Aggiungi applicazioni",
+"Añadir aplicaciones",
+"Apps hinzufügen",
+"添加应用"
+],
+"Installer une application": [
+"Install an app",
+"Installa un'applicazione",
+"Instalar una aplicación",
+"App installieren",
+"安装应用"
+],
+"Applications (.deb, .AppImage)": [
+"Apps (.deb, .AppImage)",
+"Applicazioni (.deb, .AppImage)",
+"Aplicaciones (.deb, .AppImage)",
+"Apps (.deb, .AppImage)",
+"应用（.deb、.AppImage）"
+],
+"Installation du paquet dans une fenêtre à part…": [
+"Installing the package in a separate window…",
+"Installazione del pacchetto in una finestra a parte…",
+"Instalando el paquete en una ventana aparte…",
+"Das Paket wird in einem eigenen Fenster installiert…",
+"正在独立窗口中安装软件包…"
+],
+"Ajout…": [
+"Adding…",
+"Aggiunta…",
+"Añadiendo…",
+"Wird hinzugefügt…",
+"正在添加…"
+],
+"« {nom} » est dans « Mes applications ».": [
+"“{nom}” is in “My apps”.",
+"«{nom}» è in «Le mie app».",
+"«{nom}» está en «Mis aplicaciones».",
+"„{nom}“ ist unter „Meine Apps“.",
+"“{nom}”已在“我的应用”中。"
+],
+"Installer un paquet": [
+"Install a package",
+"Installa un pacchetto",
+"Instalar un paquete",
+"Paket installieren",
+"安装软件包"
+],
+"Installer « {nom} » ?": [
+"Install “{nom}”?",
+"Installare «{nom}»?",
+"¿Instalar «{nom}»?",
+"„{nom}“ installieren?",
+"安装“{nom}”？"
+],
+"Ce paquet sera installé dans un espace Debian séparé : il ne peut pas abîmer SoleOS. La première fois, cet espace est téléchargé (environ 50 Mo) : comptez quelques minutes.": [
+"This package will be installed in a separate Debian space: it cannot damage SoleOS. The first time, this space is downloaded (about 50 MB): allow a few minutes.",
+"Questo pacchetto verrà installato in uno spazio Debian separato: non può danneggiare SoleOS. La prima volta, questo spazio viene scaricato (circa 50 MB): ci vorranno alcuni minuti.",
+"Este paquete se instalará en un espacio Debian separado: no puede dañar SoleOS. La primera vez se descarga este espacio (unos 50 MB): cuenta unos minutos.",
+"Dieses Paket wird in einem separaten Debian-Bereich installiert: Es kann SoleOS nicht beschädigen. Beim ersten Mal wird dieser Bereich heruntergeladen (etwa 50 MB): Rechnen Sie mit einigen Minuten.",
+"此软件包将安装在独立的 Debian 空间中，不会损坏 SoleOS。首次使用时需要下载该空间（约 50 MB），请稍候几分钟。"
+],
+"Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter flashos-debian ».": [
+"This package contains no app to display (command-line tool): it will be usable in the Console with “distrobox enter flashos-debian”.",
+"Questo pacchetto non contiene applicazioni da mostrare (strumento a riga di comando): sarà utilizzabile nella Console con «distrobox enter flashos-debian».",
+"Este paquete no contiene ninguna aplicación que mostrar (herramienta de línea de comandos): se podrá usar en la Consola con «distrobox enter flashos-debian».",
+"Dieses Paket enthält keine anzuzeigende App (Kommandozeilenwerkzeug): Es ist in der Konsole mit „distrobox enter flashos-debian“ nutzbar.",
+"此软件包不包含可显示的应用（命令行工具）：可在终端中通过“distrobox enter flashos-debian”使用。"
+],
+"En mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur.": [
+"In trial mode (USB key), first install SoleOS on the computer.",
+"In modalità prova (chiavetta USB), installa prima SoleOS sul computer.",
+"En modo de prueba (llave USB), instala primero SoleOS en el ordenador.",
+"Im Testmodus (USB-Stick) installieren Sie zuerst SoleOS auf dem Computer.",
+"在试用模式（U 盘）下，请先将 SoleOS 安装到电脑上。"
+],
+"Installation en cours…": [
+"Installing…",
+"Installazione in corso…",
+"Instalando…",
+"Installation läuft…",
+"正在安装…"
+],
+"Installation en cours… la première fois, l'espace Debian se prépare": [
+"Installing… the first time, the Debian space is being prepared",
+"Installazione in corso… la prima volta, lo spazio Debian viene preparato",
+"Instalando… la primera vez se prepara el espacio Debian",
+"Installation läuft… beim ersten Mal wird der Debian-Bereich vorbereitet",
+"正在安装… 首次使用时需要准备 Debian 空间"
+],
+"{m} min {s} s": [
+"{m} min {s} s",
+"{m} min {s} s",
+"{m} min {s} s",
+"{m} Min. {s} s",
+"{m} 分 {s} 秒"
+],
+"Fermer": [
+"Close",
+"Chiudi",
+"Cerrar",
+"Schließen",
+"关闭"
+],
+"« {nom} » est installé. Ses applications sont dans « Applications » (épinglez-les à l'accueil).": [
+"“{nom}” is installed. Its apps are in “Apps” (pin them to the home screen).",
+"«{nom}» è installato. Le sue applicazioni sono in «App» (fissale nella home).",
+"«{nom}» está instalado. Sus aplicaciones están en «Aplicaciones» (fíjalas en el inicio).",
+"„{nom}“ ist installiert. Die Apps finden Sie unter „Apps“ (heften Sie sie an die Startseite an).",
+"“{nom}”已安装。它的应用在“应用”中（可固定到主页）。"
+],
+"Pas installée": [
+"Not installed",
+"Non installata",
+"No instalada",
+"Nicht installiert",
+"未安装"
+],
+"en mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur.": [
+"in trial mode (USB key), first install SoleOS on the computer.",
+"in modalità prova (chiavetta USB), installa prima SoleOS sul computer.",
+"en modo de prueba (llave USB), instala primero SoleOS en el ordenador.",
+"im Testmodus (USB-Stick) installieren Sie zuerst SoleOS auf dem Computer.",
+"在试用模式（U 盘）下，请先将 SoleOS 安装到电脑上。"
+],
+"Application ajoutée": [
+"App added",
+"Applicazione aggiunta",
+"Aplicación añadida",
+"App hinzugefügt",
+"应用已添加"
+],
+"« {nom} » a été ajoutée à vos applications.": [
+"“{nom}” has been added to your apps.",
+"«{nom}» è stata aggiunta alle tue applicazioni.",
+"«{nom}» se ha añadido a tus aplicaciones.",
+"„{nom}“ wurde zu Ihren Apps hinzugefügt.",
+"“{nom}”已添加到您的应用中。"
+],
+"Retrouvez-la dans la tuile « Applications » de l'accueil.": [
+"Find it in the “Apps” tile on the home screen.",
+"La trovi nel riquadro «App» della home.",
+"La encontrarás en el mosaico «Aplicaciones» del inicio.",
+"Sie finden sie in der Kachel „Apps“ auf der Startseite.",
+"可在主页的“应用”磁贴中找到它。"
+],
+"Impossible d'ajouter cette application : {e}": [
+"Unable to add this app: {e}",
+"Impossibile aggiungere questa applicazione: {e}",
+"No se puede añadir esta aplicación: {e}",
+"Diese App kann nicht hinzugefügt werden: {e}",
+"无法添加此应用：{e}"
+],
+"OK": [
+"OK",
+"OK",
+"Aceptar",
+"OK",
+"确定"
+],
+"Tapez {code} sur le clavier « {nom} », puis Entrée.": [
+"Type {code} on the keyboard “{nom}”, then Enter.",
+"Digita {code} sulla tastiera «{nom}», poi Invio.",
+"Escribe {code} en el teclado «{nom}» y pulsa Intro.",
+"Geben Sie {code} auf der Tastatur „{nom}“ ein, dann Eingabe.",
+"请在键盘“{nom}”上输入 {code}，然后按回车。"
+],
+"Il manque un clavier ou une souris : si c'est un appareil Bluetooth, mettez-le en mode association (souvent un appui long sur son bouton).": [
+"A keyboard or a mouse is missing: if it's a Bluetooth device, put it in pairing mode (often a long press on its button).",
+"Manca una tastiera o un mouse: se è un dispositivo Bluetooth, mettilo in modalità associazione (spesso una pressione lunga sul suo pulsante).",
+"Falta un teclado o un ratón: si es un dispositivo Bluetooth, ponlo en modo vinculación (a menudo una pulsación larga en su botón).",
+"Es fehlt eine Tastatur oder Maus: Wenn es ein Bluetooth-Gerät ist, versetzen Sie es in den Kopplungsmodus (oft durch langes Drücken seiner Taste).",
+"缺少键盘或鼠标：如果是蓝牙设备，请将其置于配对模式（通常长按其按钮）。"
+],
+"Il manque un clavier : si c'est un appareil Bluetooth, mettez-le en mode association (souvent un appui long sur son bouton).": [
+"A keyboard is missing: if it's a Bluetooth device, put it in pairing mode (often a long press on its button).",
+"Manca una tastiera: se è un dispositivo Bluetooth, mettila in modalità associazione (spesso una pressione lunga sul suo pulsante).",
+"Falta un teclado: si es un dispositivo Bluetooth, ponlo en modo vinculación (a menudo una pulsación larga en su botón).",
+"Es fehlt eine Tastatur: Wenn es ein Bluetooth-Gerät ist, versetzen Sie es in den Kopplungsmodus (oft durch langes Drücken seiner Taste).",
+"缺少键盘：如果是蓝牙设备，请将其置于配对模式（通常长按其按钮）。"
+],
+"Il manque une souris : si c'est un appareil Bluetooth, mettez-la en mode association (souvent un appui long sur son bouton).": [
+"A mouse is missing: if it's a Bluetooth device, put it in pairing mode (often a long press on its button).",
+"Manca un mouse: se è un dispositivo Bluetooth, mettilo in modalità associazione (spesso una pressione lunga sul suo pulsante).",
+"Falta un ratón: si es un dispositivo Bluetooth, ponlo en modo vinculación (a menudo una pulsación larga en su botón).",
+"Es fehlt eine Maus: Wenn es ein Bluetooth-Gerät ist, versetzen Sie sie in den Kopplungsmodus (oft durch langes Drücken ihrer Taste).",
+"缺少鼠标：如果是蓝牙设备，请将其置于配对模式（通常长按其按钮）。"
+],
+"Association de « {nom} »…": [
+"Pairing “{nom}”…",
+"Associazione di «{nom}»…",
+"Vinculando «{nom}»…",
+"„{nom}“ wird gekoppelt…",
+"正在配对“{nom}”…"
+],
+"« {nom} » est associé.": [
+"“{nom}” is paired.",
+"«{nom}» è associato.",
+"«{nom}» está vinculado.",
+"„{nom}“ ist gekoppelt.",
+"“{nom}”已配对。"
+],
+"L'association de « {nom} » n'a pas abouti : remettez-le en mode association.": [
+"Pairing “{nom}” did not succeed: put it back in pairing mode.",
+"L'associazione di «{nom}» non è riuscita: rimettilo in modalità associazione.",
+"La vinculación de «{nom}» no ha funcionado: vuelve a ponerlo en modo vinculación.",
+"Die Kopplung von „{nom}“ ist fehlgeschlagen: Versetzen Sie es erneut in den Kopplungsmodus.",
+"“{nom}”配对未成功：请将其重新置于配对模式。"
+],
+"Recherche d'une souris… Souris Bluetooth : mettez-la en mode association.": [
+"Looking for a mouse… Bluetooth mouse: put it in pairing mode.",
+"Ricerca di un mouse… Mouse Bluetooth: mettilo in modalità associazione.",
+"Buscando un ratón… Ratón Bluetooth: ponlo en modo vinculación.",
+"Suche nach einer Maus… Bluetooth-Maus: In den Kopplungsmodus versetzen.",
+"正在寻找鼠标… 蓝牙鼠标：请将其置于配对模式。"
+],
+"Recherche d'un clavier… Clavier Bluetooth : mettez-le en mode association.": [
+"Looking for a keyboard… Bluetooth keyboard: put it in pairing mode.",
+"Ricerca di una tastiera… Tastiera Bluetooth: mettila in modalità associazione.",
+"Buscando un teclado… Teclado Bluetooth: ponlo en modo vinculación.",
+"Suche nach einer Tastatur… Bluetooth-Tastatur: In den Kopplungsmodus versetzen.",
+"正在寻找键盘… 蓝牙键盘：请将其置于配对模式。"
+],
+"Recherche d'un clavier et d'une souris… Bluetooth : mettez-les en mode association.": [
+"Looking for a keyboard and a mouse… Bluetooth: put them in pairing mode.",
+"Ricerca di una tastiera e di un mouse… Bluetooth: mettili in modalità associazione.",
+"Buscando un teclado y un ratón… Bluetooth: ponlos en modo vinculación.",
+"Suche nach Tastatur und Maus… Bluetooth: In den Kopplungsmodus versetzen.",
+"正在寻找键盘和鼠标… 蓝牙：请将它们置于配对模式。"
+],
+"Bienvenue dans SoleOS": [
+"Welcome to SoleOS",
+"Benvenuto in SoleOS",
+"Bienvenido a SoleOS",
+"Willkommen bei SoleOS",
+"欢迎使用 SoleOS"
+],
+"Rapide et simple.": [
+"Fast and simple.",
+"Veloce e semplice.",
+"Rápido y sencillo.",
+"Schnell und einfach.",
+"快速而简单。"
+],
+"Vos documents": [
+"Your documents",
+"I tuoi documenti",
+"Tus documentos",
+"Ihre Dokumente",
+"您的文档"
+],
+"Textes, tableaux et présentations, compatibles Word, Excel et PowerPoint — même sans Internet.": [
+"Texts, spreadsheets and presentations, compatible with Word, Excel and PowerPoint — even without Internet.",
+"Testi, fogli di calcolo e presentazioni, compatibili con Word, Excel e PowerPoint — anche senza Internet.",
+"Textos, hojas de cálculo y presentaciones, compatibles con Word, Excel y PowerPoint, incluso sin Internet.",
+"Texte, Tabellen und Präsentationen, kompatibel mit Word, Excel und PowerPoint — auch ohne Internet.",
+"文字、表格和演示文稿，兼容 Word、Excel 和 PowerPoint——无需联网也能用。"
+],
+"Votre messagerie": [
+"Your email",
+"La tua posta",
+"Tu correo",
+"Ihre E-Mails",
+"您的邮箱"
+],
+"Tous vos comptes mail réunis au même endroit.": [
+"All your email accounts in one place.",
+"Tutti i tuoi account di posta nello stesso posto.",
+"Todas tus cuentas de correo en un mismo lugar.",
+"Alle Ihre E-Mail-Konten an einem Ort.",
+"所有邮箱账号集中在一处。"
+],
+"Le web en un clic": [
+"The web in one click",
+"Il web in un clic",
+"La web en un clic",
+"Das Web mit einem Klick",
+"一键上网"
+],
+"Un navigateur moderne et rapide, avec vos favoris prêts à l'emploi.": [
+"A modern, fast browser, with your bookmarks ready to use.",
+"Un browser moderno e veloce, con i preferiti pronti all'uso.",
+"Un navegador moderno y rápido, con tus favoritos listos para usar.",
+"Ein moderner, schneller Browser mit einsatzbereiten Lesezeichen.",
+"现代、快速的浏览器，书签已为您准备好。"
+],
+"Vos fichiers": [
+"Your files",
+"I tuoi file",
+"Tus archivos",
+"Ihre Dateien",
+"您的文件"
+],
+"Documents, photos et clés USB, rangés simplement.": [
+"Documents, photos and USB keys, simply organized.",
+"Documenti, foto e chiavette USB, ordinati in modo semplice.",
+"Documentos, fotos y memorias USB, ordenados de forma sencilla.",
+"Dokumente, Fotos und USB-Sticks, einfach geordnet.",
+"文档、照片和 U 盘，整理得井井有条。"
+],
+"{n} To": [
+"{n} TB",
+"{n} TB",
+"{n} TB",
+"{n} TB",
+"{n} TB"
+],
+"{n} Go": [
+"{n} GB",
+"{n} GB",
+"{n} GB",
+"{n} GB",
+"{n} GB"
+],
+"Aucun disque trouvé.": [
+"No disk found.",
+"Nessun disco trovato.",
+"No se ha encontrado ningún disco.",
+"Kein Laufwerk gefunden.",
+"未找到磁盘。"
+],
+"Le moteur d'installation n'a pas répondu correctement.": [
+"The installation engine did not respond correctly.",
+"Il motore di installazione non ha risposto correttamente.",
+"El motor de instalación no ha respondido correctamente.",
+"Das Installationsprogramm hat nicht korrekt geantwortet.",
+"安装引擎没有正确响应。"
+],
+"Recherche du disque de cet ordinateur…": [
+"Looking for this computer's disk…",
+"Ricerca del disco di questo computer…",
+"Buscando el disco de este ordenador…",
+"Suche nach dem Laufwerk dieses Computers…",
+"正在查找此电脑的磁盘…"
+],
+"SoleOS ne peut pas s'installer ici": [
+"SoleOS cannot be installed here",
+"SoleOS non può essere installato qui",
+"SoleOS no se puede instalar aquí",
+"SoleOS kann hier nicht installiert werden",
+"SoleOS 无法安装在这里"
+],
+"Sur certains ordinateurs (Dell, HP, Lenovo…), le disque n'est visible qu'en mode « AHCI » :\\nau démarrage, entrez dans le BIOS (F2 ou Échap) et changez « RAID » en « AHCI » dans le stockage.": [
+"On some computers (Dell, HP, Lenovo…), the disk is only visible in “AHCI” mode:\\nat startup, enter the BIOS (F2 or Esc) and change “RAID” to “AHCI” in the storage settings.",
+"Su alcuni computer (Dell, HP, Lenovo…), il disco è visibile solo in modalità «AHCI»:\\nall'avvio, entra nel BIOS (F2 o Esc) e cambia «RAID» in «AHCI» nelle impostazioni di archiviazione.",
+"En algunos ordenadores (Dell, HP, Lenovo…), el disco solo es visible en modo «AHCI»:\\nal arrancar, entra en la BIOS (F2 o Esc) y cambia «RAID» por «AHCI» en el almacenamiento.",
+"Bei manchen Computern (Dell, HP, Lenovo…) ist das Laufwerk nur im „AHCI“-Modus sichtbar:\\nRufen Sie beim Start das BIOS auf (F2 oder Esc) und ändern Sie unter Speicher „RAID“ in „AHCI“.",
+"在某些电脑（戴尔、惠普、联想…）上，磁盘只有在“AHCI”模式下才可见：\\n开机时进入 BIOS（F2 或 Esc），在存储设置中把“RAID”改为“AHCI”。"
+],
+"Installer SoleOS{version} sur cet ordinateur": [
+"Install SoleOS{version} on this computer",
+"Installa SoleOS{version} su questo computer",
+"Instalar SoleOS{version} en este ordenador",
+"SoleOS{version} auf diesem Computer installieren",
+"在此电脑上安装 SoleOS{version}"
+],
+"SoleOS va s'installer sur ce disque :": [
+"SoleOS will be installed on this disk:",
+"SoleOS verrà installato su questo disco:",
+"SoleOS se instalará en este disco:",
+"SoleOS wird auf diesem Laufwerk installiert:",
+"SoleOS 将安装在此磁盘上："
+],
+"(le plus grand des {n} disques de cet ordinateur)": [
+"(the largest of the {n} disks in this computer)",
+"(il più grande dei {n} dischi di questo computer)",
+"(el mayor de los {n} discos de este ordenador)",
+"(das größte der {n} Laufwerke dieses Computers)",
+"（此电脑 {n} 块磁盘中最大的一块）"
+],
+"⚠  Toutes les données de ce disque seront définitivement effacées, y compris Windows et vos fichiers.": [
+"⚠  All data on this disk will be permanently erased, including Windows and your files.",
+"⚠  Tutti i dati di questo disco verranno cancellati definitivamente, compresi Windows e i tuoi file.",
+"⚠  Todos los datos de este disco se borrarán definitivamente, incluidos Windows y tus archivos.",
+"⚠  Alle Daten auf diesem Laufwerk werden endgültig gelöscht, einschließlich Windows und Ihrer Dateien.",
+"⚠  此磁盘上的所有数据将被永久删除，包括 Windows 和您的文件。"
+],
+"Effacer et installer SoleOS": [
+"Erase and install SoleOS",
+"Cancella e installa SoleOS",
+"Borrar e instalar SoleOS",
+"Löschen und SoleOS installieren",
+"清除并安装 SoleOS"
+],
+"Pensez à sauvegarder vos fichiers importants avant de continuer.": [
+"Remember to back up your important files before continuing.",
+"Ricordati di salvare i tuoi file importanti prima di continuare.",
+"Recuerda hacer una copia de tus archivos importantes antes de continuar.",
+"Denken Sie daran, Ihre wichtigen Dateien zu sichern, bevor Sie fortfahren.",
+"继续之前，请记得备份重要文件。"
+],
+"Démarrage de l'installation…": [
+"Starting the installation…",
+"Avvio dell'installazione…",
+"Iniciando la instalación…",
+"Installation wird gestartet…",
+"正在开始安装…"
+],
+"N'éteignez pas l'ordinateur et ne retirez pas la clé USB.": [
+"Don't turn off the computer and don't remove the USB key.",
+"Non spegnere il computer e non rimuovere la chiavetta USB.",
+"No apagues el ordenador ni retires la memoria USB.",
+"Schalten Sie den Computer nicht aus und ziehen Sie den USB-Stick nicht ab.",
+"请不要关闭电脑，也不要拔出 U 盘。"
+],
+"Réparer SoleOS": [
+"Repair SoleOS",
+"Ripara SoleOS",
+"Reparar SoleOS",
+"SoleOS reparieren",
+"修复 SoleOS"
+],
+"Vos fichiers sont protégés. Pour les garder pendant la réparation,\\ntapez votre code SoleOS (ou votre clé de secours).": [
+"Your files are protected. To keep them during the repair,\\ntype your SoleOS code (or your recovery key).",
+"I tuoi file sono protetti. Per conservarli durante la riparazione,\\ndigita il tuo codice SoleOS (o la chiave di recupero).",
+"Tus archivos están protegidos. Para conservarlos durante la reparación,\\nescribe tu código de SoleOS (o tu clave de recuperación).",
+"Ihre Dateien sind geschützt. Um sie bei der Reparatur zu behalten,\\ngeben Sie Ihren SoleOS-Code (oder Ihren Wiederherstellungsschlüssel) ein.",
+"您的文件受到保护。若要在修复时保留它们，\\n请输入 SoleOS 密码（或恢复密钥）。"
+],
+"Afficher ce que je tape": [
+"Show what I type",
+"Mostra ciò che digito",
+"Mostrar lo que escribo",
+"Eingabe anzeigen",
+"显示输入内容"
+],
+"Pour taper les chiffres : touche Maj (⇧) ou pavé numérique.": [
+"To type digits: Shift key (⇧) or numeric keypad.",
+"Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico.",
+"Para escribir las cifras: tecla Mayús (⇧) o teclado numérico.",
+"Zum Eingeben der Ziffern: Umschalttaste (⇧) oder Ziffernblock.",
+"输入数字：按 Shift 键（⇧）或使用数字小键盘。"
+],
+"Réparer": [
+"Repair",
+"Ripara",
+"Reparar",
+"Reparieren",
+"修复"
+],
+"Code oublié et clé de secours perdue : seul « Tout effacer » reste possible.": [
+"Code forgotten and recovery key lost: only “Erase everything” is possible.",
+"Codice dimenticato e chiave di recupero persa: è possibile solo «Cancella tutto».",
+"Código olvidado y clave de recuperación perdida: solo es posible «Borrar todo».",
+"Code vergessen und Wiederherstellungsschlüssel verloren: Nur „Alles löschen“ ist möglich.",
+"忘记密码且丢失恢复密钥：只能选择“全部清除”。"
+],
+"Démarrage de la réparation…": [
+"Starting the repair…",
+"Avvio della riparazione…",
+"Iniciando la reparación…",
+"Reparatur wird gestartet…",
+"正在开始修复…"
+],
+"N'éteignez pas l'ordinateur.": [
+"Don't turn off the computer.",
+"Non spegnere il computer.",
+"No apagues el ordenador.",
+"Schalten Sie den Computer nicht aus.",
+"请不要关闭电脑。"
+],
+"Lancement impossible : {e}": [
+"Unable to start: {e}",
+"Avvio impossibile: {e}",
+"No se puede iniciar: {e}",
+"Start nicht möglich: {e}",
+"无法启动：{e}"
+],
+"Le moteur s'est arrêté de façon inattendue ({code}).": [
+"The engine stopped unexpectedly ({code}).",
+"Il motore si è fermato inaspettatamente ({code}).",
+"El motor se ha detenido de forma inesperada ({code}).",
+"Das Programm wurde unerwartet beendet ({code}).",
+"引擎意外停止（{code}）。"
+],
+"Code incorrect. Réessayez, ou tapez votre clé de secours.": [
+"Incorrect code. Try again, or type your recovery key.",
+"Codice errato. Riprova, oppure digita la chiave di recupero.",
+"Código incorrecto. Vuelve a intentarlo o escribe tu clave de recuperación.",
+"Falscher Code. Versuchen Sie es erneut oder geben Sie Ihren Wiederherstellungsschlüssel ein.",
+"密码错误。请重试，或输入恢复密钥。"
+],
+"Trop d'essais : la puce de sécurité patiente quelques minutes. Vous pouvez aussi taper votre clé de secours.": [
+"Too many attempts: the security chip waits a few minutes. You can also type your recovery key.",
+"Troppi tentativi: il chip di sicurezza attende qualche minuto. Puoi anche digitare la chiave di recupero.",
+"Demasiados intentos: el chip de seguridad espera unos minutos. También puedes escribir tu clave de recuperación.",
+"Zu viele Versuche: Der Sicherheitschip wartet einige Minuten. Sie können auch Ihren Wiederherstellungsschlüssel eingeben.",
+"尝试次数过多：安全芯片需要等待几分钟。您也可以输入恢复密钥。"
+],
+"SoleOS est remis à neuf !": [
+"SoleOS is as good as new!",
+"SoleOS è come nuovo!",
+"¡SoleOS está como nuevo!",
+"SoleOS ist wie neu!",
+"SoleOS 已焕然一新！"
+],
+"Redémarrez l'ordinateur pour l'utiliser.": [
+"Restart the computer to use it.",
+"Riavvia il computer per usarlo.",
+"Reinicia el ordenador para usarlo.",
+"Starten Sie den Computer neu, um es zu nutzen.",
+"重启电脑即可使用。"
+],
+"SoleOS est installé !": [
+"SoleOS is installed!",
+"SoleOS è installato!",
+"¡SoleOS está instalado!",
+"SoleOS ist installiert!",
+"SoleOS 已安装！"
+],
+"Retirez la clé USB, puis redémarrez l'ordinateur.": [
+"Remove the USB key, then restart the computer.",
+"Rimuovi la chiavetta USB, poi riavvia il computer.",
+"Retira la memoria USB y reinicia el ordenador.",
+"Ziehen Sie den USB-Stick ab und starten Sie den Computer neu.",
+"请拔出 U 盘，然后重启电脑。"
+],
+"Redémarrer maintenant": [
+"Restart now",
+"Riavvia ora",
+"Reiniciar ahora",
+"Jetzt neu starten",
+"立即重启"
+],
+"Réparer ou réinitialiser SoleOS": [
+"Repair or reset SoleOS",
+"Ripara o reimposta SoleOS",
+"Reparar o restablecer SoleOS",
+"SoleOS reparieren oder zurücksetzen",
+"修复或重置 SoleOS"
+],
+"⚙  Réparer SoleOS": [
+"⚙  Repair SoleOS",
+"⚙  Ripara SoleOS",
+"⚙  Reparar SoleOS",
+"⚙  SoleOS reparieren",
+"⚙  修复 SoleOS"
+],
+"Le système est remis à neuf. Vos fichiers, vos applications, vos réglages et vos réseaux Wi-Fi sont conservés.\\n\\nLe navigateur est remis à zéro (extensions et réglages) ; vos favoris restent.": [
+"The system is restored as new. Your files, apps, settings and Wi-Fi networks are kept.\\n\\nThe browser is reset (extensions and settings); your bookmarks remain.",
+"Il sistema viene rimesso a nuovo. I tuoi file, le applicazioni, le impostazioni e le reti Wi-Fi vengono conservati.\\n\\nIl browser viene azzerato (estensioni e impostazioni); i preferiti restano.",
+"El sistema queda como nuevo. Se conservan tus archivos, aplicaciones, ajustes y redes Wi-Fi.\\n\\nEl navegador se restablece (extensiones y ajustes); tus favoritos se mantienen.",
+"Das System wird neu hergestellt. Ihre Dateien, Apps, Einstellungen und WLAN-Netze bleiben erhalten.\\n\\nDer Browser wird zurückgesetzt (Erweiterungen und Einstellungen); Ihre Lesezeichen bleiben.",
+"系统将恢复如新。您的文件、应用、设置和 Wi-Fi 网络都会保留。\\n\\n浏览器将被重置（扩展和设置）；书签会保留。"
+],
+"Votre code (ou votre clé de secours) vous sera demandé.": [
+"You will be asked for your code (or your recovery key).",
+"Ti verrà chiesto il codice (o la chiave di recupero).",
+"Se te pedirá tu código (o tu clave de recuperación).",
+"Sie werden nach Ihrem Code (oder Wiederherstellungsschlüssel) gefragt.",
+"系统会要求您输入密码（或恢复密钥）。"
+],
+"⚠  Tout effacer": [
+"⚠  Erase everything",
+"⚠  Cancella tutto",
+"⚠  Borrar todo",
+"⚠  Alles löschen",
+"⚠  全部清除"
+],
+"Retour au premier jour : tous vos fichiers, photos, applications, réglages et comptes seront supprimés définitivement.\\n\\nAucun code n'est demandé : à utiliser aussi si vous avez oublié votre code et perdu votre clé de secours.": [
+"Back to day one: all your files, photos, apps, settings and accounts will be permanently deleted.\\n\\nNo code is asked: also use this if you forgot your code and lost your recovery key.",
+"Ritorno al primo giorno: tutti i tuoi file, foto, applicazioni, impostazioni e account verranno eliminati definitivamente.\\n\\nNon viene chiesto alcun codice: da usare anche se hai dimenticato il codice e perso la chiave di recupero.",
+"Vuelta al primer día: todos tus archivos, fotos, aplicaciones, ajustes y cuentas se eliminarán definitivamente.\\n\\nNo se pide ningún código: úsalo también si olvidaste tu código y perdiste tu clave de recuperación.",
+"Zurück zum ersten Tag: Alle Ihre Dateien, Fotos, Apps, Einstellungen und Konten werden endgültig gelöscht.\\n\\nEs wird kein Code verlangt: auch zu verwenden, wenn Sie Ihren Code vergessen und Ihren Wiederherstellungsschlüssel verloren haben.",
+"回到第一天：您的所有文件、照片、应用、设置和账号将被永久删除。\\n\\n无需输入密码：如果您忘记了密码又丢失了恢复密钥，也可以使用此项。"
+],
+"Tapez EFFACER pour confirmer": [
+"Type ERASE to confirm",
+"Digita CANCELLA per confermare",
+"Escribe BORRAR para confirmar",
+"Geben Sie LÖSCHEN ein, um zu bestätigen",
+"输入 清除 以确认"
+],
+"Tout effacer": [
+"Erase everything",
+"Cancella tutto",
+"Borrar todo",
+"Alles löschen",
+"全部清除"
+],
+"Disque : {modele}  —  {taille}": [
+"Disk: {modele}  —  {taille}",
+"Disco: {modele}  —  {taille}",
+"Disco: {modele}  —  {taille}",
+"Laufwerk: {modele}  —  {taille}",
+"磁盘：{modele}  —  {taille}"
+],
+"Annuler et redémarrer normalement": [
+"Cancel and restart normally",
+"Annulla e riavvia normalmente",
+"Cancelar y reiniciar normalmente",
+"Abbrechen und normal neu starten",
+"取消并正常重启"
+],
+"Démarrage de la réinitialisation…": [
+"Starting the reset…",
+"Avvio del ripristino…",
+"Iniciando el restablecimiento…",
+"Zurücksetzen wird gestartet…",
+"正在开始重置…"
+],
+"L'ordinateur va redémarrer sur l'outil de réparation de SoleOS.\\nVous pourrez y choisir :": [
+"The computer will restart on the SoleOS repair tool.\\nYou will be able to choose:",
+"Il computer si riavvierà sullo strumento di riparazione di SoleOS.\\nPotrai scegliere:",
+"El ordenador se reiniciará en la herramienta de reparación de SoleOS.\\nPodrás elegir:",
+"Der Computer startet mit dem SoleOS-Reparaturwerkzeug neu.\\nSie können dort wählen:",
+"电脑将重启进入 SoleOS 修复工具。\\n您可以选择："
+],
+"⚙  Réparer — le système est remis à neuf, vos fichiers et vos applications sont conservés": [
+"⚙  Repair — the system is restored as new, your files and apps are kept",
+"⚙  Ripara — il sistema viene rimesso a nuovo, file e applicazioni vengono conservati",
+"⚙  Reparar — el sistema queda como nuevo, se conservan tus archivos y aplicaciones",
+"⚙  Reparieren — das System wird neu hergestellt, Dateien und Apps bleiben erhalten",
+"⚙  修复——系统恢复如新，文件和应用都会保留"
+],
+"⚠  Tout effacer — retour au premier jour": [
+"⚠  Erase everything — back to day one",
+"⚠  Cancella tutto — ritorno al primo giorno",
+"⚠  Borrar todo — vuelta al primer día",
+"⚠  Alles löschen — zurück zum ersten Tag",
+"⚠  全部清除——回到第一天"
+],
+"Pensez à enregistrer vos documents ouverts.": [
+"Remember to save your open documents.",
+"Ricordati di salvare i documenti aperti.",
+"Recuerda guardar tus documentos abiertos.",
+"Denken Sie daran, Ihre geöffneten Dokumente zu speichern.",
+"请记得保存已打开的文档。"
+],
+"Redémarrer vers la réparation": [
+"Restart into repair",
+"Riavvia per la riparazione",
+"Reiniciar para reparar",
+"Zur Reparatur neu starten",
+"重启并进入修复"
+],
+"Impossible de préparer l'outil de réparation.": [
+"Unable to prepare the repair tool.",
+"Impossibile preparare lo strumento di riparazione.",
+"No se puede preparar la herramienta de reparación.",
+"Das Reparaturwerkzeug kann nicht vorbereitet werden.",
+"无法准备修复工具。"
+],
+"L'opération n'a pas pu se terminer": [
+"The operation could not be completed",
+"L'operazione non è stata completata",
+"La operación no se ha podido completar",
+"Der Vorgang konnte nicht abgeschlossen werden",
+"操作未能完成"
+],
+"Détails : /var/log/flashos-installation.log": [
+"Details: /var/log/flashos-installation.log",
+"Dettagli: /var/log/flashos-installation.log",
+"Detalles: /var/log/flashos-installation.log",
+"Details: /var/log/flashos-installation.log",
+"详情：/var/log/flashos-installation.log"
+],
+"aujourd'hui": [
+"today",
+"oggi",
+"hoy",
+"heute",
+"今天"
+],
+"hier": [
+"yesterday",
+"ieri",
+"ayer",
+"gestern",
+"昨天"
+],
+"Bureautique": [
+"Office",
+"Ufficio",
+"Ofimática",
+"Büro",
+"办公"
+],
+"Créer un document ou en ouvrir un": [
+"Create a document or open one",
+"Crea un documento o aprine uno",
+"Crear un documento o abrir uno",
+"Dokument erstellen oder öffnen",
+"新建或打开文档"
+],
+"Texte": [
+"Text",
+"Testo",
+"Texto",
+"Text",
+"文字"
+],
+".docx, .odt": [
+".docx, .odt",
+".docx, .odt",
+".docx, .odt",
+".docx, .odt",
+".docx、.odt"
+],
+"Tableur": [
+"Spreadsheet",
+"Foglio di calcolo",
+"Hoja de cálculo",
+"Tabelle",
+"表格"
+],
+".xlsx, .ods, .csv": [
+".xlsx, .ods, .csv",
+".xlsx, .ods, .csv",
+".xlsx, .ods, .csv",
+".xlsx, .ods, .csv",
+".xlsx、.ods、.csv"
+],
+"Présentation": [
+"Presentation",
+"Presentazione",
+"Presentación",
+"Präsentation",
+"演示"
+],
+".pptx, .odp": [
+".pptx, .odp",
+".pptx, .odp",
+".pptx, .odp",
+".pptx, .odp",
+".pptx、.odp"
+],
+"PDF": [
+"PDF",
+"PDF",
+"PDF",
+"PDF",
+"PDF"
+],
+"lire un PDF": [
+"read a PDF",
+"leggi un PDF",
+"leer un PDF",
+"PDF lesen",
+"阅读 PDF"
+],
+"Documents récents": [
+"Recent documents",
+"Documenti recenti",
+"Documentos recientes",
+"Zuletzt verwendet",
+"最近的文档"
+],
+"Ouvrir un PDF": [
+"Open a PDF",
+"Apri un PDF",
+"Abrir un PDF",
+"PDF öffnen",
+"打开 PDF"
+],
+"Documents PDF": [
+"PDF documents",
+"Documenti PDF",
+"Documentos PDF",
+"PDF-Dokumente",
+"PDF 文档"
+],
+"Éclair": [
+"Lightning",
+"Lampo",
+"Relámpago",
+"Blitz",
+"闪电"
+],
+"Circuit": [
+"Circuit",
+"Circuito",
+"Circuito",
+"Schaltkreis",
+"电路"
+],
+"Synapse": [
+"Synapse",
+"Sinapsi",
+"Sinapsis",
+"Synapse",
+"突触"
+],
+"Onde": [
+"Wave",
+"Onda",
+"Onda",
+"Welle",
+"波浪"
+],
+"Aurore": [
+"Aurora",
+"Aurora",
+"Aurora",
+"Polarlicht",
+"极光"
+],
+"Muse": [
+"Muse",
+"Musa",
+"Musa",
+"Muse",
+"缪斯"
+],
+"Nuit (uni)": [
+"Night (plain)",
+"Notte (tinta unita)",
+"Noche (liso)",
+"Nacht (einfarbig)",
+"夜色（纯色）"
+],
+"Dossier personnel introuvable.": [
+"Home folder not found.",
+"Cartella personale non trovata.",
+"No se encuentra la carpeta personal.",
+"Persönlicher Ordner nicht gefunden.",
+"找不到个人文件夹。"
+],
+"La photo n'a pas pu être copiée.": [
+"The photo could not be copied.",
+"Non è stato possibile copiare la foto.",
+"No se ha podido copiar la foto.",
+"Das Foto konnte nicht kopiert werden.",
+"无法复制照片。"
+],
+"Français (AZERTY)": [
+"French (AZERTY)",
+"Francese (AZERTY)",
+"Francés (AZERTY)",
+"Französisch (AZERTY)",
+"法语（AZERTY）"
+],
+"Belge (AZERTY)": [
+"Belgian (AZERTY)",
+"Belga (AZERTY)",
+"Belga (AZERTY)",
+"Belgisch (AZERTY)",
+"比利时语（AZERTY）"
+],
+"Suisse romand (QWERTZ)": [
+"Swiss French (QWERTZ)",
+"Svizzero francese (QWERTZ)",
+"Suizo francés (QWERTZ)",
+"Schweizerisch-Französisch (QWERTZ)",
+"瑞士法语（QWERTZ）"
+],
+"Canadien français": [
+"Canadian French",
+"Francese canadese",
+"Francés canadiense",
+"Kanadisches Französisch",
+"加拿大法语"
+],
+"Anglais, États-Unis (QWERTY)": [
+"English, US (QWERTY)",
+"Inglese, Stati Uniti (QWERTY)",
+"Inglés, Estados Unidos (QWERTY)",
+"Englisch, USA (QWERTY)",
+"英语，美国（QWERTY）"
+],
+"Anglais international (avec accents)": [
+"English international (with accents)",
+"Inglese internazionale (con accenti)",
+"Inglés internacional (con acentos)",
+"Englisch international (mit Akzenten)",
+"国际英语（带重音符号）"
+],
+"Anglais, Royaume-Uni": [
+"English, UK",
+"Inglese, Regno Unito",
+"Inglés, Reino Unido",
+"Englisch, Großbritannien",
+"英语，英国"
+],
+"Italien": [
+"Italian",
+"Italiano",
+"Italiano",
+"Italienisch",
+"意大利语"
+],
+"Espagnol": [
+"Spanish",
+"Spagnolo",
+"Español",
+"Spanisch",
+"西班牙语"
+],
+"Espagnol, Amérique latine": [
+"Spanish, Latin America",
+"Spagnolo, America Latina",
+"Español, Latinoamérica",
+"Spanisch, Lateinamerika",
+"西班牙语，拉丁美洲"
+],
+"Allemand (QWERTZ)": [
+"German (QWERTZ)",
+"Tedesco (QWERTZ)",
+"Alemán (QWERTZ)",
+"Deutsch (QWERTZ)",
+"德语（QWERTZ）"
+],
+"Suisse alémanique (QWERTZ)": [
+"Swiss German (QWERTZ)",
+"Svizzero tedesco (QWERTZ)",
+"Suizo alemán (QWERTZ)",
+"Schweizerdeutsch (QWERTZ)",
+"瑞士德语（QWERTZ）"
+],
+"Portugais": [
+"Portuguese",
+"Portoghese",
+"Portugués",
+"Portugiesisch",
+"葡萄牙语"
+],
+"Portugais, Brésil": [
+"Portuguese, Brazil",
+"Portoghese, Brasile",
+"Portugués, Brasil",
+"Portugiesisch, Brasilien",
+"葡萄牙语，巴西"
+],
+"Le réglage n'a pas pu être appliqué.": [
+"The setting could not be applied.",
+"Non è stato possibile applicare l'impostazione.",
+"No se ha podido aplicar el ajuste.",
+"Die Einstellung konnte nicht übernommen werden.",
+"无法应用此设置。"
+],
+"Tapez ici pour essayer le clavier": [
+"Type here to try the keyboard",
+"Scrivi qui per provare la tastiera",
+"Escribe aquí para probar el teclado",
+"Hier tippen, um die Tastatur auszuprobieren",
+"在此输入以试用键盘"
+],
+"Choisissez votre langue et votre clavier": [
+"Choose your language and keyboard",
+"Scegli la lingua e la tastiera",
+"Elige tu idioma y tu teclado",
+"Wählen Sie Sprache und Tastatur",
+"请选择语言和键盘"
+],
+"Langue et clavier": [
+"Language and keyboard",
+"Lingua e tastiera",
+"Idioma y teclado",
+"Sprache und Tastatur",
+"语言和键盘"
+],
+"L'accueil s'ouvre aussitôt dans la nouvelle langue. Les applications déjà ouvertes la prendront quand vous les rouvrirez.": [
+"The home screen opens right away in the new language. Apps already open will switch when you reopen them.",
+"La home si apre subito nella nuova lingua. Le applicazioni già aperte la useranno quando le riaprirai.",
+"El inicio se abre enseguida en el nuevo idioma. Las aplicaciones ya abiertas lo usarán cuando las vuelvas a abrir.",
+"Die Startseite öffnet sich sofort in der neuen Sprache. Bereits geöffnete Apps übernehmen sie, wenn Sie sie erneut öffnen.",
+"主页会立即以新语言打开。已打开的应用在重新打开后才会切换语言。"
+],
+"Appliquer": [
+"Apply",
+"Applica",
+"Aplicar",
+"Übernehmen",
+"应用"
+],
+"Mail": [
+"Mail",
+"Posta",
+"Correo",
+"E-Mail",
+"邮件"
+],
+"Internet": [
+"Internet",
+"Internet",
+"Internet",
+"Internet",
+"上网"
+],
+"Fichiers": [
+"Files",
+"File",
+"Archivos",
+"Dateien",
+"文件"
+],
+"Console": [
+"Console",
+"Console",
+"Consola",
+"Konsole",
+"终端"
+],
+"Ouverture…": [
+"Opening…",
+"Apertura…",
+"Abriendo…",
+"Wird geöffnet…",
+"正在打开…"
+],
+"À droite :": [
+"On the right:",
+"A destra:",
+"A la derecha:",
+"Rechts:",
+"右侧："
+],
+"Applis ouvertes": [
+"Open apps",
+"App aperte",
+"Apps abiertas",
+"Offene Apps",
+"已打开的应用"
+],
+"{nom} ({n} fenêtres)": [
+"{nom} ({n} windows)",
+"{nom} ({n} finestre)",
+"{nom} ({n} ventanas)",
+"{nom} ({n} Fenster)",
+"{nom}（{n} 个窗口）"
+],
+"Tout fermer": [
+"Close all",
+"Chiudi tutto",
+"Cerrar todo",
+"Alle schließen",
+"全部关闭"
+],
+"Y aller": [
+"Go there",
+"Vai",
+"Ir",
+"Dorthin wechseln",
+"转到"
+],
+"À gauche": [
+"Left",
+"A sinistra",
+"A la izquierda",
+"Links",
+"左侧"
+],
+"À droite": [
+"Right",
+"A destra",
+"A la derecha",
+"Rechts",
+"右侧"
+],
+"Tout l'écran": [
+"Full screen",
+"Tutto lo schermo",
+"Pantalla completa",
+"Ganzer Bildschirm",
+"全屏"
+],
+"Tout fermer ({n})": [
+"Close all ({n})",
+"Chiudi tutto ({n})",
+"Cerrar todo ({n})",
+"Alle schließen ({n})",
+"全部关闭（{n}）"
+],
+"Wi-Fi connecté (signal {q} %)": [
+"Wi-Fi connected (signal {q}%)",
+"Wi-Fi connesso (segnale {q}%)",
+"Wi-Fi conectado (señal {q} %)",
+"WLAN verbunden (Signal {q} %)",
+"Wi-Fi 已连接（信号 {q}%）"
+],
+"Connecté par câble": [
+"Connected by cable",
+"Connesso via cavo",
+"Conectado por cable",
+"Per Kabel verbunden",
+"有线已连接"
+],
+"Pas de connexion": [
+"No connection",
+"Nessuna connessione",
+"Sin conexión",
+"Keine Verbindung",
+"未连接网络"
+],
+"{info} — cliquer pour choisir un réseau": [
+"{info} — click to choose a network",
+"{info} — clicca per scegliere una rete",
+"{info} — haz clic para elegir una red",
+"{info} — klicken, um ein Netzwerk zu wählen",
+"{info} —— 点击选择网络"
+],
+"Batterie : {n}, en charge": [
+"Battery: {n}, charging",
+"Batteria: {n}, in carica",
+"Batería: {n}, cargando",
+"Akku: {n}, wird geladen",
+"电池：{n}，正在充电"
+],
+"Batterie : {n}": [
+"Battery: {n}",
+"Batteria: {n}",
+"Batería: {n}",
+"Akku: {n}",
+"电池：{n}"
+],
+"Son coupé": [
+"Sound muted",
+"Audio disattivato",
+"Sonido silenciado",
+"Ton aus",
+"已静音"
+],
+"Volume": [
+"Volume",
+"Volume",
+"Volumen",
+"Lautstärke",
+"音量"
+],
+"Rétablir le son": [
+"Unmute",
+"Riattiva l'audio",
+"Activar el sonido",
+"Ton einschalten",
+"取消静音"
+],
+"Couper le son": [
+"Mute",
+"Disattiva l'audio",
+"Silenciar",
+"Ton ausschalten",
+"静音"
+],
+"Accueil": [
+"Home",
+"Home",
+"Inicio",
+"Startseite",
+"主页"
+],
+"Réseau": [
+"Network",
+"Rete",
+"Red",
+"Netzwerk",
+"网络"
+],
+"Son": [
+"Sound",
+"Audio",
+"Sonido",
+"Ton",
+"声音"
+],
+"Réglages : imprimantes, Bluetooth, écran, code…": [
+"Settings: printers, Bluetooth, screen, code…",
+"Impostazioni: stampanti, Bluetooth, schermo, codice…",
+"Ajustes: impresoras, Bluetooth, pantalla, código…",
+"Einstellungen: Drucker, Bluetooth, Bildschirm, Code…",
+"设置：打印机、蓝牙、屏幕、密码…"
+],
+"Éteindre, redémarrer…": [
+"Shut down, restart…",
+"Spegni, riavvia…",
+"Apagar, reiniciar…",
+"Ausschalten, neu starten…",
+"关机、重启…"
+],
+"Wi-Fi": [
+"Wi-Fi",
+"Wi-Fi",
+"Wi-Fi",
+"WLAN",
+"Wi-Fi"
+],
+"Choisir un réseau": [
+"Choose a network",
+"Scegli una rete",
+"Elegir una red",
+"Netzwerk wählen",
+"选择网络"
+],
+"↻ Mise à jour prête": [
+"↻ Update ready",
+"↻ Aggiornamento pronto",
+"↻ Actualización lista",
+"↻ Update bereit",
+"↻ 更新已就绪"
+],
+"Elle s'installera toute seule au prochain redémarrage.": [
+"It will install itself at the next restart.",
+"Si installerà da solo al prossimo riavvio.",
+"Se instalará sola en el próximo reinicio.",
+"Es wird beim nächsten Neustart automatisch installiert.",
+"下次重启时将自动安装。"
+],
+"Réglages": [
+"Settings",
+"Impostazioni",
+"Ajustes",
+"Einstellungen",
+"设置"
+],
+"Réglages : Wi-Fi, son, Bluetooth, écran, imprimantes, code…": [
+"Settings: Wi-Fi, sound, Bluetooth, screen, printers, code…",
+"Impostazioni: Wi-Fi, audio, Bluetooth, schermo, stampanti, codice…",
+"Ajustes: Wi-Fi, sonido, Bluetooth, pantalla, impresoras, código…",
+"Einstellungen: WLAN, Ton, Bluetooth, Bildschirm, Drucker, Code…",
+"设置：Wi-Fi、声音、蓝牙、屏幕、打印机、密码…"
+],
+"--:--": [
+"--:--",
+"--:--",
+"--:--",
+"--:--",
+"--:--"
+],
+"Rechercher sur le web…": [
+"Search the web…",
+"Cerca sul web…",
+"Buscar en la web…",
+"Im Web suchen…",
+"搜索网页…"
+],
+"Touche Windows : afficher le bureau  ·  Alt + Tab : changer d'appli  ·  Glisser une fenêtre sur un bord : la moitié de l'écran": [
+"Windows key: show the desktop  ·  Alt + Tab: switch apps  ·  Drag a window to an edge: half the screen",
+"Tasto Windows: mostra il desktop  ·  Alt + Tab: cambia app  ·  Trascina una finestra su un bordo: metà schermo",
+"Tecla Windows: mostrar el escritorio  ·  Alt + Tab: cambiar de app  ·  Arrastra una ventana a un borde: media pantalla",
+"Windows-Taste: Desktop anzeigen  ·  Alt + Tab: App wechseln  ·  Fenster an einen Rand ziehen: halber Bildschirm",
+"Windows 键：显示桌面  ·  Alt + Tab：切换应用  ·  将窗口拖到边缘：占半个屏幕"
+],
+"Touche Windows ou Ctrl + Alt + A : revenir à l'accueil  ·  Alt + Tab : changer d'appli": [
+"Windows key or Ctrl + Alt + A: back to home  ·  Alt + Tab: switch apps",
+"Tasto Windows o Ctrl + Alt + A: torna alla home  ·  Alt + Tab: cambia app",
+"Tecla Windows o Ctrl + Alt + A: volver al inicio  ·  Alt + Tab: cambiar de app",
+"Windows-Taste oder Strg + Alt + A: zurück zur Startseite  ·  Alt + Tab: App wechseln",
+"Windows 键或 Ctrl + Alt + A：返回主页  ·  Alt + Tab：切换应用"
+],
+"Mode réparation de SoleOS": [
+"SoleOS repair mode",
+"Modalità di riparazione di SoleOS",
+"Modo de reparación de SoleOS",
+"SoleOS-Reparaturmodus",
+"SoleOS 修复模式"
+],
+"Ouvrir l'outil de réparation": [
+"Open the repair tool",
+"Apri lo strumento di riparazione",
+"Abrir la herramienta de reparación",
+"Reparaturwerkzeug öffnen",
+"打开修复工具"
+],
+"Vous essayez SoleOS depuis la clé USB : rien n'est modifié sur cet ordinateur.": [
+"You are trying SoleOS from the USB key: nothing is changed on this computer.",
+"Stai provando SoleOS dalla chiavetta USB: nulla viene modificato su questo computer.",
+"Estás probando SoleOS desde la memoria USB: no se modifica nada en este ordenador.",
+"Sie testen SoleOS vom USB-Stick: An diesem Computer wird nichts verändert.",
+"您正在通过 U 盘试用 SoleOS：不会对这台电脑做任何更改。"
+],
+"Installer SoleOS sur cet ordinateur": [
+"Install SoleOS on this computer",
+"Installa SoleOS su questo computer",
+"Instalar SoleOS en este ordenador",
+"SoleOS auf diesem Computer installieren",
+"将 SoleOS 安装到这台电脑"
+],
+"Afficher l'accueil (touche Windows)": [
+"Show home (Windows key)",
+"Mostra la home (tasto Windows)",
+"Mostrar el inicio (tecla Windows)",
+"Startseite anzeigen (Windows-Taste)",
+"显示主页（Windows 键）"
+],
+"＋  Ajouter une messagerie…": [
+"＋  Add an email account…",
+"＋  Aggiungi una casella di posta…",
+"＋  Añadir un correo…",
+"＋  E-Mail-Konto hinzufügen…",
+"＋  添加邮箱…"
+],
+"Retirer « {nom} »": [
+"Remove “{nom}”",
+"Rimuovi «{nom}»",
+"Quitar «{nom}»",
+"„{nom}“ entfernen",
+"移除“{nom}”"
+],
+"Ouvrir quelle messagerie ?": [
+"Open which email?",
+"Quale posta aprire?",
+"¿Qué correo abrir?",
+"Welches E-Mail-Konto öffnen?",
+"打开哪个邮箱？"
+],
+"🔒  Verrouiller l'écran": [
+"🔒  Lock the screen",
+"🔒  Blocca lo schermo",
+"🔒  Bloquear la pantalla",
+"🔒  Bildschirm sperren",
+"🔒  锁定屏幕"
+],
+"⏻  Éteindre": [
+"⏻  Shut down",
+"⏻  Spegni",
+"⏻  Apagar",
+"⏻  Ausschalten",
+"⏻  关机"
+],
+"↻  Redémarrer": [
+"↻  Restart",
+"↻  Riavvia",
+"↻  Reiniciar",
+"↻  Neu starten",
+"↻  重启"
+],
+"☾  Mettre en veille": [
+"☾  Sleep",
+"☾  Sospendi",
+"☾  Suspender",
+"☾  Energie sparen",
+"☾  睡眠"
+],
+"⚠  Réparer ou réinitialiser…": [
+"⚠  Repair or reset…",
+"⚠  Ripara o reimposta…",
+"⚠  Reparar o restablecer…",
+"⚠  Reparieren oder zurücksetzen…",
+"⚠  修复或重置…"
+],
+"Dossier introuvable.": [
+"Folder not found.",
+"Cartella non trovata.",
+"Carpeta no encontrada.",
+"Ordner nicht gefunden.",
+"找不到文件夹。"
+],
+"Impossible de mettre l'ancien profil de côté ({e}).": [
+"Unable to set the old profile aside ({e}).",
+"Impossibile mettere da parte il vecchio profilo ({e}).",
+"No se puede apartar el perfil anterior ({e}).",
+"Das alte Profil kann nicht beiseitegelegt werden ({e}).",
+"无法保留旧的配置文件（{e}）。"
+],
+"Navigateur remis à neuf : extensions, notifications des sites et réglages effacés. Favoris, mots de passe et historique sont gardés.": [
+"Browser reset: extensions, site notifications and settings erased. Bookmarks, passwords and history are kept.",
+"Browser rimesso a nuovo: estensioni, notifiche dei siti e impostazioni cancellate. Preferiti, password e cronologia sono conservati.",
+"Navegador restablecido: extensiones, notificaciones de los sitios y ajustes borrados. Se conservan los favoritos, las contraseñas y el historial.",
+"Browser zurückgesetzt: Erweiterungen, Website-Benachrichtigungen und Einstellungen gelöscht. Lesezeichen, Passwörter und Verlauf bleiben erhalten.",
+"浏览器已重置：扩展、网站通知和设置已清除。书签、密码和历史记录均已保留。"
+],
+"Paris, Bruxelles, Genève, Luxembourg": [
+"Paris, Brussels, Geneva, Luxembourg",
+"Parigi, Bruxelles, Ginevra, Lussemburgo",
+"París, Bruselas, Ginebra, Luxemburgo",
+"Paris, Brüssel, Genf, Luxemburg",
+"巴黎、布鲁塞尔、日内瓦、卢森堡"
+],
+"Rome, Madrid, Berlin, Vienne": [
+"Rome, Madrid, Berlin, Vienna",
+"Roma, Madrid, Berlino, Vienna",
+"Roma, Madrid, Berlín, Viena",
+"Rom, Madrid, Berlin, Wien",
+"罗马、马德里、柏林、维也纳"
+],
+"Londres, Lisbonne, Dublin": [
+"London, Lisbon, Dublin",
+"Londra, Lisbona, Dublino",
+"Londres, Lisboa, Dublín",
+"London, Lissabon, Dublin",
+"伦敦、里斯本、都柏林"
+],
+"Athènes, Helsinki, Bucarest": [
+"Athens, Helsinki, Bucharest",
+"Atene, Helsinki, Bucarest",
+"Atenas, Helsinki, Bucarest",
+"Athen, Helsinki, Bukarest",
+"雅典、赫尔辛基、布加勒斯特"
+],
+"Moscou, Istanbul": [
+"Moscow, Istanbul",
+"Mosca, Istanbul",
+"Moscú, Estambul",
+"Moskau, Istanbul",
+"莫斯科、伊斯坦布尔"
+],
+"Casablanca": [
+"Casablanca",
+"Casablanca",
+"Casablanca",
+"Casablanca",
+"卡萨布兰卡"
+],
+"Alger, Tunis": [
+"Algiers, Tunis",
+"Algeri, Tunisi",
+"Argel, Túnez",
+"Algier, Tunis",
+"阿尔及尔、突尼斯"
+],
+"Dakar, Abidjan": [
+"Dakar, Abidjan",
+"Dakar, Abidjan",
+"Dakar, Abiyán",
+"Dakar, Abidjan",
+"达喀尔、阿比让"
+],
+"Douala, Kinshasa, Libreville": [
+"Douala, Kinshasa, Libreville",
+"Douala, Kinshasa, Libreville",
+"Duala, Kinsasa, Libreville",
+"Douala, Kinshasa, Libreville",
+"杜阿拉、金沙萨、利伯维尔"
+],
+"Johannesburg, Le Caire": [
+"Johannesburg, Cairo",
+"Johannesburg, Il Cairo",
+"Johannesburgo, El Cairo",
+"Johannesburg, Kairo",
+"约翰内斯堡、开罗"
+],
+"La Réunion, Maurice": [
+"Réunion, Mauritius",
+"Riunione, Mauritius",
+"Reunión, Mauricio",
+"Réunion, Mauritius",
+"留尼汪、毛里求斯"
+],
+"Mayotte": [
+"Mayotte",
+"Mayotte",
+"Mayotte",
+"Mayotte",
+"马约特"
+],
+"Guadeloupe, Martinique": [
+"Guadeloupe, Martinique",
+"Guadalupa, Martinica",
+"Guadalupe, Martinica",
+"Guadeloupe, Martinique",
+"瓜德罗普、马提尼克"
+],
+"Guyane": [
+"French Guiana",
+"Guyana francese",
+"Guayana Francesa",
+"Französisch-Guayana",
+"法属圭亚那"
+],
+"Saint-Pierre-et-Miquelon": [
+"Saint Pierre and Miquelon",
+"Saint-Pierre e Miquelon",
+"San Pedro y Miquelón",
+"Saint-Pierre und Miquelon",
+"圣皮埃尔和密克隆"
+],
+"Montréal, Québec, Toronto": [
+"Montreal, Quebec, Toronto",
+"Montréal, Québec, Toronto",
+"Montreal, Quebec, Toronto",
+"Montreal, Québec, Toronto",
+"蒙特利尔、魁北克、多伦多"
+],
+"New York": [
+"New York",
+"New York",
+"Nueva York",
+"New York",
+"纽约"
+],
+"Chicago, Mexico": [
+"Chicago, Mexico City",
+"Chicago, Città del Messico",
+"Chicago, Ciudad de México",
+"Chicago, Mexiko-Stadt",
+"芝加哥、墨西哥城"
+],
+"Los Angeles, Vancouver": [
+"Los Angeles, Vancouver",
+"Los Angeles, Vancouver",
+"Los Ángeles, Vancouver",
+"Los Angeles, Vancouver",
+"洛杉矶、温哥华"
+],
+"São Paulo, Buenos Aires": [
+"São Paulo, Buenos Aires",
+"San Paolo, Buenos Aires",
+"São Paulo, Buenos Aires",
+"São Paulo, Buenos Aires",
+"圣保罗、布宜诺斯艾利斯"
+],
+"Tahiti": [
+"Tahiti",
+"Tahiti",
+"Tahití",
+"Tahiti",
+"塔希提"
+],
+"Nouvelle-Calédonie": [
+"New Caledonia",
+"Nuova Caledonia",
+"Nueva Caledonia",
+"Neukaledonien",
+"新喀里多尼亚"
+],
+"Dubaï": [
+"Dubai",
+"Dubai",
+"Dubái",
+"Dubai",
+"迪拜"
+],
+"Inde": [
+"India",
+"India",
+"India",
+"Indien",
+"印度"
+],
+"Pékin, Shanghai": [
+"Beijing, Shanghai",
+"Pechino, Shanghai",
+"Pekín, Shanghái",
+"Peking, Shanghai",
+"北京、上海"
+],
+"Hong Kong": [
+"Hong Kong",
+"Hong Kong",
+"Hong Kong",
+"Hongkong",
+"香港"
+],
+"Taipei": [
+"Taipei",
+"Taipei",
+"Taipéi",
+"Taipeh",
+"台北"
+],
+"Singapour, Kuala Lumpur": [
+"Singapore, Kuala Lumpur",
+"Singapore, Kuala Lumpur",
+"Singapur, Kuala Lumpur",
+"Singapur, Kuala Lumpur",
+"新加坡、吉隆坡"
+],
+"Tokyo, Séoul": [
+"Tokyo, Seoul",
+"Tokyo, Seul",
+"Tokio, Seúl",
+"Tokio, Seoul",
+"东京、首尔"
+],
+"Sydney": [
+"Sydney",
+"Sydney",
+"Sídney",
+"Sydney",
+"悉尼"
+],
+"Temps universel (UTC)": [
+"Universal time (UTC)",
+"Tempo universale (UTC)",
+"Tiempo universal (UTC)",
+"Weltzeit (UTC)",
+"协调世界时（UTC）"
+],
+"Fermer (Échap)": [
+"Close (Esc)",
+"Chiudi (Esc)",
+"Cerrar (Esc)",
+"Schließen (Esc)",
+"关闭（Esc）"
+],
+"Fond d'écran": [
+"Wallpaper",
+"Sfondo",
+"Fondo de pantalla",
+"Hintergrundbild",
+"壁纸"
+],
+"Taille d'affichage": [
+"Display size",
+"Dimensione dello schermo",
+"Tamaño de la pantalla",
+"Anzeigegröße",
+"显示大小"
+],
+"Date et heure": [
+"Date and time",
+"Data e ora",
+"Fecha y hora",
+"Datum und Uhrzeit",
+"日期和时间"
+],
+"Batterie": [
+"Battery",
+"Batteria",
+"Batería",
+"Akku",
+"电池"
+],
+"Code et verrouillage": [
+"Code and lock",
+"Codice e blocco",
+"Código y bloqueo",
+"Code und Sperre",
+"密码与锁屏"
+],
+"Navigateur": [
+"Browser",
+"Browser",
+"Navegador",
+"Browser",
+"浏览器"
+],
+"Console (avancé)": [
+"Console (advanced)",
+"Console (avanzato)",
+"Consola (avanzado)",
+"Konsole (fortgeschritten)",
+"终端（高级）"
+],
+"À propos de SoleOS": [
+"About SoleOS",
+"Informazioni su SoleOS",
+"Acerca de SoleOS",
+"Über SoleOS",
+"关于 SoleOS"
+],
+"‹  Réglages": [
+"‹  Settings",
+"‹  Impostazioni",
+"‹  Ajustes",
+"‹  Einstellungen",
+"‹  设置"
+],
+"Ma photo": [
+"My photo",
+"La mia foto",
+"Mi foto",
+"Mein Foto",
+"我的照片"
+],
+"Mes images": [
+"My pictures",
+"Le mie immagini",
+"Mis imágenes",
+"Meine Bilder",
+"我的图片"
+],
+"Recherche des photos…": [
+"Looking for photos…",
+"Ricerca delle foto…",
+"Buscando fotos…",
+"Suche nach Fotos…",
+"正在查找照片…"
+],
+"Aucune photo dans votre dossier Images.": [
+"No photo in your Pictures folder.",
+"Nessuna foto nella cartella Immagini.",
+"No hay fotos en tu carpeta Imágenes.",
+"Keine Fotos in Ihrem Ordner Bilder.",
+"您的“图片”文件夹中没有照片。"
+],
+"Choisir une autre image…": [
+"Choose another picture…",
+"Scegli un'altra immagine…",
+"Elegir otra imagen…",
+"Anderes Bild wählen…",
+"选择其他图片…"
+],
+"Astuce : dans Fichiers, clic droit sur une photo → « Définir comme arrière-plan ».": [
+"Tip: in Files, right-click a photo → “Set as Background”.",
+"Suggerimento: in File, clic destro su una foto → «Imposta come sfondo».",
+"Consejo: en Archivos, clic derecho en una foto → «Establecer como fondo».",
+"Tipp: In Dateien Rechtsklick auf ein Foto → „Als Hintergrund festlegen“.",
+"提示：在“文件”中右键点击照片 →“设为背景”。"
+],
+"Choisir une image de fond": [
+"Choose a wallpaper picture",
+"Scegli un'immagine di sfondo",
+"Elegir una imagen de fondo",
+"Hintergrundbild wählen",
+"选择壁纸图片"
+],
+"chargeur branché": [
+"charger plugged in",
+"caricabatterie collegato",
+"cargador conectado",
+"Ladegerät angeschlossen",
+"已接通电源"
+],
+"sur batterie": [
+"on battery",
+"a batteria",
+"con batería",
+"im Akkubetrieb",
+"使用电池"
+],
+"Pas de batterie détectée": [
+"No battery detected",
+"Nessuna batteria rilevata",
+"No se ha detectado ninguna batería",
+"Kein Akku erkannt",
+"未检测到电池"
+],
+"Consommation actuelle : {w} W": [
+"Current consumption: {w} W",
+"Consumo attuale: {w} W",
+"Consumo actual: {w} W",
+"Aktueller Verbrauch: {w} W",
+"当前功耗：{w} W"
+],
+"Autonomie restante estimée : {h} h {m}": [
+"Estimated time remaining: {h} h {m}",
+"Autonomia residua stimata: {h} h {m}",
+"Autonomía restante estimada: {h} h {m}",
+"Geschätzte Restlaufzeit: {h} h {m}",
+"预计剩余续航：{h} 小时 {m} 分"
+],
+"Consommation : non mesurée pendant la charge complète.": [
+"Consumption: not measured while fully charged.",
+"Consumo: non misurato a carica completa.",
+"Consumo: no se mide con la carga completa.",
+"Verbrauch: bei voller Ladung nicht gemessen.",
+"功耗：充满电时不测量。"
+],
+"Consommation : non disponible sur cet ordinateur.": [
+"Consumption: not available on this computer.",
+"Consumo: non disponibile su questo computer.",
+"Consumo: no disponible en este ordenador.",
+"Verbrauch: auf diesem Computer nicht verfügbar.",
+"功耗：此电脑不支持。"
+],
+"Baisser la luminosité sur batterie": [
+"Dim the screen on battery",
+"Riduci la luminosità a batteria",
+"Bajar el brillo con batería",
+"Bildschirm im Akkubetrieb abdunkeln",
+"使用电池时降低亮度"
+],
+"Quand le chargeur est débranché, l'écran baisse de 30 % ; il revient à sa luminosité en le rebranchant.": [
+"When the charger is unplugged, the screen dims by 30%; it returns to its brightness when you plug it back in.",
+"Quando il caricabatterie è scollegato, lo schermo si abbassa del 30%; torna alla sua luminosità quando lo ricolleghi.",
+"Al desconectar el cargador, la pantalla baja un 30 %; recupera su brillo al volver a conectarlo.",
+"Wenn das Ladegerät getrennt wird, wird der Bildschirm um 30 % dunkler; beim erneuten Anschließen kehrt die Helligkeit zurück.",
+"拔下充电器时，屏幕亮度降低 30%；重新接上后恢复原亮度。"
+],
+"Sur batterie, SoleOS passe automatiquement le processeur en mode économie, et le navigateur réduit le travail des onglets en arrière-plan. Les vidéos sont décodées par la carte graphique.": [
+"On battery, SoleOS automatically switches the processor to power-saving mode, and the browser reduces background tab work. Videos are decoded by the graphics card.",
+"A batteria, SoleOS passa automaticamente il processore in modalità risparmio e il browser riduce il lavoro delle schede in background. I video sono decodificati dalla scheda grafica.",
+"Con batería, SoleOS pone automáticamente el procesador en modo ahorro y el navegador reduce el trabajo de las pestañas en segundo plano. Los vídeos los decodifica la tarjeta gráfica.",
+"Im Akkubetrieb schaltet SoleOS den Prozessor automatisch in den Sparmodus, und der Browser reduziert die Arbeit von Hintergrund-Tabs. Videos werden von der Grafikkarte dekodiert.",
+"使用电池时，SoleOS 会自动将处理器切换到节能模式，浏览器也会减少后台标签页的工作。视频由显卡解码。"
+],
+"Créé par Giuseppe D'Arco": [
+"Created by Giuseppe D'Arco",
+"Creato da Giuseppe D'Arco",
+"Creado por Giuseppe D'Arco",
+"Erstellt von Giuseppe D'Arco",
+"由 Giuseppe D'Arco 创建"
+],
+"© 2026 GDH": [
+"© 2026 GDH",
+"© 2026 GDH",
+"© 2026 GDH",
+"© 2026 GDH",
+"© 2026 GDH"
+],
+"Logiciel libre, distribué sous licence GNU GPL version 3 : vous pouvez l'utiliser, l'étudier, le modifier et le partager. Basé sur Debian 13.": [
+"Free software, distributed under the GNU GPL version 3: you can use, study, modify and share it. Based on Debian 13.",
+"Software libero, distribuito con licenza GNU GPL versione 3: puoi usarlo, studiarlo, modificarlo e condividerlo. Basato su Debian 13.",
+"Software libre, distribuido bajo la licencia GNU GPL versión 3: puedes usarlo, estudiarlo, modificarlo y compartirlo. Basado en Debian 13.",
+"Freie Software unter der GNU GPL Version 3: Sie dürfen sie nutzen, untersuchen, verändern und weitergeben. Basiert auf Debian 13.",
+"自由软件，依据 GNU GPL 第 3 版发布：您可以使用、研究、修改和分享。基于 Debian 13。"
+],
+"Cet ordinateur": [
+"This computer",
+"Questo computer",
+"Este ordenador",
+"Dieser Computer",
+"这台电脑"
+],
+"inconnu": [
+"unknown",
+"sconosciuto",
+"desconocido",
+"unbekannt",
+"未知"
+],
+"inconnue": [
+"unknown",
+"sconosciuta",
+"desconocida",
+"unbekannt",
+"未知"
+],
+"Processeur : {processeur}\\nMémoire : {memoire}": [
+"Processor: {processeur}\\nMemory: {memoire}",
+"Processore: {processeur}\\nMemoria: {memoire}",
+"Procesador: {processeur}\\nMemoria: {memoire}",
+"Prozessor: {processeur}\\nArbeitsspeicher: {memoire}",
+"处理器：{processeur}\\n内存：{memoire}"
+],
+", {d} pouces": [
+", {d} inches",
+", {d} pollici",
+", {d} pulgadas",
+", {d} Zoll",
+"，{d} 英寸"
+],
+"{l} × {h}{pouces}, affichage à {z} %": [
+"{l} × {h}{pouces}, display at {z}%",
+"{l} × {h}{pouces}, visualizzazione al {z}%",
+"{l} × {h}{pouces}, visualización al {z} %",
+"{l} × {h}{pouces}, Anzeige mit {z} %",
+"{l} × {h}{pouces}，显示比例 {z}%"
+],
+"{n} extensions installées": [
+"{n} extensions installed",
+"{n} estensioni installate",
+"{n} extensiones instaladas",
+"{n} Erweiterungen installiert",
+"已安装 {n} 个扩展"
+],
+"{n} extension installée": [
+"{n} extension installed",
+"{n} estensione installata",
+"{n} extensión instalada",
+"{n} Erweiterung installiert",
+"已安装 {n} 个扩展"
+],
+"{n} sites autorisés à envoyer des notifications": [
+"{n} sites allowed to send notifications",
+"{n} siti autorizzati a inviare notifiche",
+"{n} sitios autorizados a enviar notificaciones",
+"{n} Websites dürfen Benachrichtigungen senden",
+"{n} 个网站可以发送通知"
+],
+"{n} site autorisé à envoyer des notifications": [
+"{n} site allowed to send notifications",
+"{n} sito autorizzato a inviare notifiche",
+"{n} sitio autorizado a enviar notificaciones",
+"{n} Website darf Benachrichtigungen senden",
+"{n} 个网站可以发送通知"
+],
+"{constat}. Si vous ne les reconnaissez pas, ils peuvent afficher des publicités.": [
+"{constat}. If you don't recognize them, they may show ads.",
+"{constat}. Se non li riconosci, potrebbero mostrare pubblicità.",
+"{constat}. Si no los reconoces, pueden mostrar publicidad.",
+"{constat}. Wenn Sie sie nicht kennen, können sie Werbung anzeigen.",
+"{constat}。如果您不认识它们，它们可能会显示广告。"
+],
+" et ": [
+" and ",
+" e ",
+" y ",
+" und ",
+"和"
+],
+"Des publicités ou des pages s'ouvrent toutes seules ? Le navigateur peut être remis à neuf : extensions, notifications des sites, page d'accueil et moteur de recherche sont effacés. Vos favoris, mots de passe et historique sont gardés.": [
+"Ads or pages opening on their own? The browser can be reset: extensions, site notifications, home page and search engine are erased. Your bookmarks, passwords and history are kept.",
+"Pubblicità o pagine che si aprono da sole? Il browser può essere rimesso a nuovo: estensioni, notifiche dei siti, pagina iniziale e motore di ricerca vengono cancellati. Preferiti, password e cronologia vengono conservati.",
+"¿Anuncios o páginas que se abren solas? El navegador se puede restablecer: se borran las extensiones, las notificaciones de los sitios, la página de inicio y el buscador. Se conservan tus favoritos, contraseñas e historial.",
+"Werbung oder Seiten, die sich von selbst öffnen? Der Browser kann zurückgesetzt werden: Erweiterungen, Website-Benachrichtigungen, Startseite und Suchmaschine werden gelöscht. Lesezeichen, Passwörter und Verlauf bleiben erhalten.",
+"出现广告或页面自动打开？可以重置浏览器：扩展、网站通知、主页和搜索引擎将被清除。书签、密码和历史记录会保留。"
+],
+"Remettre le navigateur à neuf": [
+"Reset the browser",
+"Rimetti a nuovo il browser",
+"Restablecer el navegador",
+"Browser zurücksetzen",
+"重置浏览器"
+],
+"Fermeture du navigateur et remise à neuf…": [
+"Closing the browser and resetting…",
+"Chiusura del browser e ripristino…",
+"Cerrando el navegador y restableciendo…",
+"Browser wird geschlossen und zurückgesetzt…",
+"正在关闭并重置浏览器…"
+],
+"Agrandit tout l'écran : textes, boutons et fenêtres.": [
+"Enlarges the whole screen: text, buttons and windows.",
+"Ingrandisce tutto lo schermo: testi, pulsanti e finestre.",
+"Amplía toda la pantalla: textos, botones y ventanas.",
+"Vergrößert den ganzen Bildschirm: Texte, Schaltflächen und Fenster.",
+"放大整个屏幕：文字、按钮和窗口。"
+],
+"Automatique (selon l'écran)": [
+"Automatic (depending on the screen)",
+"Automatica (in base allo schermo)",
+"Automático (según la pantalla)",
+"Automatisch (je nach Bildschirm)",
+"自动（根据屏幕）"
+],
+"Normale (100 %)": [
+"Normal (100%)",
+"Normale (100%)",
+"Normal (100 %)",
+"Normal (100 %)",
+"正常（100%）"
+],
+"Grande (125 %)": [
+"Large (125%)",
+"Grande (125%)",
+"Grande (125 %)",
+"Groß (125 %)",
+"大（125%）"
+],
+"Très grande (150 %)": [
+"Very large (150%)",
+"Molto grande (150%)",
+"Muy grande (150 %)",
+"Sehr groß (150 %)",
+"特大（150%）"
+],
+"Maximale (200 %)": [
+"Maximum (200%)",
+"Massima (200%)",
+"Máximo (200 %)",
+"Maximal (200 %)",
+"最大（200%）"
+],
+"Personnalisée": [
+"Custom",
+"Personalizzata",
+"Personalizado",
+"Benutzerdefiniert",
+"自定义"
+],
+"−": [
+"−",
+"−",
+"−",
+"−",
+"−"
+],
+"+": [
+"+",
+"+",
+"+",
+"+",
+"+"
+],
+"Réglage automatique (par Internet)": [
+"Set automatically (over the Internet)",
+"Impostazione automatica (via Internet)",
+"Ajuste automático (por Internet)",
+"Automatisch einstellen (über das Internet)",
+"自动设置（通过网络）"
+],
+"Année-mois-jour heure:minutes": [
+"Year-month-day hour:minutes",
+"Anno-mese-giorno ore:minuti",
+"Año-mes-día hora:minutos",
+"Jahr-Monat-Tag Stunde:Minuten",
+"年-月-日 时:分"
+],
+"Régler": [
+"Set",
+"Imposta",
+"Ajustar",
+"Einstellen",
+"设置"
+],
+"Fuseau horaire": [
+"Time zone",
+"Fuso orario",
+"Zona horaria",
+"Zeitzone",
+"时区"
+],
+"Verrouiller l'écran après": [
+"Lock the screen after",
+"Blocca lo schermo dopo",
+"Bloquear la pantalla tras",
+"Bildschirm sperren nach",
+"多久后锁屏"
+],
+"5 min": [
+"5 min",
+"5 min",
+"5 min",
+"5 Min.",
+"5 分钟"
+],
+"10 min": [
+"10 min",
+"10 min",
+"10 min",
+"10 Min.",
+"10 分钟"
+],
+"30 min": [
+"30 min",
+"30 min",
+"30 min",
+"30 Min.",
+"30 分钟"
+],
+"1 h": [
+"1 h",
+"1 h",
+"1 h",
+"1 Std.",
+"1 小时"
+],
+"Jamais": [
+"Never",
+"Mai",
+"Nunca",
+"Nie",
+"从不"
+],
+"L'écran se verrouille aussi quand l'ordinateur se met en veille (capot fermé). Raccourci : touche Windows + L.": [
+"The screen also locks when the computer goes to sleep (lid closed). Shortcut: Windows key + L.",
+"Lo schermo si blocca anche quando il computer va in sospensione (coperchio chiuso). Scorciatoia: tasto Windows + L.",
+"La pantalla también se bloquea cuando el ordenador entra en suspensión (tapa cerrada). Atajo: tecla Windows + L.",
+"Der Bildschirm wird auch gesperrt, wenn der Computer in den Ruhezustand geht (Deckel zu). Tastenkürzel: Windows-Taste + L.",
+"电脑进入睡眠（合上盖子）时也会锁屏。快捷键：Windows 键 + L。"
+],
+"🔒  Verrouiller maintenant": [
+"🔒  Lock now",
+"🔒  Blocca ora",
+"🔒  Bloquear ahora",
+"🔒  Jetzt sperren",
+"🔒  立即锁定"
+],
+"Essai depuis la clé USB : le code se choisit après l'installation de SoleOS.": [
+"Trial from the USB key: the code is chosen after installing SoleOS.",
+"Prova dalla chiavetta USB: il codice si sceglie dopo l'installazione di SoleOS.",
+"Prueba desde la memoria USB: el código se elige después de instalar SoleOS.",
+"Test vom USB-Stick: Der Code wird nach der Installation von SoleOS gewählt.",
+"正在通过 U 盘试用：安装 SoleOS 后才能设置密码。"
+],
+"Les fichiers de cet ordinateur ne sont pas chiffrés (SoleOS installé avant la version 9). « Réparer → Tout effacer » active la protection.": [
+"The files on this computer are not encrypted (SoleOS installed before version 9). “Repair → Erase everything” turns on protection.",
+"I file di questo computer non sono cifrati (SoleOS installato prima della versione 9). «Ripara → Cancella tutto» attiva la protezione.",
+"Los archivos de este ordenador no están cifrados (SoleOS instalado antes de la versión 9). «Reparar → Borrar todo» activa la protección.",
+"Die Dateien auf diesem Computer sind nicht verschlüsselt (SoleOS vor Version 9 installiert). „Reparieren → Alles löschen“ aktiviert den Schutz.",
+"这台电脑上的文件未加密（SoleOS 安装于第 9 版之前）。“修复 → 全部清除”将启用保护。"
+],
+"Le code se choisit dans l'assistant de bienvenue.": [
+"The code is chosen in the welcome assistant.",
+"Il codice si sceglie nell'assistente di benvenuto.",
+"El código se elige en el asistente de bienvenida.",
+"Der Code wird im Willkommensassistenten gewählt.",
+"密码在欢迎向导中设置。"
+],
+"Ouvrir l'assistant": [
+"Open the assistant",
+"Apri l'assistente",
+"Abrir el asistente",
+"Assistent öffnen",
+"打开向导"
+],
+"Vos fichiers sont chiffrés. Ils s'ouvrent au démarrage avec votre code (protégé par la puce de sécurité de l'ordinateur).": [
+"Your files are encrypted. They open at startup with your code (protected by the computer's security chip).",
+"I tuoi file sono cifrati. Si aprono all'avvio con il tuo codice (protetto dal chip di sicurezza del computer).",
+"Tus archivos están cifrados. Se abren al arrancar con tu código (protegido por el chip de seguridad del ordenador).",
+"Ihre Dateien sind verschlüsselt. Sie werden beim Start mit Ihrem Code geöffnet (geschützt durch den Sicherheitschip des Computers).",
+"您的文件已加密。开机时用密码打开（由电脑的安全芯片保护）。"
+],
+"Vos fichiers sont chiffrés. Ils s'ouvrent au démarrage avec votre mot de passe.": [
+"Your files are encrypted. They open at startup with your password.",
+"I tuoi file sono cifrati. Si aprono all'avvio con la tua password.",
+"Tus archivos están cifrados. Se abren al arrancar con tu contraseña.",
+"Ihre Dateien sind verschlüsselt. Sie werden beim Start mit Ihrem Passwort geöffnet.",
+"您的文件已加密。开机时用密码打开。"
+],
+"Changer mon code…": [
+"Change my code…",
+"Cambia il mio codice…",
+"Cambiar mi código…",
+"Meinen Code ändern…",
+"更改密码…"
+],
+"Changer mon mot de passe…": [
+"Change my password…",
+"Cambia la mia password…",
+"Cambiar mi contraseña…",
+"Mein Passwort ändern…",
+"更改密码…"
+],
+"Code actuel (ou clé de secours)": [
+"Current code (or recovery key)",
+"Codice attuale (o chiave di recupero)",
+"Código actual (o clave de recuperación)",
+"Aktueller Code (oder Wiederherstellungsschlüssel)",
+"当前密码（或恢复密钥）"
+],
+"Mot de passe actuel (ou clé de secours)": [
+"Current password (or recovery key)",
+"Password attuale (o chiave di recupero)",
+"Contraseña actual (o clave de recuperación)",
+"Aktuelles Passwort (oder Wiederherstellungsschlüssel)",
+"当前密码（或恢复密钥）"
+],
+"Nouveau code (6 chiffres)": [
+"New code (6 digits)",
+"Nuovo codice (6 cifre)",
+"Nuevo código (6 cifras)",
+"Neuer Code (6 Ziffern)",
+"新密码（6 位数字）"
+],
+"Nouveau mot de passe (8 caractères ou plus)": [
+"New password (8 characters or more)",
+"Nuova password (8 caratteri o più)",
+"Nueva contraseña (8 caracteres o más)",
+"Neues Passwort (8 Zeichen oder mehr)",
+"新密码（至少 8 个字符）"
+],
+"Enregistrer": [
+"Save",
+"Salva",
+"Guardar",
+"Speichern",
+"保存"
+],
+"Tapez d'abord votre code actuel.": [
+"First type your current code.",
+"Digita prima il codice attuale.",
+"Escribe primero tu código actual.",
+"Geben Sie zuerst Ihren aktuellen Code ein.",
+"请先输入当前密码。"
+],
+"Tapez d'abord votre mot de passe actuel.": [
+"First type your current password.",
+"Digita prima la password attuale.",
+"Escribe primero tu contraseña actual.",
+"Geben Sie zuerst Ihr aktuelles Passwort ein.",
+"请先输入当前密码。"
+],
+"Le nouveau code doit contenir exactement 6 chiffres.": [
+"The new code must contain exactly 6 digits.",
+"Il nuovo codice deve contenere esattamente 6 cifre.",
+"El nuevo código debe tener exactamente 6 cifras.",
+"Der neue Code muss genau 6 Ziffern enthalten.",
+"新密码必须正好是 6 位数字。"
+],
+"Le nouveau mot de passe doit contenir au moins 8 caractères.": [
+"The new password must contain at least 8 characters.",
+"La nuova password deve contenere almeno 8 caratteri.",
+"La nueva contraseña debe tener al menos 8 caracteres.",
+"Das neue Passwort muss mindestens 8 Zeichen enthalten.",
+"新密码至少需要 8 个字符。"
+],
+"Les deux nouveaux ne sont pas identiques.": [
+"The two new ones are not identical.",
+"I due nuovi non sono identici.",
+"Los dos nuevos no son idénticos.",
+"Die beiden neuen stimmen nicht überein.",
+"两次输入的新密码不一致。"
+],
+"Enregistrement…": [
+"Saving…",
+"Salvataggio…",
+"Guardando…",
+"Wird gespeichert…",
+"正在保存…"
+],
+"Nouveau code enregistré. Il servira dès le prochain démarrage.": [
+"New code saved. It will be used from the next startup.",
+"Nuovo codice salvato. Verrà usato dal prossimo avvio.",
+"Nuevo código guardado. Se usará a partir del próximo arranque.",
+"Neuer Code gespeichert. Er gilt ab dem nächsten Start.",
+"新密码已保存，下次开机起生效。"
+],
+"Nouveau mot de passe enregistré. Il servira dès le prochain démarrage.": [
+"New password saved. It will be used from the next startup.",
+"Nuova password salvata. Verrà usata dal prossimo avvio.",
+"Nueva contraseña guardada. Se usará a partir del próximo arranque.",
+"Neues Passwort gespeichert. Es gilt ab dem nächsten Start.",
+"新密码已保存，下次开机起生效。"
+],
+"Nouvelle clé de secours…": [
+"New recovery key…",
+"Nuova chiave di recupero…",
+"Nueva clave de recuperación…",
+"Neuer Wiederherstellungsschlüssel…",
+"新的恢复密钥…"
+],
+"Si vous avez perdu votre papier, ou si quelqu'un a pu le voir : la clé actuelle ne fonctionnera plus.": [
+"If you lost your paper, or if someone may have seen it: the current key will no longer work.",
+"Se hai perso il foglio, o se qualcuno potrebbe averlo visto: la chiave attuale non funzionerà più.",
+"Si has perdido tu papel, o si alguien ha podido verlo: la clave actual dejará de funcionar.",
+"Wenn Sie Ihre Notiz verloren haben oder jemand sie gesehen haben könnte: Der aktuelle Schlüssel funktioniert dann nicht mehr.",
+"如果您丢失了纸条，或者有人可能看到过：当前密钥将不再有效。"
+],
+"Votre code": [
+"Your code",
+"Il tuo codice",
+"Tu código",
+"Ihr Code",
+"您的密码"
+],
+"Votre mot de passe": [
+"Your password",
+"La tua password",
+"Tu contraseña",
+"Ihr Passwort",
+"您的密码"
+],
+"Créer une nouvelle clé": [
+"Create a new key",
+"Crea una nuova chiave",
+"Crear una nueva clave",
+"Neuen Schlüssel erstellen",
+"创建新密钥"
+],
+"Création…": [
+"Creating…",
+"Creazione…",
+"Creando…",
+"Wird erstellt…",
+"正在创建…"
+],
+"Voici votre nouvelle clé de secours. Écrivez-la sur papier et rangez-la en lieu sûr :": [
+"Here is your new recovery key. Write it down on paper and keep it in a safe place:",
+"Ecco la tua nuova chiave di recupero. Scrivila su carta e conservala in un luogo sicuro:",
+"Esta es tu nueva clave de recuperación. Escríbela en papel y guárdala en un lugar seguro:",
+"Hier ist Ihr neuer Wiederherstellungsschlüssel. Schreiben Sie ihn auf Papier und bewahren Sie ihn sicher auf:",
+"这是您的新恢复密钥。请抄在纸上并妥善保管："
+],
+"La clé n'a pas pu être créée.": [
+"The key could not be created.",
+"Non è stato possibile creare la chiave.",
+"No se ha podido crear la clave.",
+"Der Schlüssel konnte nicht erstellt werden.",
+"无法创建密钥。"
+],
+"Outil de sécurité introuvable ({e}).": [
+"Security tool not found ({e}).",
+"Strumento di sicurezza non trovato ({e}).",
+"No se encuentra la herramienta de seguridad ({e}).",
+"Sicherheitswerkzeug nicht gefunden ({e}).",
+"找不到安全工具（{e}）。"
+],
+"L'opération a échoué.": [
+"The operation failed.",
+"L'operazione non è riuscita.",
+"La operación ha fallado.",
+"Der Vorgang ist fehlgeschlagen.",
+"操作失败。"
+],
+"{n} %": [
+"{n}%",
+"{n}%",
+"{n} %",
+"{n} %",
+"{n}%"
+],
+"Le réseau ne répond pas. Réessayez plus près de la box.": [
+"The network is not responding. Try again closer to the router.",
+"La rete non risponde. Riprova più vicino al modem.",
+"La red no responde. Vuelve a intentarlo más cerca del router.",
+"Das Netzwerk antwortet nicht. Versuchen Sie es näher am Router.",
+"网络没有响应。请靠近路由器后重试。"
+],
+"Connexion impossible : {e}": [
+"Unable to connect: {e}",
+"Connessione impossibile: {e}",
+"No se puede conectar: {e}",
+"Verbindung nicht möglich: {e}",
+"无法连接：{e}"
+],
+"Se connecter": [
+"Connect",
+"Connetti",
+"Conectar",
+"Verbinden",
+"连接"
+],
+"Activation du Wi-Fi…": [
+"Turning Wi-Fi on…",
+"Attivazione del Wi-Fi…",
+"Activando el Wi-Fi…",
+"WLAN wird eingeschaltet…",
+"正在开启 Wi-Fi…"
+],
+"Désactivation du Wi-Fi…": [
+"Turning Wi-Fi off…",
+"Disattivazione del Wi-Fi…",
+"Desactivando el Wi-Fi…",
+"WLAN wird ausgeschaltet…",
+"正在关闭 Wi-Fi…"
+],
+"Recherche des réseaux…": [
+"Looking for networks…",
+"Ricerca delle reti…",
+"Buscando redes…",
+"Suche nach Netzwerken…",
+"正在搜索网络…"
+],
+"Le gestionnaire de réseau n'est pas installé.": [
+"The network manager is not installed.",
+"Il gestore di rete non è installato.",
+"El gestor de red no está instalado.",
+"Die Netzwerkverwaltung ist nicht installiert.",
+"未安装网络管理器。"
+],
+"Aucune carte Wi-Fi détectée sur cet ordinateur.": [
+"No Wi-Fi card detected on this computer.",
+"Nessuna scheda Wi-Fi rilevata su questo computer.",
+"No se ha detectado ninguna tarjeta Wi-Fi en este ordenador.",
+"Keine WLAN-Karte auf diesem Computer erkannt.",
+"此电脑未检测到 Wi-Fi 网卡。"
+],
+"Le Wi-Fi est désactivé.": [
+"Wi-Fi is turned off.",
+"Il Wi-Fi è disattivato.",
+"El Wi-Fi está desactivado.",
+"WLAN ist ausgeschaltet.",
+"Wi-Fi 已关闭。"
+],
+"Aucun réseau trouvé à proximité.": [
+"No network found nearby.",
+"Nessuna rete trovata nelle vicinanze.",
+"No se ha encontrado ninguna red cercana.",
+"Kein Netzwerk in der Nähe gefunden.",
+"附近未找到网络。"
+],
+"🔒": [
+"🔒",
+"🔒",
+"🔒",
+"🔒",
+"🔒"
+],
+"Signal : {n}": [
+"Signal: {n}",
+"Segnale: {n}",
+"Señal: {n}",
+"Signal: {n}",
+"信号：{n}"
+],
+"Mot de passe pour « {nom} »": [
+"Password for “{nom}”",
+"Password per «{nom}»",
+"Contraseña de «{nom}»",
+"Passwort für „{nom}“",
+"“{nom}”的密码"
+],
+"Connexion à « {nom} »…": [
+"Connecting to “{nom}”…",
+"Connessione a «{nom}»…",
+"Conectando a «{nom}»…",
+"Verbindung mit „{nom}“…",
+"正在连接“{nom}”…"
+],
+"Connecté à « {nom} ».": [
+"Connected to “{nom}”.",
+"Connesso a «{nom}».",
+"Conectado a «{nom}».",
+"Mit „{nom}“ verbunden.",
+"已连接到“{nom}”。"
+],
+"Mot de passe incorrect. Réessayez.": [
+"Incorrect password. Try again.",
+"Password errata. Riprova.",
+"Contraseña incorrecta. Vuelve a intentarlo.",
+"Falsches Passwort. Versuchen Sie es erneut.",
+"密码错误，请重试。"
+],
+"Aucun disque interne d'au moins 32 Go n'a été trouvé.": [
+"No internal disk of at least 32 GB was found.",
+"Non è stato trovato alcun disco interno di almeno 32 GB.",
+"No se ha encontrado ningún disco interno de al menos 32 GB.",
+"Kein internes Laufwerk mit mindestens 32 GB gefunden.",
+"未找到至少 32 GB 的内置磁盘。"
+],
+"Aucun SoleOS installé n'a été trouvé sur cet ordinateur.": [
+"No installed SoleOS was found on this computer.",
+"Non è stato trovato alcun SoleOS installato su questo computer.",
+"No se ha encontrado ningún SoleOS instalado en este ordenador.",
+"Auf diesem Computer wurde kein installiertes SoleOS gefunden.",
+"此电脑上未找到已安装的 SoleOS。"
+],
+"Le chiffrement des données a échoué.": [
+"Data encryption failed.",
+"La cifratura dei dati non è riuscita.",
+"El cifrado de los datos ha fallado.",
+"Die Datenverschlüsselung ist fehlgeschlagen.",
+"数据加密失败。"
+],
+"Ouverture des données chiffrées impossible.": [
+"Unable to open the encrypted data.",
+"Impossibile aprire i dati cifrati.",
+"No se pueden abrir los datos cifrados.",
+"Die verschlüsselten Daten können nicht geöffnet werden.",
+"无法打开加密数据。"
+],
+"Impossible de trouver le système SoleOS d'origine.": [
+"Unable to find the original SoleOS system.",
+"Impossibile trovare il sistema SoleOS originale.",
+"No se encuentra el sistema SoleOS original.",
+"Das ursprüngliche SoleOS-System wurde nicht gefunden.",
+"找不到 SoleOS 原始系统。"
+],
+"Lecture du système d'origine impossible.": [
+"Unable to read the original system.",
+"Impossibile leggere il sistema originale.",
+"No se puede leer el sistema original.",
+"Das ursprüngliche System kann nicht gelesen werden.",
+"无法读取原始系统。"
+],
+"Montage du système impossible.": [
+"Unable to mount the system.",
+"Impossibile montare il sistema.",
+"No se puede montar el sistema.",
+"Das System kann nicht eingebunden werden.",
+"无法挂载系统。"
+],
+"La copie des fichiers a échoué.": [
+"Copying the files failed.",
+"La copia dei file non è riuscita.",
+"La copia de los archivos ha fallado.",
+"Das Kopieren der Dateien ist fehlgeschlagen.",
+"复制文件失败。"
+],
+"Montage des données impossible.": [
+"Unable to mount the data.",
+"Impossibile montare i dati.",
+"No se pueden montar los datos.",
+"Die Daten können nicht eingebunden werden.",
+"无法挂载数据。"
+],
+"Noyau introuvable.": [
+"Kernel not found.",
+"Kernel non trovato.",
+"No se encuentra el núcleo.",
+"Kernel nicht gefunden.",
+"找不到内核。"
+],
+"Création du compte impossible.": [
+"Unable to create the account.",
+"Impossibile creare l'account.",
+"No se puede crear la cuenta.",
+"Das Konto kann nicht erstellt werden.",
+"无法创建账户。"
+],
+"Préparation du démarrage impossible (initramfs).": [
+"Unable to prepare the startup (initramfs).",
+"Impossibile preparare l'avvio (initramfs).",
+"No se puede preparar el arranque (initramfs).",
+"Der Start kann nicht vorbereitet werden (initramfs).",
+"无法准备启动（initramfs）。"
+],
+"Montage de la partition de démarrage impossible.": [
+"Unable to mount the boot partition.",
+"Impossibile montare la partizione di avvio.",
+"No se puede montar la partición de arranque.",
+"Die Startpartition kann nicht eingebunden werden.",
+"无法挂载启动分区。"
+],
+"Montage EFI impossible.": [
+"Unable to mount EFI.",
+"Impossibile montare EFI.",
+"No se puede montar EFI.",
+"EFI kann nicht eingebunden werden.",
+"无法挂载 EFI。"
+],
+"Installation du démarrage (UEFI) impossible.": [
+"Unable to install the startup (UEFI).",
+"Impossibile installare l'avvio (UEFI).",
+"No se puede instalar el arranque (UEFI).",
+"Der Start kann nicht installiert werden (UEFI).",
+"无法安装启动程序（UEFI）。"
+],
+"Installation du démarrage (BIOS) impossible.": [
+"Unable to install the startup (BIOS).",
+"Impossibile installare l'avvio (BIOS).",
+"No se puede instalar el arranque (BIOS).",
+"Der Start kann nicht installiert werden (BIOS).",
+"无法安装启动程序（BIOS）。"
+],
+"Écriture du menu de démarrage impossible.": [
+"Unable to write the boot menu.",
+"Impossibile scrivere il menu di avvio.",
+"No se puede escribir el menú de arranque.",
+"Das Startmenü kann nicht geschrieben werden.",
+"无法写入启动菜单。"
+],
+"Menu de démarrage incomplet.": [
+"Incomplete boot menu.",
+"Menu di avvio incompleto.",
+"Menú de arranque incompleto.",
+"Unvollständiges Startmenü.",
+"启动菜单不完整。"
+],
+"Montage de la copie d'origine impossible.": [
+"Unable to mount the original copy.",
+"Impossibile montare la copia originale.",
+"No se puede montar la copia original.",
+"Die Originalkopie kann nicht eingebunden werden.",
+"无法挂载原始副本。"
+],
+"Fichiers d'origine introuvables sur la clé.": [
+"Original files not found on the USB key.",
+"File originali non trovati sulla chiavetta.",
+"No se encuentran los archivos originales en la memoria USB.",
+"Originaldateien auf dem USB-Stick nicht gefunden.",
+"U 盘上找不到原始文件。"
+],
+"Copie d'origine impossible.": [
+"Unable to make the original copy.",
+"Impossibile creare la copia originale.",
+"No se puede crear la copia original.",
+"Die Originalkopie kann nicht erstellt werden.",
+"无法创建原始副本。"
+],
+"Copie d'origine impossible (espace ?).": [
+"Unable to make the original copy (space?).",
+"Impossibile creare la copia originale (spazio?).",
+"No se puede crear la copia original (¿espacio?).",
+"Die Originalkopie kann nicht erstellt werden (Speicherplatz?).",
+"无法创建原始副本（空间不足？）。"
+],
+"Ce disque est celui de la clé ou du système en cours : opération refusée.": [
+"This disk is the USB key or the running system: operation refused.",
+"Questo disco è la chiavetta o il sistema in uso: operazione rifiutata.",
+"Este disco es la memoria USB o el sistema en uso: operación rechazada.",
+"Dieses Laufwerk ist der USB-Stick oder das laufende System: Vorgang abgelehnt.",
+"此磁盘是 U 盘或正在运行的系统：操作被拒绝。"
+],
+"L'installation doit être lancée en administrateur.": [
+"The installation must be run as administrator.",
+"L'installazione deve essere avviata come amministratore.",
+"La instalación debe ejecutarse como administrador.",
+"Die Installation muss als Administrator gestartet werden.",
+"必须以管理员身份运行安装。"
+],
+"Disque introuvable : {disque}": [
+"Disk not found: {disque}",
+"Disco non trovato: {disque}",
+"Disco no encontrado: {disque}",
+"Laufwerk nicht gefunden: {disque}",
+"找不到磁盘：{disque}"
+],
+"Ce disque est trop petit (32 Go au minimum).": [
+"This disk is too small (32 GB minimum).",
+"Questo disco è troppo piccolo (minimo 32 GB).",
+"Este disco es demasiado pequeño (32 GB como mínimo).",
+"Dieses Laufwerk ist zu klein (mindestens 32 GB).",
+"此磁盘太小（至少需要 32 GB）。"
+],
+"Préparation du disque": [
+"Preparing the disk",
+"Preparazione del disco",
+"Preparando el disco",
+"Laufwerk wird vorbereitet",
+"正在准备磁盘"
+],
+"Le disque n'a pas pu être effacé.": [
+"The disk could not be erased.",
+"Non è stato possibile cancellare il disco.",
+"No se ha podido borrar el disco.",
+"Das Laufwerk konnte nicht gelöscht werden.",
+"无法擦除磁盘。"
+],
+"Le partitionnement a échoué.": [
+"Partitioning failed.",
+"Il partizionamento non è riuscito.",
+"El particionado ha fallado.",
+"Die Partitionierung ist fehlgeschlagen.",
+"分区失败。"
+],
+"Les nouvelles partitions ne sont pas apparues.": [
+"The new partitions did not appear.",
+"Le nuove partizioni non sono comparse.",
+"Las nuevas particiones no han aparecido.",
+"Die neuen Partitionen sind nicht erschienen.",
+"新分区没有出现。"
+],
+"Formatage EFI impossible.": [
+"Unable to format EFI.",
+"Impossibile formattare EFI.",
+"No se puede formatear EFI.",
+"EFI kann nicht formatiert werden.",
+"无法格式化 EFI。"
+],
+"Formatage impossible (démarrage).": [
+"Unable to format (boot).",
+"Formattazione impossibile (avvio).",
+"No se puede formatear (arranque).",
+"Formatieren nicht möglich (Start).",
+"无法格式化（启动）。"
+],
+"Formatage impossible (A).": [
+"Unable to format (A).",
+"Formattazione impossibile (A).",
+"No se puede formatear (A).",
+"Formatieren nicht möglich (A).",
+"无法格式化（A）。"
+],
+"Formatage impossible (B).": [
+"Unable to format (B).",
+"Formattazione impossibile (B).",
+"No se puede formatear (B).",
+"Formatieren nicht möglich (B).",
+"无法格式化（B）。"
+],
+"Formatage impossible (usine).": [
+"Unable to format (factory).",
+"Formattazione impossibile (originale).",
+"No se puede formatear (fábrica).",
+"Formatieren nicht möglich (Werkszustand).",
+"无法格式化（出厂）。"
+],
+"Formatage impossible (données).": [
+"Unable to format (data).",
+"Formattazione impossibile (dati).",
+"No se puede formatear (datos).",
+"Formatieren nicht möglich (Daten).",
+"无法格式化（数据）。"
+],
+"Copie de SoleOS sur l'ordinateur": [
+"Copying SoleOS to the computer",
+"Copia di SoleOS sul computer",
+"Copiando SoleOS en el ordenador",
+"SoleOS wird auf den Computer kopiert",
+"正在将 SoleOS 复制到电脑"
+],
+"Création de la copie de secours": [
+"Creating the backup copy",
+"Creazione della copia di sicurezza",
+"Creando la copia de seguridad",
+"Sicherheitskopie wird erstellt",
+"正在创建备份副本"
+],
+"Installation du démarrage": [
+"Installing the startup",
+"Installazione dell'avvio",
+"Instalando el arranque",
+"Start wird installiert",
+"正在安装启动程序"
+],
+"Finalisation": [
+"Finishing",
+"Completamento",
+"Finalizando",
+"Abschluss",
+"正在完成"
+],
+"La réparation doit être lancée en administrateur.": [
+"The repair must be run as administrator.",
+"La riparazione deve essere avviata come amministratore.",
+"La reparación debe ejecutarse como administrador.",
+"Die Reparatur muss als Administrator gestartet werden.",
+"必须以管理员身份运行修复。"
+],
+"Mode de réparation inconnu.": [
+"Unknown repair mode.",
+"Modalità di riparazione sconosciuta.",
+"Modo de reparación desconocido.",
+"Unbekannter Reparaturmodus.",
+"未知的修复模式。"
+],
+"Ce disque ne contient pas un SoleOS complet.": [
+"This disk does not contain a complete SoleOS.",
+"Questo disco non contiene un SoleOS completo.",
+"Este disco no contiene un SoleOS completo.",
+"Dieses Laufwerk enthält kein vollständiges SoleOS.",
+"此磁盘不包含完整的 SoleOS。"
+],
+"Préparation": [
+"Preparing",
+"Preparazione",
+"Preparando",
+"Vorbereitung",
+"正在准备"
+],
+"Remise à neuf du système impossible.": [
+"Unable to restore the system as new.",
+"Impossibile rimettere a nuovo il sistema.",
+"No se puede restaurar el sistema.",
+"Das System kann nicht neu hergestellt werden.",
+"无法将系统恢复如新。"
+],
+"Effacement des données": [
+"Erasing the data",
+"Cancellazione dei dati",
+"Borrando los datos",
+"Daten werden gelöscht",
+"正在清除数据"
+],
+"Effacement des données impossible.": [
+"Unable to erase the data.",
+"Impossibile cancellare i dati.",
+"No se pueden borrar los datos.",
+"Die Daten können nicht gelöscht werden.",
+"无法清除数据。"
+],
+"Remise à neuf de SoleOS": [
+"Restoring SoleOS as new",
+"Ripristino di SoleOS",
+"Restaurando SoleOS",
+"SoleOS wird neu hergestellt",
+"正在将 SoleOS 恢复如新"
+],
+"Remise à zéro du navigateur": [
+"Resetting the browser",
+"Azzeramento del browser",
+"Restableciendo el navegador",
+"Browser wird zurückgesetzt",
+"正在重置浏览器"
+],
+"Disque non précisé": [
+"Disk not specified",
+"Disco non specificato",
+"Disco no indicado",
+"Laufwerk nicht angegeben",
+"未指定磁盘"
+],
+"Mode ou disque non précisé": [
+"Mode or disk not specified",
+"Modalità o disco non specificati",
+"Modo o disco no indicado",
+"Modus oder Laufwerk nicht angegeben",
+"未指定模式或磁盘"
+],
+"Aucun clavier trouvé. Clavier Bluetooth : appuyez sur une touche, ou mettez-le en mode association.": [
+"No keyboard found. Bluetooth keyboard: press a key, or put it in pairing mode.",
+"Nessuna tastiera trovata. Tastiera Bluetooth: premi un tasto o mettila in modalità associazione.",
+"No se ha encontrado ningún teclado. Teclado Bluetooth: pulsa una tecla o ponlo en modo vinculación.",
+"Keine Tastatur gefunden. Bluetooth-Tastatur: Drücken Sie eine Taste oder versetzen Sie sie in den Kopplungsmodus.",
+"未找到键盘。蓝牙键盘：请按任意键，或将其置于配对模式。"
+],
+"Entrez votre code": [
+"Enter your code",
+"Inserisci il tuo codice",
+"Introduce tu código",
+"Geben Sie Ihren Code ein",
+"请输入密码"
+],
+"Entrez votre mot de passe": [
+"Enter your password",
+"Inserisci la tua password",
+"Introduce tu contraseña",
+"Geben Sie Ihr Passwort ein",
+"请输入密码"
+],
+"Vérification…": [
+"Checking…",
+"Verifica…",
+"Comprobando…",
+"Wird geprüft…",
+"正在验证…"
+],
+"Code incorrect. Pour taper les chiffres : touche Maj (⇧) ou pavé numérique.": [
+"Incorrect code. To type digits: Shift key (⇧) or numeric keypad.",
+"Codice errato. Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico.",
+"Código incorrecto. Para escribir las cifras: tecla Mayús (⇧) o teclado numérico.",
+"Falscher Code. Zum Eingeben der Ziffern: Umschalttaste (⇧) oder Ziffernblock.",
+"密码错误。输入数字：按 Shift 键（⇧）或使用数字小键盘。"
+],
+"Trop d'essais : patientez quelques minutes, ou tapez votre clé de secours.": [
+"Too many attempts: wait a few minutes, or type your recovery key.",
+"Troppi tentativi: attendi qualche minuto o digita la chiave di recupero.",
+"Demasiados intentos: espera unos minutos o escribe tu clave de recuperación.",
+"Zu viele Versuche: Warten Sie einige Minuten oder geben Sie Ihren Wiederherstellungsschlüssel ein.",
+"尝试次数过多：请等待几分钟，或输入恢复密钥。"
+],
+"Code incorrect. Code oublié ? Tapez votre clé de secours à la place.": [
+"Incorrect code. Forgot your code? Type your recovery key instead.",
+"Codice errato. Hai dimenticato il codice? Digita invece la chiave di recupero.",
+"Código incorrecto. ¿Has olvidado tu código? Escribe en su lugar tu clave de recuperación.",
+"Falscher Code. Code vergessen? Geben Sie stattdessen Ihren Wiederherstellungsschlüssel ein.",
+"密码错误。忘记密码了？请改为输入恢复密钥。"
+],
+"Mot de passe incorrect. Mot de passe oublié ? Tapez votre clé de secours à la place.": [
+"Incorrect password. Forgot your password? Type your recovery key instead.",
+"Password errata. Hai dimenticato la password? Digita invece la chiave di recupero.",
+"Contraseña incorrecta. ¿Has olvidado tu contraseña? Escribe en su lugar tu clave de recuperación.",
+"Falsches Passwort. Passwort vergessen? Geben Sie stattdessen Ihren Wiederherstellungsschlüssel ein.",
+"密码错误。忘记密码了？请改为输入恢复密钥。"
+],
+"Code incorrect, réessayez.": [
+"Incorrect code, try again.",
+"Codice errato, riprova.",
+"Código incorrecto, vuelve a intentarlo.",
+"Falscher Code, versuchen Sie es erneut.",
+"密码错误，请重试。"
+],
+"Mot de passe incorrect, réessayez.": [
+"Incorrect password, try again.",
+"Password errata, riprova.",
+"Contraseña incorrecta, vuelve a intentarlo.",
+"Falsches Passwort, versuchen Sie es erneut.",
+"密码错误，请重试。"
+],
+"Les données ne sont pas chiffrées sur cet ordinateur.": [
+"The data is not encrypted on this computer.",
+"I dati non sono cifrati su questo computer.",
+"Los datos no están cifrados en este ordenador.",
+"Die Daten auf diesem Computer sind nicht verschlüsselt.",
+"此电脑上的数据未加密。"
+],
+"Les données ne sont pas ouvertes.": [
+"The data is not open.",
+"I dati non sono aperti.",
+"Los datos no están abiertos.",
+"Die Daten sind nicht geöffnet.",
+"数据未打开。"
+],
+"Clé interne introuvable.": [
+"Internal key not found.",
+"Chiave interna non trovata.",
+"No se encuentra la clave interna.",
+"Interner Schlüssel nicht gefunden.",
+"找不到内部密钥。"
+],
+"Partition des données introuvable.": [
+"Data partition not found.",
+"Partizione dei dati non trovata.",
+"No se encuentra la partición de datos.",
+"Datenpartition nicht gefunden.",
+"找不到数据分区。"
+],
+"L'ancien code n'a pas pu être retiré.": [
+"The old code could not be removed.",
+"Non è stato possibile rimuovere il vecchio codice.",
+"No se ha podido quitar el código anterior.",
+"Der alte Code konnte nicht entfernt werden.",
+"无法移除旧密码。"
+],
+"La puce de sécurité est bloquée après trop d'essais de code. Réessayez dans quelques minutes (ou plus tard).": [
+"The security chip is locked after too many code attempts. Try again in a few minutes (or later).",
+"Il chip di sicurezza è bloccato dopo troppi tentativi. Riprova tra qualche minuto (o più tardi).",
+"El chip de seguridad está bloqueado tras demasiados intentos. Vuelve a intentarlo dentro de unos minutos (o más tarde).",
+"Der Sicherheitschip ist nach zu vielen Code-Versuchen gesperrt. Versuchen Sie es in einigen Minuten (oder später) erneut.",
+"尝试次数过多，安全芯片已锁定。请几分钟后（或稍后）再试。"
+],
+"La puce de sécurité n'a pas accepté le code.": [
+"The security chip did not accept the code.",
+"Il chip di sicurezza non ha accettato il codice.",
+"El chip de seguridad no ha aceptado el código.",
+"Der Sicherheitschip hat den Code nicht akzeptiert.",
+"安全芯片未接受此密码。"
+],
+"Impossible de remplacer l'ancien mot de passe.": [
+"Unable to replace the old password.",
+"Impossibile sostituire la vecchia password.",
+"No se puede sustituir la contraseña anterior.",
+"Das alte Passwort kann nicht ersetzt werden.",
+"无法替换旧密码。"
+],
+"Le mot de passe n'a pas pu être enregistré.": [
+"The password could not be saved.",
+"Non è stato possibile salvare la password.",
+"No se ha podido guardar la contraseña.",
+"Das Passwort konnte nicht gespeichert werden.",
+"无法保存密码。"
+],
+"Le code doit contenir exactement {n} chiffres.": [
+"The code must contain exactly {n} digits.",
+"Il codice deve contenere esattamente {n} cifre.",
+"El código debe tener exactamente {n} cifras.",
+"Der Code muss genau {n} Ziffern enthalten.",
+"密码必须正好是 {n} 位数字。"
+],
+"Le mot de passe doit contenir au moins {n} caractères.": [
+"The password must contain at least {n} characters.",
+"La password deve contenere almeno {n} caratteri.",
+"La contraseña debe tener al menos {n} caracteres.",
+"Das Passwort muss mindestens {n} Zeichen enthalten.",
+"密码至少需要 {n} 个字符。"
+],
+"La clé de secours existe déjà (Réglages → Nouvelle clé de secours).": [
+"The recovery key already exists (Settings → New recovery key).",
+"La chiave di recupero esiste già (Impostazioni → Nuova chiave di recupero).",
+"La clave de recuperación ya existe (Ajustes → Nueva clave de recuperación).",
+"Der Wiederherstellungsschlüssel existiert bereits (Einstellungen → Neuer Wiederherstellungsschlüssel).",
+"恢复密钥已存在（设置 → 新的恢复密钥）。"
+],
+"Impossible de remplacer l'ancienne clé de secours.": [
+"Unable to replace the old recovery key.",
+"Impossibile sostituire la vecchia chiave di recupero.",
+"No se puede sustituir la clave de recuperación anterior.",
+"Der alte Wiederherstellungsschlüssel kann nicht ersetzt werden.",
+"无法替换旧的恢复密钥。"
+],
+"Pour changer de code, utilisez Réglages → Changer mon code.": [
+"To change the code, use Settings → Change my code.",
+"Per cambiare codice, usa Impostazioni → Cambia il mio codice.",
+"Para cambiar el código, usa Ajustes → Cambiar mi código.",
+"Um den Code zu ändern, nutzen Sie Einstellungen → Meinen Code ändern.",
+"要更改密码，请使用 设置 → 更改密码。"
+],
+"La clé de secours doit d'abord être créée.": [
+"The recovery key must be created first.",
+"Prima bisogna creare la chiave di recupero.",
+"Primero hay que crear la clave de recuperación.",
+"Zuerst muss der Wiederherstellungsschlüssel erstellt werden.",
+"必须先创建恢复密钥。"
+],
+"Aucun code n'est encore choisi.": [
+"No code has been chosen yet.",
+"Nessun codice è ancora stato scelto.",
+"Todavía no se ha elegido ningún código.",
+"Es wurde noch kein Code gewählt.",
+"尚未设置密码。"
+],
+"Code actuel incorrect.": [
+"Incorrect current code.",
+"Codice attuale errato.",
+"Código actual incorrecto.",
+"Aktueller Code falsch.",
+"当前密码错误。"
+],
+"Code incorrect.": [
+"Incorrect code.",
+"Codice errato.",
+"Código incorrecto.",
+"Falscher Code.",
+"密码错误。"
+],
+"Partition non précisée.": [
+"Partition not specified.",
+"Partizione non specificata.",
+"Partición no indicada.",
+"Partition nicht angegeben.",
+"未指定分区。"
+],
+"SoleOS (autre version)": [
+"SoleOS (other version)",
+"SoleOS (altra versione)",
+"SoleOS (otra versión)",
+"SoleOS (andere Version)",
+"SoleOS（其他版本）"
+],
+"Langue inconnue.": [
+"Unknown language.",
+"Lingua sconosciuta.",
+"Idioma desconocido.",
+"Unbekannte Sprache.",
+"未知语言。"
+],
+"Clavier inconnu.": [
+"Unknown keyboard.",
+"Tastiera sconosciuta.",
+"Teclado desconocido.",
+"Unbekannte Tastatur.",
+"未知键盘。"
+]
+}

@@ -1,0 +1,3 @@
+# SoleOS : l'essai du son (Réglages → Son) règle la puce son ; le programme n'accepte que
+# des numéros de recettes connues (voir /usr/local/sbin/flashos-son)
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/flashos-son etat, /usr/local/sbin/flashos-son essayer *, /usr/local/sbin/flashos-son annuler, /usr/local/sbin/flashos-son garder *, /usr/local/sbin/flashos-son oublier, /usr/local/sbin/flashos-son appliquer

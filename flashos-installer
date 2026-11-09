@@ -1,0 +1,594 @@
+#!/bin/bash
+# =====================================================================
+#  SoleOS – moteur d'installation et de réparation (lancé en root)
+#  © 2026 GDH – créé par Giuseppe D'Arco – LicenseRef-SoleOS
+#
+#    flashos-installer --detecter
+#        → « DISQUE|/dev/xxx|modèle|taille en octets|nombre de disques » ou « AUCUN|raison »
+#    flashos-installer --installer /dev/xxx
+#    flashos-installer --detecter-reparation
+#        → « DISQUE|/dev/xxx|modèle|taille|1 » (le disque SoleOS) ou « AUCUN|raison »
+#    flashos-installer --reparer systeme|tout /dev/xxx
+#        systeme : système remis à neuf, fichiers et réglages conservés (navigateur remis à zéro).
+#                  Données chiffrées : code ou clé de secours sur l'entrée standard.
+#        tout    : retour au premier jour, tout est effacé
+#
+#  La partition des données est chiffrée (LUKS2). Jusqu'au premier démarrage, elle s'ouvre
+#  avec une clé provisoire (partition de démarrage) ; l'assistant de bienvenue la remplace
+#  par le code de l'utilisateur et une clé de secours (voir flashos-securite).
+#
+#  Sortie : lignes « ETAPE|texte », « PROGRES|0-100 », puis « TERMINE » ou « ERREUR|texte ».
+#  Journal : /var/log/flashos-installation.log
+#
+#  Découpage du disque :
+#    [EFI 512 Mo | BIOS 1 Mo] · DEMARRAGE 1 Go · A · B · USINE 6 Go · DONNEES (le reste)
+# =====================================================================
+set -uo pipefail
+export LC_ALL=C PATH="${FLASHOS_PATH_TEST:+$FLASHOS_PATH_TEST:}/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Messages dans la langue choisie pour l'ordinateur (gettext, domaine « flashos ») :
+# t "texte français" [nom valeur]… remplace aussi {nom} par la valeur
+FLASHOS_LANGUE_CODE="$(cat /run/flashos/langue 2>/dev/null || true)"
+t() {
+  local m="$1" loc="" lang=""; shift
+  case "$FLASHOS_LANGUE_CODE" in
+    en) loc=en_US.UTF-8 lang=en ;; it) loc=it_IT.UTF-8 lang=it ;; es) loc=es_ES.UTF-8 lang=es ;;
+    de) loc=de_DE.UTF-8 lang=de ;; zh) loc=zh_CN.UTF-8 lang=zh_CN ;;
+  esac
+  if [ -n "$loc" ] && command -v gettext >/dev/null 2>&1; then
+    m="$(LC_ALL="$loc" LANGUAGE="$lang" TEXTDOMAIN=flashos gettext -- "$m" 2>/dev/null || printf '%s' "$m")"
+  fi
+  while [ $# -ge 2 ]; do m="${m//\{$1\}/$2}"; shift 2; done
+  printf '%s' "$m"
+}
+
+# Réglables pour les tests (valeurs normales sur la clé SoleOS)
+SOURCE="${FLASHOS_RACINE_SOURCE:-/run/live/rootfs/filesystem.squashfs}"
+SUPPORT="${FLASHOS_SUPPORT:-/run/live/medium}"
+CIBLE="${FLASHOS_CIBLE:-/mnt/flashos-cible}"
+JOURNAL="${FLASHOS_JOURNAL:-/var/log/flashos-installation.log}"
+GO=$((1000 * 1000 * 1000))
+# Dossier de la copie d'origine sur le disque. Surtout pas « live » : la clé USB
+# trouverait sinon ce dossier sur le disque interne et démarrerait dessus.
+DOSSIER_USINE=flashos-usine
+
+# Dossier des fichiers d'origine (noyau, image du système) sur le support de démarrage :
+# « live » sur la clé, « flashos-usine » (ou « live » pour les anciennes installations) en réparation
+dossier_live() {
+  local d
+  for d in "$SUPPORT/live" "$SUPPORT/$DOSSIER_USINE"; do
+    ls "$d"/*.squashfs >/dev/null 2>&1 && { echo "$d"; return; }
+  done
+  echo "$SUPPORT/live"
+}
+TAILLE_MINI=$((32 * GO))
+
+etape()   { echo "ETAPE|$1"; echo "=== $(date '+%T') $1" >> "$JOURNAL"; }
+progres() { echo "PROGRES|$1"; }
+echec()   { echo "ERREUR|$1"; echo "!!! ERREUR : $1" >> "$JOURNAL"; nettoyer; exit 1; }
+lancer()  { echo "+ $*" >> "$JOURNAL"; "$@" >> "$JOURNAL" 2>&1; }
+
+mode_demarrage() {
+  if [ -n "${FLASHOS_MODE:-}" ]; then echo "$FLASHOS_MODE"
+  elif [ -d /sys/firmware/efi ]; then echo uefi
+  else echo bios; fi
+}
+
+# Disque(s) qui portent un point de montage (clé SoleOS, système en cours)
+disque_de() {
+  local src; src="$(findmnt -no SOURCE "$1" 2>/dev/null | head -1)"
+  [ -n "$src" ] || return 0
+  lsblk -no PKNAME "$src" 2>/dev/null | head -1
+  lsblk -dno NAME "$src" 2>/dev/null | head -1
+}
+
+partition_nommee() {  # <disque> <nom>
+  lsblk -lnpo NAME,PARTLABEL "$1" 2>/dev/null | awk -v n="$2" '$2==n {print $1; exit}'
+}
+
+modele_de() {
+  local m; m="$(lsblk -dno MODEL "/dev/${1#/dev/}" 2>/dev/null)"
+  m="${m:-Disque interne}"; echo "$m" | sed 's/[[:space:]]\+/ /g; s/^ //; s/ $//; s/|/-/g'
+}
+
+# ---------------------------------------------------------------------
+detecter() {
+  local exclus=" $(disque_de "$SUPPORT" | tr '\n' ' ') $(disque_de / | tr '\n' ' ') "
+  local meilleur="" taille_max=0 nb=0
+  local NAME TYPE RM RO SIZE TRAN
+  while read -r NAME TYPE RM RO SIZE TRAN; do
+    [ "$TYPE" = disk ] || continue
+    [ "$RM" = 0 ] && [ "$RO" = 0 ] || continue
+    [ "$TRAN" = usb ] && continue
+    case "$NAME" in loop*|zram*|sr*|ram*|fd*|nbd*|mmcblk*boot*) continue ;; esac
+    case "$exclus" in *" $NAME "*) continue ;; esac
+    case "$SIZE" in ''|*[!0-9]*) continue ;; esac
+    [ "$SIZE" -ge "$TAILLE_MINI" ] || continue
+    nb=$((nb + 1))
+    if [ "$SIZE" -gt "$taille_max" ]; then taille_max=$SIZE; meilleur=$NAME; fi
+  done < <(lsblk -dbnr -o NAME,TYPE,RM,RO,SIZE,TRAN 2>/dev/null)
+  if [ -z "$meilleur" ]; then
+    echo "AUCUN|$(t "Aucun disque interne d'au moins 32 Go n'a été trouvé.")"
+  else
+    echo "DISQUE|/dev/$meilleur|$(modele_de "$meilleur")|$taille_max|$nb"
+  fi
+}
+
+# En mode réparation, le système tourne depuis la copie d'origine du disque SoleOS
+detecter_reparation() {
+  local d; d="$(disque_de "$SUPPORT" | sed -n 1p)"
+  if [ -n "$d" ] && [ -n "$(partition_nommee "/dev/$d" FLASHOS-A)" ]; then
+    local code=""; besoin_code "/dev/$d" && code=CODE
+    echo "DISQUE|/dev/$d|$(modele_de "$d")|$(lsblk -dbno SIZE "/dev/$d")|1|$code"
+  else
+    echo "AUCUN|$(t "Aucun SoleOS installé n'a été trouvé sur cet ordinateur.")"
+  fi
+}
+
+# ---------------------------------------------------------------------
+nettoyer() {
+  # Préparation du démarrage encore en cours (installation interrompue) : on la laisse finir
+  [ -n "${INITRAMFS_PID:-}" ] && wait "$INITRAMFS_PID" 2>/dev/null
+  sync
+  for m in boot/efi flashos/demarrage home sys/firmware/efi/efivars sys proc dev/pts dev run ""; do
+    mountpoint -q "$CIBLE/$m" 2>/dev/null && umount "$CIBLE/$m" 2>/dev/null || umount -l "$CIBLE/$m" 2>/dev/null
+  done
+  for m in /mnt/flashos-usine; do mountpoint -q "$m" && umount -l "$m"; done
+  [ -n "${SOURCE_MONTEE:-}" ] && umount -l "$SOURCE_MONTEE" 2>/dev/null
+  [ -b /dev/mapper/$NOM_COFFRE ] && { udevadm settle 2>/dev/null; cryptsetup close $NOM_COFFRE 2>/dev/null; }
+  for f in "${CLE_PROV:-}" "${CLE_INTERNE:-}"; do [ -n "$f" ] && [ -f "$f" ] && { shred -u "$f" 2>/dev/null || rm -f "$f"; }; done
+  true
+}
+
+# --- Données chiffrées ----------------------------------------------------
+NOM_COFFRE=flashos-donnees
+CHIFFRE_UUID=""; CLE_PROV=""; CLE_INTERNE=""
+# Crée la partition chiffrée des données : clé provisoire (emplacement 0) et clé interne (1).
+# Résultat : $DONNEES = partition ouverte, prête à formater.
+creer_coffre() {  # <partition>
+  local pd="$1"
+  [ -b /dev/mapper/$NOM_COFFRE ] && cryptsetup close $NOM_COFFRE 2>/dev/null
+  mkdir -p /run/flashos-installation; chmod 700 /run/flashos-installation
+  CLE_PROV=/run/flashos-installation/cle-provisoire; CLE_INTERNE=/run/flashos-installation/cle-interne
+  head -c 64 /dev/urandom > "$CLE_PROV"; head -c 64 /dev/urandom > "$CLE_INTERNE"
+  chmod 400 "$CLE_PROV" "$CLE_INTERNE"
+  lancer cryptsetup luksFormat --type luks2 -q --label FlashOS-Donnees --pbkdf pbkdf2 --pbkdf-force-iterations 1000 \
+         --key-slot 0 --key-file "$CLE_PROV" "$pd" || echec "$(t "Le chiffrement des données a échoué.")"
+  lancer cryptsetup luksAddKey -q --pbkdf pbkdf2 --pbkdf-force-iterations 1000 --key-file "$CLE_PROV" \
+         --new-key-slot 1 "$pd" "$CLE_INTERNE" || echec "$(t "Le chiffrement des données a échoué.")"
+  lancer cryptsetup open --type luks2 --key-file "$CLE_PROV" --allow-discards "$pd" $NOM_COFFRE \
+    || echec "$(t "Ouverture des données chiffrées impossible.")"
+  CHIFFRE_UUID="$(cryptsetup luksUUID "$pd")"
+  DONNEES=/dev/mapper/$NOM_COFFRE
+}
+
+# Réparation : ouvre les données chiffrées existantes (clé provisoire si le premier démarrage
+# n'a pas eu lieu, sinon code ou clé de secours lu sur l'entrée standard)
+ouvrir_coffre() {  # <partition> <partition de démarrage>
+  local pd="$1" pdem="$2" res
+  [ -b /dev/mapper/$NOM_COFFRE ] && cryptsetup close $NOM_COFFRE 2>/dev/null
+  mkdir -p /mnt/flashos-demarrage
+  if mount -o ro "$pdem" /mnt/flashos-demarrage 2>/dev/null; then
+    local f=/mnt/flashos-demarrage/flashos/cle-provisoire
+    if [ -f "$f" ] && cryptsetup open --type luks2 --key-slot 0 --key-file "$f" --allow-discards "$pd" $NOM_COFFRE 2>/dev/null; then
+      umount /mnt/flashos-demarrage
+      CHIFFRE_UUID="$(cryptsetup luksUUID "$pd")"; DONNEES=/dev/mapper/$NOM_COFFRE; return 0
+    fi
+    umount /mnt/flashos-demarrage
+  fi
+  res="$(FLASHOS_CONF_CHIFFREMENT=/nonexistent /usr/local/sbin/flashos-securite ouvrir-disque "$pd")"
+  case "$res" in
+    OK*) ;;
+    *BLOQUE*) echo "ERREUR|BLOQUE"; echo "!!! code : puce bloquée" >> "$JOURNAL"; nettoyer; exit 3 ;;
+    *) echo "ERREUR|CODE"; echo "!!! code incorrect" >> "$JOURNAL"; nettoyer; exit 3 ;;
+  esac
+  CHIFFRE_UUID="$(cryptsetup luksUUID "$pd")"; DONNEES=/dev/mapper/$NOM_COFFRE
+}
+
+# Le code est-il nécessaire pour réparer ce disque ? (données chiffrées, premier démarrage passé)
+besoin_code() {  # <disque>
+  local pd pdem; pd="$(partition_nommee "$1" FLASHOS-DONNEES)"; pdem="$(partition_nommee "$1" FLASHOS-DEMARRAGE)"
+  cryptsetup isLuks "$pd" 2>/dev/null || return 1
+  mkdir -p /mnt/flashos-demarrage
+  if mount -o ro "$pdem" /mnt/flashos-demarrage 2>/dev/null; then
+    local p=1; [ -f /mnt/flashos-demarrage/flashos/cle-provisoire ] && p=0
+    umount /mnt/flashos-demarrage
+    [ $p = 1 ]; return
+  fi
+  return 0
+}
+
+preparer_source() {
+  if [ ! -d "$SOURCE/usr" ]; then
+    local sq; sq="$(ls "$(dossier_live)"/*.squashfs 2>/dev/null | head -1)"
+    [ -n "$sq" ] || echec "$(t "Impossible de trouver le système SoleOS d'origine.")"
+    SOURCE_MONTEE=/run/flashos-source; mkdir -p "$SOURCE_MONTEE"
+    mount -o ro,loop "$sq" "$SOURCE_MONTEE" >> "$JOURNAL" 2>&1 || echec "$(t "Lecture du système d'origine impossible.")"
+    SOURCE="$SOURCE_MONTEE"
+  fi
+}
+
+# Copie du système dans un emplacement (A) et réglages
+# installer_systeme <partition A> <partition données> <uuid EFI ou vide> <uuid démarrage> <début %> <fin %> <garder fichiers 0|1>
+installer_systeme() {
+  local pa="$1" pd="$2" uuid_efi="$3" uuid_dem="$4" p0="$5" p1="$6" garder="$7"
+  local uuid_a; uuid_a="$(blkid -s UUID -o value "$pa")"
+  mkdir -p "$CIBLE"; lancer mount "$pa" "$CIBLE" || echec "$(t "Montage du système impossible.")"
+
+  rsync -aHAX --numeric-ids --info=progress2 --no-inc-recursive \
+        --exclude='/proc/*' --exclude='/sys/*' --exclude='/dev/*' --exclude='/run/*' \
+        --exclude='/tmp/*' --exclude='/mnt/*' --exclude='/media/*' --exclude='/lost+found' \
+        --exclude='/home/*' \
+        "$SOURCE"/ "$CIBLE"/ 2>> "$JOURNAL" \
+    | tr '\r' '\n' | { dernier=-1; while read -r l; do
+        pc=$(echo "$l" | grep -o '[0-9]\+%' | head -1 | tr -d '%')
+        [ -n "$pc" ] || continue
+        v=$((p0 + pc * (p1 - p0) / 100))
+        [ "$v" -ne "$dernier" ] && { progres "$v"; dernier=$v; }
+      done; }
+  [ "${PIPESTATUS[0]}" -eq 0 ] || echec "$(t "La copie des fichiers a échoué.")"
+
+  # Système en lecture seule : mise à jour du cache des bibliothèques (ldconfig…) marquée comme faite,
+  # sinon elle serait refaite à chaque démarrage
+  touch "$CIBLE/etc/.updated" "$CIBLE/var/.updated"
+  for m in dev dev/pts proc sys run; do mkdir -p "$CIBLE/$m"; mount --bind "/$m" "$CIBLE/$m"; done
+  mkdir -p "$CIBLE/home" "$CIBLE/flashos/demarrage"
+  lancer mount "$pd" "$CIBLE/home" || echec "$(t "Montage des données impossible.")"
+
+  {
+    echo "# SoleOS (système en lecture seule : la racine est montée au démarrage)"
+    if [ -n "$CHIFFRE_UUID" ]; then
+      # Données chiffrées : ouvertes au démarrage par flashos-deverrouiller (code demandé à l'écran)
+      # Données chiffrées : ouvertes puis montées sur /home par flashos-deverrouiller, après le
+      # démarrage du Bluetooth (un clavier Bluetooth peut taper le code) ; la session l'attend.
+      echo "# /home : monté par flashos-deverrouiller (données chiffrées)"
+    else
+      echo "UUID=$(blkid -s UUID -o value "$pd")  /home  ext4  defaults,noatime,nosuid,nodev  0  2"
+    fi
+    echo "UUID=$uuid_dem  /flashos/demarrage  ext4  defaults,noatime,nosuid,nodev,noexec  0  2"
+    [ -n "$uuid_efi" ] && echo "UUID=$uuid_efi  /boot/efi  vfat  umask=0077,nofail  0  2"
+    [ -n "$CHIFFRE_UUID" ] || echo "/home/.flashos/reseaux  /etc/NetworkManager/system-connections  none  bind,nofail,x-systemd.requires-mounts-for=/home  0  0"
+    # Appareils Bluetooth associés : sur la partition de démarrage (lisible par root seul), pour
+    # qu'un clavier Bluetooth puisse taper le code avant l'ouverture des données
+    echo "/flashos/demarrage/bluetooth  /var/lib/bluetooth  none  bind,nofail,x-systemd.requires-mounts-for=/flashos/demarrage  0  0"
+    # Vitesse : profils AppArmor compilés gardés d'un démarrage à l'autre (le système est en
+    # lecture seule : sans cela, ils sont recompilés à chaque démarrage)
+    echo "/flashos/demarrage/apparmor  /var/cache/apparmor  none  bind,nofail,x-systemd.requires-mounts-for=/flashos/demarrage  0  0"
+  } > "$CIBLE/etc/fstab"
+  if [ -n "$CHIFFRE_UUID" ]; then printf 'UUID=%s\nMONTAGE=/home\n' "$CHIFFRE_UUID" > "$CIBLE/etc/flashos-chiffrement"
+  else rm -f "$CIBLE/etc/flashos-chiffrement"; fi
+  # Clé interne : rangée dans les données chiffrées (sert à changer le code)
+  if [ -n "$CLE_INTERNE" ] && [ -f "$CLE_INTERNE" ]; then
+    mkdir -p "$CIBLE/home/.flashos/securite"; chmod 700 "$CIBLE/home/.flashos" "$CIBLE/home/.flashos/securite"
+    install -m 400 "$CLE_INTERNE" "$CIBLE/home/.flashos/securite/cle-interne"
+  fi
+  echo soleos > "$CIBLE/etc/hostname"
+  printf '127.0.0.1\tlocalhost\n127.0.1.1\tsoleos\n::1\t\tlocalhost ip6-localhost ip6-loopback\n' > "$CIBLE/etc/hosts"
+  : > "$CIBLE/etc/machine-id"; rm -f "$CIBLE/var/lib/dbus/machine-id"
+
+  # Noyau : sur la clé, il est rangé à part
+  if ! ls "$CIBLE"/boot/vmlinuz-* >/dev/null 2>&1; then
+    local noyau version
+    noyau="$(ls "$(dossier_live)"/vmlinuz* 2>/dev/null | head -1)"
+    version="$(ls "$CIBLE/lib/modules" | sort -V | tail -1)"
+    [ -n "$noyau" ] && [ -n "$version" ] || echec "$(t "Noyau introuvable.")"
+    cp "$noyau" "$CIBLE/boot/vmlinuz-$version"
+  fi
+
+  # Retrait des outils propres à la clé (session d'essai)
+  for p in live-boot live-boot-initramfs-tools live-config live-config-systemd live-config-sysvinit \
+           live-tools user-setup calamares calamares-settings-debian; do
+    chroot "$CIBLE" dpkg-query -W "$p" >/dev/null 2>&1 \
+      && lancer chroot "$CIBLE" dpkg --purge --force-depends "$p"
+  done
+  rm -f "$CIBLE/etc/sudoers.d/flashos-installateur"
+
+  # Compte (provisoire : prénom et code viendront au premier démarrage).
+  # Le dossier personnel est sur la partition des données.
+  # SoleOS v1.0.1 : le compte s'appelle « soleos » ; un ordinateur déjà installé (réparation,
+  # passage à une nouvelle version) garde son compte « flashos » et tous ses fichiers.
+  local compte=soleos
+  [ -d "$CIBLE/home/flashos" ] && compte=flashos
+  if ! chroot "$CIBLE" id "$compte" >/dev/null 2>&1; then
+    if [ -d "$CIBLE/home/$compte" ]; then
+      lancer chroot "$CIBLE" useradd -M -u 1000 -d "/home/$compte" -s /bin/bash -c "SoleOS" "$compte" \
+        || lancer chroot "$CIBLE" useradd -M -d "/home/$compte" -s /bin/bash -c "SoleOS" "$compte" \
+        || echec "$(t "Création du compte impossible.")"
+    else
+      lancer chroot "$CIBLE" useradd -m -u 1000 -s /bin/bash -c "SoleOS" "$compte" \
+        || lancer chroot "$CIBLE" useradd -m -s /bin/bash -c "SoleOS" "$compte" \
+        || echec "$(t "Création du compte impossible.")"
+    fi
+  fi
+  # Pas d'administrateur dans la version particulier (ANSSI : compte de tous les jours séparé
+  # de l'administration). En cas de problème : outil de réparation.
+  chroot "$CIBLE" gpasswd -d "$compte" sudo >/dev/null 2>&1
+  for g in audio video plugdev netdev render input lpadmin bluetooth scanner; do
+    chroot "$CIBLE" getent group "$g" >/dev/null && lancer chroot "$CIBLE" usermod -aG "$g" "$compte"
+  done
+  # Mot de passe : aucun pour l'instant (connexion automatique). Le code choisi au premier
+  # démarrage le remplace (écran verrouillé, administration).
+  lancer chroot "$CIBLE" usermod -p '!' "$compte"
+  rm -f "$CIBLE/etc/sudoers.d/flashos-provisoire"
+  [ "$garder" = 1 ] || touch "$CIBLE/home/$compte/.hushlogin"
+  chroot "$CIBLE" chown -R "$compte": "/home/$compte" 2>/dev/null
+  chmod 700 "$CIBLE/home/$compte"
+
+  # Réseaux Wi-Fi : conservés dans la partition des données
+  mkdir -p "$CIBLE/home/.flashos/reseaux" "$CIBLE/etc/NetworkManager/system-connections"
+  chmod 755 "$CIBLE/home/.flashos"
+  chmod 700 "$CIBLE/home/.flashos/reseaux"
+  # Imprimantes ajoutées : gardées dans les données
+  mkdir -p "$CIBLE/var/lib/bluetooth" "$CIBLE/home/.flashos/imprimantes"
+  if [ -d /etc/NetworkManager/system-connections ] && [ -z "${FLASHOS_RACINE_SOURCE:-}" ] && [ "$garder" = 0 ]; then
+    cp -a /etc/NetworkManager/system-connections/. "$CIBLE/home/.flashos/reseaux/" 2>/dev/null
+  fi
+
+  lancer chroot "$CIBLE" systemd-machine-id-setup
+  echo "$uuid_a" > "$CIBLE/etc/flashos-emplacement"
+  # Fichier de démarrage du noyau (initramfs) : préparé en arrière-plan (calcul), pendant que la
+  # suite de l'installation copie des fichiers (disque) ; attendre_initramfs avant le menu de démarrage.
+  local version; version="$(ls "$CIBLE/lib/modules" | sort -V | tail -1)"
+  echo "+ initramfs $version (en arrière-plan) $(date '+%T')" >> "$JOURNAL"
+  ( chroot "$CIBLE" update-initramfs -c -k "$version" >> "$JOURNAL" 2>&1 \
+      || chroot "$CIBLE" update-initramfs -u -k "$version" >> "$JOURNAL" 2>&1 ) &
+  INITRAMFS_PID=$!
+}
+
+attendre_initramfs() {
+  [ -n "${INITRAMFS_PID:-}" ] || return 0
+  wait "$INITRAMFS_PID" || echec "$(t "Préparation du démarrage impossible (initramfs).")"
+  INITRAMFS_PID=""
+  echo "+ initramfs prêt $(date '+%T')" >> "$JOURNAL"
+  lancer chroot "$CIBLE" /usr/local/sbin/flashos-systeme liens-noyau / || echec "$(t "Noyau introuvable.")"
+}
+
+# Menu de démarrage (sur sa propre partition, indépendante de A et B)
+installer_demarrage() {  # <disque> <mode> <part. EFI ou vide> <part. démarrage> <uuid A> <uuid B> <uuid usine>
+  local disque="$1" mode="$2" pe="$3" pdem="$4" ua="$5" ub="$6" uu="$7"
+  lancer mount "$pdem" "$CIBLE/flashos/demarrage" || echec "$(t "Montage de la partition de démarrage impossible.")"
+  chmod 700 "$CIBLE/flashos/demarrage"   # réservée à l'administrateur (ANSSI R29)
+  # Appareils Bluetooth : partition de démarrage. Ceux associés sur la clé (clavier, souris)
+  # sont repris, pour qu'ils marchent dès le premier démarrage.
+  mkdir -p "$CIBLE/flashos/demarrage/bluetooth"; chmod 700 "$CIBLE/flashos/demarrage/bluetooth"
+  mkdir -p "$CIBLE/flashos/demarrage/apparmor"; chmod 700 "$CIBLE/flashos/demarrage/apparmor"
+  if [ -d "$CIBLE/home/.flashos/bluetooth" ]; then
+    cp -an "$CIBLE/home/.flashos/bluetooth/." "$CIBLE/flashos/demarrage/bluetooth/" 2>/dev/null
+    rm -rf "$CIBLE/home/.flashos/bluetooth"
+  fi
+  if [ -d /var/lib/bluetooth ] && [ -z "${FLASHOS_RACINE_SOURCE:-}" ]; then
+    cp -a /var/lib/bluetooth/. "$CIBLE/flashos/demarrage/bluetooth/" 2>/dev/null
+  fi
+  # Langue et clavier choisis sur la clé : gardés sur la partition de démarrage
+  # (réappliqués à chaque démarrage, avant la saisie du code)
+  mkdir -p "$CIBLE/flashos/demarrage/flashos"; chmod 700 "$CIBLE/flashos/demarrage/flashos"
+  if [ ! -f "$CIBLE/flashos/demarrage/flashos/langue" ]; then
+    local disp var
+    disp="$(sed -n 's/^XKBLAYOUT=//p' /etc/default/keyboard 2>/dev/null | tr -d '"' | cut -d, -f1)"
+    var="$(sed -n 's/^XKBVARIANT=//p' /etc/default/keyboard 2>/dev/null | tr -d '"' | cut -d, -f1)"
+    printf 'LANGUE=%s\nCLAVIER=%s\nVARIANTE=%s\n' "${FLASHOS_LANGUE_CODE:-fr}" "${disp:-fr}" "$var" \
+      > "$CIBLE/flashos/demarrage/flashos/langue"
+    chmod 600 "$CIBLE/flashos/demarrage/flashos/langue"
+  fi
+  # Clé provisoire des données : jusqu'au premier démarrage (l'assistant la supprime)
+  if [ -n "$CLE_PROV" ] && [ -f "$CLE_PROV" ]; then
+    mkdir -p "$CIBLE/flashos/demarrage/flashos"; chmod 700 "$CIBLE/flashos/demarrage/flashos"
+    install -m 400 "$CLE_PROV" "$CIBLE/flashos/demarrage/flashos/cle-provisoire"
+  fi
+  if [ "$mode" = uefi ]; then
+    mkdir -p "$CIBLE/boot/efi"; lancer mount "$pe" "$CIBLE/boot/efi" || echec "$(t "Montage EFI impossible.")"
+    [ -d /sys/firmware/efi/efivars ] && mount --bind /sys/firmware/efi/efivars "$CIBLE/sys/firmware/efi/efivars" 2>/dev/null
+    lancer chroot "$CIBLE" grub-install --target=x86_64-efi --efi-directory=/boot/efi \
+           --boot-directory=/flashos/demarrage --bootloader-id=FlashOS --recheck \
+      || lancer chroot "$CIBLE" grub-install --target=x86_64-efi --efi-directory=/boot/efi \
+           --boot-directory=/flashos/demarrage --bootloader-id=FlashOS --no-nvram \
+      || echec "$(t "Installation du démarrage (UEFI) impossible.")"
+    # Copie de secours au chemin standard : certains PC (HP…) ne regardent que celui-là
+    lancer chroot "$CIBLE" grub-install --target=x86_64-efi --efi-directory=/boot/efi \
+           --boot-directory=/flashos/demarrage --removable --no-nvram || true
+    # Petit fichier de lancement du GRUB signé : « normal » au lieu de « configfile », sinon Échap
+    # dans le menu de secours ferait sortir du menu vers une demande d'identifiant (menu verrouillé)
+    for f in "$CIBLE"/boot/efi/EFI/*/grub.cfg; do [ -f "$f" ] && sed -i 's/^configfile /normal /' "$f"; done
+  else
+    lancer chroot "$CIBLE" grub-install --target=i386-pc --boot-directory=/flashos/demarrage --recheck "$disque" \
+      || echec "$(t "Installation du démarrage (BIOS) impossible.")"
+  fi
+  local g="$CIBLE/flashos/demarrage/grub"
+  mkdir -p "$g/fonts"
+  [ -f "$g/fonts/unicode.pf2" ] || cp "$CIBLE/usr/share/grub/unicode.pf2" "$g/fonts/" 2>/dev/null
+  cp "$CIBLE/usr/share/flashos/demarrage.png" "$g/flashos.png" 2>/dev/null
+  lancer chroot "$CIBLE" env FLASHOS_LANGUE_CODE="${FLASHOS_LANGUE_CODE:-fr}" /usr/local/sbin/flashos-systeme ecrire-grub /flashos/demarrage/grub "$ua" "$ub" "$uu" "${CHEMIN_USINE:-$DOSSIER_USINE}" \
+    || echec "$(t "Écriture du menu de démarrage impossible.")"
+  rm -f "$g/grubenv"
+  lancer chroot "$CIBLE" grub-editenv /flashos/demarrage/grub/grubenv create
+  lancer chroot "$CIBLE" grub-editenv /flashos/demarrage/grub/grubenv set saved_entry=A
+  grep -q "$ua" "$g/grub.cfg" || echec "$(t "Menu de démarrage incomplet.")"
+}
+
+# Copie d'origine pour la réparation : noyau, initrd et image du système de la clé
+installer_usine() {  # <partition usine>
+  mkdir -p /mnt/flashos-usine; lancer mount "$1" /mnt/flashos-usine || echec "$(t "Montage de la copie d'origine impossible.")"
+  local u=/mnt/flashos-usine/$DOSSIER_USINE
+  rm -rf /mnt/flashos-usine/live; mkdir -p "$u"
+  local sq noyau initrd l; l="$(dossier_live)"
+  sq="$(ls "$l"/*.squashfs 2>/dev/null | head -1)"
+  noyau="$(ls "$l"/vmlinuz* 2>/dev/null | head -1)"
+  initrd="$(ls "$l"/initrd* 2>/dev/null | head -1)"
+  [ -n "$sq" ] && [ -n "$noyau" ] && [ -n "$initrd" ] || echec "$(t "Fichiers d'origine introuvables sur la clé.")"
+  lancer cp "$noyau" "$u/vmlinuz" || echec "$(t "Copie d'origine impossible.")"
+  lancer cp "$initrd" "$u/initrd.img" || echec "$(t "Copie d'origine impossible.")"
+  lancer cp "$sq" "$u/filesystem.squashfs" || echec "$(t "Copie d'origine impossible (espace ?).")"
+  { date '+%F'; cat /etc/flashos-version 2>/dev/null; } > "$u/flashos-origine"
+  umount /mnt/flashos-usine
+}
+
+partition() {  # <disque> <numéro>
+  case "$1" in *[0-9]) echo "${1}p$2" ;; *) echo "${1}$2" ;; esac
+}
+
+garde_disque() {  # refus du disque de la clé / du système en cours
+  local nom; nom="$(basename "$1")"
+  case " $(disque_de "$SUPPORT" | tr '\n' ' ') $(disque_de / | tr '\n' ' ') " in
+    *" $nom "*) echec "$(t "Ce disque est celui de la clé ou du système en cours : opération refusée.")" ;;
+  esac
+}
+
+# ---------------------------------------------------------------------
+installer() {
+  local disque="$1"
+  : > "$JOURNAL"
+  [ "$(id -u)" -eq 0 ] || echec "$(t "L'installation doit être lancée en administrateur.")"
+  [ -b "$disque" ] || echec "$(t "Disque introuvable : {disque}" disque "$disque")"
+  garde_disque "$disque"
+  preparer_source
+  local mode taille emplacement
+  mode="$(mode_demarrage)"
+  taille="$(lsblk -dbno SIZE "$disque")"
+  [ "$taille" -ge "$TAILLE_MINI" ] || echec "$(t "Ce disque est trop petit (32 Go au minimum).")"
+  if [ "$taille" -ge $((80 * GO)) ]; then emplacement=12GiB; else emplacement=9GiB; fi
+  echo "Disque : $disque ($taille o) — démarrage : $mode — emplacements : $emplacement — source : $SOURCE" >> "$JOURNAL"
+
+  # --- 1. Disque ---------------------------------------------------------
+  etape "$(t "Préparation du disque")"
+  progres 2
+  for p in $(lsblk -lnpo NAME "$disque" | tail -n +2); do umount -l "$p" 2>/dev/null; swapoff "$p" 2>/dev/null; done
+  lancer wipefs -a -f "$disque" || echec "$(t "Le disque n'a pas pu être effacé.")"
+  {
+    echo "label: gpt"
+    if [ "$mode" = uefi ]; then echo 'size=512MiB, type=uefi, name="FLASHOS-EFI"'
+    else echo 'size=1MiB, type=21686148-6449-6E6F-744E-656564454649, name="FLASHOS-BIOS"'; fi
+    echo 'size=1GiB, type=linux, name="FLASHOS-DEMARRAGE"'
+    echo "size=$emplacement, type=linux, name=\"FLASHOS-A\""
+    echo "size=$emplacement, type=linux, name=\"FLASHOS-B\""
+    echo 'size=6GiB, type=linux, name="FLASHOS-USINE"'
+    echo 'type=linux, name="FLASHOS-DONNEES"'
+  } | lancer sfdisk -q "$disque" || echec "$(t "Le partitionnement a échoué.")"
+  lancer partx -u "$disque" || lancer blockdev --rereadpt "$disque"
+  udevadm settle 2>/dev/null; sleep 1
+  local p1 pdem pa pb pu pd
+  p1="$(partition "$disque" 1)"; pdem="$(partition "$disque" 2)"; pa="$(partition "$disque" 3)"
+  pb="$(partition "$disque" 4)"; pu="$(partition "$disque" 5)"; pd="$(partition "$disque" 6)"
+  for i in $(seq 1 20); do [ -b "$pd" ] && break; sleep 0.5; done
+  [ -b "$pd" ] || echec "$(t "Les nouvelles partitions ne sont pas apparues.")"
+  local uuid_efi=""
+  if [ "$mode" = uefi ]; then
+    lancer mkfs.vfat -F 32 -n FLASHOS-EFI "$p1" || echec "$(t "Formatage EFI impossible.")"
+    uuid_efi="$(blkid -s UUID -o value "$p1")"
+  fi
+  lancer mkfs.ext4 -F -q -L FlashOS-Boot "$pdem" || echec "$(t "Formatage impossible (démarrage).")"
+  lancer mkfs.ext4 -F -q -L FlashOS-A "$pa" || echec "$(t "Formatage impossible (A).")"
+  lancer mkfs.ext4 -F -q -L FlashOS-B "$pb" || echec "$(t "Formatage impossible (B).")"
+  lancer mkfs.ext4 -F -q -L FlashOS-Usine "$pu" || echec "$(t "Formatage impossible (usine).")"
+  creer_coffre "$pd"
+  lancer mkfs.ext4 -F -q -L FlashOS-Donnees "$DONNEES" || echec "$(t "Formatage impossible (données).")"
+  progres 5
+
+  # --- 2. Système ----------------------------------------------------------
+  etape "$(t "Copie de SoleOS sur l'ordinateur")"
+  installer_systeme "$pa" "$DONNEES" "$uuid_efi" "$(blkid -s UUID -o value "$pdem")" 5 62 0
+  progres 66
+
+  # --- 3. Copie d'origine (pour la réparation) ------------------------------
+  etape "$(t "Création de la copie de secours")"
+  installer_usine "$pu"
+  progres 86
+
+  # --- 4. Démarrage ----------------------------------------------------------
+  etape "$(t "Installation du démarrage")"
+  attendre_initramfs
+  installer_demarrage "$disque" "$mode" "$p1" "$pdem" \
+    "$(blkid -s UUID -o value "$pa")" "$(blkid -s UUID -o value "$pb")" "$(blkid -s UUID -o value "$pu")"
+  progres 97
+
+  etape "$(t "Finalisation")"
+  cp "$JOURNAL" "$CIBLE/home/.flashos/installation.log" 2>/dev/null
+  # Conditions d'utilisation acceptées dans l'installateur (date et version), gardées avec les données
+  [ -f /tmp/flashos-acceptation ] && cp /tmp/flashos-acceptation "$CIBLE/home/.flashos/acceptation.txt" 2>/dev/null
+  nettoyer
+  progres 100
+  echo "TERMINE"
+}
+
+# ---------------------------------------------------------------------
+reparer() {  # <systeme|tout> <disque>
+  local mode_rep="$1" disque="$2"
+  : > "$JOURNAL"
+  [ "$(id -u)" -eq 0 ] || echec "$(t "La réparation doit être lancée en administrateur.")"
+  case "$mode_rep" in systeme|tout) ;; *) echec "$(t "Mode de réparation inconnu.")" ;; esac
+  local pe pdem pa pb pu pd mode
+  pa="$(partition_nommee "$disque" FLASHOS-A)"; pb="$(partition_nommee "$disque" FLASHOS-B)"
+  pdem="$(partition_nommee "$disque" FLASHOS-DEMARRAGE)"; pu="$(partition_nommee "$disque" FLASHOS-USINE)"
+  pd="$(partition_nommee "$disque" FLASHOS-DONNEES)"; pe="$(partition_nommee "$disque" FLASHOS-EFI)"
+  [ -b "$pa" ] && [ -b "$pb" ] && [ -b "$pdem" ] && [ -b "$pd" ] && [ -b "$pu" ] \
+    || echec "$(t "Ce disque ne contient pas un SoleOS complet.")"
+  if [ -n "$pe" ]; then mode=uefi; else mode=bios; fi
+  [ -n "${FLASHOS_MODE:-}" ] && mode="$FLASHOS_MODE"
+  preparer_source
+  # Anciennes installations : copie d'origine rangée dans « live »
+  CHEMIN_USINE="$DOSSIER_USINE"
+  [ -d "$SUPPORT/$DOSSIER_USINE" ] || { [ -d "$SUPPORT/live" ] && CHEMIN_USINE=live; }
+  echo "Réparation ($mode_rep) de $disque — démarrage : $mode — source : $SOURCE — origine : $CHEMIN_USINE" >> "$JOURNAL"
+
+  etape "$(t "Préparation")"
+  progres 3
+  # Données chiffrées : on les ouvre avant de toucher à quoi que ce soit (code vérifié)
+  DONNEES="$pd"
+  if [ "$mode_rep" = systeme ] && cryptsetup isLuks "$pd" 2>/dev/null; then
+    ouvrir_coffre "$pd" "$pdem"
+  fi
+  # En cas de coupure pendant la réparation, l'ordinateur revient ici au prochain démarrage
+  mkdir -p /mnt/flashos-demarrage
+  if mount "$pdem" /mnt/flashos-demarrage >> "$JOURNAL" 2>&1; then
+    [ -f /mnt/flashos-demarrage/grub/grubenv ] && lancer grub-editenv /mnt/flashos-demarrage/grub/grubenv set saved_entry=reparer
+    umount /mnt/flashos-demarrage
+  fi
+  local ua ub; ua="$(blkid -s UUID -o value "$pa")"; ub="$(blkid -s UUID -o value "$pb")"
+  lancer mkfs.ext4 -F -q -L FlashOS-A ${ua:+-U "$ua"} "$pa" || echec "$(t "Remise à neuf du système impossible.")"
+  lancer mkfs.ext4 -F -q -L FlashOS-B ${ub:+-U "$ub"} "$pb" || echec "$(t "Remise à neuf du système impossible.")"
+  if [ "$mode_rep" = tout ]; then
+    etape "$(t "Effacement des données")"
+    # Nouvelle partition chiffrée : nouvelles clés, l'ancien code et l'ancienne clé de secours ne servent plus
+    lancer wipefs -a -f "$pd"
+    creer_coffre "$pd"
+    lancer mkfs.ext4 -F -q -L FlashOS-Donnees "$DONNEES" || echec "$(t "Effacement des données impossible.")"
+    # Ancienne clé provisoire éventuelle : remplacée
+    if mount "$pdem" /mnt/flashos-demarrage >> "$JOURNAL" 2>&1; then rm -rf /mnt/flashos-demarrage/flashos; umount /mnt/flashos-demarrage; fi
+  fi
+  progres 8
+
+  etape "$(t "Remise à neuf de SoleOS")"
+  local garder=1; [ "$mode_rep" = tout ] && garder=0
+  installer_systeme "$pa" "$DONNEES" "$( [ -n "$pe" ] && blkid -s UUID -o value "$pe")" "$(blkid -s UUID -o value "$pdem")" 8 85 "$garder"
+
+  if [ "$mode_rep" = systeme ]; then
+    etape "$(t "Remise à zéro du navigateur")"
+    local compte=soleos; [ -d "$CIBLE/home/flashos" ] && compte=flashos
+    local prof="$CIBLE/home/$compte/.config/chromium/Default"
+    if [ -d "$prof" ]; then
+      rm -rf "$prof/Extensions" "$prof/Local Extension Settings" "$prof/Extension State" \
+             "$prof/Extension Rules" "$prof/Extension Scripts" "$prof/Preferences" "$prof/Secure Preferences"
+      echo '{"browser":{"custom_chrome_frame":false}}' > "$prof/Preferences"
+      chroot "$CIBLE" chown -R "$compte": "/home/$compte/.config/chromium" 2>/dev/null
+    fi
+  fi
+  progres 90
+
+  etape "$(t "Installation du démarrage")"
+  attendre_initramfs
+  installer_demarrage "$disque" "$mode" "$pe" "$pdem" "$ua" "$ub" "$(blkid -s UUID -o value "$pu")"
+  progres 98
+
+  etape "$(t "Finalisation")"
+  cp "$JOURNAL" "$CIBLE/home/.flashos/reparation.log" 2>/dev/null
+  nettoyer
+  progres 100
+  echo "TERMINE"
+}
+
+case "${1:-}" in
+  --detecter) detecter ;;
+  --detecter-reparation) detecter_reparation ;;
+  --installer) [ -n "${2:-}" ] || { echo "ERREUR|$(t "Disque non précisé")"; exit 1; }; installer "$2" ;;
+  --reparer) [ -n "${3:-}" ] || { echo "ERREUR|$(t "Mode ou disque non précisé")"; exit 1; }; reparer "$2" "$3" ;;
+  *) echo "Usage : $0 --detecter | --installer /dev/disque | --detecter-reparation | --reparer systeme|tout /dev/disque" >&2; exit 2 ;;
+esac

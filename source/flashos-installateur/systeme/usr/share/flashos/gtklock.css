@@ -1,0 +1,21 @@
+/* SoleOS : écran verrouillé (thème Éclair) */
+window {
+  background-color: #0B1020;
+  background-image: linear-gradient(115deg, transparent 72%, alpha(#FFC23D, 0.07) 72.2%, transparent 72.6%);
+  color: #E9ECF5;
+  font-family: "Inter", "DejaVu Sans", sans-serif;
+}
+label { color: #E9ECF5; font-size: 18px; }
+#clock-label { font-family: "Space Grotesk", "Inter", sans-serif; font-size: 96px; font-weight: 500; letter-spacing: -3px; }
+#date-label { font-size: 20px; color: #A7B0C8; }
+entry {
+  min-height: 46px; min-width: 280px; padding: 4px 18px; border-radius: 14px; border: 1px solid #2A3352;
+  background: #141A2E; color: #E9ECF5; font-size: 22px; box-shadow: none; caret-color: #FFC23D;
+}
+entry:focus { border-color: #FFC23D; box-shadow: none; }
+button {
+  border-radius: 14px; border: none; padding: 8px 18px; color: #1A1300; box-shadow: none;
+  background: #FFC23D; background-image: none; font-size: 16px; font-weight: 600;
+}
+button label { color: #1A1300; }
+#error-label, #warning-label { color: #FF9B6B; }
