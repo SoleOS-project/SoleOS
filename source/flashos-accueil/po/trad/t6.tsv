@@ -1,0 +1,114 @@
+550	The two new ones are not identical.	I due nuovi non sono identici.	Los dos nuevos no son idénticos.	Die beiden neuen stimmen nicht überein.	两次输入的新密码不一致。
+551	Saving…	Salvataggio…	Guardando…	Wird gespeichert…	正在保存…
+552	New code saved. It will be used from the next startup.	Nuovo codice salvato. Verrà usato dal prossimo avvio.	Nuevo código guardado. Se usará a partir del próximo arranque.	Neuer Code gespeichert. Er gilt ab dem nächsten Start.	新密码已保存，下次开机起生效。
+553	New password saved. It will be used from the next startup.	Nuova password salvata. Verrà usata dal prossimo avvio.	Nueva contraseña guardada. Se usará a partir del próximo arranque.	Neues Passwort gespeichert. Es gilt ab dem nächsten Start.	新密码已保存，下次开机起生效。
+554	New recovery key…	Nuova chiave di recupero…	Nueva clave de recuperación…	Neuer Wiederherstellungsschlüssel…	新的恢复密钥…
+555	If you lost your paper, or if someone may have seen it: the current key will no longer work.	Se hai perso il foglio, o se qualcuno potrebbe averlo visto: la chiave attuale non funzionerà più.	Si has perdido tu papel, o si alguien ha podido verlo: la clave actual dejará de funcionar.	Wenn Sie Ihre Notiz verloren haben oder jemand sie gesehen haben könnte: Der aktuelle Schlüssel funktioniert dann nicht mehr.	如果您丢失了纸条，或者有人可能看到过：当前密钥将不再有效。
+556	Your code	Il tuo codice	Tu código	Ihr Code	您的密码
+557	Your password	La tua password	Tu contraseña	Ihr Passwort	您的密码
+558	Create a new key	Crea una nuova chiave	Crear una nueva clave	Neuen Schlüssel erstellen	创建新密钥
+559	Creating…	Creazione…	Creando…	Wird erstellt…	正在创建…
+560	Here is your new recovery key. Write it down on paper and keep it in a safe place:	Ecco la tua nuova chiave di recupero. Scrivila su carta e conservala in un luogo sicuro:	Esta es tu nueva clave de recuperación. Escríbela en papel y guárdala en un lugar seguro:	Hier ist Ihr neuer Wiederherstellungsschlüssel. Schreiben Sie ihn auf Papier und bewahren Sie ihn sicher auf:	这是您的新恢复密钥。请抄在纸上并妥善保管：
+561	The key could not be created.	Non è stato possibile creare la chiave.	No se ha podido crear la clave.	Der Schlüssel konnte nicht erstellt werden.	无法创建密钥。
+562	Security tool not found ({e}).	Strumento di sicurezza non trovato ({e}).	No se encuentra la herramienta de seguridad ({e}).	Sicherheitswerkzeug nicht gefunden ({e}).	找不到安全工具（{e}）。
+563	The operation failed.	L'operazione non è riuscita.	La operación ha fallado.	Der Vorgang ist fehlgeschlagen.	操作失败。
+564	{n}%	{n}%	{n} %	{n} %	{n}%
+565	The network is not responding. Try again closer to the router.	La rete non risponde. Riprova più vicino al modem.	La red no responde. Vuelve a intentarlo más cerca del router.	Das Netzwerk antwortet nicht. Versuchen Sie es näher am Router.	网络没有响应。请靠近路由器后重试。
+566	Unable to connect: {e}	Connessione impossibile: {e}	No se puede conectar: {e}	Verbindung nicht möglich: {e}	无法连接：{e}
+567	Connect	Connetti	Conectar	Verbinden	连接
+568	Turning Wi-Fi on…	Attivazione del Wi-Fi…	Activando el Wi-Fi…	WLAN wird eingeschaltet…	正在开启 Wi-Fi…
+569	Turning Wi-Fi off…	Disattivazione del Wi-Fi…	Desactivando el Wi-Fi…	WLAN wird ausgeschaltet…	正在关闭 Wi-Fi…
+570	Looking for networks…	Ricerca delle reti…	Buscando redes…	Suche nach Netzwerken…	正在搜索网络…
+571	The network manager is not installed.	Il gestore di rete non è installato.	El gestor de red no está instalado.	Die Netzwerkverwaltung ist nicht installiert.	未安装网络管理器。
+572	No Wi-Fi card detected on this computer.	Nessuna scheda Wi-Fi rilevata su questo computer.	No se ha detectado ninguna tarjeta Wi-Fi en este ordenador.	Keine WLAN-Karte auf diesem Computer erkannt.	此电脑未检测到 Wi-Fi 网卡。
+573	Wi-Fi is turned off.	Il Wi-Fi è disattivato.	El Wi-Fi está desactivado.	WLAN ist ausgeschaltet.	Wi-Fi 已关闭。
+574	No network found nearby.	Nessuna rete trovata nelle vicinanze.	No se ha encontrado ninguna red cercana.	Kein Netzwerk in der Nähe gefunden.	附近未找到网络。
+575	🔒	🔒	🔒	🔒	🔒
+576	Signal: {n}	Segnale: {n}	Señal: {n}	Signal: {n}	信号：{n}
+577	Password for “{nom}”	Password per «{nom}»	Contraseña de «{nom}»	Passwort für „{nom}“	“{nom}”的密码
+578	Connecting to “{nom}”…	Connessione a «{nom}»…	Conectando a «{nom}»…	Verbindung mit „{nom}“…	正在连接“{nom}”…
+579	Connected to “{nom}”.	Connesso a «{nom}».	Conectado a «{nom}».	Mit „{nom}“ verbunden.	已连接到“{nom}”。
+580	Incorrect password. Try again.	Password errata. Riprova.	Contraseña incorrecta. Vuelve a intentarlo.	Falsches Passwort. Versuchen Sie es erneut.	密码错误，请重试。
+581	No internal disk of at least 32 GB was found.	Non è stato trovato alcun disco interno di almeno 32 GB.	No se ha encontrado ningún disco interno de al menos 32 GB.	Kein internes Laufwerk mit mindestens 32 GB gefunden.	未找到至少 32 GB 的内置磁盘。
+582	No installed SoleOS was found on this computer.	Non è stato trovato alcun SoleOS installato su questo computer.	No se ha encontrado ningún SoleOS instalado en este ordenador.	Auf diesem Computer wurde kein installiertes SoleOS gefunden.	此电脑上未找到已安装的 SoleOS。
+583	Data encryption failed.	La cifratura dei dati non è riuscita.	El cifrado de los datos ha fallado.	Die Datenverschlüsselung ist fehlgeschlagen.	数据加密失败。
+584	Unable to open the encrypted data.	Impossibile aprire i dati cifrati.	No se pueden abrir los datos cifrados.	Die verschlüsselten Daten können nicht geöffnet werden.	无法打开加密数据。
+585	Unable to find the original SoleOS system.	Impossibile trovare il sistema SoleOS originale.	No se encuentra el sistema SoleOS original.	Das ursprüngliche SoleOS-System wurde nicht gefunden.	找不到 SoleOS 原始系统。
+586	Unable to read the original system.	Impossibile leggere il sistema originale.	No se puede leer el sistema original.	Das ursprüngliche System kann nicht gelesen werden.	无法读取原始系统。
+587	Unable to mount the system.	Impossibile montare il sistema.	No se puede montar el sistema.	Das System kann nicht eingebunden werden.	无法挂载系统。
+588	Copying the files failed.	La copia dei file non è riuscita.	La copia de los archivos ha fallado.	Das Kopieren der Dateien ist fehlgeschlagen.	复制文件失败。
+589	Unable to mount the data.	Impossibile montare i dati.	No se pueden montar los datos.	Die Daten können nicht eingebunden werden.	无法挂载数据。
+590	Kernel not found.	Kernel non trovato.	No se encuentra el núcleo.	Kernel nicht gefunden.	找不到内核。
+591	Unable to create the account.	Impossibile creare l'account.	No se puede crear la cuenta.	Das Konto kann nicht erstellt werden.	无法创建账户。
+592	Unable to prepare the startup (initramfs).	Impossibile preparare l'avvio (initramfs).	No se puede preparar el arranque (initramfs).	Der Start kann nicht vorbereitet werden (initramfs).	无法准备启动（initramfs）。
+593	Unable to mount the boot partition.	Impossibile montare la partizione di avvio.	No se puede montar la partición de arranque.	Die Startpartition kann nicht eingebunden werden.	无法挂载启动分区。
+594	Unable to mount EFI.	Impossibile montare EFI.	No se puede montar EFI.	EFI kann nicht eingebunden werden.	无法挂载 EFI。
+595	Unable to install the startup (UEFI).	Impossibile installare l'avvio (UEFI).	No se puede instalar el arranque (UEFI).	Der Start kann nicht installiert werden (UEFI).	无法安装启动程序（UEFI）。
+596	Unable to install the startup (BIOS).	Impossibile installare l'avvio (BIOS).	No se puede instalar el arranque (BIOS).	Der Start kann nicht installiert werden (BIOS).	无法安装启动程序（BIOS）。
+597	Unable to write the boot menu.	Impossibile scrivere il menu di avvio.	No se puede escribir el menú de arranque.	Das Startmenü kann nicht geschrieben werden.	无法写入启动菜单。
+598	Incomplete boot menu.	Menu di avvio incompleto.	Menú de arranque incompleto.	Unvollständiges Startmenü.	启动菜单不完整。
+599	Unable to mount the original copy.	Impossibile montare la copia originale.	No se puede montar la copia original.	Die Originalkopie kann nicht eingebunden werden.	无法挂载原始副本。
+600	Original files not found on the USB key.	File originali non trovati sulla chiavetta.	No se encuentran los archivos originales en la memoria USB.	Originaldateien auf dem USB-Stick nicht gefunden.	U 盘上找不到原始文件。
+601	Unable to make the original copy.	Impossibile creare la copia originale.	No se puede crear la copia original.	Die Originalkopie kann nicht erstellt werden.	无法创建原始副本。
+602	Unable to make the original copy (space?).	Impossibile creare la copia originale (spazio?).	No se puede crear la copia original (¿espacio?).	Die Originalkopie kann nicht erstellt werden (Speicherplatz?).	无法创建原始副本（空间不足？）。
+603	This disk is the USB key or the running system: operation refused.	Questo disco è la chiavetta o il sistema in uso: operazione rifiutata.	Este disco es la memoria USB o el sistema en uso: operación rechazada.	Dieses Laufwerk ist der USB-Stick oder das laufende System: Vorgang abgelehnt.	此磁盘是 U 盘或正在运行的系统：操作被拒绝。
+604	The installation must be run as administrator.	L'installazione deve essere avviata come amministratore.	La instalación debe ejecutarse como administrador.	Die Installation muss als Administrator gestartet werden.	必须以管理员身份运行安装。
+605	Disk not found: {disque}	Disco non trovato: {disque}	Disco no encontrado: {disque}	Laufwerk nicht gefunden: {disque}	找不到磁盘：{disque}
+606	This disk is too small (32 GB minimum).	Questo disco è troppo piccolo (minimo 32 GB).	Este disco es demasiado pequeño (32 GB como mínimo).	Dieses Laufwerk ist zu klein (mindestens 32 GB).	此磁盘太小（至少需要 32 GB）。
+607	Preparing the disk	Preparazione del disco	Preparando el disco	Laufwerk wird vorbereitet	正在准备磁盘
+608	The disk could not be erased.	Non è stato possibile cancellare il disco.	No se ha podido borrar el disco.	Das Laufwerk konnte nicht gelöscht werden.	无法擦除磁盘。
+609	Partitioning failed.	Il partizionamento non è riuscito.	El particionado ha fallado.	Die Partitionierung ist fehlgeschlagen.	分区失败。
+610	The new partitions did not appear.	Le nuove partizioni non sono comparse.	Las nuevas particiones no han aparecido.	Die neuen Partitionen sind nicht erschienen.	新分区没有出现。
+611	Unable to format EFI.	Impossibile formattare EFI.	No se puede formatear EFI.	EFI kann nicht formatiert werden.	无法格式化 EFI。
+612	Unable to format (boot).	Formattazione impossibile (avvio).	No se puede formatear (arranque).	Formatieren nicht möglich (Start).	无法格式化（启动）。
+613	Unable to format (A).	Formattazione impossibile (A).	No se puede formatear (A).	Formatieren nicht möglich (A).	无法格式化（A）。
+614	Unable to format (B).	Formattazione impossibile (B).	No se puede formatear (B).	Formatieren nicht möglich (B).	无法格式化（B）。
+615	Unable to format (factory).	Formattazione impossibile (originale).	No se puede formatear (fábrica).	Formatieren nicht möglich (Werkszustand).	无法格式化（出厂）。
+616	Unable to format (data).	Formattazione impossibile (dati).	No se puede formatear (datos).	Formatieren nicht möglich (Daten).	无法格式化（数据）。
+617	Copying SoleOS to the computer	Copia di SoleOS sul computer	Copiando SoleOS en el ordenador	SoleOS wird auf den Computer kopiert	正在将 SoleOS 复制到电脑
+618	Creating the backup copy	Creazione della copia di sicurezza	Creando la copia de seguridad	Sicherheitskopie wird erstellt	正在创建备份副本
+619	Installing the startup	Installazione dell'avvio	Instalando el arranque	Start wird installiert	正在安装启动程序
+620	Finishing	Completamento	Finalizando	Abschluss	正在完成
+621	The repair must be run as administrator.	La riparazione deve essere avviata come amministratore.	La reparación debe ejecutarse como administrador.	Die Reparatur muss als Administrator gestartet werden.	必须以管理员身份运行修复。
+622	Unknown repair mode.	Modalità di riparazione sconosciuta.	Modo de reparación desconocido.	Unbekannter Reparaturmodus.	未知的修复模式。
+623	This disk does not contain a complete SoleOS.	Questo disco non contiene un SoleOS completo.	Este disco no contiene un SoleOS completo.	Dieses Laufwerk enthält kein vollständiges SoleOS.	此磁盘不包含完整的 SoleOS。
+624	Preparing	Preparazione	Preparando	Vorbereitung	正在准备
+625	Unable to restore the system as new.	Impossibile rimettere a nuovo il sistema.	No se puede restaurar el sistema.	Das System kann nicht neu hergestellt werden.	无法将系统恢复如新。
+626	Erasing the data	Cancellazione dei dati	Borrando los datos	Daten werden gelöscht	正在清除数据
+627	Unable to erase the data.	Impossibile cancellare i dati.	No se pueden borrar los datos.	Die Daten können nicht gelöscht werden.	无法清除数据。
+628	Restoring SoleOS as new	Ripristino di SoleOS	Restaurando SoleOS	SoleOS wird neu hergestellt	正在将 SoleOS 恢复如新
+629	Resetting the browser	Azzeramento del browser	Restableciendo el navegador	Browser wird zurückgesetzt	正在重置浏览器
+630	Disk not specified	Disco non specificato	Disco no indicado	Laufwerk nicht angegeben	未指定磁盘
+631	Mode or disk not specified	Modalità o disco non specificati	Modo o disco no indicado	Modus oder Laufwerk nicht angegeben	未指定模式或磁盘
+632	No keyboard found. Bluetooth keyboard: press a key, or put it in pairing mode.	Nessuna tastiera trovata. Tastiera Bluetooth: premi un tasto o mettila in modalità associazione.	No se ha encontrado ningún teclado. Teclado Bluetooth: pulsa una tecla o ponlo en modo vinculación.	Keine Tastatur gefunden. Bluetooth-Tastatur: Drücken Sie eine Taste oder versetzen Sie sie in den Kopplungsmodus.	未找到键盘。蓝牙键盘：请按任意键，或将其置于配对模式。
+633	Enter your code	Inserisci il tuo codice	Introduce tu código	Geben Sie Ihren Code ein	请输入密码
+634	Enter your password	Inserisci la tua password	Introduce tu contraseña	Geben Sie Ihr Passwort ein	请输入密码
+635	Checking…	Verifica…	Comprobando…	Wird geprüft…	正在验证…
+636	Incorrect code. To type digits: Shift key (⇧) or numeric keypad.	Codice errato. Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico.	Código incorrecto. Para escribir las cifras: tecla Mayús (⇧) o teclado numérico.	Falscher Code. Zum Eingeben der Ziffern: Umschalttaste (⇧) oder Ziffernblock.	密码错误。输入数字：按 Shift 键（⇧）或使用数字小键盘。
+637	Too many attempts: wait a few minutes, or type your recovery key.	Troppi tentativi: attendi qualche minuto o digita la chiave di recupero.	Demasiados intentos: espera unos minutos o escribe tu clave de recuperación.	Zu viele Versuche: Warten Sie einige Minuten oder geben Sie Ihren Wiederherstellungsschlüssel ein.	尝试次数过多：请等待几分钟，或输入恢复密钥。
+638	Incorrect code. Forgot your code? Type your recovery key instead.	Codice errato. Hai dimenticato il codice? Digita invece la chiave di recupero.	Código incorrecto. ¿Has olvidado tu código? Escribe en su lugar tu clave de recuperación.	Falscher Code. Code vergessen? Geben Sie stattdessen Ihren Wiederherstellungsschlüssel ein.	密码错误。忘记密码了？请改为输入恢复密钥。
+639	Incorrect password. Forgot your password? Type your recovery key instead.	Password errata. Hai dimenticato la password? Digita invece la chiave di recupero.	Contraseña incorrecta. ¿Has olvidado tu contraseña? Escribe en su lugar tu clave de recuperación.	Falsches Passwort. Passwort vergessen? Geben Sie stattdessen Ihren Wiederherstellungsschlüssel ein.	密码错误。忘记密码了？请改为输入恢复密钥。
+640	Incorrect code, try again.	Codice errato, riprova.	Código incorrecto, vuelve a intentarlo.	Falscher Code, versuchen Sie es erneut.	密码错误，请重试。
+641	Incorrect password, try again.	Password errata, riprova.	Contraseña incorrecta, vuelve a intentarlo.	Falsches Passwort, versuchen Sie es erneut.	密码错误，请重试。
+642	The data is not encrypted on this computer.	I dati non sono cifrati su questo computer.	Los datos no están cifrados en este ordenador.	Die Daten auf diesem Computer sind nicht verschlüsselt.	此电脑上的数据未加密。
+643	The data is not open.	I dati non sono aperti.	Los datos no están abiertos.	Die Daten sind nicht geöffnet.	数据未打开。
+644	Internal key not found.	Chiave interna non trovata.	No se encuentra la clave interna.	Interner Schlüssel nicht gefunden.	找不到内部密钥。
+645	Data partition not found.	Partizione dei dati non trovata.	No se encuentra la partición de datos.	Datenpartition nicht gefunden.	找不到数据分区。
+646	The old code could not be removed.	Non è stato possibile rimuovere il vecchio codice.	No se ha podido quitar el código anterior.	Der alte Code konnte nicht entfernt werden.	无法移除旧密码。
+647	The security chip is locked after too many code attempts. Try again in a few minutes (or later).	Il chip di sicurezza è bloccato dopo troppi tentativi. Riprova tra qualche minuto (o più tardi).	El chip de seguridad está bloqueado tras demasiados intentos. Vuelve a intentarlo dentro de unos minutos (o más tarde).	Der Sicherheitschip ist nach zu vielen Code-Versuchen gesperrt. Versuchen Sie es in einigen Minuten (oder später) erneut.	尝试次数过多，安全芯片已锁定。请几分钟后（或稍后）再试。
+648	The security chip did not accept the code.	Il chip di sicurezza non ha accettato il codice.	El chip de seguridad no ha aceptado el código.	Der Sicherheitschip hat den Code nicht akzeptiert.	安全芯片未接受此密码。
+649	Unable to replace the old password.	Impossibile sostituire la vecchia password.	No se puede sustituir la contraseña anterior.	Das alte Passwort kann nicht ersetzt werden.	无法替换旧密码。
+650	The password could not be saved.	Non è stato possibile salvare la password.	No se ha podido guardar la contraseña.	Das Passwort konnte nicht gespeichert werden.	无法保存密码。
+651	The code must contain exactly {n} digits.	Il codice deve contenere esattamente {n} cifre.	El código debe tener exactamente {n} cifras.	Der Code muss genau {n} Ziffern enthalten.	密码必须正好是 {n} 位数字。
+652	The password must contain at least {n} characters.	La password deve contenere almeno {n} caratteri.	La contraseña debe tener al menos {n} caracteres.	Das Passwort muss mindestens {n} Zeichen enthalten.	密码至少需要 {n} 个字符。
+653	The recovery key already exists (Settings → New recovery key).	La chiave di recupero esiste già (Impostazioni → Nuova chiave di recupero).	La clave de recuperación ya existe (Ajustes → Nueva clave de recuperación).	Der Wiederherstellungsschlüssel existiert bereits (Einstellungen → Neuer Wiederherstellungsschlüssel).	恢复密钥已存在（设置 → 新的恢复密钥）。
+654	Unable to replace the old recovery key.	Impossibile sostituire la vecchia chiave di recupero.	No se puede sustituir la clave de recuperación anterior.	Der alte Wiederherstellungsschlüssel kann nicht ersetzt werden.	无法替换旧的恢复密钥。
+655	To change the code, use Settings → Change my code.	Per cambiare codice, usa Impostazioni → Cambia il mio codice.	Para cambiar el código, usa Ajustes → Cambiar mi código.	Um den Code zu ändern, nutzen Sie Einstellungen → Meinen Code ändern.	要更改密码，请使用 设置 → 更改密码。
+656	The recovery key must be created first.	Prima bisogna creare la chiave di recupero.	Primero hay que crear la clave de recuperación.	Zuerst muss der Wiederherstellungsschlüssel erstellt werden.	必须先创建恢复密钥。
+657	No code has been chosen yet.	Nessun codice è ancora stato scelto.	Todavía no se ha elegido ningún código.	Es wurde noch kein Code gewählt.	尚未设置密码。
+658	Incorrect current code.	Codice attuale errato.	Código actual incorrecto.	Aktueller Code falsch.	当前密码错误。
+659	Incorrect code.	Codice errato.	Código incorrecto.	Falscher Code.	密码错误。
+660	Partition not specified.	Partizione non specificata.	Partición no indicada.	Partition nicht angegeben.	未指定分区。
+661	SoleOS (other version)	SoleOS (altra versione)	SoleOS (otra versión)	SoleOS (andere Version)	SoleOS（其他版本）
+662	Unknown language.	Lingua sconosciuta.	Idioma desconocido.	Unbekannte Sprache.	未知语言。
+663	Unknown keyboard.	Tastiera sconosciuta.	Teclado desconocido.	Unbekannte Tastatur.	未知键盘。

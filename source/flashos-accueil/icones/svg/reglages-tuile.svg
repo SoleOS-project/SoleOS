@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="224" height="224" viewBox="0 0 224 224">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f8ea8"/><stop offset="1" stop-color="#3f4c66"/>
+    </linearGradient>
+    <linearGradient id="reflet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="224" height="224" rx="60" fill="url(#g)"/>
+  <rect x="0" y="0" width="224" height="224" rx="60" fill="url(#reflet)"/>
+  <path d="M162.2 98.5 L177.2 101.7 L177.2 122.3 L162.2 125.5 L157.0 138.0 L165.4 150.8 L150.8 165.4 L138.0 157.0 L125.5 162.2 L122.3 177.2 L101.7 177.2 L98.5 162.2 L86.0 157.0 L73.2 165.4 L58.6 150.8 L67.0 138.0 L61.8 125.5 L46.8 122.3 L46.8 101.7 L61.8 98.5 L67.0 86.0 L58.6 73.2 L73.2 58.6 L86.0 67.0 L98.5 61.8 L101.7 46.8 L122.3 46.8 L125.5 61.8 L138.0 67.0 L150.8 58.6 L165.4 73.2 L157.0 86.0 Z" fill="#fff" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="112" cy="112" r="21" fill="#56637e"/>
+</svg>

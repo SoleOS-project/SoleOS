@@ -1,0 +1,110 @@
+0	{prog} is not responding.	{prog} non risponde.	{prog} no responde.	{prog} antwortet nicht.	{prog} 没有响应。
+1	Printer	Stampante	Impresora	Drucker	打印机
+2	Stopped	Ferma	Detenida	Angehalten	已停止
+3	Printing…	Stampa in corso…	Imprimiendo…	Druckt…	正在打印…
+4	Ready	Pronta	Lista	Bereit	就绪
+5	No driver fits this printer.	Nessun driver adatto a questa stampante.	Ningún controlador sirve para esta impresora.	Kein passender Treiber für diesen Drucker.	没有适合此打印机的驱动程序。
+6	Test page not found.	Pagina di prova non trovata.	No se encuentra la página de prueba.	Testseite nicht gefunden.	找不到测试页。
+7	Pairing failed. Put the device in “pairing” mode (often a long press on its button) and try again.	Associazione non riuscita. Metti il dispositivo in modalità «associazione» (spesso una pressione lunga sul suo pulsante) e riprova.	La vinculación ha fallado. Pon el dispositivo en modo «vinculación» (a menudo una pulsación larga en su botón) y vuelve a intentarlo.	Kopplung fehlgeschlagen. Versetzen Sie das Gerät in den „Kopplungsmodus“ (oft durch langes Drücken seiner Taste) und versuchen Sie es erneut.	配对失败。请将设备置于“配对”模式（通常长按其按钮），然后重试。
+8	Headphones	Cuffie	Auriculares	Kopfhörer	耳机
+9	Speaker	Altoparlante	Altavoz	Lautsprecher	音箱
+10	Mouse	Mouse	Ratón	Maus	鼠标
+11	Keyboard	Tastiera	Teclado	Tastatur	键盘
+12	Gamepad	Controller	Mando	Gamepad	游戏手柄
+13	Phone	Telefono	Teléfono	Telefon	手机
+14	Computer	Computer	Ordenador	Computer	电脑
+15	No second screen connected.	Nessun secondo schermo collegato.	No hay ninguna segunda pantalla conectada.	Kein zweiter Bildschirm angeschlossen.	未连接第二块屏幕。
+16	Printers and scanner	Stampanti e scanner	Impresoras y escáner	Drucker und Scanner	打印机和扫描仪
+17	↻ Search	↻ Cerca	↻ Buscar	↻ Suchen	↻ 搜索
+18	Scan a document	Scansiona un documento	Escanear un documento	Dokument scannen	扫描文档
+19	Printers	Stampanti	Impresoras	Drucker	打印机
+20	Bluetooth	Bluetooth	Bluetooth	Bluetooth	蓝牙
+21	↻ Search for devices	↻ Cerca dispositivi	↻ Buscar dispositivos	↻ Nach Geräten suchen	↻ 搜索设备
+22	Second screen	Secondo schermo	Segunda pantalla	Zweiter Bildschirm	第二块屏幕
+23	Screen	Schermo	Pantalla	Bildschirm	屏幕
+24	Turning on…	Attivazione…	Activando…	Wird eingeschaltet…	正在开启…
+25	Turning off…	Disattivazione…	Desactivando…	Wird ausgeschaltet…	正在关闭…
+26	Looking for other printers nearby…	Ricerca di altre stampanti nelle vicinanze…	Buscando otras impresoras cercanas…	Suche nach weiteren Druckern in der Nähe…	正在搜索附近的其他打印机…
+27	Printing is not installed on this system.	La stampa non è installata su questo sistema.	La impresión no está instalada en este sistema.	Drucken ist auf diesem System nicht installiert.	此系统未安装打印功能。
+28	The printing service is not responding.	Il servizio di stampa non risponde.	El servicio de impresión no responde.	Der Druckdienst antwortet nicht.	打印服务没有响应。
+29	No printer found. Turn it on and plug it in (USB) or connect it to the same network, then “Search”.	Nessuna stampante trovata. Accendila e collegala (USB) o alla stessa rete, poi «Cerca».	No se ha encontrado ninguna impresora. Enciéndela y conéctala (USB) o a la misma red, y luego «Buscar».	Kein Drucker gefunden. Schalten Sie ihn ein und schließen Sie ihn an (USB) oder verbinden Sie ihn mit demselben Netzwerk, dann „Suchen“.	未找到打印机。请打开打印机并连接（USB）或连接到同一网络，然后点击“搜索”。
+30	My printers	Le mie stampanti	Mis impresoras	Meine Drucker	我的打印机
+31	default	predefinita	predeterminada	Standard	默认
+32	Test	Prova	Prueba	Test	测试
+33	Print a test page	Stampa una pagina di prova	Imprimir una página de prueba	Testseite drucken	打印测试页
+34	Default	Predefinita	Predeterminada	Standard	设为默认
+35	✕	✕	✕	✕	✕
+36	Remove this printer	Rimuovi questa stampante	Quitar esta impresora	Diesen Drucker entfernen	移除此打印机
+37	Test page sent.	Pagina di prova inviata.	Página de prueba enviada.	Testseite gesendet.	测试页已发送。
+38	Found nearby	Trovate nelle vicinanze	Encontradas cerca	In der Nähe gefunden	在附近找到
+39	Add	Aggiungi	Añadir	Hinzufügen	添加
+40	Connected by USB	Collegata via USB	Conectada por USB	Per USB angeschlossen	通过 USB 连接
+41	On the network	In rete	En la red	Im Netzwerk	在网络上
+42	…	…	…	…	…
+43	Adding “{nom}”…	Aggiunta di «{nom}»…	Añadiendo «{nom}»…	„{nom}“ wird hinzugefügt…	正在添加“{nom}”…
+44	“{nom}” is ready.	«{nom}» è pronta.	«{nom}» está lista.	„{nom}“ ist bereit.	“{nom}”已就绪。
+45	Failed: {e}	Errore: {e}	Error: {e}	Fehlgeschlagen: {e}	失败：{e}
+46	unknown error	errore sconosciuto	error desconocido	unbekannter Fehler	未知错误
+47	Reading…	Lettura…	Leyendo…	Wird gelesen…	正在读取…
+48	Looking for nearby devices…	Ricerca dei dispositivi nelle vicinanze…	Buscando dispositivos cercanos…	Suche nach Geräten in der Nähe…	正在搜索附近的设备…
+49	Bluetooth is not installed on this system.	Il Bluetooth non è installato su questo sistema.	El Bluetooth no está instalado en este sistema.	Bluetooth ist auf diesem System nicht installiert.	此系统未安装蓝牙。
+50	No Bluetooth on this computer.	Nessun Bluetooth su questo computer.	Este ordenador no tiene Bluetooth.	Kein Bluetooth auf diesem Computer.	此电脑没有蓝牙。
+51	Bluetooth is turned off.	Il Bluetooth è disattivato.	El Bluetooth está desactivado.	Bluetooth ist ausgeschaltet.	蓝牙已关闭。
+52	No devices. Put your headphones, mouse… in “pairing” mode, then “Search”.	Nessun dispositivo. Metti cuffie, mouse… in modalità «associazione», poi «Cerca».	Ningún dispositivo. Pon tus auriculares, ratón… en modo «vinculación» y luego «Buscar».	Keine Geräte. Versetzen Sie Kopfhörer, Maus… in den „Kopplungsmodus“, dann „Suchen“.	没有设备。请将耳机、鼠标等置于“配对”模式，然后点击“搜索”。
+53	My devices	I miei dispositivi	Mis dispositivos	Meine Geräte	我的设备
+54	Nearby	Nelle vicinanze	Cerca	In der Nähe	附近
+55	Connected	Connesso	Conectado	Verbunden	已连接
+56	Not connected	Non connesso	No conectado	Nicht verbunden	未连接
+57	Disconnect	Disconnetti	Desconectar	Trennen	断开
+58	Connect	Connetti	Conectar	Verbinden	连接
+59	Unable to connect: is the device on and nearby?	Connessione impossibile: il dispositivo è acceso e vicino?	No se puede conectar: ¿el dispositivo está encendido y cerca?	Verbindung nicht möglich: Ist das Gerät eingeschaltet und in der Nähe?	无法连接：设备是否已开启并在附近？
+60	Forget this device	Dimentica questo dispositivo	Olvidar este dispositivo	Dieses Gerät vergessen	忘记此设备
+61	Pair	Associa	Vincular	Koppeln	配对
+62	Pairing with “{nom}”…	Associazione con «{nom}»…	Vinculando con «{nom}»…	Kopplung mit „{nom}“…	正在与“{nom}”配对…
+63	Only one screen. Plug in a screen or a projector: the picture will be duplicated automatically.	Un solo schermo. Collega uno schermo o un proiettore: l'immagine verrà duplicata automaticamente.	Una sola pantalla. Conecta una pantalla o un proyector: la imagen se duplicará automáticamente.	Nur ein Bildschirm. Schließen Sie einen Bildschirm oder Beamer an: Das Bild wird automatisch dupliziert.	只有一块屏幕。连接显示器或投影仪后，画面会自动复制过去。
+64	Second screen: {nom}	Secondo schermo: {nom}	Segunda pantalla: {nom}	Zweiter Bildschirm: {nom}	第二块屏幕：{nom}
+65	Duplicate	Duplica	Duplicar	Duplizieren	复制
+66	The same picture on both screens (presentations)	La stessa immagine sui due schermi (presentazioni)	La misma imagen en las dos pantallas (presentaciones)	Dasselbe Bild auf beiden Bildschirmen (Präsentationen)	两块屏幕显示相同画面（演示）
+67	Extend	Estendi	Extender	Erweitern	扩展
+68	The second screen extends this one, to the right	Il secondo schermo prolunga questo, a destra	La segunda pantalla prolonga esta, a la derecha	Der zweite Bildschirm erweitert diesen nach rechts	第二块屏幕在右侧扩展本屏幕
+69	Second screen only	Solo il secondo schermo	Solo la segunda pantalla	Nur zweiter Bildschirm	仅第二块屏幕
+70	The PC screen turns off	Lo schermo del PC si spegne	La pantalla del PC se apaga	Der PC-Bildschirm wird ausgeschaltet	电脑屏幕关闭
+71	This screen only	Solo questo schermo	Solo esta pantalla	Nur dieser Bildschirm	仅本屏幕
+72	The second screen stays off	Il secondo schermo resta spento	La segunda pantalla permanece apagada	Der zweite Bildschirm bleibt aus	第二块屏幕保持关闭
+73	Choose	Scegli	Elegir	Auswählen	选择
+74	Craft suite	Suite Craft	Suite Craft	Craft-Suite	Craft 套件
+75	Photos and creativity	Foto e creatività	Fotos y creación	Fotos und Kreatives	照片与创作
+76	Video and music	Video e musica	Vídeo y música	Video und Musik	视频与音乐
+77	Communication	Comunicazione	Comunicación	Kommunikation	沟通
+78	Documents	Documenti	Documentos	Dokumente	文档
+79	Work	Lavoro	Trabajo	Arbeit	工作
+80	Security and tools	Sicurezza e strumenti	Seguridad y herramientas	Sicherheit und Werkzeuge	安全与工具
+81	Kids and school	Bambini e scuola	Niños y escuela	Kinder und Schule	儿童与学习
+82	Games	Giochi	Juegos	Spiele	游戏
+83	Other browsers	Altri browser	Otros navegadores	Andere Browser	其他浏览器
+84	Edit your photos	Ritocca le tue foto	Retocar tus fotos	Fotos bearbeiten	编辑照片
+85	Drawing and painting	Disegno e pittura	Dibujo y pintura	Zeichnen und Malen	绘画
+86	Logos, posters, vector drawings	Loghi, manifesti, disegni vettoriali	Logotipos, carteles, dibujos vectoriales	Logos, Plakate, Vektorgrafiken	标志、海报、矢量图
+87	Organize and find your photos	Organizza e ritrova le tue foto	Ordenar y encontrar tus fotos	Fotos ordnen und wiederfinden	整理和查找照片
+88	Play all videos and music	Riproduci tutti i video e la musica	Reproducir todos los vídeos y la música	Alle Videos und Musik abspielen	播放所有视频和音乐
+89	Video editing	Montaggio video	Edición de vídeo	Videoschnitt	视频剪辑
+90	Record and edit sound	Registra e modifica l'audio	Grabar y editar sonido	Ton aufnehmen und bearbeiten	录制和编辑音频
+91	Online music	Musica online	Música en línea	Online-Musik	在线音乐
+92	Video meetings	Riunioni video	Videoconferencias	Videokonferenzen	视频会议
+93	Private messaging	Messaggistica privata	Mensajería privada	Private Nachrichten	私密聊天
+94	Messaging	Messaggistica	Mensajería	Nachrichten	聊天
+95	Group chats and calls	Chat e chiamate di gruppo	Chats y llamadas en grupo	Gruppenchats und Anrufe	群聊与通话
+96	Email program	Programma di posta	Programa de correo	E-Mail-Programm	电子邮件客户端
+97	Read and annotate PDFs	Leggi e annota i PDF	Leer y anotar PDF	PDFs lesen und kommentieren	阅读和批注 PDF
+98	Merge, split, reorder PDFs	Unisci, dividi, riordina PDF	Combinar, dividir, reordenar PDF	PDFs zusammenfügen, teilen, sortieren	合并、拆分、重排 PDF
+99	E-book library	Biblioteca di e-book	Biblioteca de libros electrónicos	E-Book-Bibliothek	电子书库
+100	E-book reader	Lettore di e-book	Lector de libros electrónicos	E-Book-Reader	电子书阅读器
+101	Remote desktop	Desktop remoto	Escritorio remoto	Fernzugriff	远程桌面
+102	Use a Windows PC or server remotely	Usa un PC o un server Windows a distanza	Usar un PC o un servidor Windows a distancia	Einen Windows-PC oder -Server aus der Ferne nutzen	远程使用 Windows 电脑或服务器
+103	Password vault	Cassaforte delle password	Caja fuerte de contraseñas	Passwort-Tresor	密码保险箱
+104	Passwords, without an online account	Password, senza account online	Contraseñas, sin cuenta en línea	Passwörter, ohne Online-Konto	密码管理，无需在线账号
+105	Back up your files to a USB drive	Salva i tuoi file su un disco USB	Hacer copia de tus archivos en un disco USB	Dateien auf einem USB-Laufwerk sichern	将文件备份到 USB 磁盘
+106	Calculator	Calcolatrice	Calculadora	Rechner	计算器
+107	Simple and scientific calculations	Calcoli semplici e scientifici	Cálculos simples y científicos	Einfache und wissenschaftliche Berechnungen	简单和科学计算
+108	Learning activities for ages 2 to 10	Attività educative da 2 a 10 anni	Actividades educativas de 2 a 10 años	Lernspiele für 2 bis 10 Jahre	2 至 10 岁的益智活动
+109	Drawing for kids	Disegno per bambini	Dibujo para niños	Malen für Kinder	儿童绘画

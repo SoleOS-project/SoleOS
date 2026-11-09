@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="224" height="224" viewBox="0 0 224 224">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f39257"/><stop offset="1" stop-color="#cf4a18"/>
+    </linearGradient>
+    <linearGradient id="reflet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="224" height="224" rx="60" fill="url(#g)"/>
+  <rect x="0" y="0" width="224" height="224" rx="60" fill="url(#reflet)"/>
+  
+  <path d="M74 50h56l38 38v84a10 10 0 0 1-10 10H74a10 10 0 0 1-10-10V60a10 10 0 0 1 10-10z" fill="#fff"/>
+  <path d="M130 50v28a10 10 0 0 0 10 10h28z" fill="#fff" opacity="0.55"/>
+  <rect x="82" y="108" width="68" height="9" rx="4.5" fill="#cf4a18" opacity="0.55"/>
+  <rect x="82" y="128" width="68" height="9" rx="4.5" fill="#cf4a18" opacity="0.55"/>
+  <rect x="82" y="148" width="44" height="9" rx="4.5" fill="#cf4a18" opacity="0.55"/>
+</svg>

@@ -1,0 +1,110 @@
+110	Maths: geometry, graphs	Matematica: geometria, grafici	Matemáticas: geometría, gráficas	Mathematik: Geometrie, Funktionen	数学：几何、函数图像
+111	The starry sky	Il cielo stellato	El cielo estrellado	Der Sternenhimmel	星空
+112	Game store and library	Negozio e libreria di giochi	Tienda y biblioteca de juegos	Spieleshop und -bibliothek	游戏商店与游戏库
+113	Kart racing	Corse di kart	Carreras de karts	Kartrennen	卡丁车赛车
+114	Solitaire	Solitario	Solitario	Solitär	纸牌
+115	Card games	Giochi di carte	Juegos de cartas	Kartenspiele	纸牌游戏
+116	Sudoku puzzles	Griglie di sudoku	Sudokus	Sudoku-Rätsel	数独
+117	Web browser	Browser web	Navegador web	Webbrowser	网页浏览器
+118	Google's web browser	Il browser web di Google	El navegador web de Google	Der Webbrowser von Google	谷歌网页浏览器
+119	Word processor (Word .docx files)	Videoscrittura (file Word .docx)	Procesador de textos (archivos Word .docx)	Textverarbeitung (Word-Dateien .docx)	文字处理（Word .docx 文件）
+120	Spreadsheet (Excel .xlsx files)	Foglio di calcolo (file Excel .xlsx)	Hoja de cálculo (archivos Excel .xlsx)	Tabellenkalkulation (Excel-Dateien .xlsx)	电子表格（Excel .xlsx 文件）
+121	Presentations (slideshows)	Presentazioni	Presentaciones	Präsentationen	演示文稿（幻灯片）
+122	Read, organize and protect PDFs	Leggi, organizza e proteggi i PDF	Leer, organizar y proteger PDF	PDFs lesen, ordnen und schützen	阅读、整理和保护 PDF
+123	Photo editing with layers	Fotoritocco con livelli	Retoque fotográfico con capas	Fotobearbeitung mit Ebenen	支持图层的照片编辑
+124	Photo library and RAW development	Fototeca e sviluppo RAW	Fototeca y revelado RAW	Fotobibliothek und RAW-Entwicklung	照片库与 RAW 冲印
+125	Vector drawing, logos	Disegno vettoriale, loghi	Dibujo vectorial, logotipos	Vektorzeichnung, Logos	矢量绘图、标志
+126	Page layout and publishing	Impaginazione e pubblicazione	Maquetación y publicación	Layout und Publishing	排版与出版
+127	Screen and app mockups	Prototipi di schermate e app	Maquetas de pantallas y apps	Entwürfe für Bildschirme und Apps	界面与应用原型
+128	Animations and visual effects	Animazioni ed effetti visivi	Animaciones y efectos visuales	Animationen und visuelle Effekte	动画与视觉特效
+129	Audio recording studio	Studio di registrazione audio	Estudio de grabación de audio	Tonstudio	录音棚
+130	Technical drawing (CAD)	Disegno tecnico (CAD)	Dibujo técnico (CAD)	Technisches Zeichnen (CAD)	工程制图（CAD）
+131	curl was not found.	curl non trovato.	No se encuentra curl.	curl wurde nicht gefunden.	找不到 curl。
+132	No Internet connection: unable to reach GitHub.	Nessuna connessione a Internet: impossibile raggiungere GitHub.	Sin conexión a Internet: no se puede acceder a GitHub.	Keine Internetverbindung: GitHub ist nicht erreichbar.	没有网络连接：无法访问 GitHub。
+133	The download failed. Check the Internet connection and try again.	Il download non è riuscito. Controlla la connessione a Internet e riprova.	La descarga ha fallado. Comprueba la conexión a Internet y vuelve a intentarlo.	Der Download ist fehlgeschlagen. Prüfen Sie die Internetverbindung und versuchen Sie es erneut.	下载失败。请检查网络连接后重试。
+134	Images	Immagini	Imágenes	Bilder	图片
+135	Flatpak is not installed on this system.	Flatpak non è installato su questo sistema.	Flatpak no está instalado en este sistema.	Flatpak ist auf diesem System nicht installiert.	此系统未安装 Flatpak。
+136	No Internet connection: unable to reach the store.	Nessuna connessione a Internet: impossibile raggiungere il negozio.	Sin conexión a Internet: no se puede acceder a la tienda.	Keine Internetverbindung: Der Store ist nicht erreichbar.	没有网络连接：无法访问应用商店。
+137	Unable to reach the store. Details: {detail}	Impossibile raggiungere il negozio. Dettagli: {detail}	No se puede acceder a la tienda. Detalles: {detail}	Der Store ist nicht erreichbar. Details: {detail}	无法访问应用商店。详情：{detail}
+138	App not found in the store.	Applicazione non trovata nel negozio.	Aplicación no encontrada en la tienda.	App im Store nicht gefunden.	应用商店中找不到该应用。
+139	Not enough space on the disk.	Spazio su disco insufficiente.	No hay suficiente espacio en el disco.	Nicht genug Speicherplatz.	磁盘空间不足。
+140	Installation failed. Check the Internet connection and try again.	L'installazione non è riuscita. Controlla la connessione a Internet e riprova.	La instalación ha fallado. Comprueba la conexión a Internet y vuelve a intentarlo.	Die Installation ist fehlgeschlagen. Prüfen Sie die Internetverbindung und versuchen Sie es erneut.	安装失败。请检查网络连接后重试。
+141	This app is part of SoleOS.	Questa applicazione fa parte di SoleOS.	Esta aplicación forma parte de SoleOS.	Diese App gehört zu SoleOS.	此应用是 SoleOS 的一部分。
+142	File not found.	File non trovato.	Archivo no encontrado.	Datei nicht gefunden.	找不到文件。
+143	Copy impossible (disk space?)	Copia impossibile (spazio su disco?)	No se puede copiar (¿espacio en disco?)	Kopieren nicht möglich (Speicherplatz?)	无法复制（磁盘空间不足？）
+144	Distrobox is not installed on this system.	Distrobox non è installato su questo sistema.	Distrobox no está instalado en este sistema.	Distrobox ist auf diesem System nicht installiert.	此系统未安装 Distrobox。
+145	No Internet connection: unable to download the Debian space.	Nessuna connessione a Internet: impossibile scaricare lo spazio Debian.	Sin conexión a Internet: no se puede descargar el espacio Debian.	Keine Internetverbindung: Der Debian-Bereich kann nicht heruntergeladen werden.	没有网络连接：无法下载 Debian 空间。
+146	Unable to create the Debian space. Details: {detail}	Impossibile creare lo spazio Debian. Dettagli: {detail}	No se puede crear el espacio Debian. Detalles: {detail}	Der Debian-Bereich kann nicht erstellt werden. Details: {detail}	无法创建 Debian 空间。详情：{detail}
+147	Unable to start the Debian space. Details: {detail}	Impossibile avviare lo spazio Debian. Dettagli: {detail}	No se puede iniciar el espacio Debian. Detalles: {detail}	Der Debian-Bereich kann nicht gestartet werden. Details: {detail}	无法启动 Debian 空间。详情：{detail}
+148	Invalid file name.	Nome di file non valido.	Nombre de archivo no válido.	Ungültiger Dateiname.	文件名无效。
+149	Package installation failed. Details: {detail}	L'installazione del pacchetto non è riuscita. Dettagli: {detail}	La instalación del paquete ha fallado. Detalles: {detail}	Die Installation des Pakets ist fehlgeschlagen. Details: {detail}	软件包安装失败。详情：{detail}
+150	the package	il pacchetto	el paquete	das Paket	该软件包
+151	Invalid address (example: bbc.co.uk).	Indirizzo non valido (esempio: corriere.it).	Dirección no válida (ejemplo: elpais.com).	Ungültige Adresse (Beispiel: spiegel.de).	地址无效（例如：baidu.com）。
+152	Step {n} of 3	Passaggio {n} di 3	Paso {n} de 3	Schritt {n} von 3	第 {n} 步，共 3 步
+153	Welcome to SoleOS	Benvenuto in SoleOS	Bienvenido a SoleOS	Willkommen bei SoleOS	欢迎使用 SoleOS
+154	A few seconds to protect your files, and you're ready.	Pochi secondi per proteggere i tuoi file, ed è pronto.	Unos segundos para proteger tus archivos y listo.	Ein paar Sekunden, um Ihre Dateien zu schützen, dann ist alles bereit.	只需几秒钟保护您的文件，即可开始使用。
+155	What's your name?	Come ti chiami?	¿Cómo te llamas?	Wie heißen Sie?	您叫什么名字？
+156	Your first name	Il tuo nome	Tu nombre	Ihr Vorname	您的名字
+157	Next	Avanti	Siguiente	Weiter	下一步
+158	Type it a second time	Digitalo una seconda volta	Escríbelo otra vez	Geben Sie ihn ein zweites Mal ein	请再输入一次
+159	Choose a new code	Scegli un nuovo codice	Elige un nuevo código	Wählen Sie einen neuen Code	请选择新的密码
+160	Choose your code	Scegli il tuo codice	Elige tu código	Wählen Sie Ihren Code	请选择您的密码
+161	To make sure there's no typo.	Per essere sicuri che non ci siano errori di battitura.	Para asegurarnos de que no hay errores al escribir.	Damit kein Tippfehler passiert.	以确保没有输入错误。
+162	6 digits, to type at every startup and to unlock the screen. Avoid 123456 or your date of birth.	6 cifre, da digitare a ogni avvio e per sbloccare lo schermo. Evita 123456 o la tua data di nascita.	6 cifras, para escribir en cada arranque y para desbloquear la pantalla. Evita 123456 o tu fecha de nacimiento.	6 Ziffern, bei jedem Start und zum Entsperren des Bildschirms einzugeben. Vermeiden Sie 123456 oder Ihr Geburtsdatum.	6 位数字，每次开机和解锁屏幕时输入。请避免使用 123456 或您的生日。
+163	Start over	Ricomincia	Empezar de nuevo	Neu beginnen	重新开始
+164	Back	Indietro	Atrás	Zurück	返回
+165	This code is too easy to guess. Choose another one.	Questo codice è troppo facile da indovinare. Scegline un altro.	Este código es demasiado fácil de adivinar. Elige otro.	Dieser Code ist zu leicht zu erraten. Wählen Sie einen anderen.	这个密码太容易被猜到，请换一个。
+166	The two codes are different. Start over.	I due codici sono diversi. Ricomincia.	Los dos códigos son distintos. Empieza de nuevo.	Die beiden Codes sind unterschiedlich. Beginnen Sie neu.	两次输入的密码不一致，请重新开始。
+167	Choose a new password	Scegli una nuova password	Elige una nueva contraseña	Wählen Sie ein neues Passwort	请选择新的密码
+168	Choose your password	Scegli la tua password	Elige tu contraseña	Wählen Sie Ihr Passwort	请选择您的密码
+169	At least 8 characters, to type at every startup and to unlock the screen. (This computer has no security chip: a 6-digit code would not be enough.)	Almeno 8 caratteri, da digitare a ogni avvio e per sbloccare lo schermo. (Questo computer non ha un chip di sicurezza: un codice di 6 cifre non basterebbe.)	Al menos 8 caracteres, para escribir en cada arranque y para desbloquear la pantalla. (Este ordenador no tiene chip de seguridad: un código de 6 cifras no sería suficiente.)	Mindestens 8 Zeichen, bei jedem Start und zum Entsperren des Bildschirms einzugeben. (Dieser Computer hat keinen Sicherheitschip: Ein 6-stelliger Code würde nicht ausreichen.)	至少 8 个字符，每次开机和解锁屏幕时输入。（此电脑没有安全芯片：6 位数字密码不够安全。）
+170	Password	Password	Contraseña	Passwort	密码
+171	Once more	Ancora una volta	Una vez más	Noch einmal	再输入一次
+172	A little more: at least 8 characters.	Ancora un po': almeno 8 caratteri.	Un poco más: al menos 8 caracteres.	Noch etwas: mindestens 8 Zeichen.	再长一些：至少 8 个字符。
+173	The two passwords are different.	Le due password sono diverse.	Las dos contraseñas son distintas.	Die beiden Passwörter sind unterschiedlich.	两次输入的密码不一致。
+174	Your recovery key	La tua chiave di recupero	Tu clave de recuperación	Ihr Wiederherstellungsschlüssel	您的恢复密钥
+175	The recovery key could not be created.	Non è stato possibile creare la chiave di recupero.	No se ha podido crear la clave de recuperación.	Der Wiederherstellungsschlüssel konnte nicht erstellt werden.	无法创建恢复密钥。
+176	If one day you forget your code, this key is the only way to open your files. Write it down on paper and keep it in a safe place, not in the computer.	Se un giorno dimentichi il tuo codice, questa chiave è l'unico modo per aprire i tuoi file. Scrivila su carta e conservala in un luogo sicuro, non nel computer.	Si algún día olvidas tu código, esta clave es la única forma de abrir tus archivos. Escríbela en papel y guárdala en un lugar seguro, no en el ordenador.	Wenn Sie Ihren Code einmal vergessen, ist dieser Schlüssel die einzige Möglichkeit, Ihre Dateien zu öffnen. Schreiben Sie ihn auf Papier und bewahren Sie ihn sicher auf, nicht im Computer.	如果有一天您忘记了密码，这把密钥是打开文件的唯一方法。请把它抄在纸上并妥善保管，不要存放在电脑里。
+177	If one day you forget your password, this key is the only way to open your files. Write it down on paper and keep it in a safe place, not in the computer.	Se un giorno dimentichi la tua password, questa chiave è l'unico modo per aprire i tuoi file. Scrivila su carta e conservala in un luogo sicuro, non nel computer.	Si algún día olvidas tu contraseña, esta clave es la única forma de abrir tus archivos. Escríbela en papel y guárdala en un lugar seguro, no en el ordenador.	Wenn Sie Ihr Passwort einmal vergessen, ist dieser Schlüssel die einzige Möglichkeit, Ihre Dateien zu öffnen. Schreiben Sie ihn auf Papier und bewahren Sie ihn sicher auf, nicht im Computer.	如果有一天您忘记了密码，这把密钥是打开文件的唯一方法。请把它抄在纸上并妥善保管，不要存放在电脑里。
+178	Lowercase letters only. At startup, you type it instead of the code.	Solo lettere minuscole. All'avvio, si digita al posto del codice.	Solo letras minúsculas. Al arrancar, se escribe en lugar del código.	Nur Kleinbuchstaben. Beim Start geben Sie ihn anstelle des Codes ein.	仅包含小写字母。开机时，用它代替密码输入。
+179	Lowercase letters only. At startup, you type it instead of the password.	Solo lettere minuscole. All'avvio, si digita al posto della password.	Solo letras minúsculas. Al arrancar, se escribe en lugar de la contraseña.	Nur Kleinbuchstaben. Beim Start geben Sie ihn anstelle des Passworts ein.	仅包含小写字母。开机时，用它代替密码输入。
+180	I wrote it down on paper	L'ho scritta su carta	La he escrito en papel	Ich habe ihn auf Papier notiert	我已抄在纸上
+181	Continue	Continua	Continuar	Weiter	继续
+182	Let's check your paper	Controlliamo il tuo foglio	Comprobemos tu papel	Prüfen wir Ihre Notiz	核对一下您的纸条
+183	Copy the first group of your recovery key (8 letters).	Ricopia il primo gruppo della tua chiave di recupero (8 lettere).	Copia el primer grupo de tu clave de recuperación (8 letras).	Geben Sie die erste Gruppe Ihres Wiederherstellungsschlüssels ein (8 Buchstaben).	请输入恢复密钥的第一组（8 个字母）。
+184	See the key again	Rivedi la chiave	Ver la clave otra vez	Schlüssel erneut anzeigen	再看一遍密钥
+185	Confirm	Conferma	Confirmar	Bestätigen	确认
+186	That's not quite it. Check your paper (or look at the key again).	Non è proprio così. Controlla il tuo foglio (o rivedi la chiave).	No es del todo correcto. Revisa tu papel (o vuelve a ver la clave).	Das stimmt noch nicht ganz. Prüfen Sie Ihre Notiz (oder sehen Sie sich den Schlüssel erneut an).	不太对。请核对纸条（或再看一遍密钥）。
+187	Protecting your files…	Protezione dei tuoi file…	Protegiendo tus archivos…	Ihre Dateien werden geschützt…	正在保护您的文件…
+188	New code saved	Nuovo codice salvato	Nuevo código guardado	Neuer Code gespeichert	新密码已保存
+189	Your recovery key stays the same: keep your paper. At the next startup, type your new code.	La tua chiave di recupero resta la stessa: conserva il foglio. Al prossimo avvio, digita il nuovo codice.	Tu clave de recuperación sigue siendo la misma: guarda tu papel. En el próximo arranque, escribe tu nuevo código.	Ihr Wiederherstellungsschlüssel bleibt gleich: Bewahren Sie Ihre Notiz auf. Geben Sie beim nächsten Start Ihren neuen Code ein.	您的恢复密钥保持不变：请保留纸条。下次开机时，请输入新密码。
+190	Your recovery key stays the same: keep your paper. At the next startup, type your new password.	La tua chiave di recupero resta la stessa: conserva il foglio. Al prossimo avvio, digita la nuova password.	Tu clave de recuperación sigue siendo la misma: guarda tu papel. En el próximo arranque, escribe tu nueva contraseña.	Ihr Wiederherstellungsschlüssel bleibt gleich: Bewahren Sie Ihre Notiz auf. Geben Sie beim nächsten Start Ihr neues Passwort ein.	您的恢复密钥保持不变：请保留纸条。下次开机时，请输入新密码。
+191	All set, {prenom}!	È tutto pronto, {prenom}!	¡Todo listo, {prenom}!	Alles bereit, {prenom}!	准备就绪，{prenom}！
+192	Your files are protected.	I tuoi file sono protetti.	Tus archivos están protegidos.	Ihre Dateien sind geschützt.	您的文件已受到保护。
+193	At startup, type your code to open SoleOS. After 10 minutes without use, the screen locks (adjustable in Settings).	All'avvio, digita il codice per aprire SoleOS. Dopo 10 minuti di inattività, lo schermo si blocca (regolabile in Impostazioni).	Al arrancar, escribe tu código para abrir SoleOS. Tras 10 minutos sin uso, la pantalla se bloquea (ajustable en Ajustes).	Geben Sie beim Start Ihren Code ein, um SoleOS zu öffnen. Nach 10 Minuten ohne Nutzung wird der Bildschirm gesperrt (in den Einstellungen änderbar).	开机时输入密码即可打开 SoleOS。10 分钟无操作后屏幕会锁定（可在“设置”中调整）。
+194	At startup, type your password to open SoleOS. After 10 minutes without use, the screen locks (adjustable in Settings).	All'avvio, digita la password per aprire SoleOS. Dopo 10 minuti di inattività, lo schermo si blocca (regolabile in Impostazioni).	Al arrancar, escribe tu contraseña para abrir SoleOS. Tras 10 minutos sin uso, la pantalla se bloquea (ajustable en Ajustes).	Geben Sie beim Start Ihr Passwort ein, um SoleOS zu öffnen. Nach 10 Minuten ohne Nutzung wird der Bildschirm gesperrt (in den Einstellungen änderbar).	开机时输入密码即可打开 SoleOS。10 分钟无操作后屏幕会锁定（可在“设置”中调整）。
+195	Get started	Inizia	Empezar	Los geht's	开始使用
+196	Something went wrong	Si è verificato un problema	Se ha producido un problema	Ein Problem ist aufgetreten	出现了问题
+197	Nothing was lost: your files are still accessible as before.	Non è andato perso nulla: i tuoi file restano accessibili come prima.	No se ha perdido nada: tus archivos siguen accesibles como antes.	Nichts ist verloren: Ihre Dateien sind weiterhin wie bisher zugänglich.	没有任何数据丢失：您的文件仍可像以前一样访问。
+198	Try again	Riprova	Reintentar	Erneut versuchen	重试
+199	You opened SoleOS with your recovery key	Hai aperto SoleOS con la chiave di recupero	Has abierto SoleOS con tu clave de recuperación	Sie haben SoleOS mit Ihrem Wiederherstellungsschlüssel geöffnet	您使用恢复密钥打开了 SoleOS
+200	Now choose a new code: it will replace the one you forgot.	Ora scegli un nuovo codice: sostituirà quello che hai dimenticato.	Ahora elige un nuevo código: sustituirá al que olvidaste.	Wählen Sie jetzt einen neuen Code: Er ersetzt den vergessenen.	现在请选择新密码，它将替换您忘记的那个。
+201	Now choose a new password: it will replace the one you forgot.	Ora scegli una nuova password: sostituirà quella che hai dimenticato.	Ahora elige una nueva contraseña: sustituirá a la que olvidaste.	Wählen Sie jetzt ein neues Passwort: Es ersetzt das vergessene.	现在请选择新密码，它将替换您忘记的那个。
+202	No apps added yet. Tap “Add” to choose some.	Nessuna applicazione aggiunta per ora. Tocca «Aggiungi» per sceglierne.	Todavía no has añadido ninguna aplicación. Toca «Añadir» para elegir.	Noch keine Apps hinzugefügt. Tippen Sie auf „Hinzufügen“, um welche auszuwählen.	还没有添加任何应用。点击“添加”来选择。
+203	Right-click (or long press) on an app: pin to home, uninstall.	Clic destro (o pressione lunga) su un'applicazione: fissa nella home, disinstalla.	Clic derecho (o pulsación larga) en una aplicación: fijar en el inicio, desinstalar.	Rechtsklick (oder langes Drücken) auf eine App: an die Startseite anheften, deinstallieren.	右键点击（或长按）应用：固定到主页、卸载。
+204	on the home screen	nella home	en el inicio	auf der Startseite	在主页上
+205	Remove from home	Rimuovi dalla home	Quitar del inicio	Von der Startseite entfernen	从主页移除
+206	Pin to home	Fissa nella home	Fijar en el inicio	An die Startseite anheften	固定到主页
+207	Uninstall…	Disinstalla…	Desinstalar…	Deinstallieren…	卸载…
+208	Uninstall “{nom}”?	Disinstallare «{nom}»?	¿Desinstalar «{nom}»?	„{nom}“ deinstallieren?	卸载“{nom}”？
+209	Uninstall	Disinstalla	Desinstalar	Deinstallieren	卸载
+210	Cancel	Annulla	Cancelar	Abbrechen	取消
+211	Free and fast software, written in Rust by the ArtCraft team. Still young: keep Office for important documents.	Software libero e veloce, scritto in Rust dal team ArtCraft. Ancora giovane: usa Ufficio per i documenti importanti.	Software libre y rápido, escrito en Rust por el equipo ArtCraft. Aún joven: usa Ofimática para los documentos importantes.	Freie und schnelle Software, in Rust geschrieben vom ArtCraft-Team. Noch jung: Nutzen Sie Büro für wichtige Dokumente.	由 ArtCraft 团队用 Rust 编写的自由、快速的软件。目前还比较新：重要文档请使用“办公”。
+212	Installing…	Installazione…	Instalando…	Wird installiert…	正在安装…
+213	Waiting…	In attesa…	En espera…	Wartet…	等待中…
+214	After installation	Dopo l'installazione	Después de la instalación	Nach der Installation	安装完成后
+215	Open	Apri	Abrir	Öffnen	打开
+216	Install	Installa	Instalar	Installieren	安装
+217	An installation is in progress: the next one will start right after.	È in corso un'installazione: la prossima partirà subito dopo.	Hay una instalación en curso: la siguiente empezará justo después.	Eine Installation läuft: Die nächste beginnt direkt danach.	正在进行一项安装：下一项将紧接着开始。
+218	Downloading… The first app may take a few minutes (shared components to download).	Download in corso… La prima applicazione può richiedere qualche minuto (componenti comuni da scaricare).	Descargando… La primera aplicación puede tardar unos minutos (componentes comunes que descargar).	Wird heruntergeladen… Die erste App kann einige Minuten dauern (gemeinsame Komponenten werden geladen).	正在下载… 第一个应用可能需要几分钟（需要下载公共组件）。
+219	Downloading… ({n} waiting)	Download in corso… ({n} in attesa)	Descargando… ({n} en espera)	Wird heruntergeladen… ({n} wartend)	正在下载…（{n} 个等待中）
