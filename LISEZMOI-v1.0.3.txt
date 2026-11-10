@@ -1,6 +1,16 @@
-SoleOS v1.0.2
+SoleOS v1.0.3
 Créé par Giuseppe D'Arco – © 2026 GDH
 Licence non commerciale (PolyForm Noncommercial 1.0.0 + autorisations supplémentaires) : voir LICENSE
+
+v1.0.3 : retours de la v1.0.2
+--------------------------------------------------------------------------------------
+  - Réglages : tuile rouge « Réparer ou réinitialiser » (icône de danger), à la place du
+    bouton de « À propos ». Corrigé : l'écran de réparation s'ouvrait derrière les Réglages.
+  - KeePassXC (mots de passe, sans compte en ligne) installé d'office, comme Notepad Next et
+    Impression, dès la première connexion à Internet.
+
+  Tests (docs/tests-soleos-v1.0.3.jpg) : non-régression 32/34 (trousseau non mesurable ;
+  barre du son vérifiée à la main), 38/38 tests programmes.
 
 v1.0.2 : retours de la v1.0.1
 --------------------------------------------------------------------------------------
@@ -11,7 +21,7 @@ v1.0.2 : retours de la v1.0.1
     Fichiers → clic droit sur la clé → Formater… ; sans administrateur, clés et disques
     amovibles seulement (jamais le disque du système).
 
-  Tests (docs/tests-soleos-v1.0.2.jpg) : non-régression 33/34, 38/38 tests programmes.
+  Tests (rapport v1.0.2) : non-régression 33/34, 38/38 tests programmes.
 
 v1.0.1 : retours de la v1
 --------------------------------------------------------------------------------------
@@ -78,8 +88,8 @@ Construction
 ------------
   1. Copier tout le contenu du paquet dans un même dossier de la VM Debian 13.
   2. En root :  bash construire-iso-flashos.sh
-  3. Résultat : SoleOS-v1.0.2.iso et SoleOS-v1.0.2.iso.sha256 dans le dossier personnel.
+  3. Résultat : SoleOS-v1.0.3.iso et SoleOS-v1.0.3.iso.sha256 dans le dossier personnel.
 
-Passer votre HP en SoleOS v1.0.2 : démarrer sur la clé v1.0.2 → Réparer → Réparer (fichiers gardés).
+Passer votre HP en SoleOS v1.0.3 : démarrer sur la clé v1.0.3 → Réparer → Réparer (fichiers gardés).
 
 GitHub : ne rien publier avant le dépôt de la marque SoleOS à l'INPI.

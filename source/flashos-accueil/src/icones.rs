@@ -48,6 +48,7 @@ pub fn donnees(nom: &str) -> Option<&'static [u8]> {
         "r-horloge" => icone!("r-horloge"),
         "r-image" => icone!("r-image"),
         "r-info" => icone!("r-info"),
+        "r-danger" => icone!("r-danger"),
         "r-internet" => icone!("r-internet"),
         "r-reglages" => icone!("r-reglages"),
         "r-langue" => icone!("r-langue"),

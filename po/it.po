@@ -1772,6 +1772,9 @@ msgstr "Backup"
 msgid "À propos de SoleOS"
 msgstr "Informazioni su SoleOS"
 
+msgid "Réparer ou réinitialiser"
+msgstr "Ripara o reimposta"
+
 msgid "Plus de réglages"
 msgstr "Altre impostazioni"
 

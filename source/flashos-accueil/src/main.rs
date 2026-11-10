@@ -597,6 +597,9 @@ button.carte-reglage {
   box-shadow: none; min-height: 48px;
 }
 button.carte-reglage:hover { background: #1A2138; border-color: #3A4570; }
+button.carte-reglage.carte-danger { background: alpha(#DC2626, 0.14); border-color: alpha(#DC2626, 0.55); }
+button.carte-reglage.carte-danger:hover { background: alpha(#DC2626, 0.24); border-color: #DC2626; }
+button.carte-reglage.carte-danger .nom-reglage { color: #FECACA; }
 .nom-reglage { font-size: 15px; font-weight: 600; color: #E9ECF5; }
 .feuille flowboxchild { padding: 0; }
 button.icone-reglages-bureau, button.icone-reglages-bureau:hover, button.icone-reglages-bureau:active { background: none; border: none; box-shadow: none; padding: 4px; }
@@ -2912,7 +2915,10 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
     if !std::path::Path::new("/run/live/medium").exists() {
         menu_alim.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
         let reparer = entree_menu(&tr("⚠  Réparer ou réinitialiser…"), &bulle_alim, || {
-            lancer(&["flashos-installateur", "--reinitialiser"])
+            // Le menu se ferme d'abord : l'écran de réparation s'ouvre ensuite, devant
+            glib::timeout_add_local_once(Duration::from_millis(250), || {
+                lancer(&["flashos-installateur", "--reinitialiser"]);
+            });
         });
         reparer.add_css_class("attention");
         menu_alim.append(&reparer);

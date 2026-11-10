@@ -15,9 +15,9 @@ Il est pensé pour les gens qui veulent un ordinateur qui marche, sans administr
 - **Mises à jour invisibles** : préparées sur une deuxième copie du système, appliquées au redémarrage, avec retour automatique en arrière en cas de problème.
 - **Sauvegarde en un clic** vers une clé USB, un disque ou un NAS, chaque semaine si vous le voulez. Rien n'est jamais effacé dans la sauvegarde.
 - **Mode grand confort** : textes plus grands et pointeur bien visible.
-- **Réparation intégrée** : remise à neuf du système en gardant vos fichiers.
+- **Réparation intégrée** : remise à neuf du système en gardant vos fichiers (Réglages → Réparer ou réinitialiser).
 - **Vie privée** : aucun compte, aucune télémétrie, rien n'est envoyé sans votre accord.
-- **Applications** : LibreOffice, Thunderbird, Chromium, VLC, et la logithèque Flathub ; paquets `.deb` et AppImage acceptés dans un espace séparé.
+- **Applications** : LibreOffice, Thunderbird, Chromium, VLC, KeePassXC, et la logithèque Flathub ; paquets `.deb` et AppImage acceptés dans un espace séparé.
 - **6 langues** : français, anglais, italien, espagnol, allemand, chinois simplifié.
 
 <p align="center">
@@ -41,7 +41,7 @@ Sur une machine Debian 13 (amd64), en root, avec tout le contenu de ce dépôt d
 bash construire-iso-flashos.sh
 ```
 
-Résultat : `SoleOS-v1.0.2.iso` et son empreinte `SoleOS-v1.0.2.iso.sha256`. Copiez l'ISO sur une clé USB (par exemple avec `dd` ou Balena Etcher), démarrez dessus : la clé s'ouvre en mode essai, puis propose **Installer SoleOS sur cet ordinateur**.
+Résultat : `SoleOS-v1.0.3.iso` et son empreinte `SoleOS-v1.0.3.iso.sha256`. Copiez l'ISO sur une clé USB (par exemple avec `dd` ou Balena Etcher), démarrez dessus : la clé s'ouvre en mode essai, puis propose **Installer SoleOS sur cet ordinateur**.
 
 Recompiler l'interface (facultatif, les programmes compilés sont fournis) :
 

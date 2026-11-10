@@ -317,6 +317,9 @@ impl Reglages {
         let l_camera = ligne("camera", &tr("Caméra"));
         let l_sauvegarde = ligne("sauvegarde", &tr("Sauvegarde"));
         let l_apropos = ligne("info", &tr("À propos de SoleOS"));
+        // v1.0.3 : réparer / réinitialiser, en tuile rouge à part (avant : dans « À propos »)
+        let l_reparer = ligne("danger", &tr("Réparer ou réinitialiser"));
+        l_reparer.add_css_class("carte-danger");
         let grille = gtk::FlowBox::new();
         grille.set_selection_mode(gtk::SelectionMode::None);
         grille.set_homogeneous(true);
@@ -324,8 +327,12 @@ impl Reglages {
         grille.set_max_children_per_line(3);
         grille.set_column_spacing(12);
         grille.set_row_spacing(12);
-        for l in [&l_bt, &l_ecran, &l_taille, &l_fond, &l_rail, &l_impr, &l_camera, &l_sauvegarde, &l_langue, &l_heure, &l_batterie, &l_secu, &l_nav, &l_console, &l_apropos] {
+        for l in [&l_bt, &l_ecran, &l_taille, &l_fond, &l_rail, &l_impr, &l_camera, &l_sauvegarde, &l_langue, &l_heure, &l_batterie, &l_secu, &l_nav, &l_console, &l_apropos, &l_reparer] {
             grille.append(l);
+        }
+        // Sur la clé (mode essai) : rien à réparer
+        if std::path::Path::new("/run/live/medium").exists() {
+            montrer(&l_reparer, false);
         }
         menu.append(&grille);
         pile.add_named(&menu, Some("menu"));
@@ -427,6 +434,16 @@ impl Reglages {
         fermer.connect_clicked(move |_| {
             if let Some(m) = moi.upgrade() {
                 m.fermer();
+            }
+        });
+        let moi = Rc::downgrade(&r);
+        l_reparer.connect_clicked(move |_| {
+            if let Some(m) = moi.upgrade() {
+                // Les Réglages se ferment d'abord : sinon l'écran de réparation s'ouvrait derrière eux
+                m.fermer();
+                glib::timeout_add_local_once(std::time::Duration::from_millis(250), || {
+                    crate::lancer(&["flashos-installateur", "--reinitialiser"]);
+                });
             }
         });
         let moi = Rc::downgrade(&r);
@@ -1011,15 +1028,7 @@ impl Reglages {
         }
         page.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
         page.append(&signaler);
-        // La réparation (avant dans le menu marche/arrêt de l'accueil)
-        if !std::path::Path::new("/run/live/medium").exists() {
-            page.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
-            let reparer = petit("⚠  Réparer ou réinitialiser…", false);
-            reparer.add_css_class("attention");
-            reparer.set_halign(gtk::Align::Start);
-            reparer.connect_clicked(|_| crate::lancer(&["flashos-installateur", "--reinitialiser"]));
-            page.append(&reparer);
-        }
+        // (v1.0.3 : la réparation est une tuile rouge du menu des Réglages)
     }
 
     // --- Caméra (v13) ---------------------------------------------------------------

@@ -1772,6 +1772,9 @@ msgstr "Copia de seguridad"
 msgid "À propos de SoleOS"
 msgstr "Acerca de SoleOS"
 
+msgid "Réparer ou réinitialiser"
+msgstr "Reparar o restablecer"
+
 msgid "Plus de réglages"
 msgstr "Más ajustes"
 

@@ -21,7 +21,7 @@
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
-VERSION_FLASHOS="v1.0.2"   # affichée dans SoleOS (menu ⏻) et dans le nom de l'ISO
+VERSION_FLASHOS="v1.0.3"   # affichée dans SoleOS (menu ⏻) et dans le nom de l'ISO
 ESPACE_NECESSAIRE=15   # en Go
 DOSSIER_SCRIPT="$(cd "$(dirname "$0")" && pwd)"
 UTILISATEUR="$(id -nu 1000 2>/dev/null || echo root)"
@@ -1366,7 +1366,7 @@ sh -c 'while true; do /usr/local/bin/flashos-accueil; sleep 1; done' >/dev/null 
 sh -c 'while true; do /usr/local/bin/flashos-veille; sleep 2; done' >/dev/null 2>&1 &
 /usr/local/bin/flashos-saisie >/dev/null 2>&1 &
 /usr/local/bin/flashos-barre >/dev/null 2>&1 &
-# Notepad Next et Impression installés d'office (une fois, en arrière-plan, quand Internet est là)
+# Notepad Next, Impression, Caméra et KeePassXC installés d'office (une fois, en arrière-plan, quand Internet est là)
 sh -c 'sleep 40; nice -n 10 /usr/local/bin/flashos-applis-defaut' >/dev/null 2>&1 &
 FIN
 
@@ -1667,12 +1667,12 @@ FIN
 chmod 755 "$I/usr/local/bin/apt"
 ln -sf apt "$I/usr/local/bin/apt-get"
 # Applications installées d'office à l'ouverture de la session, dès qu'Internet est là (une fois) :
-# Notepad Next (éditeur de texte façon Notepad++), Impression (créer une clé USB, comme Rufus) et
-# Caméra (GNOME Snapshot : essai de la webcam, Réglages → Caméra)
+# Notepad Next (éditeur de texte façon Notepad++), Impression (créer une clé USB, comme Rufus),
+# Caméra (GNOME Snapshot : essai de la webcam, Réglages → Caméra) et KeePassXC (mots de passe, v1.0.3)
 cat > "$I/usr/local/bin/flashos-applis-defaut" <<'FIN'
 #!/bin/bash
 M="$HOME/.config/flashos/applis-defaut"
-for id in com.github.dail8859.NotepadNext io.gitlab.adhami3310.Impression org.gnome.Snapshot; do
+for id in com.github.dail8859.NotepadNext io.gitlab.adhami3310.Impression org.gnome.Snapshot org.keepassxc.KeePassXC; do
   grep -qx "$id" "$M" 2>/dev/null && continue
   if flatpak --user info "$id" >/dev/null 2>&1 || /usr/local/bin/flashos-applications --installer "$id" >/dev/null 2>&1; then
     mkdir -p "$(dirname "$M")"; echo "$id" >> "$M"
@@ -5779,76 +5779,76 @@ AO54A9qfvNLNHlOEAAAAAElFTkSuQmCC
 FIN
 cp "$IMG/logo.png" "$I/usr/share/plymouth/themes/flashos/logo.png"
 # Pastille de version sous le logo (dessinée pour la v13 ; autre version : texte simple)
-PASTILLE_VERSION=v1.0.2
+PASTILLE_VERSION=v1.0.3
 base64 -d > "$IMG/version.png" <<'FIN'
-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
+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
 FIN
 if [ "$VERSION_FLASHOS" = "$PASTILLE_VERSION" ]; then
   cp "$IMG/version.png" "$I/usr/share/plymouth/themes/flashos/version.png"

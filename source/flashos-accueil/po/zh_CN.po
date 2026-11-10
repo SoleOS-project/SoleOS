@@ -1772,6 +1772,9 @@ msgstr "备份"
 msgid "À propos de SoleOS"
 msgstr "关于 SoleOS"
 
+msgid "Réparer ou réinitialiser"
+msgstr "修复或重置"
+
 msgid "Plus de réglages"
 msgstr "更多设置"
 

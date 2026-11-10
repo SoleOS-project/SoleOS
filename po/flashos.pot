@@ -100,7 +100,7 @@ msgstr ""
 msgid "Deuxième écran"
 msgstr ""
 
-#: src/appareils.rs:1010 src/reglages.rs:128 src/reglages.rs:307 src/reglages.rs:999
+#: src/appareils.rs:1010 src/reglages.rs:128 src/reglages.rs:307 src/reglages.rs:1016
 msgid "Écran"
 msgstr ""
 
@@ -153,7 +153,7 @@ msgstr ""
 msgid "Par défaut"
 msgstr ""
 
-#: src/appareils.rs:1152 src/appareils.rs:1320 src/main.rs:1362
+#: src/appareils.rs:1152 src/appareils.rs:1320 src/main.rs:1365
 msgid "✕"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Le deuxième écran reste éteint"
 msgstr ""
 
-#: src/appareils.rs:1385 src/reglages.rs:804 src/reglages.rs:1097
+#: src/appareils.rs:1385 src/reglages.rs:821 src/reglages.rs:1106
 msgid "Choisir"
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr ""
 msgid "Le téléchargement a échoué. Vérifiez la connexion à Internet et réessayez."
 msgstr ""
 
-#: src/applis.rs:208 src/reglages.rs:809
+#: src/applis.rs:208 src/reglages.rs:826
 msgid "Images"
 msgstr ""
 
@@ -682,7 +682,7 @@ msgstr ""
 msgid "Retour"
 msgstr ""
 
-#: src/bienvenue.rs:216 src/reglages.rs:1668
+#: src/bienvenue.rs:216 src/reglages.rs:1677
 msgid "Ce code est trop facile à deviner. Choisissez-en un autre."
 msgstr ""
 
@@ -706,7 +706,7 @@ msgstr ""
 msgid "Mot de passe"
 msgstr ""
 
-#: src/bienvenue.rs:253 src/reglages.rs:1643
+#: src/bienvenue.rs:253 src/reglages.rs:1652
 msgid "Encore une fois"
 msgstr ""
 
@@ -831,7 +831,7 @@ msgstr ""
 msgid "Choisissez maintenant un nouveau mot de passe : il remplacera celui que vous avez oublié."
 msgstr ""
 
-#: src/bin/flashos-applications.rs:173 src/bureau.rs:587
+#: src/bin/flashos-applications.rs:173 src/bureau.rs:597
 msgid "Aucune application ajoutée pour l'instant. Touchez « Ajouter » pour en choisir."
 msgstr ""
 
@@ -843,7 +843,7 @@ msgstr ""
 msgid "sur l'accueil"
 msgstr ""
 
-#: src/bin/flashos-applications.rs:237 src/main.rs:1930
+#: src/bin/flashos-applications.rs:237 src/main.rs:1933
 msgid "Retirer de l'accueil"
 msgstr ""
 
@@ -884,7 +884,7 @@ msgstr ""
 msgid "Après installation"
 msgstr ""
 
-#: src/bin/flashos-applications.rs:410 src/bureau.rs:320 src/bureautique.rs:210 src/imprimante_manuelle.rs:305
+#: src/bin/flashos-applications.rs:410 src/bureau.rs:330 src/bureautique.rs:210 src/imprimante_manuelle.rs:305
 msgid "Ouvrir"
 msgstr ""
 
@@ -966,7 +966,7 @@ msgstr ""
 msgid "✕  Retour à l'accueil"
 msgstr ""
 
-#: src/bin/flashos-applications.rs:754 src/bureau.rs:569
+#: src/bin/flashos-applications.rs:754 src/bureau.rs:579
 msgid "Mes applications"
 msgstr ""
 
@@ -1189,7 +1189,7 @@ msgstr ""
 msgid "{n} To"
 msgstr ""
 
-#: src/bin/flashos-installateur.rs:131 src/reglages.rs:960
+#: src/bin/flashos-installateur.rs:131 src/reglages.rs:977
 #, flashos-format
 msgid "{n} Go"
 msgstr ""
@@ -1435,118 +1435,118 @@ msgstr ""
 msgid "Détails : /var/log/flashos-installation.log"
 msgstr ""
 
-#: src/bureau.rs:88 src/bureau.rs:192
+#: src/bureau.rs:88 src/bureau.rs:202
 msgid "Réduire la barre"
 msgstr ""
 
-#: src/bureau.rs:99 src/main.rs:330 src/main.rs:2202 src/main.rs:2438
+#: src/bureau.rs:99 src/main.rs:330 src/main.rs:2205 src/main.rs:2441
 msgid "Réglages"
 msgstr ""
 
-#: src/bureau.rs:189
+#: src/bureau.rs:199
 msgid "Garder la barre affichée"
 msgstr ""
 
-#: src/bureau.rs:278
+#: src/bureau.rs:288
 msgid "Corbeille"
 msgstr ""
 
-#: src/bureau.rs:292
+#: src/bureau.rs:302
 msgid "Corbeille (vide)"
 msgstr ""
 
-#: src/bureau.rs:294
+#: src/bureau.rs:304
 #, flashos-format
 msgid "Corbeille : {n} élément(s)"
 msgstr ""
 
-#: src/bureau.rs:329
+#: src/bureau.rs:339
 msgid "Vider la corbeille ? Les éléments seront effacés définitivement."
 msgstr ""
 
-#: src/bureau.rs:338
+#: src/bureau.rs:348
 msgid "Vider"
 msgstr ""
 
-#: src/bureau.rs:356
+#: src/bureau.rs:366
 msgid "Vider la corbeille"
 msgstr ""
 
-#: src/bureau.rs:401
+#: src/bureau.rs:411
 msgid "Rechercher, applications, éteindre (touche Windows)"
 msgstr ""
 
-#: src/bureau.rs:462
+#: src/bureau.rs:472
 msgid "%a %-e %b"
 msgstr ""
 
-#: src/bureau.rs:548
+#: src/bureau.rs:558
 msgid "Rechercher"
 msgstr ""
 
-#: src/bureau.rs:566
+#: src/bureau.rs:576
 msgid "Rechercher une application ou sur le web…"
 msgstr ""
 
-#: src/bureau.rs:606
+#: src/bureau.rs:616
 msgid "Verrouiller"
 msgstr ""
 
-#: src/bureau.rs:607
+#: src/bureau.rs:617
 msgid "Veille"
 msgstr ""
 
-#: src/bureau.rs:608
+#: src/bureau.rs:618
 msgid "Redémarrer"
 msgstr ""
 
-#: src/bureau.rs:609
+#: src/bureau.rs:619
 msgid "Éteindre"
 msgstr ""
 
-#: src/bureau.rs:617
+#: src/bureau.rs:627
 msgid "Capture d'écran"
 msgstr ""
 
-#: src/bureau.rs:628 src/reglages.rs:1002 src/signaler.rs:35
+#: src/bureau.rs:638 src/reglages.rs:1019 src/signaler.rs:35
 msgid "Signaler un problème"
 msgstr ""
 
-#: src/bureau.rs:794
+#: src/bureau.rs:804
 msgid "Ajouter au bureau"
 msgstr ""
 
-#: src/bureau.rs:797
+#: src/bureau.rs:807
 #, flashos-format
 msgid "« {nom} » est sur le bureau"
 msgstr ""
 
-#: src/bureau.rs:797
+#: src/bureau.rs:807
 msgid "Impossible d'ajouter le raccourci"
 msgstr ""
 
-#: src/bureau.rs:806 src/bureau.rs:851 src/main.rs:103 src/main.rs:1589
+#: src/bureau.rs:816 src/bureau.rs:861 src/main.rs:103 src/main.rs:1592
 msgid "Console"
 msgstr ""
 
-#: src/bureau.rs:815
+#: src/bureau.rs:825
 msgid "Console (avancé) — Ctrl + Alt + T"
 msgstr ""
 
-#: src/bureau.rs:835
+#: src/bureau.rs:845
 #, flashos-format
 msgid "Rechercher « {q} » sur le web"
 msgstr ""
 
-#: src/bureau.rs:927 src/main.rs:1412 src/reglages.rs:1289
+#: src/bureau.rs:937 src/main.rs:1415 src/reglages.rs:1298
 msgid "À gauche"
 msgstr ""
 
-#: src/bureau.rs:928 src/main.rs:1413 src/reglages.rs:1290
+#: src/bureau.rs:938 src/main.rs:1416 src/reglages.rs:1299
 msgid "À droite"
 msgstr ""
 
-#: src/bureau.rs:929 src/main.rs:1414
+#: src/bureau.rs:939 src/main.rs:1417
 msgid "Tout l'écran"
 msgstr ""
 
@@ -1935,7 +1935,7 @@ msgstr ""
 msgid "Portugais, Brésil"
 msgstr ""
 
-#: src/langue.rs:141 src/reglages.rs:1472
+#: src/langue.rs:141 src/reglages.rs:1481
 msgid "Le réglage n'a pas pu être appliqué."
 msgstr ""
 
@@ -1975,19 +1975,19 @@ msgstr ""
 msgid "Fichiers"
 msgstr ""
 
-#: src/main.rs:430 src/main.rs:2183
+#: src/main.rs:430 src/main.rs:2186
 msgid "↻ Mise à jour prête"
 msgstr ""
 
-#: src/main.rs:431 src/main.rs:2185
+#: src/main.rs:431 src/main.rs:2188
 msgid "Elle s'installera toute seule au prochain redémarrage."
 msgstr ""
 
-#: src/main.rs:466 src/main.rs:482 src/main.rs:2411
+#: src/main.rs:466 src/main.rs:482 src/main.rs:2414
 msgid "Installer SoleOS sur cet ordinateur"
 msgstr ""
 
-#: src/main.rs:476 src/main.rs:2407
+#: src/main.rs:476 src/main.rs:2410
 msgid "Vous essayez SoleOS depuis la clé USB : rien n'est modifié sur cet ordinateur."
 msgstr ""
 
@@ -1995,196 +1995,196 @@ msgstr ""
 msgid "Continuer l'essai"
 msgstr ""
 
-#: src/main.rs:741 src/main.rs:758
+#: src/main.rs:744 src/main.rs:761
 msgid "Ouverture…"
 msgstr ""
 
-#: src/main.rs:823
+#: src/main.rs:826
 msgid "Capture d'écran enregistrée dans Images"
 msgstr ""
 
-#: src/main.rs:996
+#: src/main.rs:999
 msgid "À droite :"
 msgstr ""
 
-#: src/main.rs:1260
+#: src/main.rs:1263
 msgid "Applis ouvertes"
 msgstr ""
 
-#: src/main.rs:1320
+#: src/main.rs:1323
 #, flashos-format
 msgid "{nom} ({n} fenêtres)"
 msgstr ""
 
-#: src/main.rs:1366
+#: src/main.rs:1369
 msgid "Tout fermer"
 msgstr ""
 
-#: src/main.rs:1402
+#: src/main.rs:1405
 msgid "Y aller"
 msgstr ""
 
-#: src/main.rs:1426
+#: src/main.rs:1429
 #, flashos-format
 msgid "Tout fermer ({n})"
 msgstr ""
 
-#: src/main.rs:1457 src/reglages.rs:464
+#: src/main.rs:1460 src/reglages.rs:481
 #, flashos-format
 msgid "Wi-Fi connecté (signal {q} %)"
 msgstr ""
 
-#: src/main.rs:1458 src/reglages.rs:465
+#: src/main.rs:1461 src/reglages.rs:482
 msgid "Connecté par câble"
 msgstr ""
 
-#: src/main.rs:1459 src/reglages.rs:466
+#: src/main.rs:1462 src/reglages.rs:483
 msgid "Pas de connexion"
 msgstr ""
 
-#: src/main.rs:1479
+#: src/main.rs:1482
 #, flashos-format
 msgid "{info} — cliquer pour choisir un réseau"
 msgstr ""
 
-#: src/main.rs:1503
+#: src/main.rs:1506
 #, flashos-format
 msgid "Batterie : {n}, en charge"
 msgstr ""
 
-#: src/main.rs:1505
+#: src/main.rs:1508
 #, flashos-format
 msgid "Batterie : {n}"
 msgstr ""
 
-#: src/main.rs:1531 src/main.rs:1542 src/reglages.rs:510 src/reglages.rs:519
+#: src/main.rs:1534 src/main.rs:1545 src/reglages.rs:527 src/reglages.rs:536
 msgid "Son coupé"
 msgstr ""
 
-#: src/main.rs:1531 src/main.rs:1542 src/main.rs:2095 src/main.rs:2477
+#: src/main.rs:1534 src/main.rs:1545 src/main.rs:2098 src/main.rs:2480
 msgid "Volume"
 msgstr ""
 
-#: src/main.rs:1535 src/main.rs:1551 src/reglages.rs:514
+#: src/main.rs:1538 src/main.rs:1554 src/reglages.rs:531
 msgid "Rétablir le son"
 msgstr ""
 
-#: src/main.rs:1535 src/main.rs:1551 src/main.rs:2092 src/main.rs:2434
+#: src/main.rs:1538 src/main.rs:1554 src/main.rs:2095 src/main.rs:2437
 msgid "Couper le son"
 msgstr ""
 
-#: src/main.rs:1777
+#: src/main.rs:1780
 msgid "%A %-e %B"
 msgstr ""
 
-#: src/main.rs:1791
+#: src/main.rs:1794
 #, flashos-format
 msgid "Bonjour {prenom}"
 msgstr ""
 
-#: src/main.rs:1793
+#: src/main.rs:1796
 #, flashos-format
 msgid "Bonsoir {prenom}"
 msgstr ""
 
-#: src/main.rs:2029
+#: src/main.rs:2032
 msgid "Accueil"
 msgstr ""
 
-#: src/main.rs:2062 src/main.rs:2430
+#: src/main.rs:2065 src/main.rs:2433
 msgid "Réseau"
 msgstr ""
 
-#: src/main.rs:2063 src/main.rs:2119 src/main.rs:2431 src/reglages.rs:490
+#: src/main.rs:2066 src/main.rs:2122 src/main.rs:2434 src/reglages.rs:507
 msgid "Son"
 msgstr ""
 
-#: src/main.rs:2064
+#: src/main.rs:2067
 msgid "Réglages : imprimantes, Bluetooth, écran, code…"
 msgstr ""
 
-#: src/main.rs:2065
+#: src/main.rs:2068
 msgid "Éteindre, redémarrer…"
 msgstr ""
 
-#: src/main.rs:2104 src/reglages.rs:449 src/wifi.rs:231
+#: src/main.rs:2107 src/reglages.rs:466 src/wifi.rs:231
 msgid "Wi-Fi"
 msgstr ""
 
-#: src/main.rs:2109 src/reglages.rs:455
+#: src/main.rs:2112 src/reglages.rs:472
 msgid "Choisir un réseau"
 msgstr ""
 
-#: src/main.rs:2134
+#: src/main.rs:2137
 msgid "Le son ne marche pas ?"
 msgstr ""
 
-#: src/main.rs:2209
+#: src/main.rs:2212
 msgid "Réglages : Wi-Fi, son, Bluetooth, écran, imprimantes, code…"
 msgstr ""
 
-#: src/main.rs:2224
+#: src/main.rs:2227
 msgid "--:--"
 msgstr ""
 
-#: src/main.rs:2245
+#: src/main.rs:2248
 msgid "Rechercher sur le web…"
 msgstr ""
 
-#: src/main.rs:2336
+#: src/main.rs:2339
 msgid "Touche Windows : l'accueil par-dessus les fenêtres  ·  Alt + Tab : changer d'appli  ·  Glisser une fenêtre sur un bord : la moitié de l'écran"
 msgstr ""
 
-#: src/main.rs:2338
+#: src/main.rs:2341
 msgid "Touche Windows ou Ctrl + Alt + A : revenir à l'accueil  ·  Alt + Tab : changer d'appli"
 msgstr ""
 
-#: src/main.rs:2393
+#: src/main.rs:2396
 msgid "Mode réparation de SoleOS"
 msgstr ""
 
-#: src/main.rs:2396
+#: src/main.rs:2399
 msgid "Ouvrir l'outil de réparation"
 msgstr ""
 
-#: src/main.rs:2523
+#: src/main.rs:2526
 msgid "Sauvegarde automatique terminée"
 msgstr ""
 
-#: src/main.rs:2524
+#: src/main.rs:2527
 msgid "La sauvegarde automatique n'a pas pu se faire (Réglages → Sauvegarde)"
 msgstr ""
 
-#: src/main.rs:2825 src/main.rs:2855
+#: src/main.rs:2828 src/main.rs:2858
 msgid "＋  Ajouter une messagerie…"
 msgstr ""
 
-#: src/main.rs:2828
+#: src/main.rs:2831
 #, flashos-format
 msgid "Retirer « {nom} »"
 msgstr ""
 
-#: src/main.rs:2841
+#: src/main.rs:2844
 msgid "Ouvrir quelle messagerie ?"
 msgstr ""
 
-#: src/main.rs:2896
+#: src/main.rs:2899
 msgid "🔒  Verrouiller l'écran"
 msgstr ""
 
-#: src/main.rs:2902
+#: src/main.rs:2905
 msgid "⏻  Éteindre"
 msgstr ""
 
-#: src/main.rs:2905
+#: src/main.rs:2908
 msgid "↻  Redémarrer"
 msgstr ""
 
-#: src/main.rs:2906
+#: src/main.rs:2909
 msgid "☾  Mettre en veille"
 msgstr ""
 
-#: src/main.rs:2914 src/reglages.rs:1017
+#: src/main.rs:2917
 msgid "⚠  Réparer ou réinitialiser…"
 msgstr ""
 
@@ -2365,31 +2365,31 @@ msgstr ""
 msgid "Écran et luminosité"
 msgstr ""
 
-#: src/reglages.rs:308 src/reglages.rs:659
+#: src/reglages.rs:308 src/reglages.rs:676
 msgid "Fond d'écran"
 msgstr ""
 
-#: src/reglages.rs:309 src/reglages.rs:1348
+#: src/reglages.rs:309 src/reglages.rs:1357
 msgid "Taille d'affichage"
 msgstr ""
 
-#: src/reglages.rs:310 src/reglages.rs:1444
+#: src/reglages.rs:310 src/reglages.rs:1453
 msgid "Date et heure"
 msgstr ""
 
-#: src/reglages.rs:312 src/reglages.rs:1281
+#: src/reglages.rs:312 src/reglages.rs:1290
 msgid "Rail des applications"
 msgstr ""
 
-#: src/reglages.rs:313 src/reglages.rs:852
+#: src/reglages.rs:313 src/reglages.rs:869
 msgid "Batterie"
 msgstr ""
 
-#: src/reglages.rs:314 src/reglages.rs:1542
+#: src/reglages.rs:314 src/reglages.rs:1551
 msgid "Code et verrouillage"
 msgstr ""
 
-#: src/reglages.rs:315 src/reglages.rs:1202
+#: src/reglages.rs:315 src/reglages.rs:1211
 msgid "Navigateur"
 msgstr ""
 
@@ -2397,11 +2397,11 @@ msgstr ""
 msgid "Console (avancé)"
 msgstr ""
 
-#: src/reglages.rs:317 src/reglages.rs:1142
+#: src/reglages.rs:317 src/reglages.rs:1151
 msgid "Caméra"
 msgstr ""
 
-#: src/reglages.rs:318 src/reglages.rs:1032
+#: src/reglages.rs:318 src/reglages.rs:1041
 msgid "Sauvegarde"
 msgstr ""
 
@@ -2409,504 +2409,508 @@ msgstr ""
 msgid "À propos de SoleOS"
 msgstr ""
 
-#: src/reglages.rs:500
+#: src/reglages.rs:321
+msgid "Réparer ou réinitialiser"
+msgstr ""
+
+#: src/reglages.rs:517
 msgid "Plus de réglages"
 msgstr ""
 
-#: src/reglages.rs:565
+#: src/reglages.rs:582
 msgid "‹  Réglages"
 msgstr ""
 
-#: src/reglages.rs:703
+#: src/reglages.rs:720
 msgid "Ma photo"
 msgstr ""
 
-#: src/reglages.rs:715
+#: src/reglages.rs:732
 msgid "Mes images"
 msgstr ""
 
-#: src/reglages.rs:716
+#: src/reglages.rs:733
 msgid "Recherche des photos…"
 msgstr ""
 
-#: src/reglages.rs:737
+#: src/reglages.rs:754
 msgid "Aucune photo dans votre dossier Images."
 msgstr ""
 
-#: src/reglages.rs:761
+#: src/reglages.rs:778
 msgid "Choisir une autre image…"
 msgstr ""
 
-#: src/reglages.rs:781
+#: src/reglages.rs:798
 msgid "Astuce : dans Fichiers, clic droit sur une photo → « Définir comme arrière-plan »."
 msgstr ""
 
-#: src/reglages.rs:801
+#: src/reglages.rs:818
 msgid "Choisir une image de fond"
 msgstr ""
 
-#: src/reglages.rs:863
+#: src/reglages.rs:880
 msgid "chargeur branché"
 msgstr ""
 
-#: src/reglages.rs:863
+#: src/reglages.rs:880
 msgid "sur batterie"
 msgstr ""
 
-#: src/reglages.rs:864
+#: src/reglages.rs:881
 msgid "Pas de batterie détectée"
 msgstr ""
 
-#: src/reglages.rs:868
+#: src/reglages.rs:885
 #, flashos-format
 msgid "Consommation actuelle : {w} W"
 msgstr ""
 
-#: src/reglages.rs:873
+#: src/reglages.rs:890
 #, flashos-format
 msgid "Autonomie restante estimée : {h} h {m}"
 msgstr ""
 
-#: src/reglages.rs:879
+#: src/reglages.rs:896
 msgid "Consommation : non mesurée pendant la charge complète."
 msgstr ""
 
-#: src/reglages.rs:880
+#: src/reglages.rs:897
 msgid "Consommation : non disponible sur cet ordinateur."
 msgstr ""
 
-#: src/reglages.rs:897
+#: src/reglages.rs:914
 msgid "Baisser la luminosité sur batterie"
 msgstr ""
 
-#: src/reglages.rs:910
+#: src/reglages.rs:927
 msgid "Quand le chargeur est débranché, l'écran baisse de 30 % ; il revient à sa luminosité en le rebranchant."
 msgstr ""
 
-#: src/reglages.rs:915
+#: src/reglages.rs:932
 msgid "Sur batterie, SoleOS passe automatiquement le processeur en mode économie, et le navigateur réduit le travail des onglets en arrière-plan. Les vidéos sont décodées par la carte graphique."
 msgstr ""
 
-#: src/reglages.rs:931
+#: src/reglages.rs:948
 msgid "Créé par Giuseppe D'Arco"
 msgstr ""
 
-#: src/reglages.rs:932
+#: src/reglages.rs:949
 msgid "© 2026 GDH"
 msgstr ""
 
-#: src/reglages.rs:934
+#: src/reglages.rs:951
 msgid "Gratuit pour les particuliers, les associations, les écoles, les administrations et l'usage interne des entreprises. Toute utilisation commerciale demande une licence de GDH. Basé sur Debian 13."
 msgstr ""
 
-#: src/reglages.rs:938
+#: src/reglages.rs:955
 msgid "Votre vie privée"
 msgstr ""
 
-#: src/reglages.rs:940
+#: src/reglages.rs:957
 msgid "SoleOS n'envoie aucune donnée sur vous : aucun suivi, aucune publicité, aucun compte obligatoire. Vos fichiers sont chiffrés sur le disque et protégés par votre code."
 msgstr ""
 
-#: src/reglages.rs:943
+#: src/reglages.rs:960
 msgid "Lire la licence"
 msgstr ""
 
-#: src/reglages.rs:949
+#: src/reglages.rs:966
 msgid "Cet ordinateur"
 msgstr ""
 
-#: src/reglages.rs:951
+#: src/reglages.rs:968
 #, flashos-format
 msgid "Utilisateur : {prenom}"
 msgstr ""
 
-#: src/reglages.rs:956
+#: src/reglages.rs:973
 msgid "inconnu"
 msgstr ""
 
-#: src/reglages.rs:961
+#: src/reglages.rs:978
 msgid "inconnue"
 msgstr ""
 
-#: src/reglages.rs:963
+#: src/reglages.rs:980
 #, flashos-format
 msgid "Processeur : {processeur}"
 msgstr ""
 
-#: src/reglages.rs:964
+#: src/reglages.rs:981
 #, flashos-format
 msgid "Mémoire : {memoire}"
 msgstr ""
 
-#: src/reglages.rs:969
+#: src/reglages.rs:986
 #, flashos-format
 msgid "Disque : {go} Go ({mo} Mo), libre : {libre_go} Go ({libre_mo} Mo)"
 msgstr ""
 
-#: src/reglages.rs:982
+#: src/reglages.rs:999
 #, flashos-format
 msgid ", {d} pouces"
 msgstr ""
 
-#: src/reglages.rs:987
+#: src/reglages.rs:1004
 #, flashos-format
 msgid "{l} × {h}{pouces}, affichage à {z} %"
 msgstr ""
 
-#: src/reglages.rs:1034
+#: src/reglages.rs:1043
 msgid "Vos Documents, Images, Musique, Vidéos, Téléchargements et Bureau sont copiés sur une clé USB, un disque ou un dossier du NAS. Rien n'est jamais effacé dans la sauvegarde : un fichier supprimé par erreur s'y retrouve."
 msgstr ""
 
-#: src/reglages.rs:1043
+#: src/reglages.rs:1052
 #, flashos-format
 msgid "Destination : {d}"
 msgstr ""
 
-#: src/reglages.rs:1044
+#: src/reglages.rs:1053
 msgid "Aucune destination choisie."
 msgstr ""
 
-#: src/reglages.rs:1050
+#: src/reglages.rs:1059
 msgid "Choisir la destination…"
 msgstr ""
 
-#: src/reglages.rs:1055
+#: src/reglages.rs:1064
 msgid "Chaque semaine, automatiquement (quand la destination est branchée)"
 msgstr ""
 
-#: src/reglages.rs:1073
+#: src/reglages.rs:1082
 #, flashos-format
 msgid "Dernière sauvegarde : {t}"
 msgstr ""
 
-#: src/reglages.rs:1074
+#: src/reglages.rs:1083
 msgid "Aucune sauvegarde pour l'instant."
 msgstr ""
 
-#: src/reglages.rs:1082
+#: src/reglages.rs:1091
 msgid "Sauvegarder maintenant"
 msgstr ""
 
-#: src/reglages.rs:1083
+#: src/reglages.rs:1092
 msgid "Ouvrir la sauvegarde (restaurer)"
 msgstr ""
 
-#: src/reglages.rs:1094
+#: src/reglages.rs:1103
 msgid "Où ranger la sauvegarde ?"
 msgstr ""
 
-#: src/reglages.rs:1119
+#: src/reglages.rs:1128
 msgid "Choisissez d'abord une destination."
 msgstr ""
 
-#: src/reglages.rs:1123
+#: src/reglages.rs:1132
 msgid "Sauvegarde en cours… vous pouvez continuer à travailler."
 msgstr ""
 
-#: src/reglages.rs:1129
+#: src/reglages.rs:1138
 msgid "Sauvegarde terminée."
 msgstr ""
 
-#: src/reglages.rs:1132
+#: src/reglages.rs:1141
 #, flashos-format
 msgid "La sauvegarde n'a pas pu se faire : {e}"
 msgstr ""
 
-#: src/reglages.rs:1161
+#: src/reglages.rs:1170
 msgid "Aucune caméra détectée. Une webcam USB fonctionne dès qu'on la branche."
 msgstr ""
 
-#: src/reglages.rs:1164
+#: src/reglages.rs:1173
 #, flashos-format
 msgid "{nom} : prête (pilote standard)"
 msgstr ""
 
-#: src/reglages.rs:1166
+#: src/reglages.rs:1175
 msgid "Tester la caméra"
 msgstr ""
 
-#: src/reglages.rs:1173
+#: src/reglages.rs:1182
 msgid "Ouverture de l'application Caméra…"
 msgstr ""
 
-#: src/reglages.rs:1187
+#: src/reglages.rs:1196
 msgid "L'application Caméra n'a pas pu être installée (connexion à Internet ?)."
 msgstr ""
 
-#: src/reglages.rs:1195
+#: src/reglages.rs:1204
 msgid "Les applications (navigateur, visio) demandent la permission avant d'utiliser la caméra."
 msgstr ""
 
-#: src/reglages.rs:1208
+#: src/reglages.rs:1217
 #, flashos-format
 msgid "{n} extensions installées"
 msgstr ""
 
-#: src/reglages.rs:1210
+#: src/reglages.rs:1219
 #, flashos-format
 msgid "{n} extension installée"
 msgstr ""
 
-#: src/reglages.rs:1216
+#: src/reglages.rs:1225
 #, flashos-format
 msgid "{n} sites autorisés à envoyer des notifications"
 msgstr ""
 
-#: src/reglages.rs:1218
+#: src/reglages.rs:1227
 #, flashos-format
 msgid "{n} site autorisé à envoyer des notifications"
 msgstr ""
 
-#: src/reglages.rs:1226
+#: src/reglages.rs:1235
 #, flashos-format
 msgid "{constat}. Si vous ne les reconnaissez pas, ils peuvent afficher des publicités."
 msgstr ""
 
-#: src/reglages.rs:1227
+#: src/reglages.rs:1236
 msgid " et "
 msgstr ""
 
-#: src/reglages.rs:1236
+#: src/reglages.rs:1245
 msgid "Des publicités ou des pages s'ouvrent toutes seules ? Le navigateur peut être remis à neuf : extensions, notifications des sites, page d'accueil et moteur de recherche sont effacés. Vos favoris, mots de passe et historique sont gardés."
 msgstr ""
 
-#: src/reglages.rs:1241
+#: src/reglages.rs:1250
 msgid "Remettre le navigateur à neuf"
 msgstr ""
 
-#: src/reglages.rs:1250
+#: src/reglages.rs:1259
 msgid "Fermeture du navigateur et remise à neuf…"
 msgstr ""
 
-#: src/reglages.rs:1282
+#: src/reglages.rs:1291
 msgid "Les applications ouvertes, la batterie et le bouton marche/arrêt."
 msgstr ""
 
-#: src/reglages.rs:1284
+#: src/reglages.rs:1293
 msgid "Position"
 msgstr ""
 
-#: src/reglages.rs:1291
+#: src/reglages.rs:1300
 msgid "En bas"
 msgstr ""
 
-#: src/reglages.rs:1315
+#: src/reglages.rs:1324
 msgid "Masquer quand une application occupe l'écran"
 msgstr ""
 
-#: src/reglages.rs:1333
+#: src/reglages.rs:1342
 msgid "Le rail se replie en une fine languette contre le bord de l'écran : approchez la souris pour le faire revenir. En plein écran (vidéo, présentation), il disparaît complètement."
 msgstr ""
 
-#: src/reglages.rs:1349
+#: src/reglages.rs:1358
 msgid "Agrandit tout l'écran : textes, boutons et fenêtres."
 msgstr ""
 
-#: src/reglages.rs:1354
+#: src/reglages.rs:1363
 msgid "Mode grand confort"
 msgstr ""
 
-#: src/reglages.rs:1355
+#: src/reglages.rs:1364
 msgid "Textes plus grands et curseur plus visible, dans toutes les applications."
 msgstr ""
 
-#: src/reglages.rs:1369
+#: src/reglages.rs:1378
 msgid "Automatique (selon l'écran)"
 msgstr ""
 
-#: src/reglages.rs:1370
+#: src/reglages.rs:1379
 msgid "Normale (100 %)"
 msgstr ""
 
-#: src/reglages.rs:1371
+#: src/reglages.rs:1380
 msgid "Grande (125 %)"
 msgstr ""
 
-#: src/reglages.rs:1372
+#: src/reglages.rs:1381
 msgid "Très grande (150 %)"
 msgstr ""
 
-#: src/reglages.rs:1373
+#: src/reglages.rs:1382
 msgid "Maximale (200 %)"
 msgstr ""
 
-#: src/reglages.rs:1400
+#: src/reglages.rs:1409
 msgid "Personnalisée"
 msgstr ""
 
-#: src/reglages.rs:1405
+#: src/reglages.rs:1414
 msgid "−"
 msgstr ""
 
-#: src/reglages.rs:1406
+#: src/reglages.rs:1415
 msgid "+"
 msgstr ""
 
-#: src/reglages.rs:1446
+#: src/reglages.rs:1455
 msgid "%A %e %B %Y, %H:%M"
 msgstr ""
 
-#: src/reglages.rs:1480
+#: src/reglages.rs:1489
 msgid "Réglage automatique (par Internet)"
 msgstr ""
 
-#: src/reglages.rs:1498
+#: src/reglages.rs:1507
 msgid "Année-mois-jour heure:minutes"
 msgstr ""
 
-#: src/reglages.rs:1499
+#: src/reglages.rs:1508
 msgid "Régler"
 msgstr ""
 
-#: src/reglages.rs:1508
+#: src/reglages.rs:1517
 msgid "Fuseau horaire"
 msgstr ""
 
-#: src/reglages.rs:1545
+#: src/reglages.rs:1554
 msgid "Verrouiller l'écran après"
 msgstr ""
 
-#: src/reglages.rs:1550
+#: src/reglages.rs:1559
 msgid "5 min"
 msgstr ""
 
-#: src/reglages.rs:1550
+#: src/reglages.rs:1559
 msgid "10 min"
 msgstr ""
 
-#: src/reglages.rs:1550
+#: src/reglages.rs:1559
 msgid "30 min"
 msgstr ""
 
-#: src/reglages.rs:1550
+#: src/reglages.rs:1559
 msgid "1 h"
 msgstr ""
 
-#: src/reglages.rs:1550
+#: src/reglages.rs:1559
 msgid "Jamais"
 msgstr ""
 
-#: src/reglages.rs:1567
+#: src/reglages.rs:1576
 msgid "L'écran se verrouille aussi quand l'ordinateur se met en veille (capot fermé). Raccourci : touche Windows + L."
 msgstr ""
 
-#: src/reglages.rs:1571
+#: src/reglages.rs:1580
 msgid "🔒  Verrouiller maintenant"
 msgstr ""
 
-#: src/reglages.rs:1587
+#: src/reglages.rs:1596
 msgid "Essai depuis la clé USB : le code se choisit après l'installation de SoleOS."
 msgstr ""
 
-#: src/reglages.rs:1589
+#: src/reglages.rs:1598
 msgid "Les fichiers de cet ordinateur ne sont pas chiffrés (SoleOS installé avant la version 9). « Réparer → Tout effacer » active la protection."
 msgstr ""
 
-#: src/reglages.rs:1596
+#: src/reglages.rs:1605
 msgid "Le code se choisit dans l'assistant de bienvenue."
 msgstr ""
 
-#: src/reglages.rs:1597
+#: src/reglages.rs:1606
 msgid "Ouvrir l'assistant"
 msgstr ""
 
-#: src/reglages.rs:1614
+#: src/reglages.rs:1623
 msgid "Vos fichiers sont chiffrés. Ils s'ouvrent au démarrage avec votre code (protégé par la puce de sécurité de l'ordinateur)."
 msgstr ""
 
-#: src/reglages.rs:1615
+#: src/reglages.rs:1624
 msgid "Vos fichiers sont chiffrés. Ils s'ouvrent au démarrage avec votre mot de passe."
 msgstr ""
 
-#: src/reglages.rs:1624
+#: src/reglages.rs:1633
 msgid "Changer mon code…"
 msgstr ""
 
-#: src/reglages.rs:1624
+#: src/reglages.rs:1633
 msgid "Changer mon mot de passe…"
 msgstr ""
 
-#: src/reglages.rs:1641
+#: src/reglages.rs:1650
 msgid "Code actuel (ou clé de secours)"
 msgstr ""
 
-#: src/reglages.rs:1641
+#: src/reglages.rs:1650
 msgid "Mot de passe actuel (ou clé de secours)"
 msgstr ""
 
-#: src/reglages.rs:1642
+#: src/reglages.rs:1651
 msgid "Nouveau code (6 chiffres)"
 msgstr ""
 
-#: src/reglages.rs:1642
+#: src/reglages.rs:1651
 msgid "Nouveau mot de passe (8 caractères ou plus)"
 msgstr ""
 
-#: src/reglages.rs:1645
+#: src/reglages.rs:1654
 msgid "Enregistrer"
 msgstr ""
 
-#: src/reglages.rs:1655
+#: src/reglages.rs:1664
 msgid "Tapez d'abord votre code actuel."
 msgstr ""
 
-#: src/reglages.rs:1655
+#: src/reglages.rs:1664
 msgid "Tapez d'abord votre mot de passe actuel."
 msgstr ""
 
-#: src/reglages.rs:1662 src/reglages.rs:1663
+#: src/reglages.rs:1671 src/reglages.rs:1672
 msgid "Le nouveau code doit contenir exactement 6 chiffres."
 msgstr ""
 
-#: src/reglages.rs:1672
+#: src/reglages.rs:1681
 msgid "Le nouveau mot de passe doit contenir au moins 8 caractères."
 msgstr ""
 
-#: src/reglages.rs:1676
+#: src/reglages.rs:1685
 msgid "Les deux nouveaux ne sont pas identiques."
 msgstr ""
 
-#: src/reglages.rs:1679
+#: src/reglages.rs:1688
 msgid "Enregistrement…"
 msgstr ""
 
-#: src/reglages.rs:1696
+#: src/reglages.rs:1705
 msgid "Nouveau code enregistré. Il servira dès le prochain démarrage."
 msgstr ""
 
-#: src/reglages.rs:1697
+#: src/reglages.rs:1706
 msgid "Nouveau mot de passe enregistré. Il servira dès le prochain démarrage."
 msgstr ""
 
-#: src/reglages.rs:1719
+#: src/reglages.rs:1728
 msgid "Nouvelle clé de secours…"
 msgstr ""
 
-#: src/reglages.rs:1729
+#: src/reglages.rs:1738
 msgid "Si vous avez perdu votre papier, ou si quelqu'un a pu le voir : la clé actuelle ne fonctionnera plus."
 msgstr ""
 
-#: src/reglages.rs:1732
+#: src/reglages.rs:1741
 msgid "Votre code"
 msgstr ""
 
-#: src/reglages.rs:1732
+#: src/reglages.rs:1741
 msgid "Votre mot de passe"
 msgstr ""
 
-#: src/reglages.rs:1733
+#: src/reglages.rs:1742
 msgid "Créer une nouvelle clé"
 msgstr ""
 
-#: src/reglages.rs:1751
+#: src/reglages.rs:1760
 msgid "Création…"
 msgstr ""
 
-#: src/reglages.rs:1761
+#: src/reglages.rs:1770
 msgid "Voici votre nouvelle clé de secours. Écrivez-la sur papier et rangez-la en lieu sûr :"
 msgstr ""
 
-#: src/reglages.rs:1765
+#: src/reglages.rs:1774
 msgid "La clé n'a pas pu être créée."
 msgstr ""
 
