@@ -1,0 +1,11 @@
+[Unit]
+Description=SoleOS : recherche des mises à jour (15 min après l'allumage, puis toutes les 12 h)
+ConditionKernelCommandLine=soleos.slot
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=12h
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target

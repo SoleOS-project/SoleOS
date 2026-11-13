@@ -1,0 +1,25 @@
+#!/bin/sh
+# SoleOS : le système installé tourne en lecture seule.
+# Les modifications éventuelles (y compris celles d'un logiciel malveillant)
+# ne vivent qu'en mémoire et disparaissent au redémarrage.
+PREREQ=""
+prereqs() { echo "$PREREQ"; }
+case "$1" in prereqs) prereqs; exit 0 ;; esac
+
+grep -qE "(soleos|flashos)\.slot=" /proc/cmdline || exit 0          # clé USB, réparation : rien à faire
+grep -qE "(soleos|flashos)\.ecriture" /proc/cmdline && exit 0        # maintenance exceptionnelle
+
+modprobe overlay 2>/dev/null
+grep -qw overlay /proc/filesystems || exit 0
+
+mkdir -p /run/soleos/bas /run/soleos/rw
+mount -t tmpfs -o mode=0755,size=25% tmpfs /run/soleos/rw || exit 0
+mkdir -p /run/soleos/rw/haut /run/soleos/rw/travail
+mount -o remount,ro "${rootmnt}" 2>/dev/null
+mount --move "${rootmnt}" /run/soleos/bas || exit 0
+if ! mount -t overlay overlay \
+     -o lowerdir=/run/soleos/bas,upperdir=/run/soleos/rw/haut,workdir=/run/soleos/rw/travail \
+     "${rootmnt}"; then
+  mount --move /run/soleos/bas "${rootmnt}"   # en cas d'échec : démarrage normal
+fi
+exit 0

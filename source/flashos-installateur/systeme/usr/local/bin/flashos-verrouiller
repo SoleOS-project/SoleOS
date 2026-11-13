@@ -1,6 +1,0 @@
-#!/bin/sh
-# SoleOS : verrouille l'écran (même code qu'au démarrage).
-# Pas encore de code (premier démarrage, clé USB) : rien à verrouiller.
-[ -e /run/flashos/verrouillable ] || exit 0
-pgrep -u "$(id -u)" -x gtklock >/dev/null && exit 0
-exec gtklock -d -s /usr/share/flashos/gtklock.css

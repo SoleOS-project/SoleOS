@@ -1,0 +1,136 @@
+SoleOS v1.1
+Créé par Giuseppe D'Arco – © 2026 GDH
+Licence non commerciale (PolyForm Noncommercial 1.0.0 + autorisations supplémentaires) : voir LICENSE
+
+v1.1 : tous les noms techniques passent à « soleos »
+--------------------------------------------------------------------------------------
+  - Commandes, services, fichiers système, applications (fr.soleos.*), traductions,
+    thème de démarrage, partitions des nouvelles installations (SOLEOS-A…), ID=soleos :
+    plus aucun « flashos » visible dans un SoleOS installé avec la v1.1.
+  - Construction : bash construire-iso-soleos.sh (l'atelier /srv/flashos-iso déjà préparé
+    est réutilisé tel quel).
+  - Prêt pour les ordinateurs installés avant la v1.1 (vérifié sur un PC v1.0.5 du banc) : partitions FLASHOS-*,
+    ancienne ligne de démarrage, dossiers « flashos » (repris et renommés, un lien garde
+    les anciens chemins), raccourcis du bureau et applications web déjà créés, clavier
+    « AZERTY sur QWERTY », boîte Debian déjà créée (gardée sous son ancien nom),
+    compte « flashos ». Les anciennes commandes flashos-* restent des alias.
+
+  Tests (docs/tests-soleos-v1.1.jpg).
+
+v1.0.5 : noyau récent pour le matériel très récent
+--------------------------------------------------------------------------------------
+  - Deux noyaux Debian signés (démarrage sécurisé) : le stable 6.12 (par défaut) et le noyau
+    récent des backports Debian, avec les micrologiciels récents (Wi-Fi, graphismes).
+  - Clé USB : Échap au démarrage → « SoleOS (noyau récent : PC très récent) ». Si la clé a
+    démarré sur le noyau récent, l'ordinateur installé le garde.
+  - Réglages → À propos : « Essayer le noyau récent » (premier démarrage d'essai : si
+    l'interface n'apparaît pas, retour tout seul au noyau stable) et « Revenir au noyau stable ».
+  - Mises à jour : le noyau récent suit les backports Debian (un seul gardé).
+  - Construction : nécessite l'accès à trixie-backports ; l'ISO grossit d'environ 150 Mo
+    (vérifier qu'elle reste sous 2 Go pour GitHub).
+
+  Tests (docs/tests-soleos-v1.0.5.jpg).
+
+v1.0.4 : navigateur plus discret
+--------------------------------------------------------------------------------------
+  - Google reste le moteur de recherche (page d'accueil et favoris inchangés).
+  - uBlock Origin Lite (publicités et traqueurs) installé d'office, désinstallable.
+  - Cookies tiers bloqués (modifiable dans le navigateur si un site l'exige).
+  - Plus aucune donnée d'usage envoyée à Google : statistiques, données d'URL, rapports
+    étendus, correcteur en ligne, pages d'erreur, « Privacy Sandbox ». Safe Browsing reste actif.
+  - WebRTC : l'adresse locale de l'ordinateur n'est plus révélée aux sites.
+
+  Tests (rapport v1.0.4).
+
+v1.0.3 : retours de la v1.0.2
+--------------------------------------------------------------------------------------
+  - Réglages : tuile rouge « Réparer ou réinitialiser » (icône de danger), à la place du
+    bouton de « À propos ». Corrigé : l'écran de réparation s'ouvrait derrière les Réglages.
+  - KeePassXC (mots de passe, sans compte en ligne) installé d'office, comme Notepad Next et
+    Impression, dès la première connexion à Internet.
+
+  Tests (rapport v1.0.3) : non-régression 32/34 (trousseau non mesurable ;
+  barre du son vérifiée à la main), 38/38 tests programmes.
+
+v1.0.2 : retours de la v1.0.1
+--------------------------------------------------------------------------------------
+  - Barre magique : recule tout de suite quand une fenêtre s'agrandit (même si la souris est
+    encore dessus) ; bouton « – » en haut de la barre pour la réduire à la main, « + » pour
+    la garder affichée (gardé au redémarrage).
+  - Disques (gnome-disk-utility) : formater une clé USB en FAT, exFAT ou NTFS, aussi par
+    Fichiers → clic droit sur la clé → Formater… ; sans administrateur, clés et disques
+    amovibles seulement (jamais le disque du système).
+
+  Tests (rapport v1.0.2) : non-régression 33/34, 38/38 tests programmes.
+
+v1.0.1 : retours de la v1
+--------------------------------------------------------------------------------------
+  - Barre magique : quand une fenêtre est agrandie, la barre recule et la fenêtre prend tout
+    l'écran ; approcher la souris du bord gauche la fait revenir par-dessus.
+  - Batterie : éclair jaune bien visible quand le chargeur est branché (aussi batterie pleine
+    ou charge limitée, chargeur USB-C).
+  - Impression (créer une clé USB démarrable) : l'écriture sur une clé USB est autorisée
+    (jamais sur le disque du système).
+  - Chrome, Edge, Brave… installés depuis la boutique : « Installer l'application » (sites
+    en applications) fonctionne.
+  - Compte « soleos » (et nom d'ordinateur « soleos ») pour les nouvelles installations ;
+    un ordinateur déjà installé garde son compte « flashos » et tous ses fichiers.
+  - Chuwi CoreBook Air Plus : haut-parleurs toujours muets sous Linux (ampli non déclaré par
+    le BIOS, adresse 0x33) ; casque, adaptateur USB ou enceinte Bluetooth.
+    outils/test-son.py : outil d'essai des haut-parleurs (sudo python3 test-son.py).
+
+  Tests (rapport v1.0.1) : non-régression 33/34, 38/38 tests programmes.
+
+v1 : FlashOS devient SoleOS
+--------------------------------------------------------------------------------------
+  - Nouveau nom et logo « S » : bouton du menu, démarrage, écran verrouillé, installateur.
+  - Fonds d'écran SoleOS : Soleil (par défaut), Aurore, Circuit, Onde, Synapse (Muse retirée).
+  - Licence : gratuit pour les particuliers, associations, écoles, administrations et
+    l'usage interne des entreprises ; usage commercial sur licence de GDH.
+    L'installateur affiche les conditions (case à cocher) ; l'acceptation est gardée dans
+    /home/.flashos/acceptation.txt. Réglages → À propos → Lire la licence.
+  - Sauvegarde en un clic : Réglages → Sauvegarde (clé, disque ou NAS ; chaque semaine si
+    activé ; rien n'est jamais effacé ; « Ouvrir la sauvegarde » pour restaurer).
+  - Mode grand confort : Réglages → Taille d'affichage (texte ×1,25, grand pointeur).
+  - « Votre vie privée » dans À propos : aucun compte, aucune télémétrie, fichiers chiffrés.
+  - Fichiers : le sous-menu « Scripts » du clic droit s'appelle « Raccourcis » (6 langues).
+  - Raccourci vers un dossier du NAS (smb://…) : gardé tel quel, rouvre le partage tout seul.
+  - Wi-Fi masqué : choix du chiffrement (automatique, WPA, WPA2, WPA3, ouvert).
+  - Partitions système cachées dans Fichiers.
+  - Guide d'utilisation (10 pages) et fiche technique passés en SoleOS v1.
+
+  Compatibilité : les noms techniques flashos-* sont gardés (mises à jour A/B, réparation).
+
+  Tests (docs/tests-soleos-v1.jpg) : non-régression 32/34 (trousseau non mesurable sur le
+  banc ; barre du son : test instable, vérifiée à la main), 37/37 tests programmes,
+  traductions 746/0.
+
+Contenu du paquet
+-----------------
+  README.md                   présentation pour GitHub
+  construire-iso-soleos.sh    script de construction de l'ISO (à lancer en root sur Debian 13)
+  soleos-accueil              bureau, menu SoleOS, réglages, sauvegarde (Rust compilé)
+  soleos-applications         « Applications » : boutique, suite Craft, .deb / .AppImage
+  soleos-installateur         installateur graphique (avec les conditions d'utilisation)
+  soleos-bluetooth            clavier et souris Bluetooth au démarrage
+  soleos-installer            moteur d'installation et de réparation
+  soleos-systeme              outils du système installé (mises à jour A/B, heure, langue…)
+  soleos-securite             chiffrement, code, clé de secours
+  source/                     code source (interface Rust et outils système)
+  fonds/  craft/  polices/    fonds d'écran, icônes Craft, polices
+  locale/  po/                traductions compilées et leurs sources, 6 langues
+  docs/                       guide, fiche technique (PDF), rapport de tests, captures
+  outils/                     marque.py et logo-s.png (logo), renommer-scripts.py (Fichiers),
+                              systeme/ et regenerer-systeme.sh (fichiers système du script)
+  LICENSE                     licence SoleOS
+
+Construction
+------------
+  1. Copier tout le contenu du paquet dans un même dossier de la VM Debian 13.
+  2. En root :  bash construire-iso-soleos.sh
+  3. Résultat : SoleOS-v1.1.iso et SoleOS-v1.1.iso.sha256 dans le dossier personnel.
+
+Passer un PC en SoleOS v1.1 : « Installer SoleOS » depuis la clé (le disque est effacé :
+sauvegardez d'abord vos fichiers). « Réparer » remet à neuf la version déjà installée.
+
+GitHub : ne rien publier avant le dépôt de la marque SoleOS à l'INPI.

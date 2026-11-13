@@ -1,0 +1,110 @@
+330	⚙  Repair — the system is restored as new, your files and apps are kept	⚙  Ripara — il sistema viene rimesso a nuovo, file e applicazioni vengono conservati	⚙  Reparar — el sistema queda como nuevo, se conservan tus archivos y aplicaciones	⚙  Reparieren — das System wird neu hergestellt, Dateien und Apps bleiben erhalten	⚙  修复——系统恢复如新，文件和应用都会保留
+331	⚠  Erase everything — back to day one	⚠  Cancella tutto — ritorno al primo giorno	⚠  Borrar todo — vuelta al primer día	⚠  Alles löschen — zurück zum ersten Tag	⚠  全部清除——回到第一天
+332	Remember to save your open documents.	Ricordati di salvare i documenti aperti.	Recuerda guardar tus documentos abiertos.	Denken Sie daran, Ihre geöffneten Dokumente zu speichern.	请记得保存已打开的文档。
+333	Restart into repair	Riavvia per la riparazione	Reiniciar para reparar	Zur Reparatur neu starten	重启并进入修复
+334	Unable to prepare the repair tool.	Impossibile preparare lo strumento di riparazione.	No se puede preparar la herramienta de reparación.	Das Reparaturwerkzeug kann nicht vorbereitet werden.	无法准备修复工具。
+335	The operation could not be completed	L'operazione non è stata completata	La operación no se ha podido completar	Der Vorgang konnte nicht abgeschlossen werden	操作未能完成
+336	Details: /var/log/soleos-installation.log	Dettagli: /var/log/soleos-installation.log	Detalles: /var/log/soleos-installation.log	Details: /var/log/soleos-installation.log	详情：/var/log/soleos-installation.log
+337	today	oggi	hoy	heute	今天
+338	yesterday	ieri	ayer	gestern	昨天
+339	Office	Ufficio	Ofimática	Büro	办公
+340	Create a document or open one	Crea un documento o aprine uno	Crear un documento o abrir uno	Dokument erstellen oder öffnen	新建或打开文档
+341	Text	Testo	Texto	Text	文字
+342	.docx, .odt	.docx, .odt	.docx, .odt	.docx, .odt	.docx、.odt
+343	Spreadsheet	Foglio di calcolo	Hoja de cálculo	Tabelle	表格
+344	.xlsx, .ods, .csv	.xlsx, .ods, .csv	.xlsx, .ods, .csv	.xlsx, .ods, .csv	.xlsx、.ods、.csv
+345	Presentation	Presentazione	Presentación	Präsentation	演示
+346	.pptx, .odp	.pptx, .odp	.pptx, .odp	.pptx, .odp	.pptx、.odp
+347	PDF	PDF	PDF	PDF	PDF
+348	read a PDF	leggi un PDF	leer un PDF	PDF lesen	阅读 PDF
+349	Recent documents	Documenti recenti	Documentos recientes	Zuletzt verwendet	最近的文档
+350	Open a PDF	Apri un PDF	Abrir un PDF	PDF öffnen	打开 PDF
+351	PDF documents	Documenti PDF	Documentos PDF	PDF-Dokumente	PDF 文档
+352	Lightning	Lampo	Relámpago	Blitz	闪电
+353	Circuit	Circuito	Circuito	Schaltkreis	电路
+354	Synapse	Sinapsi	Sinapsis	Synapse	突触
+355	Wave	Onda	Onda	Welle	波浪
+356	Aurora	Aurora	Aurora	Polarlicht	极光
+357	Muse	Musa	Musa	Muse	缪斯
+358	Night (plain)	Notte (tinta unita)	Noche (liso)	Nacht (einfarbig)	夜色（纯色）
+359	Home folder not found.	Cartella personale non trovata.	No se encuentra la carpeta personal.	Persönlicher Ordner nicht gefunden.	找不到个人文件夹。
+360	The photo could not be copied.	Non è stato possibile copiare la foto.	No se ha podido copiar la foto.	Das Foto konnte nicht kopiert werden.	无法复制照片。
+361	French (AZERTY)	Francese (AZERTY)	Francés (AZERTY)	Französisch (AZERTY)	法语（AZERTY）
+362	Belgian (AZERTY)	Belga (AZERTY)	Belga (AZERTY)	Belgisch (AZERTY)	比利时语（AZERTY）
+363	Swiss French (QWERTZ)	Svizzero francese (QWERTZ)	Suizo francés (QWERTZ)	Schweizerisch-Französisch (QWERTZ)	瑞士法语（QWERTZ）
+364	Canadian French	Francese canadese	Francés canadiense	Kanadisches Französisch	加拿大法语
+365	English, US (QWERTY)	Inglese, Stati Uniti (QWERTY)	Inglés, Estados Unidos (QWERTY)	Englisch, USA (QWERTY)	英语，美国（QWERTY）
+366	English international (with accents)	Inglese internazionale (con accenti)	Inglés internacional (con acentos)	Englisch international (mit Akzenten)	国际英语（带重音符号）
+367	English, UK	Inglese, Regno Unito	Inglés, Reino Unido	Englisch, Großbritannien	英语，英国
+368	Italian	Italiano	Italiano	Italienisch	意大利语
+369	Spanish	Spagnolo	Español	Spanisch	西班牙语
+370	Spanish, Latin America	Spagnolo, America Latina	Español, Latinoamérica	Spanisch, Lateinamerika	西班牙语，拉丁美洲
+371	German (QWERTZ)	Tedesco (QWERTZ)	Alemán (QWERTZ)	Deutsch (QWERTZ)	德语（QWERTZ）
+372	Swiss German (QWERTZ)	Svizzero tedesco (QWERTZ)	Suizo alemán (QWERTZ)	Schweizerdeutsch (QWERTZ)	瑞士德语（QWERTZ）
+373	Portuguese	Portoghese	Portugués	Portugiesisch	葡萄牙语
+374	Portuguese, Brazil	Portoghese, Brasile	Portugués, Brasil	Portugiesisch, Brasilien	葡萄牙语，巴西
+375	The setting could not be applied.	Non è stato possibile applicare l'impostazione.	No se ha podido aplicar el ajuste.	Die Einstellung konnte nicht übernommen werden.	无法应用此设置。
+376	Type here to try the keyboard	Scrivi qui per provare la tastiera	Escribe aquí para probar el teclado	Hier tippen, um die Tastatur auszuprobieren	在此输入以试用键盘
+377	Choose your language and keyboard	Scegli la lingua e la tastiera	Elige tu idioma y tu teclado	Wählen Sie Sprache und Tastatur	请选择语言和键盘
+378	Language and keyboard	Lingua e tastiera	Idioma y teclado	Sprache und Tastatur	语言和键盘
+379	The home screen opens right away in the new language. Apps already open will switch when you reopen them.	La home si apre subito nella nuova lingua. Le applicazioni già aperte la useranno quando le riaprirai.	El inicio se abre enseguida en el nuevo idioma. Las aplicaciones ya abiertas lo usarán cuando las vuelvas a abrir.	Die Startseite öffnet sich sofort in der neuen Sprache. Bereits geöffnete Apps übernehmen sie, wenn Sie sie erneut öffnen.	主页会立即以新语言打开。已打开的应用在重新打开后才会切换语言。
+380	Apply	Applica	Aplicar	Übernehmen	应用
+381	Mail	Posta	Correo	E-Mail	邮件
+382	Internet	Internet	Internet	Internet	上网
+383	Files	File	Archivos	Dateien	文件
+384	Console	Console	Consola	Konsole	终端
+385	Opening…	Apertura…	Abriendo…	Wird geöffnet…	正在打开…
+386	On the right:	A destra:	A la derecha:	Rechts:	右侧：
+387	Open apps	App aperte	Apps abiertas	Offene Apps	已打开的应用
+388	{nom} ({n} windows)	{nom} ({n} finestre)	{nom} ({n} ventanas)	{nom} ({n} Fenster)	{nom}（{n} 个窗口）
+389	Close all	Chiudi tutto	Cerrar todo	Alle schließen	全部关闭
+390	Go there	Vai	Ir	Dorthin wechseln	转到
+391	Left	A sinistra	A la izquierda	Links	左侧
+392	Right	A destra	A la derecha	Rechts	右侧
+393	Full screen	Tutto lo schermo	Pantalla completa	Ganzer Bildschirm	全屏
+394	Close all ({n})	Chiudi tutto ({n})	Cerrar todo ({n})	Alle schließen ({n})	全部关闭（{n}）
+395	Wi-Fi connected (signal {q}%)	Wi-Fi connesso (segnale {q}%)	Wi-Fi conectado (señal {q} %)	WLAN verbunden (Signal {q} %)	Wi-Fi 已连接（信号 {q}%）
+396	Connected by cable	Connesso via cavo	Conectado por cable	Per Kabel verbunden	有线已连接
+397	No connection	Nessuna connessione	Sin conexión	Keine Verbindung	未连接网络
+398	{info} — click to choose a network	{info} — clicca per scegliere una rete	{info} — haz clic para elegir una red	{info} — klicken, um ein Netzwerk zu wählen	{info} —— 点击选择网络
+399	Battery: {n}, charging	Batteria: {n}, in carica	Batería: {n}, cargando	Akku: {n}, wird geladen	电池：{n}，正在充电
+400	Battery: {n}	Batteria: {n}	Batería: {n}	Akku: {n}	电池：{n}
+401	Sound muted	Audio disattivato	Sonido silenciado	Ton aus	已静音
+402	Volume	Volume	Volumen	Lautstärke	音量
+403	Unmute	Riattiva l'audio	Activar el sonido	Ton einschalten	取消静音
+404	Mute	Disattiva l'audio	Silenciar	Ton ausschalten	静音
+405	Home	Home	Inicio	Startseite	主页
+406	Network	Rete	Red	Netzwerk	网络
+407	Sound	Audio	Sonido	Ton	声音
+408	Settings: printers, Bluetooth, screen, code…	Impostazioni: stampanti, Bluetooth, schermo, codice…	Ajustes: impresoras, Bluetooth, pantalla, código…	Einstellungen: Drucker, Bluetooth, Bildschirm, Code…	设置：打印机、蓝牙、屏幕、密码…
+409	Shut down, restart…	Spegni, riavvia…	Apagar, reiniciar…	Ausschalten, neu starten…	关机、重启…
+410	Wi-Fi	Wi-Fi	Wi-Fi	WLAN	Wi-Fi
+411	Choose a network	Scegli una rete	Elegir una red	Netzwerk wählen	选择网络
+412	↻ Update ready	↻ Aggiornamento pronto	↻ Actualización lista	↻ Update bereit	↻ 更新已就绪
+413	It will install itself at the next restart.	Si installerà da solo al prossimo riavvio.	Se instalará sola en el próximo reinicio.	Es wird beim nächsten Neustart automatisch installiert.	下次重启时将自动安装。
+414	Settings	Impostazioni	Ajustes	Einstellungen	设置
+415	Settings: Wi-Fi, sound, Bluetooth, screen, printers, code…	Impostazioni: Wi-Fi, audio, Bluetooth, schermo, stampanti, codice…	Ajustes: Wi-Fi, sonido, Bluetooth, pantalla, impresoras, código…	Einstellungen: WLAN, Ton, Bluetooth, Bildschirm, Drucker, Code…	设置：Wi-Fi、声音、蓝牙、屏幕、打印机、密码…
+416	--:--	--:--	--:--	--:--	--:--
+417	Search the web…	Cerca sul web…	Buscar en la web…	Im Web suchen…	搜索网页…
+418	Windows key: show the desktop  ·  Alt + Tab: switch apps  ·  Drag a window to an edge: half the screen	Tasto Windows: mostra il desktop  ·  Alt + Tab: cambia app  ·  Trascina una finestra su un bordo: metà schermo	Tecla Windows: mostrar el escritorio  ·  Alt + Tab: cambiar de app  ·  Arrastra una ventana a un borde: media pantalla	Windows-Taste: Desktop anzeigen  ·  Alt + Tab: App wechseln  ·  Fenster an einen Rand ziehen: halber Bildschirm	Windows 键：显示桌面  ·  Alt + Tab：切换应用  ·  将窗口拖到边缘：占半个屏幕
+419	Windows key or Ctrl + Alt + A: back to home  ·  Alt + Tab: switch apps	Tasto Windows o Ctrl + Alt + A: torna alla home  ·  Alt + Tab: cambia app	Tecla Windows o Ctrl + Alt + A: volver al inicio  ·  Alt + Tab: cambiar de app	Windows-Taste oder Strg + Alt + A: zurück zur Startseite  ·  Alt + Tab: App wechseln	Windows 键或 Ctrl + Alt + A：返回主页  ·  Alt + Tab：切换应用
+420	SoleOS repair mode	Modalità di riparazione di SoleOS	Modo de reparación de SoleOS	SoleOS-Reparaturmodus	SoleOS 修复模式
+421	Open the repair tool	Apri lo strumento di riparazione	Abrir la herramienta de reparación	Reparaturwerkzeug öffnen	打开修复工具
+422	You are trying SoleOS from the USB key: nothing is changed on this computer.	Stai provando SoleOS dalla chiavetta USB: nulla viene modificato su questo computer.	Estás probando SoleOS desde la memoria USB: no se modifica nada en este ordenador.	Sie testen SoleOS vom USB-Stick: An diesem Computer wird nichts verändert.	您正在通过 U 盘试用 SoleOS：不会对这台电脑做任何更改。
+423	Install SoleOS on this computer	Installa SoleOS su questo computer	Instalar SoleOS en este ordenador	SoleOS auf diesem Computer installieren	将 SoleOS 安装到这台电脑
+424	Show home (Windows key)	Mostra la home (tasto Windows)	Mostrar el inicio (tecla Windows)	Startseite anzeigen (Windows-Taste)	显示主页（Windows 键）
+425	＋  Add an email account…	＋  Aggiungi una casella di posta…	＋  Añadir un correo…	＋  E-Mail-Konto hinzufügen…	＋  添加邮箱…
+426	Remove “{nom}”	Rimuovi «{nom}»	Quitar «{nom}»	„{nom}“ entfernen	移除“{nom}”
+427	Open which email?	Quale posta aprire?	¿Qué correo abrir?	Welches E-Mail-Konto öffnen?	打开哪个邮箱？
+428	🔒  Lock the screen	🔒  Blocca lo schermo	🔒  Bloquear la pantalla	🔒  Bildschirm sperren	🔒  锁定屏幕
+429	⏻  Shut down	⏻  Spegni	⏻  Apagar	⏻  Ausschalten	⏻  关机
+430	↻  Restart	↻  Riavvia	↻  Reiniciar	↻  Neu starten	↻  重启
+431	☾  Sleep	☾  Sospendi	☾  Suspender	☾  Energie sparen	☾  睡眠
+432	⚠  Repair or reset…	⚠  Ripara o reimposta…	⚠  Reparar o restablecer…	⚠  Reparieren oder zurücksetzen…	⚠  修复或重置…
+433	Folder not found.	Cartella non trovata.	Carpeta no encontrada.	Ordner nicht gefunden.	找不到文件夹。
+434	Unable to set the old profile aside ({e}).	Impossibile mettere da parte il vecchio profilo ({e}).	No se puede apartar el perfil anterior ({e}).	Das alte Profil kann nicht beiseitegelegt werden ({e}).	无法保留旧的配置文件（{e}）。
+435	Browser reset: extensions, site notifications and settings erased. Bookmarks, passwords and history are kept.	Browser rimesso a nuovo: estensioni, notifiche dei siti e impostazioni cancellate. Preferiti, password e cronologia sono conservati.	Navegador restablecido: extensiones, notificaciones de los sitios y ajustes borrados. Se conservan los favoritos, las contraseñas y el historial.	Browser zurückgesetzt: Erweiterungen, Website-Benachrichtigungen und Einstellungen gelöscht. Lesezeichen, Passwörter und Verlauf bleiben erhalten.	浏览器已重置：扩展、网站通知和设置已清除。书签、密码和历史记录均已保留。
+436	Paris, Brussels, Geneva, Luxembourg	Parigi, Bruxelles, Ginevra, Lussemburgo	París, Bruselas, Ginebra, Luxemburgo	Paris, Brüssel, Genf, Luxemburg	巴黎、布鲁塞尔、日内瓦、卢森堡
+437	Rome, Madrid, Berlin, Vienna	Roma, Madrid, Berlino, Vienna	Roma, Madrid, Berlín, Viena	Rom, Madrid, Berlin, Wien	罗马、马德里、柏林、维也纳
+438	London, Lisbon, Dublin	Londra, Lisbona, Dublino	Londres, Lisboa, Dublín	London, Lissabon, Dublin	伦敦、里斯本、都柏林
+439	Athens, Helsinki, Bucharest	Atene, Helsinki, Bucarest	Atenas, Helsinki, Bucarest	Athen, Helsinki, Bukarest	雅典、赫尔辛基、布加勒斯特

@@ -1,0 +1,14 @@
+[Unit]
+Description=SoleOS : attente d'un clavier et d'une souris (Bluetooth) avant la session
+After=soleos-bluetooth.service soleos-deverrouiller.service
+Wants=soleos-bluetooth.service
+Before=systemd-user-sessions.service getty@tty1.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutSec=200
+ExecStart=/usr/local/bin/soleos-bluetooth attendre 180
+
+[Install]
+WantedBy=multi-user.target

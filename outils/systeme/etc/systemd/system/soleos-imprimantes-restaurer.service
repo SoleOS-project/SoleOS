@@ -1,0 +1,13 @@
+[Unit]
+Description=SoleOS : remet en place les imprimantes ajoutées
+ConditionKernelCommandLine=soleos.slot
+RequiresMountsFor=/home
+After=soleos-deverrouiller.service
+Before=cups.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/soleos-systeme restaurer-imprimantes
+
+[Install]
+WantedBy=multi-user.target

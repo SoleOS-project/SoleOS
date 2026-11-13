@@ -1,8 +1,0 @@
-[Unit]
-Description=SoleOS : validation du démarrage après une mise à jour
-ConditionKernelCommandLine=flashos.slot
-RequiresMountsFor=/flashos/demarrage
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/sbin/flashos-systeme confirmer

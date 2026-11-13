@@ -1,0 +1,10 @@
+[Unit]
+Description=SoleOS : validation du démarrage (dès que l'interface tourne)
+ConditionKernelCommandLine=soleos.slot
+
+[Timer]
+OnBootSec=60s
+OnUnitActiveSec=60s
+
+[Install]
+WantedBy=timers.target

@@ -1,8 +1,0 @@
-[Unit]
-Description=SoleOS : garde les imprimantes dans les données
-RequiresMountsFor=/home
-After=flashos-deverrouiller.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/sbin/flashos-systeme sauver-imprimantes

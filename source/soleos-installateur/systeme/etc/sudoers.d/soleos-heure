@@ -1,0 +1,4 @@
+# SoleOS : date et heure depuis les Réglages (valeurs vérifiées par l'outil)
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-systeme fuseau *, /usr/local/sbin/soleos-systeme heure-auto *, /usr/local/sbin/soleos-systeme heure-regler *
+# Langue et clavier (premier écran de la clé, Réglages) : valeurs vérifiées par l'outil
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-systeme langue *

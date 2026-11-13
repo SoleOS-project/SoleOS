@@ -1,0 +1,13 @@
+# SoleOS : réglages de Chromium, quelle que soit la façon de l'ouvrir
+# (tuiles de l'accueil, lien ou PDF ouvert depuis une autre appli…)
+# - affichage Wayland, interface dans la langue choisie ; mots de passe et cookies protégés par le
+#   trousseau de la session (ouvert d'office) : les connexions (Google, Gmail…) sont gardées
+# - vidéos décodées par la carte graphique (VA-API) : moins de travail pour le processeur, plus d'autonomie
+# - partage d'écran (visio) par PipeWire
+# - langue de l'interface : celle choisie pour l'ordinateur ; chinois : écriture pinyin (fcitx5)
+case "$(cat /run/soleos/langue 2>/dev/null)" in
+  en) SOLEOS_LANGUE_WEB=en-US ;; it) SOLEOS_LANGUE_WEB=it ;; es) SOLEOS_LANGUE_WEB=es ;;
+  de) SOLEOS_LANGUE_WEB=de ;; zh) SOLEOS_LANGUE_WEB="zh-CN --enable-wayland-ime --wayland-text-input-version=3" ;;
+  *) SOLEOS_LANGUE_WEB=fr ;;
+esac
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ozone-platform=wayland --lang=$SOLEOS_LANGUE_WEB --no-default-browser-check --password-store=gnome-libsecret --enable-remote-extensions --disable-features=Translate --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,WebRTCPipeWireCapturer"

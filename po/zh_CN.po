@@ -1,8 +1,8 @@
-# FlashOS — traduction (zh_CN)
+# SoleOS — traduction (zh_CN)
 # © 2026 GDH (Giuseppe D'Arco Holding) — LicenseRef-SoleOS
 msgid ""
 msgstr ""
-"Project-Id-Version: FlashOS\n"
+"Project-Id-Version: SoleOS\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -770,8 +770,8 @@ msgstr "安装“{nom}”？"
 msgid "Ce paquet sera installé dans un espace Debian séparé : il ne peut pas abîmer SoleOS. La première fois, cet espace est téléchargé (environ 50 Mo) : comptez quelques minutes."
 msgstr "此软件包将安装在独立的 Debian 空间中，不会损坏 SoleOS。首次使用时需要下载该空间（约 50 MB），请稍候几分钟。"
 
-msgid "Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter flashos-debian »."
-msgstr "此软件包不包含可显示的应用（命令行工具）：可在终端中通过“distrobox enter flashos-debian”使用。"
+msgid "Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter soleos-debian »."
+msgstr "此软件包不包含可显示的应用（命令行工具）：可在终端中通过“distrobox enter soleos-debian”使用。"
 
 msgid "En mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur."
 msgstr "在试用模式（U 盘）下，请先将 SoleOS 安装到电脑上。"
@@ -1052,8 +1052,8 @@ msgstr "无法准备修复工具。"
 msgid "L'opération n'a pas pu se terminer"
 msgstr "操作未能完成"
 
-msgid "Détails : /var/log/flashos-installation.log"
-msgstr "详情：/var/log/flashos-installation.log"
+msgid "Détails : /var/log/soleos-installation.log"
+msgstr "详情：/var/log/soleos-installation.log"
 
 msgid "Réduire la barre"
 msgstr "收起栏"
@@ -1877,6 +1877,9 @@ msgstr "，{d} 英寸"
 msgid "{l} × {h}{pouces}, affichage à {z} %"
 msgstr "{l} × {h}{pouces}，显示比例 {z}%"
 
+msgid "Noyau Linux : {v}"
+msgstr "Linux 内核：{v}"
+
 msgid "Vos Documents, Images, Musique, Vidéos, Téléchargements et Bureau sont copiés sur une clé USB, un disque ou un dossier du NAS. Rien n'est jamais effacé dans la sauvegarde : un fichier supprimé par erreur s'y retrouve."
 msgstr "您的文档、图片、音乐、视频、下载和桌面会复制到 U 盘、磁盘或 NAS 文件夹。备份中的内容永不删除：误删的文件可在其中找回。"
 
@@ -2137,6 +2140,33 @@ msgstr "这是您的新恢复密钥。请抄在纸上并妥善保管："
 
 msgid "La clé n'a pas pu être créée."
 msgstr "无法创建密钥。"
+
+msgid "récent"
+msgstr "新版"
+
+msgid "stable"
+msgstr "稳定版"
+
+msgid "Noyau Linux : {v} ({genre})"
+msgstr "Linux 内核：{v}（{genre}）"
+
+msgid "Le noyau récent sera essayé au prochain démarrage."
+msgstr "下次启动时将试用新版内核。"
+
+msgid "Revenir au noyau stable ({v})"
+msgstr "回到稳定版内核（{v}）"
+
+msgid "Ordinateur très récent (Wi-Fi, son ou affichage qui marchent mal) ? Essayez le noyau récent : s'il ne démarre pas bien, SoleOS revient tout seul au noyau stable."
+msgstr "电脑很新（Wi-Fi、声音或显示工作不正常）？试试新版内核：如果启动不正常，SoleOS 会自动回到稳定版内核。"
+
+msgid "Essayer le noyau récent ({v})"
+msgstr "试用新版内核（{v}）"
+
+msgid "Redémarrez l'ordinateur pour appliquer ce choix."
+msgstr "重新启动电脑以应用此选择。"
+
+msgid "Ce choix n'a pas pu être enregistré."
+msgstr "无法保存此选择。"
 
 msgid "%A %-e %B à %H:%M"
 msgstr "%B%-e日 %A %H:%M"

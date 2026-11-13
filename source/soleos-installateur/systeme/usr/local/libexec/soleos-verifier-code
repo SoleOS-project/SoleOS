@@ -1,0 +1,3 @@
+#!/bin/sh
+# SoleOS : vérification du code à l'écran verrouillé (appelé par PAM, code sur l'entrée)
+exec sudo -n /usr/local/sbin/soleos-securite verifier

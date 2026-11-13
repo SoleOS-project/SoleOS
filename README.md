@@ -16,7 +16,7 @@ Il est pensé pour les gens qui veulent un ordinateur qui marche, sans administr
 - **Sauvegarde en un clic** vers une clé USB, un disque ou un NAS, chaque semaine si vous le voulez. Rien n'est jamais effacé dans la sauvegarde.
 - **Mode grand confort** : textes plus grands et pointeur bien visible.
 - **Réparation intégrée** : remise à neuf du système en gardant vos fichiers (Réglages → Réparer ou réinitialiser).
-- **Vie privée** : aucun compte, aucune télémétrie, rien n'est envoyé sans votre accord.
+- **Vie privée** : aucun compte, aucune télémétrie, rien n'est envoyé sans votre accord ; navigateur sans publicités ni traqueurs, cookies tiers bloqués.
 - **Applications** : LibreOffice, Thunderbird, Chromium, VLC, KeePassXC, et la logithèque Flathub ; paquets `.deb` et AppImage acceptés dans un espace séparé.
 - **6 langues** : français, anglais, italien, espagnol, allemand, chinois simplifié.
 
@@ -31,33 +31,33 @@ Il est pensé pour les gens qui veulent un ordinateur qui marche, sans administr
 
 ## Configuration conseillée
 
-Processeur x86-64 (Intel, AMD), 4 Go de mémoire (8 Go conseillés), 32 Go de disque (SSD conseillé), UEFI (Secure Boot accepté) ou BIOS, puce TPM 2.0 conseillée.
+Processeur x86-64 (Intel, AMD), 4 Go de mémoire (8 Go conseillés), 32 Go de disque (SSD conseillé), UEFI (Secure Boot accepté) ou BIOS, puce TPM 2.0 conseillée. PC très récent : noyau récent proposé au démarrage de la clé (Échap) et dans Réglages → À propos.
 
 ## Fabriquer l'image ISO
 
 Sur une machine Debian 13 (amd64), en root, avec tout le contenu de ce dépôt dans un même dossier :
 
 ```sh
-bash construire-iso-flashos.sh
+bash construire-iso-soleos.sh
 ```
 
-Résultat : `SoleOS-v1.0.3.iso` et son empreinte `SoleOS-v1.0.3.iso.sha256`. Copiez l'ISO sur une clé USB (par exemple avec `dd` ou Balena Etcher), démarrez dessus : la clé s'ouvre en mode essai, puis propose **Installer SoleOS sur cet ordinateur**.
+Résultat : `SoleOS-v1.1.iso` et son empreinte `SoleOS-v1.1.iso.sha256`. Copiez l'ISO sur une clé USB (par exemple avec `dd` ou Balena Etcher), démarrez dessus : la clé s'ouvre en mode essai, puis propose **Installer SoleOS sur cet ordinateur**.
 
 Recompiler l'interface (facultatif, les programmes compilés sont fournis) :
 
 ```sh
-cd source/flashos-accueil && cargo build --release
+cd source/soleos-accueil && cargo build --release
 ```
 
-> Les noms techniques internes (`flashos-*`, étiquettes de partitions, `ID=flashos`) viennent du nom de travail du projet. Ils sont gardés pour la compatibilité des mises à jour et de la réparation.
+> Depuis la v1.1, tous les noms techniques sont `soleos-*` (commandes, services, partitions `SOLEOS-*`, `ID=soleos`). Les anciens noms `flashos-*` (nom de travail du projet) restent reconnus sur les ordinateurs installés avant la v1.1.
 
 ## Contenu du dépôt
 
 | Dossier / fichier | Rôle |
 |---|---|
-| `construire-iso-flashos.sh` | construction de l'ISO |
-| `flashos-accueil`, `flashos-applications`, `flashos-installateur`, `flashos-bluetooth` | interface compilée (Rust) |
-| `flashos-installer`, `flashos-systeme`, `flashos-securite` | outils système (bash) : installation, mises à jour A/B, chiffrement |
+| `construire-iso-soleos.sh` | construction de l'ISO |
+| `soleos-accueil`, `soleos-applications`, `soleos-installateur`, `soleos-bluetooth` | interface compilée (Rust) |
+| `soleos-installer`, `soleos-systeme`, `soleos-securite` | outils système (bash) : installation, mises à jour A/B, chiffrement |
 | `source/` | code source de l'interface et des outils |
 | `locale/`, `po/` | traductions (6 langues) |
 | `fonds/`, `polices/`, `craft/` | fonds d'écran, polices, icônes |

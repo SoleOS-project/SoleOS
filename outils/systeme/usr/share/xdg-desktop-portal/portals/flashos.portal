@@ -1,4 +1,0 @@
-[portal]
-DBusName=org.freedesktop.impl.portal.desktop.flashos
-Interfaces=org.freedesktop.impl.portal.Wallpaper
-UseIn=wlroots;labwc

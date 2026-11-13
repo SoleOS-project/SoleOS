@@ -1,0 +1,16 @@
+[Unit]
+Description=SoleOS : langue, clavier, fuseau horaire et heure choisis dans les Réglages
+DefaultDependencies=no
+RequiresMountsFor=/soleos/demarrage
+After=local-fs.target
+# Avant la saisie du code : messages dans la bonne langue, clavier de la console réglé
+Before=sysinit.target time-set.target systemd-timesyncd.service soleos-deverrouiller.service soleos-bluetooth.service
+ConditionKernelCommandLine=soleos.slot
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/local/sbin/soleos-systeme langue-appliquer
+ExecStart=/usr/local/sbin/soleos-systeme heure-appliquer
+
+[Install]
+WantedBy=sysinit.target

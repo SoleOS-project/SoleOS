@@ -1,0 +1,2 @@
+# SoleOS : économie d'énergie automatique au branchement / débranchement du chargeur
+SUBSYSTEM=="power_supply", ACTION=="change", RUN+="/usr/bin/systemctl --no-block start soleos-energie.service"

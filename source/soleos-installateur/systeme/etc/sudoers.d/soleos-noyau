@@ -1,0 +1,2 @@
+# SoleOS (v1.0.5) : Réglages → À propos → noyau stable ou récent (essai sans risque, retour automatique)
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-systeme noyau-etat, /usr/local/sbin/soleos-systeme noyau recent, /usr/local/sbin/soleos-systeme noyau stable

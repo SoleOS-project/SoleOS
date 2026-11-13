@@ -1,5 +1,0 @@
-# SoleOS : les partitions du système (démarrage, A, B, usine, données) n'apparaissent pas dans
-# Fichiers : l'utilisateur ne voit que ses propres disques et clés USB
-ENV{ID_FS_LABEL}=="FlashOS-*", ENV{UDISKS_IGNORE}="1"
-ENV{ID_PART_ENTRY_NAME}=="FLASHOS-*", ENV{UDISKS_IGNORE}="1"
-ENV{ID_FS_TYPE}=="crypto_LUKS", ENV{ID_FS_LABEL}=="FlashOS-Donnees", ENV{UDISKS_IGNORE}="1"

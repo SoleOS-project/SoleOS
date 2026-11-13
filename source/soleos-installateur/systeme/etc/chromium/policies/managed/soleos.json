@@ -1,0 +1,24 @@
+{
+  "BrowserSignin": 0,
+  "SyncDisabled": true,
+  "BrowserAddPersonEnabled": false,
+  "BrowserGuestModeEnabled": false,
+  "DefaultBrowserSettingEnabled": false,
+  "PromotionalTabsEnabled": false,
+  "MetricsReportingEnabled": false,
+  "UrlKeyedAnonymizedDataCollectionEnabled": false,
+  "SafeBrowsingExtendedReportingEnabled": false,
+  "SpellCheckServiceEnabled": false,
+  "AlternateErrorPagesEnabled": false,
+  "PrivacySandboxPromptEnabled": false,
+  "PrivacySandboxAdTopicsEnabled": false,
+  "PrivacySandboxSiteEnabledAdsEnabled": false,
+  "PrivacySandboxAdMeasurementEnabled": false,
+  "WebRtcIPHandling": "default_public_interface_only",
+  "ExtensionSettings": {
+    "ddkjiahejlhfcafbddmgiahcphecmpfh": {
+      "installation_mode": "normal_installed",
+      "update_url": "https://clients2.google.com/service/update2/crx"
+    }
+  }
+}

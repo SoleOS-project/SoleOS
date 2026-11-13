@@ -182,3 +182,13 @@ Réduire la barre	Collapse the bar	Riduci la barra	Contraer la barra	Leiste eink
 Garder la barre affichée	Keep the bar shown	Mostra sempre la barra	Mantener la barra visible	Leiste anzeigen lassen	保持显示栏
 Disques	Disks	Dischi	Discos	Laufwerke	磁盘
 Réparer ou réinitialiser	Repair or reset	Ripara o reimposta	Reparar o restablecer	Reparieren oder zurücksetzen	修复或重置
+Noyau Linux : {v}	Linux kernel: {v}	Kernel Linux: {v}	Núcleo Linux: {v}	Linux-Kernel: {v}	Linux 内核：{v}
+Noyau Linux : {v} ({genre})	Linux kernel: {v} ({genre})	Kernel Linux: {v} ({genre})	Núcleo Linux: {v} ({genre})	Linux-Kernel: {v} ({genre})	Linux 内核：{v}（{genre}）
+récent	recent	recente	reciente	aktuell	新版
+stable	stable	stabile	estable	stabil	稳定版
+Le noyau récent sera essayé au prochain démarrage.	The recent kernel will be tried at the next start-up.	Il kernel recente sarà provato al prossimo avvio.	El núcleo reciente se probará en el próximo arranque.	Der aktuelle Kernel wird beim nächsten Start ausprobiert.	下次启动时将试用新版内核。
+Ordinateur très récent (Wi-Fi, son ou affichage qui marchent mal) ? Essayez le noyau récent : s'il ne démarre pas bien, SoleOS revient tout seul au noyau stable.	Very recent computer (Wi-Fi, sound or display not working well)? Try the recent kernel: if it does not start properly, SoleOS goes back to the stable kernel by itself.	Computer molto recente (Wi-Fi, audio o schermo che non funzionano bene)? Prova il kernel recente: se non si avvia bene, SoleOS torna da solo al kernel stabile.	¿Ordenador muy reciente (Wi-Fi, sonido o pantalla que funcionan mal)? Pruebe el núcleo reciente: si no arranca bien, SoleOS vuelve solo al núcleo estable.	Sehr neuer Computer (WLAN, Ton oder Anzeige funktionieren schlecht)? Probieren Sie den aktuellen Kernel: Startet er nicht richtig, kehrt SoleOS von selbst zum stabilen Kernel zurück.	电脑很新（Wi-Fi、声音或显示工作不正常）？试试新版内核：如果启动不正常，SoleOS 会自动回到稳定版内核。
+Essayer le noyau récent ({v})	Try the recent kernel ({v})	Prova il kernel recente ({v})	Probar el núcleo reciente ({v})	Aktuellen Kernel ausprobieren ({v})	试用新版内核（{v}）
+Revenir au noyau stable ({v})	Go back to the stable kernel ({v})	Torna al kernel stabile ({v})	Volver al núcleo estable ({v})	Zum stabilen Kernel zurückkehren ({v})	回到稳定版内核（{v}）
+Redémarrez l'ordinateur pour appliquer ce choix.	Restart the computer to apply this choice.	Riavvia il computer per applicare questa scelta.	Reinicie el ordenador para aplicar esta elección.	Starten Sie den Computer neu, um diese Wahl anzuwenden.	重新启动电脑以应用此选择。
+Ce choix n'a pas pu être enregistré.	This choice could not be saved.	Non è stato possibile salvare questa scelta.	No se pudo guardar esta elección.	Diese Wahl konnte nicht gespeichert werden.	无法保存此选择。

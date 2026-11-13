@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.freedesktop.impl.portal.desktop.soleos
+Exec=/usr/local/bin/soleos-accueil --portail-fond

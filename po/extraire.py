@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Extrait les textes à traduire vers po/flashos.pot :
+"""Extrait les textes à traduire vers po/soleos.pot :
 - programmes Rust : tr("…"), trv("…"), n_("…"), selon("…", "…") et les petites fonctions
   d'affichage qui traduisent elles-mêmes leur texte (etiquette, petit, bouton…) ;
-- scripts shell : t "…" (fonction de traduction des scripts FlashOS)."""
+- scripts shell : t "…" (fonction de traduction des scripts SoleOS)."""
 import re, glob, os, sys
 ici = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ici)
@@ -35,14 +35,14 @@ for f in sys.argv[1:]:
             continue
         noter(m.group(1), f"{os.path.basename(f)}:{s.count(chr(10), 0, m.start()) + 1}")
 
-with open(os.path.join(ici, 'flashos.pot'), 'w', encoding='utf-8') as o:
-    o.write('# FlashOS — textes de l\'interface (langue d\'origine : français)\n'
+with open(os.path.join(ici, 'soleos.pot'), 'w', encoding='utf-8') as o:
+    o.write('# SoleOS — textes de l\'interface (langue d\'origine : français)\n'
             '# © 2026 GDH (Giuseppe D\'Arco Holding) — LicenseRef-SoleOS\n'
-            'msgid ""\nmsgstr ""\n"Project-Id-Version: FlashOS\\n"\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+            'msgid ""\nmsgstr ""\n"Project-Id-Version: SoleOS\\n"\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
             '"Content-Transfer-Encoding: 8bit\\n"\n"Language: fr\\n"\n\n')
     for t, lieux in textes.items():
         o.write('#: ' + ' '.join(lieux[:4]) + '\n')
         if '{' in t:
-            o.write('#, flashos-format\n')
+            o.write('#, soleos-format\n')
         o.write(f'msgid "{t}"\nmsgstr ""\n\n')
 print(len(textes), 'textes')

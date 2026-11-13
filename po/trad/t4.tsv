@@ -4,7 +4,7 @@
 333	Restart into repair	Riavvia per la riparazione	Reiniciar para reparar	Zur Reparatur neu starten	重启并进入修复
 334	Unable to prepare the repair tool.	Impossibile preparare lo strumento di riparazione.	No se puede preparar la herramienta de reparación.	Das Reparaturwerkzeug kann nicht vorbereitet werden.	无法准备修复工具。
 335	The operation could not be completed	L'operazione non è stata completata	La operación no se ha podido completar	Der Vorgang konnte nicht abgeschlossen werden	操作未能完成
-336	Details: /var/log/flashos-installation.log	Dettagli: /var/log/flashos-installation.log	Detalles: /var/log/flashos-installation.log	Details: /var/log/flashos-installation.log	详情：/var/log/flashos-installation.log
+336	Details: /var/log/soleos-installation.log	Dettagli: /var/log/soleos-installation.log	Detalles: /var/log/soleos-installation.log	Details: /var/log/soleos-installation.log	详情：/var/log/soleos-installation.log
 337	today	oggi	hoy	heute	今天
 338	yesterday	ieri	ayer	gestern	昨天
 339	Office	Ufficio	Ofimática	Büro	办公

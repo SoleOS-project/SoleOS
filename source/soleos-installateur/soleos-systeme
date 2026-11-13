@@ -1,0 +1,614 @@
+#!/bin/bash
+# =====================================================================
+#  SoleOS – outils du système installé
+#  © 2026 GDH – créé par Giuseppe D'Arco – LicenseRef-SoleOS
+#
+#  Le disque contient : démarrage · système A · système B · copie d'origine
+#  (« usine ») · données. SoleOS tourne sur A ou B, en lecture seule.
+#
+#    soleos-systeme etat                  état des emplacements
+#    soleos-systeme maj                   prépare la mise à jour dans l'autre emplacement
+#    soleos-systeme confirmer             valide le démarrage en cours (après une mise à jour)
+#    soleos-systeme preparer-reparation   redémarrage suivant : outil de réparation
+#    soleos-systeme ecrire-grub <dossier> <uuid A> <uuid B> <uuid usine>
+#    soleos-systeme heure-etat | fuseau <Zone/Ville> | heure-auto oui|non | heure-regler "AAAA-MM-JJ HH:MM"
+#    soleos-systeme langue <fr|en|it|es|de|zh> <clavier> <variante|->  |  langue-appliquer (au démarrage)
+# =====================================================================
+set -uo pipefail
+export LC_ALL=C PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Messages dans la langue choisie pour l'ordinateur (gettext, domaine « soleos ») :
+# t "texte français" [nom valeur]… remplace aussi {nom} par la valeur
+SOLEOS_LANGUE_CODE="${SOLEOS_LANGUE_CODE:-$(cat /run/soleos/langue 2>/dev/null || true)}"
+t() {
+  local m="$1" loc="" lang=""; shift
+  case "$SOLEOS_LANGUE_CODE" in
+    en) loc=en_US.UTF-8 lang=en ;; it) loc=it_IT.UTF-8 lang=it ;; es) loc=es_ES.UTF-8 lang=es ;;
+    de) loc=de_DE.UTF-8 lang=de ;; zh) loc=zh_CN.UTF-8 lang=zh_CN ;;
+  esac
+  if [ -n "$loc" ] && command -v gettext >/dev/null 2>&1; then
+    m="$(LC_ALL="$loc" LANGUAGE="$lang" TEXTDOMAIN=soleos gettext -- "$m" 2>/dev/null || printf '%s' "$m")"
+  fi
+  while [ $# -ge 2 ]; do m="${m//\{$1\}/$2}"; shift 2; done
+  printf '%s' "$m"
+}
+
+DEMARRAGE="${SOLEOS_DEMARRAGE:-/soleos/demarrage}"
+ENV_GRUB="$DEMARRAGE/grub/grubenv"
+JOURNAL_MAJ=/home/.soleos/maj.log
+[ -d /home/.soleos ] || JOURNAL_MAJ=/var/log/soleos-maj.log
+ETAT=/run/soleos
+# panic=10 : si une version ne démarre pas, l'ordinateur redémarre seul (et revient à la bonne)
+# plymouth.use-legacy-input : le code se tape via la console, où Verr Num est allumé d'office
+LIGNE_NOYAU="quiet splash loglevel=3 vt.global_cursor_default=0 panic=10 plymouth.use-legacy-input preempt=full"
+
+dire() { echo "$*"; echo "$(date '+%F %T') $*" >> "$JOURNAL_MAJ" 2>/dev/null; }
+
+# (v1.1) « flashos.slot » : ligne de démarrage d'avant la v1.1
+slot_actif() { sed -n 's/.*\(soleos\|flashos\)\.slot=\([AB]\).*/\2/p' /proc/cmdline; }
+autre_slot() { [ "$1" = A ] && echo B || echo A; }
+
+# Disque qui porte le système en cours
+disque_systeme() {
+  local src
+  src="$(findmnt -no SOURCE /run/soleos/bas 2>/dev/null || findmnt -no SOURCE / 2>/dev/null)"
+  lsblk -no PKNAME "$src" 2>/dev/null | head -1
+}
+
+# Partition du disque portant ce nom (SOLEOS-A, SOLEOS-B, …)
+partition_nommee() {  # <disque> <nom>
+  # (v1.1) ou l'ancien nom (FLASHOS-A…) d'un disque installé avant la v1.1
+  lsblk -lnpo NAME,PARTLABEL "/dev/${1#/dev/}" 2>/dev/null | awk -v n="$2" -v a="FLASHOS-${2#SOLEOS-}" '$2==n || $2==a {print $1; exit}'
+}
+
+valeur_env() { grub-editenv "$ENV_GRUB" list 2>/dev/null | sed -n "s/^$1=//p"; }
+
+# ---------------------------------------------------------------------
+#  Noyaux (v1.0.5). Deux noyaux Debian signés (démarrage sécurisé) :
+#   - le noyau « stable » de Debian 13 (paquet linux-image-amd64), utilisé par défaut ;
+#   - le noyau « récent » des backports Debian, pour le matériel très récent.
+#  /boot/vmlinuz, /boot/initrd.img        → noyau stable
+#  /boot/vmlinuz-recent, initrd.img-recent → noyau récent (ou le stable s'il n'y en a pas)
+#  Le choix est gardé dans grubenv (noyau=recent), avec un premier démarrage d'essai
+#  (noyau_essai=1) : si l'interface n'apparaît pas, retour tout seul au noyau stable.
+# ---------------------------------------------------------------------
+
+# Version d'un fichier noyau (lue dans son en-tête : « 6.12.57+deb13-amd64 »)
+version_noyau() {  # <fichier vmlinuz>
+  local o; o="$(od -An -tu2 -j526 -N2 "$1" 2>/dev/null | tr -d ' ')"
+  [ -n "$o" ] && [ "$o" -gt 0 ] 2>/dev/null || return 1
+  dd if="$1" bs=1 skip=$((o + 512)) count=200 2>/dev/null | tr '\0' '\n' | head -1 | cut -d' ' -f1
+}
+
+# Versions des noyaux présents dans /boot (sans les liens)
+versions_noyaux() {  # <racine>
+  ls "$1"/boot/vmlinuz-* 2>/dev/null | sed 's#.*/vmlinuz-##' | grep -v '^recent$' | sort -V
+}
+
+# Noyau stable : celui que désigne le paquet linux-image-amd64 (sinon le plus ancien présent)
+noyau_stable() {  # <racine>
+  local r="$1" v
+  v="$(dpkg-query --admindir="$r/var/lib/dpkg" -W -f='${Depends}' linux-image-amd64 2>/dev/null \
+       | sed -nE 's/^linux-image-([^ ,]+).*/\1/p')"
+  if [ -n "$v" ] && [ -f "$r/boot/vmlinuz-$v" ]; then echo "$v"; return 0; fi
+  versions_noyaux "$r" | head -1
+}
+
+# Noyau récent : le plus récent présent, s'il est plus récent que le stable
+noyau_recent() {  # <racine>
+  local r="$1" s v
+  s="$(noyau_stable "$r")"; v="$(versions_noyaux "$r" | tail -1)"
+  [ -n "$v" ] && [ "$v" != "$s" ] && [ "$(printf '%s\n%s\n' "$s" "$v" | sort -V | tail -1)" = "$v" ] && echo "$v"
+}
+
+liens_noyau() {  # <racine>
+  local r="$1" s n
+  s="$(noyau_stable "$r")"
+  [ -n "$s" ] || return 1
+  ln -sf "vmlinuz-$s" "$r/boot/vmlinuz"
+  [ -f "$r/boot/initrd.img-$s" ] && ln -sf "initrd.img-$s" "$r/boot/initrd.img"
+  n="$(noyau_recent "$r")"; n="${n:-$s}"
+  ln -sf "vmlinuz-$n" "$r/boot/vmlinuz-recent"
+  if [ -f "$r/boot/initrd.img-$n" ]; then ln -sf "initrd.img-$n" "$r/boot/initrd.img-recent"
+  else ln -sf "initrd.img-$s" "$r/boot/initrd.img-recent"; fi
+  return 0
+}
+
+# Paquet du noyau récent le plus neuf proposé par les dépôts (backports), ou rien
+noyau_recent_candidat() {  # [options apt]
+  local s p
+  s="$(dpkg-query -W -f='${Depends}' linux-image-amd64 2>/dev/null | sed -nE 's/^linux-image-([^ ,]+).*/\1/p')"
+  [ -n "$s" ] || return 0
+  # Le plus récent des noyaux proposés par les backports (pas une simple mise à jour du stable)
+  for p in $(apt-cache "$@" search --names-only '^linux-image-[0-9][^ ]*-amd64$' 2>/dev/null | awk '{print $1}' \
+             | grep -vE -- '-(unsigned|dbg|rt-amd64|cloud-amd64)$' | sed 's/^linux-image-//' | sort -rV); do
+    [ "$(printf '%s\n%s\n' "$s" "$p" | sort -V | tail -1)" = "$p" ] && [ "$p" != "$s" ] || break
+    if apt-cache "$@" policy "linux-image-$p" 2>/dev/null | grep -q -- '-backports'; then echo "linux-image-$p"; return 0; fi
+  done
+}
+
+# Installe (ou met à jour) le noyau récent et ses micrologiciels ; garde un seul noyau récent.
+# Lancé dans le système en construction (ISO) et dans la copie préparée par la mise à jour.
+noyau_recent_installer() {
+  local p s anciens f
+  p="$(noyau_recent_candidat)"
+  [ -n "$p" ] || { echo "Noyau récent : rien de plus récent que le noyau stable."; return 0; }
+  dpkg-query -W -f='${Status}' "$p" 2>/dev/null | grep -q 'ok installed' && { echo "Noyau récent déjà à jour : $p"; return 0; }
+  DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends "$p" || return 1
+  # Micrologiciels récents (Wi-Fi, graphismes) : ceux déjà installés, version des backports
+  f="$(dpkg-query -W -f='${Package} ${Status}\n' 'firmware-*' 2>/dev/null | awk '/ok installed/ {print $1}')"
+  [ -n "$f" ] && DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends -t trixie-backports $f \
+    || echo "Micrologiciels des backports : rien à mettre à jour."
+  # Un seul noyau récent gardé (place disque)
+  s="$(dpkg-query -W -f='${Depends}' linux-image-amd64 2>/dev/null | sed -nE 's/^linux-image-([^ ,]+).*/\1/p')"
+  anciens="$(dpkg-query -W -f='${Package} ${Status}\n' 'linux-image-[0-9]*-amd64' 2>/dev/null | awk '/ok installed/ {print $1}' \
+             | grep -vx "linux-image-$s" | grep -vx "$p" || true)"
+  [ -n "$anciens" ] && DEBIAN_FRONTEND=noninteractive apt-get purge -y -q $anciens || true
+  echo "Noyau récent installé : $p"
+}
+
+# Réglages → À propos : état, essai du noyau récent, retour au noyau stable
+noyau_etat() {
+  local mode="stable"
+  [ "$(valeur_env noyau)" = recent ] && mode="recent"
+  [ -n "$(valeur_env noyau_essai)" ] && mode="essai"
+  echo "actuel=$(uname -r)"
+  echo "mode=$mode"
+  echo "stable=$(noyau_stable /)"
+  echo "recent=$(noyau_recent /)"
+}
+
+noyau_choisir() {  # recent | stable
+  [ -f "$ENV_GRUB" ] || { echo "Pas un SoleOS installé." >&2; exit 1; }
+  case "$1" in
+    recent)
+      [ -n "$(noyau_recent /)" ] || { echo "Pas de noyau récent sur cet ordinateur." >&2; exit 1; }
+      # Premier démarrage d'essai : validé seulement si l'interface apparaît (confirmer)
+      grub-editenv "$ENV_GRUB" set noyau_essai=1 ;;
+    stable)
+      grub-editenv "$ENV_GRUB" unset noyau noyau_essai ;;
+    *) echo "recent ou stable" >&2; exit 2 ;;
+  esac
+}
+
+# Démarrage d'essai du noyau récent : adopté si l'interface tourne, sinon retour au stable
+confirmer_noyau() {
+  grep -qwE '(soleos|flashos).noyau=essai' /proc/cmdline || return 0
+  [ "$(valeur_env noyau)" = recent ] && return 0
+  if pgrep -x labwc >/dev/null || pgrep -x plasmashell >/dev/null || [ -n "${SOLEOS_CONFIRMER_SANS_INTERFACE:-}" ]; then
+    grub-editenv "$ENV_GRUB" set noyau=recent
+    dire "Noyau récent $(uname -r) adopté."
+  else
+    local depuis ouverture; depuis="$(cut -d. -f1 /proc/uptime)"
+    ouverture="$(cat "$ETAT/ouverture" 2>/dev/null || echo 0)"
+    depuis=$((depuis - ouverture))
+    if [ "$depuis" -ge "${SOLEOS_DELAI_ECHEC:-300}" ]; then
+      dire "Noyau récent : interface absente après ${depuis} s, retour au noyau stable."
+      systemctl reboot
+    fi
+  fi
+}
+
+ecrire_grub() {  # <dossier grub> <uuid A> <uuid B> <uuid usine> [dossier de la copie d'origine]
+  local d="$1" ua="$2" ub="$3" uu="$4" cu="${5:-soleos-usine}"
+  # Menu verrouillé (recommandation ANSSI) : on peut choisir une entrée (Échap), mais pas
+  # modifier la ligne de démarrage ni ouvrir la console GRUB. Mot de passe tiré au hasard
+  # et jamais enregistré : personne ne peut s'en servir.
+  local hasard empreinte
+  hasard="$(head -c 32 /dev/urandom | base64 | tr -dc 'A-Za-z0-9')"
+  empreinte="$(printf '%s\n%s\n' "$hasard" "$hasard" | grub-mkpasswd-pbkdf2 2>/dev/null | sed -n 's/.* is //p')"
+  hasard=""
+  cat > "$d/grub.cfg" <<FIN
+# SoleOS – menu de démarrage (généré automatiquement)
+# Échap au démarrage : menu de secours (autre version, réparation).
+set timeout_style=hidden
+set timeout=1
+# Pas d'image de fond : son décodage par GRUB coûtait plusieurs secondes à chaque démarrage
+# (le logo SoleOS s'affiche juste après, avec le système).
+insmod part_gpt
+insmod ext2
+insmod all_video
+set gfxpayload=keep
+
+set superusers="soleos"
+$( [ -n "$empreinte" ] && echo "password_pbkdf2 soleos $empreinte" )
+
+set default=A
+if [ -s \$prefix/grubenv ]; then load_env -f \$prefix/grubenv; fi
+# Noyau : stable par défaut ; « récent » (matériel très récent) après un essai réussi
+set nx=""
+set nmode=""
+if [ "\${noyau}" = "recent" ]; then
+  set nx="-recent"
+  set nmode="soleos.noyau=recent"
+fi
+if [ -n "\${noyau_essai}" ]; then
+  # Essai du noyau récent : une seule fois (validé par SoleOS si l'interface apparaît)
+  set nx="-recent"
+  set nmode="soleos.noyau=essai"
+  set noyau_essai=
+  save_env -f \$prefix/grubenv noyau_essai
+fi
+if [ -n "\${next_entry}" ]; then
+  # Essai d'une mise à jour (ou réparation) : une seule fois
+  set default="\${next_entry}"
+  set next_entry=
+  save_env -f \$prefix/grubenv next_entry
+elif [ -n "\${saved_entry}" ]; then
+  set default="\${saved_entry}"
+fi
+
+menuentry "SoleOS" --id A --unrestricted {
+  search --no-floppy --fs-uuid --set=root $ua
+  if [ -f /boot/vmlinuz\$nx ]; then
+    linux /boot/vmlinuz\$nx root=UUID=$ua ro $LIGNE_NOYAU soleos.slot=A \$nmode
+    initrd /boot/initrd.img\$nx
+  else
+    linux /boot/vmlinuz root=UUID=$ua ro $LIGNE_NOYAU soleos.slot=A
+    initrd /boot/initrd.img
+  fi
+}
+menuentry "$(t "SoleOS (autre version)")" --id B --unrestricted {
+  search --no-floppy --fs-uuid --set=root $ub
+  if [ -f /boot/vmlinuz\$nx ]; then
+    linux /boot/vmlinuz\$nx root=UUID=$ub ro $LIGNE_NOYAU soleos.slot=B \$nmode
+    initrd /boot/initrd.img\$nx
+  else
+    linux /boot/vmlinuz root=UUID=$ub ro $LIGNE_NOYAU soleos.slot=B
+    initrd /boot/initrd.img
+  fi
+}
+menuentry "$(t "Réparer ou réinitialiser SoleOS")" --id reparer --unrestricted {
+  search --no-floppy --fs-uuid --set=root $uu
+  linux /$cu/vmlinuz boot=live components quiet splash live-media=/dev/disk/by-uuid/$uu live-media-path=/$cu $(options_langue_live) username=soleos user-fullname=SoleOS hostname=soleos soleos.reparer
+  initrd /$cu/initrd.img
+}
+FIN
+}
+
+# ---------------------------------------------------------------------
+#  Langue et clavier (choix de la clé USB, ou Réglages → Langue et clavier).
+#  Le système est en lecture seule : le choix est gardé sur la partition de démarrage
+#  et réappliqué à chaque démarrage (langue-appliquer), avant la saisie du code.
+# ---------------------------------------------------------------------
+FICHIER_LANGUE="$DEMARRAGE/soleos/langue"
+locale_de() {  # <code> → locale du système
+  case "$1" in
+    fr) echo fr_FR.UTF-8 ;; en) echo en_US.UTF-8 ;; it) echo it_IT.UTF-8 ;;
+    es) echo es_ES.UTF-8 ;; de) echo de_DE.UTF-8 ;; zh) echo zh_CN.UTF-8 ;; *) return 1 ;;
+  esac
+}
+language_de() {  # <code> → LANGUAGE
+  case "$1" in zh) echo zh_CN:zh ;; *) echo "$(locale_de "$1" | cut -d. -f1):$1" ;; esac
+}
+# Écrit le choix dans le système en cours (/run/soleos/langue, /etc/default/locale,
+# /etc/default/keyboard, clavier de la console), sans le garder
+langue_ecrire() {  # <code> <disposition> <variante>
+  local code="$1" disp="$2" var="$3" loc ancien
+  loc="$(locale_de "$code")" || return 1
+  mkdir -p -m 755 /run/soleos
+  printf '%s\n' "$code" > /run/soleos/langue; chmod 644 /run/soleos/langue
+  printf 'LANG=%s\nLANGUAGE=%s\n' "$loc" "$(language_de "$code")" > /etc/default/locale
+  ancien="$(grep -E '^XKB(LAYOUT|VARIANT)=' /etc/default/keyboard 2>/dev/null | tr -d '"' | tr '\n' ' ')"
+  # (variante SoleOS « < > avec AltGr + W / X » : seulement dans la session ; console en AZERTY normal)
+  local cvar="$var"; case "$var" in soleos_ltgt|flashos_ltgt) cvar="" ;; esac
+  printf 'XKBMODEL="pc105"\nXKBLAYOUT="%s"\nXKBVARIANT="%s"\nXKBOPTIONS=""\nBACKSPACE="guess"\n' "$disp" "$cvar" > /etc/default/keyboard
+  # Clavier de la console et de l'écran de démarrage (saisie du code) : tout de suite
+  if [ "$ancien" != "XKBLAYOUT=$disp XKBVARIANT=$cvar " ] && command -v setupcon >/dev/null 2>&1; then
+    setupcon -k --force >/dev/null 2>&1 || true
+  fi
+  # Wi-Fi : règles du pays (canaux et puissance permis), déduit du clavier (fr → FR, be → BE,
+  # gb → GB, us → US…). Sans pays, la carte reste en mode « monde » : moins de canaux, plus lent.
+  local pays=""
+  case "$disp" in cn) pays=CN ;; latam) pays="" ;; [a-z][a-z]) pays="$(printf '%s' "$disp" | tr a-z A-Z)" ;; esac
+  if [ -n "$pays" ]; then
+    printf 'options cfg80211 ieee80211_regdom=%s\n' "$pays" > /etc/modprobe.d/soleos-pays.conf 2>/dev/null
+    command -v iw >/dev/null 2>&1 && iw reg set "$pays" >/dev/null 2>&1
+  fi
+  # Navigateur : page d'accueil et favoris de la langue (pour les profils créés ensuite)
+  local p="/usr/share/soleos/navigateur/initial_preferences.$code" c
+  if [ -f "$p" ]; then
+    for c in /usr/lib/chromium/initial_preferences /etc/chromium/initial_preferences /etc/chromium/master_preferences; do
+      [ -e "$c" ] && cp "$p" "$c" 2>/dev/null
+    done
+  fi
+  true
+}
+langue_choisir() {  # <code> <disposition> <variante|->
+  local code="$1" disp="$2" var="${3:-}"
+  [ "$var" = "-" ] && var=""
+  locale_de "$code" >/dev/null || { t "Langue inconnue." >&2; echo >&2; exit 1; }
+  { [[ "$disp" =~ ^[a-z]{2,8}$ ]] && [[ "$var" =~ ^[a-z0-9_]{0,20}$ ]]; } || { t "Clavier inconnu." >&2; echo >&2; exit 1; }
+  langue_ecrire "$code" "$disp" "$var"
+  if [ -d "$DEMARRAGE" ] && grep -qE "(soleos|flashos)\.slot=" /proc/cmdline 2>/dev/null; then
+    mkdir -p "$DEMARRAGE/soleos"; chmod 700 "$DEMARRAGE/soleos"
+    printf 'LANGUE=%s\nCLAVIER=%s\nVARIANTE=%s\n' "$code" "$disp" "$var" > "$FICHIER_LANGUE"; chmod 600 "$FICHIER_LANGUE"
+    # Menu de démarrage (Échap) et outil de réparation dans la nouvelle langue
+    SOLEOS_LANGUE_CODE="$code" regenerer_grub
+  fi
+  true
+}
+langue_appliquer() {  # au démarrage
+  local code=fr disp="" var=""
+  if [ -f "$FICHIER_LANGUE" ]; then
+    code="$(sed -n 's/^LANGUE=//p' "$FICHIER_LANGUE" | tail -1)"
+    disp="$(sed -n 's/^CLAVIER=//p' "$FICHIER_LANGUE" | tail -1)"
+    var="$(sed -n 's/^VARIANTE=//p' "$FICHIER_LANGUE" | tail -1)"
+    locale_de "$code" >/dev/null || code=fr
+    [[ "$var" =~ ^[a-z0-9_]{0,20}$ ]] || var=""
+  else
+    # SoleOS installé avant le choix de la langue : français, clavier déjà réglé
+    disp="$(sed -n 's/^XKBLAYOUT=//p' /etc/default/keyboard 2>/dev/null | tr -d '"' | cut -d, -f1)"
+    var="$(sed -n 's/^XKBVARIANT=//p' /etc/default/keyboard 2>/dev/null | tr -d '"' | cut -d, -f1)"
+  fi
+  [[ "$disp" =~ ^[a-z]{2,8}$ ]] || disp=fr
+  langue_ecrire "$code" "$disp" "$var"
+}
+# Options de la ligne de démarrage de l'outil de réparation (clé « live ») : même langue et clavier
+options_langue_live() {
+  local code=fr disp=fr var="" loc
+  if [ -f "$FICHIER_LANGUE" ]; then
+    code="$(sed -n 's/^LANGUE=//p' "$FICHIER_LANGUE" | tail -1)"
+    disp="$(sed -n 's/^CLAVIER=//p' "$FICHIER_LANGUE" | tail -1)"
+    var="$(sed -n 's/^VARIANTE=//p' "$FICHIER_LANGUE" | tail -1)"
+  fi
+  loc="$(locale_de "$code")" || { code=fr; loc=fr_FR.UTF-8; }
+  printf 'locales=%s keyboard-layouts=%s%s soleos.langue=%s soleos.clavier=%s:%s' \
+    "$loc" "${disp:-fr}" "${var:+ keyboard-variants=$var}" "$code" "${disp:-fr}" "$var"
+}
+# Réécrit le menu de démarrage avec les mêmes partitions (après un changement de langue)
+regenerer_grub() {
+  local cfg="$DEMARRAGE/grub/grub.cfg" ua ub uu cu
+  [ -f "$cfg" ] || return 0
+  ua="$(sed -n 's/.*root=UUID=\([^ ]*\) .*\(soleos\|flashos\)\.slot=A.*/\1/p' "$cfg" | head -1)"
+  ub="$(sed -n 's/.*root=UUID=\([^ ]*\) .*\(soleos\|flashos\)\.slot=B.*/\1/p' "$cfg" | head -1)"
+  uu="$(sed -n 's#.*live-media=/dev/disk/by-uuid/\([^ ]*\) .*#\1#p' "$cfg" | head -1)"
+  cu="$(sed -n 's#.*live-media-path=/\([^ ]*\) .*#\1#p' "$cfg" | head -1)"
+  [ -n "$ua" ] && [ -n "$ub" ] && [ -n "$uu" ] || return 0
+  cp "$cfg" "$cfg.avant-langue"
+  ecrire_grub "$DEMARRAGE/grub" "$ua" "$ub" "$uu" "${cu:-soleos-usine}"
+  grep -q "$ua" "$cfg" || cp "$cfg.avant-langue" "$cfg"
+  rm -f "$cfg.avant-langue"
+}
+
+etat() {
+  local a; a="$(slot_actif)"
+  echo "Emplacement en service : ${a:-aucun (pas un SoleOS installé)}"
+  echo "Emplacement validé     : $(valeur_env saved_entry)"
+  echo "Prochain démarrage     : $(valeur_env next_entry)"
+  echo "Protection lecture seule : $(findmnt -no FSTYPE / 2>/dev/null)"
+}
+
+confirmer() {
+  local a; a="$(slot_actif)"
+  [ -n "$a" ] || exit 0
+  confirmer_noyau
+  [ "$(valeur_env saved_entry)" = "$a" ] && exit 0
+  # Démarrage d'essai : on ne valide que si l'interface SoleOS a bien démarré
+  if pgrep -x plasmashell >/dev/null || pgrep -x labwc >/dev/null || [ -n "${SOLEOS_CONFIRMER_SANS_INTERFACE:-}" ]; then
+    grub-editenv "$ENV_GRUB" set "saved_entry=$a"
+    rm -f "$ETAT/maj-prete"
+    dire "Démarrage sur $a validé : la mise à jour est adoptée."
+  else
+    # Temps écoulé depuis l'ouverture des données (le temps passé à taper le code ne compte pas)
+    local depuis ouverture; depuis="$(cut -d. -f1 /proc/uptime)"
+    ouverture="$(cat "$ETAT/ouverture" 2>/dev/null || echo 0)"
+    depuis=$((depuis - ouverture))
+    if [ "$depuis" -ge "${SOLEOS_DELAI_ECHEC:-300}" ]; then
+      # L'interface n'est jamais apparue : on redémarre sur la version précédente
+      dire "Interface absente après ${depuis} s : la mise à jour sur $a est abandonnée, retour à la version précédente."
+      systemctl reboot
+    else
+      dire "Interface pas encore prête sur $a (${depuis} s) : nouvelle vérification dans une minute."
+    fi
+  fi
+}
+
+preparer_reparation() {
+  [ -f "$ENV_GRUB" ] || { echo "Menu de démarrage introuvable." >&2; exit 1; }
+  grub-editenv "$ENV_GRUB" set next_entry=reparer
+  echo "Au prochain démarrage : outil de réparation."
+}
+
+# Sur batterie, on ne prépare la mise à jour que si elle est chargée à 50 % ou plus
+alimentation_suffisante() {
+  local sys="${SOLEOS_SYS_ALIM:-/sys/class/power_supply}" d secteur=0 batterie=0 charge=100
+  for d in "$sys"/*; do
+    [ -f "$d/type" ] || continue
+    case "$(cat "$d/type")" in
+      Mains|USB|USB_C|USB_PD) [ "$(cat "$d/online" 2>/dev/null)" = 1 ] && secteur=1 ;;
+      Battery)
+        [ "$(cat "$d/scope" 2>/dev/null)" = Device ] && continue   # souris, clavier sans fil…
+        batterie=1; c="$(cat "$d/capacity" 2>/dev/null || echo 100)"; [ "$c" -lt "$charge" ] && charge=$c ;;
+    esac
+  done
+  [ "$secteur" = 1 ] || [ "$batterie" = 0 ] || [ "$charge" -ge 50 ]
+}
+
+# Listes de paquets et téléchargements : sur la partition des données, pas en mémoire
+APT_DISQUE=/home/.soleos/apt
+preparer_apt_disque() {
+  mkdir -p "$APT_DISQUE/listes/partial" "$APT_DISQUE/paquets/partial" || return 1
+  APT_OPTS=(-o "Dir::State::Lists=$APT_DISQUE/listes" -o "Dir::Cache::Archives=$APT_DISQUE/paquets")
+}
+
+# Applications ajoutées par l'utilisateur (Flatpak, dans son dossier personnel) :
+# mises à jour directement, sans toucher au système
+maj_applis() {
+  command -v flatpak >/dev/null || return 0
+  alimentation_suffisante || return 0
+  local u d
+  for d in /home/*/.local/share/flatpak; do
+    [ -d "$d/app" ] || continue
+    u="$(stat -c %U "$d")"
+    [ -n "$u" ] && [ "$u" != root ] || continue
+    dire "Mise à jour des applications de $u…"
+    runuser -u "$u" -- env HOME="/home/$u" flatpak --user update -y --noninteractive >> "$JOURNAL_MAJ" 2>&1 \
+      && dire "Applications de $u à jour." || dire "Mise à jour des applications de $u : échec (réessai plus tard)."
+  done
+}
+
+nettoyer_maj() {
+  mountpoint -q /run/soleos-maj/cible && umount -R -l /run/soleos-maj/cible
+  mountpoint -q /run/soleos-maj/source && umount -l /run/soleos-maj/source
+  true
+}
+
+maj() {
+  local a b disque dev_a dev_b uuid_b n
+  a="$(slot_actif)"; [ -n "$a" ] || { echo "Pas un SoleOS installé."; exit 0; }
+  b="$(autre_slot "$a")"
+  maj_applis
+  if [ "$(valeur_env saved_entry)" != "$a" ]; then
+    dire "Démarrage d'essai en cours sur $a : mise à jour reportée."; exit 0
+  fi
+  if [ -f "$ETAT/maj-prete" ]; then dire "Une mise à jour attend déjà le prochain démarrage."; exit 0; fi
+  if ! alimentation_suffisante; then dire "Batterie sous 50 % : mise à jour reportée."; exit 0; fi
+  exec 9>/run/soleos-maj.verrou; flock -n 9 || exit 0
+  mkdir -p "$ETAT"
+  APT_OPTS=(); preparer_apt_disque || APT_OPTS=()
+
+  dire "Recherche de mises à jour…"
+  apt-get "${APT_OPTS[@]}" update -qq >> "$JOURNAL_MAJ" 2>&1 || { dire "Pas de connexion aux serveurs de mise à jour."; exit 0; }
+  n="$(apt-get "${APT_OPTS[@]}" -s dist-upgrade 2>/dev/null | grep -c '^Inst ')"
+  # Un noyau récent plus neuf dans les backports compte aussi comme une mise à jour
+  local nr; nr="$(noyau_recent_candidat "${APT_OPTS[@]}")"
+  if [ -n "$nr" ] && ! dpkg-query -W -f='${Status}' "$nr" 2>/dev/null | grep -q 'ok installed'; then n=$((n + 1)); fi
+  if [ "$n" -eq 0 ] && [ -z "${SOLEOS_MAJ_FORCER:-}" ]; then dire "SoleOS est à jour."; exit 0; fi
+  dire "$n paquet(s) à mettre à jour : préparation dans l'emplacement $b."
+
+  disque="$(disque_systeme)"
+  dev_a="$(partition_nommee "$disque" "SOLEOS-$a")"; dev_b="$(partition_nommee "$disque" "SOLEOS-$b")"
+  [ -b "$dev_a" ] && [ -b "$dev_b" ] || { dire "Emplacements introuvables."; exit 1; }
+  uuid_b="$(blkid -s UUID -o value "$dev_b")"
+  trap nettoyer_maj EXIT
+  mkdir -p /run/soleos-maj/source /run/soleos-maj/cible
+  mount -o ro "$dev_a" /run/soleos-maj/source || { dire "Lecture du système impossible."; exit 1; }
+  mkfs.ext4 -F -q -L "SoleOS-$b" ${uuid_b:+-U "$uuid_b"} "$dev_b" >> "$JOURNAL_MAJ" 2>&1 || { dire "Préparation de $b impossible."; exit 1; }
+  mount "$dev_b" /run/soleos-maj/cible || exit 1
+  rsync -aHAX --numeric-ids /run/soleos-maj/source/ /run/soleos-maj/cible/ >> "$JOURNAL_MAJ" 2>&1 \
+    || { dire "Copie du système impossible."; exit 1; }
+  umount /run/soleos-maj/source
+
+  local c=/run/soleos-maj/cible
+  for m in dev proc sys run; do mount --rbind "/$m" "$c/$m" && mount --make-rslave "$c/$m"; done
+  # Accès Internet dans la copie : mêmes serveurs de noms que le système en cours
+  local resolv; resolv="$(readlink -f /etc/resolv.conf)"
+  if [ ! -L "$c/etc/resolv.conf" ] && [ -f "$resolv" ]; then
+    touch "$c/etc/resolv.conf" && mount --bind "$resolv" "$c/etc/resolv.conf"
+  fi
+  # Mêmes listes et téléchargements que ci-dessus (rien à retélécharger, rien en mémoire)
+  if [ ${#APT_OPTS[@]} -gt 0 ]; then
+    mount --bind "$APT_DISQUE/listes" "$c/var/lib/apt/lists"
+    mount --bind "$APT_DISQUE/paquets" "$c/var/cache/apt/archives"
+  fi
+  if ! chroot "$c" env DEBIAN_FRONTEND=noninteractive sh -c \
+       'apt-get update -qq && apt-get -y -q -o Dpkg::Options::=--force-confold dist-upgrade && /usr/local/sbin/soleos-systeme noyau-recent-installer && apt-get -y -q autoremove --purge && apt-get clean' \
+       >> "$JOURNAL_MAJ" 2>&1; then
+    dire "La mise à jour a échoué : rien n'est changé, SoleOS reste sur la version actuelle."; exit 1
+  fi
+  liens_noyau "$c" || { dire "Noyau introuvable après mise à jour."; exit 1; }
+  # Système en lecture seule : on marque ici la mise à jour comme terminée
+  # (sinon ldconfig et compagnie seraient relancés à chaque démarrage)
+  touch "$c/etc/.updated" "$c/var/.updated"
+  [ -f "$c/boot/initrd.img" ] || chroot "$c" update-initramfs -c -k "$(readlink "$c/boot/vmlinuz" | sed 's/vmlinuz-//')" >> "$JOURNAL_MAJ" 2>&1
+  nettoyer_maj; trap - EXIT
+
+  grub-editenv "$ENV_GRUB" set "next_entry=$b"
+  touch "$ETAT/maj-prete"
+  dire "Mise à jour prête : elle s'appliquera au prochain redémarrage."
+}
+
+# Imprimantes ajoutées : gardées dans la partition des données (le système est en lecture seule)
+GARDE_IMPR=/home/.soleos/imprimantes
+sauver_imprimantes() {
+  [ -d /home/.soleos ] || exit 0
+  mkdir -p "$GARDE_IMPR/ppd"; chmod 755 "$GARDE_IMPR"
+  if [ -f /etc/cups/printers.conf ]; then cp -p /etc/cups/printers.conf "$GARDE_IMPR/printers.conf"; else rm -f "$GARDE_IMPR/printers.conf"; fi
+  rsync -a --delete /etc/cups/ppd/ "$GARDE_IMPR/ppd/" 2>/dev/null || true
+}
+restaurer_imprimantes() {
+  [ -f "$GARDE_IMPR/printers.conf" ] || exit 0
+  install -m 600 -g lp "$GARDE_IMPR/printers.conf" /etc/cups/printers.conf 2>/dev/null \
+    || cp "$GARDE_IMPR/printers.conf" /etc/cups/printers.conf
+  mkdir -p /etc/cups/ppd
+  [ -d "$GARDE_IMPR/ppd" ] && cp -a "$GARDE_IMPR/ppd/." /etc/cups/ppd/ 2>/dev/null
+  true
+}
+
+# ---------------------------------------------------------------------
+#  Date et heure (Réglages) : fuseau horaire, réglage automatique par Internet ou à la main.
+#  Le système est en lecture seule : le choix est gardé sur la partition de démarrage et
+#  réappliqué à chaque démarrage (heure-appliquer). L'heure elle-même reste dans l'horloge du PC.
+# ---------------------------------------------------------------------
+FICHIER_HEURE="$DEMARRAGE/soleos/heure"
+noter_heure() {  # <clé> <valeur>
+  [ -d "$DEMARRAGE" ] || return 0
+  mkdir -p "$DEMARRAGE/soleos"; chmod 700 "$DEMARRAGE/soleos"
+  touch "$FICHIER_HEURE"; chmod 600 "$FICHIER_HEURE"
+  sed -i "/^$1=/d" "$FICHIER_HEURE"; echo "$1=$2" >> "$FICHIER_HEURE"
+}
+heure_etat() {
+  echo "FUSEAU=$(timedatectl show -p Timezone --value 2>/dev/null)"
+  echo "AUTO=$( [ "$(timedatectl show -p NTP --value 2>/dev/null)" = yes ] && echo oui || echo non)"
+  echo "HEURE=$(date '+%Y-%m-%d %H:%M')"
+}
+heure_fuseau() {  # <Zone/Ville>
+  local z="$1"
+  [[ "$z" =~ ^[A-Za-z][A-Za-z0-9_+-]*(/[A-Za-z0-9_+-]+){0,2}$ ]] && [ -f "/usr/share/zoneinfo/$z" ] \
+    || { echo "Fuseau horaire inconnu." >&2; exit 1; }
+  timedatectl set-timezone "$z" || exit 1
+  echo "$z" > /etc/timezone 2>/dev/null
+  noter_heure FUSEAU "$z"
+}
+heure_auto() {  # oui|non
+  case "$1" in
+    oui) systemctl unmask --runtime systemd-timesyncd.service >/dev/null 2>&1; timedatectl set-ntp true; noter_heure AUTO oui ;;
+    non) timedatectl set-ntp false; noter_heure AUTO non ;;
+    *) echo "oui ou non" >&2; exit 1 ;;
+  esac
+}
+heure_regler() {  # « AAAA-MM-JJ HH:MM » (réglage manuel : coupe le réglage automatique)
+  [[ "$1" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}\ [0-9]{2}:[0-9]{2}$ ]] || { echo "Format : AAAA-MM-JJ HH:MM" >&2; exit 1; }
+  date -d "$1" >/dev/null 2>&1 || { echo "Date impossible." >&2; exit 1; }
+  timedatectl set-ntp false; noter_heure AUTO non
+  timedatectl set-time "$1:00" || exit 1
+}
+heure_appliquer() {  # au démarrage
+  [ -f "$FICHIER_HEURE" ] || return 0
+  local z a
+  z="$(sed -n 's/^FUSEAU=//p' "$FICHIER_HEURE" | tail -1)"
+  a="$(sed -n 's/^AUTO=//p' "$FICHIER_HEURE" | tail -1)"
+  if [ -n "$z" ] && [ -f "/usr/share/zoneinfo/$z" ]; then
+    ln -sf "/usr/share/zoneinfo/$z" /etc/localtime; echo "$z" > /etc/timezone
+  fi
+  if [ "$a" = non ]; then
+    systemctl mask --runtime systemd-timesyncd.service >/dev/null 2>&1
+    systemctl stop --no-block systemd-timesyncd.service >/dev/null 2>&1
+  fi
+  true
+}
+
+case "${1:-}" in
+  heure-etat) heure_etat ;;
+  fuseau) heure_fuseau "${2:-}" ;;
+  heure-auto) heure_auto "${2:-}" ;;
+  heure-regler) heure_regler "${2:-}" ;;
+  heure-appliquer) heure_appliquer ;;
+  langue) langue_choisir "${2:-}" "${3:-}" "${4:-}" ;;
+  langue-appliquer) langue_appliquer ;;
+  etat) etat ;;
+  maj) maj ;;
+  confirmer) confirmer ;;
+  preparer-reparation) preparer_reparation ;;
+  ecrire-grub) ecrire_grub "$2" "$3" "$4" "$5" "${6:-}" ;;
+  liens-noyau) liens_noyau "${2:-/}" ;;
+  noyau-etat) noyau_etat ;;
+  liens-noyau-recent) noyau_recent "${2:-/}" ;;
+  noyau) noyau_choisir "${2:-}" ;;
+  noyau-recent-installer) noyau_recent_installer ;;
+  version-noyau) version_noyau "${2:-}" ;;
+  sauver-imprimantes) sauver_imprimantes ;;
+  restaurer-imprimantes) restaurer_imprimantes ;;
+  *) echo "Usage : $0 etat | maj | confirmer | preparer-reparation" >&2; exit 2 ;;
+esac

@@ -1,0 +1,14 @@
+[Unit]
+Description=SoleOS : code de l'écran verrouillé et prénom
+ConditionKernelCommandLine=soleos.slot
+RequiresMountsFor=/home
+After=soleos-deverrouiller.service
+Wants=soleos-deverrouiller.service
+Before=getty@tty1.service systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/soleos-securite restaurer-compte
+
+[Install]
+WantedBy=multi-user.target

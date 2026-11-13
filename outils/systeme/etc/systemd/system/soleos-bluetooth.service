@@ -1,0 +1,13 @@
+[Unit]
+Description=SoleOS : association automatique d'un clavier et d'une souris Bluetooth
+# Démarre tôt : un clavier Bluetooth doit pouvoir taper le code des données
+After=bluetooth.service dbus.service plymouth-start.service
+Wants=bluetooth.service
+Before=soleos-deverrouiller.service soleos-peripheriques.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/soleos-bluetooth associer 900
+
+[Install]
+WantedBy=multi-user.target

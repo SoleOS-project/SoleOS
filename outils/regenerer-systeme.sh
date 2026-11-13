@@ -1,12 +1,12 @@
 #!/bin/bash
-# Recopie les fichiers de flashos-installateur/systeme dans construire-iso-flashos.sh (entre les repères)
+# Recopie les fichiers de soleos-installateur/systeme dans construire-iso-soleos.sh (entre les repères)
 set -e
 cd /home/claude
-S=flashos-installateur/systeme
-B=construire-iso-flashos.sh
+S=soleos-installateur/systeme
+B=construire-iso-soleos.sh
 bloc=$(mktemp)
 {
-  echo '# >>> FICHIERS SYSTEME (générés depuis flashos-installateur/systeme : ne pas modifier ici)'
+  echo '# >>> FICHIERS SYSTEME (générés depuis soleos-installateur/systeme : ne pas modifier ici)'
   (cd $S && find . -type f | sed 's#^\./##' | sort) | while read -r f; do
     echo "mkdir -p \"\$I/$(dirname "$f")\""
     echo "cat > \"\$I/$f\" <<'FINSYS'"
@@ -25,4 +25,4 @@ d=b.index('# >>> FICHIERS SYSTEME'); f=b.index('# <<< FICHIERS SYSTEME')+len('# 
 open(sys.argv[1],'w').write(b[:d]+bl+b[f:])
 PY
 rm -f $bloc
-bash -n $B && echo "construire-iso-flashos.sh : bloc système régénéré ($(ls -R $S | wc -l))"
+bash -n $B && echo "construire-iso-soleos.sh : bloc système régénéré ($(ls -R $S | wc -l))"

@@ -1,0 +1,11 @@
+[Unit]
+Description=SoleOS : surveille les imprimantes ajoutées ou retirées
+ConditionKernelCommandLine=soleos.slot
+
+[Path]
+PathChanged=/etc/cups/printers.conf
+PathModified=/etc/cups/ppd
+Unit=soleos-imprimantes-sauver.service
+
+[Install]
+WantedBy=multi-user.target

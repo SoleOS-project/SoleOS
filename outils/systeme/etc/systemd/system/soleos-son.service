@@ -1,0 +1,11 @@
+[Unit]
+Description=SoleOS : réglages du son propres à ce modèle d'ordinateur (s'il y en a)
+After=sound.target soleos-deverrouiller.service
+Before=systemd-user-sessions.service getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/soleos-son appliquer
+
+[Install]
+WantedBy=multi-user.target

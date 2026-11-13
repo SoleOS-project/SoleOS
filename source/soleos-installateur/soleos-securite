@@ -1,0 +1,497 @@
+#!/bin/bash
+# =====================================================================
+#  SoleOS – protection des données : chiffrement, code, clé de secours
+#  © 2026 GDH – créé par Giuseppe D'Arco – LicenseRef-SoleOS
+#
+#  La partition des données (SOLEOS-DONNEES, montée sur /home) est chiffrée (LUKS2).
+#  Emplacements de clés :
+#    0  clé provisoire (de l'installation au premier démarrage, puis effacée)
+#    1  clé interne (rangée dans les données chiffrées : sert à changer le code)
+#    2  mot de passe (PC sans puce de sécurité TPM)
+#    3  clé de secours (à noter sur papier)
+#    puce TPM + code à 6 chiffres : emplacement choisi par systemd-cryptenroll
+#
+#    soleos-securite ouvrir                 au démarrage : demande le code et ouvre les données
+#    soleos-securite ouvrir-disque <part.>  (réparation) secret sur l'entrée standard
+#    soleos-securite etat                   CHIFFRE= METHODE= TPM= SECOURS_UTILISEE= VERROUILLABLE=
+#    soleos-securite preparer-secours       (premier démarrage) crée la clé de secours → CLE=…
+#    soleos-securite definir [prénom]       (premier démarrage / après la clé de secours) code sur l'entrée
+#    soleos-securite changer                ancien code (ou clé de secours) puis nouveau, sur l'entrée
+#    soleos-securite nouvelle-cle           code sur l'entrée → CLE=… (l'ancienne clé ne marche plus)
+#    soleos-securite verifier               code sur l'entrée (écran verrouillé) → code de sortie 0/1
+#    soleos-securite restaurer-compte       au démarrage : code de l'écran verrouillé, prénom
+# =====================================================================
+set -uo pipefail
+export LC_ALL=C PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Messages dans la langue choisie pour l'ordinateur (gettext, domaine « soleos ») :
+# t "texte français" [nom valeur]… remplace aussi {nom} par la valeur
+SOLEOS_LANGUE_CODE="$(cat /run/soleos/langue 2>/dev/null || true)"
+# Écran de démarrage (saisie du code) : pas de police chinoise à ce moment-là → anglais
+[ "$SOLEOS_LANGUE_CODE" = zh ] && [ -z "${SUDO_USER:-}" ] && SOLEOS_LANGUE_CODE=en
+t() {
+  local m="$1" loc="" lang=""; shift
+  case "$SOLEOS_LANGUE_CODE" in
+    en) loc=en_US.UTF-8 lang=en ;; it) loc=it_IT.UTF-8 lang=it ;; es) loc=es_ES.UTF-8 lang=es ;;
+    de) loc=de_DE.UTF-8 lang=de ;; zh) loc=zh_CN.UTF-8 lang=zh_CN ;;
+  esac
+  if [ -n "$loc" ] && command -v gettext >/dev/null 2>&1; then
+    m="$(LC_ALL="$loc" LANGUAGE="$lang" TEXTDOMAIN=soleos gettext -- "$m" 2>/dev/null || printf '%s' "$m")"
+  fi
+  while [ $# -ge 2 ]; do m="${m//\{$1\}/$2}"; shift 2; done
+  printf '%s' "$m"
+}
+umask 077
+
+NOM=soleos-donnees
+CONF="${SOLEOS_CONF_CHIFFREMENT:-/etc/soleos-chiffrement}"
+PROVISOIRE="${SOLEOS_CLE_PROVISOIRE:-/soleos/demarrage/soleos/cle-provisoire}"
+SECU="${SOLEOS_SECU:-/home/.soleos/securite}"
+ETAT=/run/soleos
+SLOT_PROVISOIRE=0 SLOT_INTERNE=1 SLOT_MDP=2 SLOT_SECOURS=3
+LONGUEUR_CODE=6
+LONGUEUR_MDP=8
+JOURNAL=/run/soleos/securite.log
+
+journal() { mkdir -p -m 755 "$ETAT"; echo "$(date '+%F %T') $*" >> "$JOURNAL"; }
+erreur()  { echo "ERREUR|$1"; journal "erreur : $1"; exit 1; }
+
+cryptsetup_systemd() {
+  local c
+  for c in /usr/lib/systemd/systemd-cryptsetup /lib/systemd/systemd-cryptsetup /usr/bin/systemd-cryptsetup; do
+    [ -x "$c" ] && { echo "$c"; return; }
+  done
+}
+
+# Puce de sécurité TPM 2.0 utilisable ?
+a_tpm() {
+  [ -n "${SOLEOS_SANS_TPM:-}" ] && return 1
+  [ -e /dev/tpmrm0 ] || return 1
+  systemd-cryptenroll --tpm2-device=list 2>/dev/null | grep -q '/dev/tpm'
+}
+
+# Partition chiffrée des données (d'après /etc/soleos-chiffrement), attendue jusqu'à 30 s
+partition_donnees() {
+  local uuid; uuid="$(sed -n 's/^UUID=//p' "$CONF" 2>/dev/null)"
+  [ -n "$uuid" ] || return 1
+  local i
+  for i in $(seq 1 60); do
+    [ -b "/dev/disk/by-uuid/$uuid" ] && { readlink -f "/dev/disk/by-uuid/$uuid"; return 0; }
+    udevadm settle -t 1 2>/dev/null || sleep 0.5
+  done
+  return 1
+}
+
+# Emplacements utilisés par la puce TPM (jetons systemd-tpm2)
+emplacements_tpm() {
+  cryptsetup luksDump "$1" 2>/dev/null | awk '
+    /^Tokens:/ {t=1; next}
+    /^[A-Z][a-z]+:/ && t {t=0}
+    t && /^ +[0-9]+: / {tpm=($2=="systemd-tpm2")}
+    t && tpm && /Keyslot:/ {print $2}'
+}
+a_jeton_tpm() { [ -n "$(emplacements_tpm "$1")" ]; }
+emplacement_actif() { cryptsetup luksDump "$1" 2>/dev/null | grep -qE "^ +$2: luks2"; }
+
+# Puce TPM bloquée après trop d'essais de code (protection contre les essais au hasard)
+puce_bloquee() { echo "$1" | grep -qiE 'lockout|0x0+921'; }
+
+# Code à 6 chiffres : seuls les vrais chiffres comptent (rangée du haut avec Maj, ou pavé numérique).
+normaliser_code() { printf '%s' "$1" | tr -d ' '; }
+# Signes de la rangée du haut d'un clavier AZERTY sans Maj : on prévient la personne
+# (une clé de secours, faite de lettres et de tirets, n'est pas concernée)
+sans_maj() { [[ ! "$1" =~ [a-zA-Z] ]] && printf '%s' "$1" | LC_ALL=C.UTF-8 grep -q '[&é"'"'"'(è_çà-]'; }
+est_code() { [[ "$1" =~ ^[0-9]{6}$ ]]; }
+
+# Clé de secours : 64 lettres (c b d e f g h i j k l n r t u v), par groupes de 8.
+# Ces lettres sont au même endroit sur les claviers AZERTY et QWERTY.
+format_secours() {
+  local s; s="$(printf '%s' "$1" | tr 'A-Z' 'a-z' | tr -d ' -')"
+  [[ "$s" =~ ^[cbdefghijklnrtuv]{64}$ ]] || return 1
+  printf '%s' "$s" | sed 's/.\{8\}/&-/g; s/-$//'
+}
+nouvelle_secours() {
+  head -c 32 /dev/urandom | od -An -v -tx1 | tr -d ' \n' | tr '0123456789abcdef' 'cbdefghijklnrtuv' \
+    | sed 's/.\{8\}/&-/g; s/-$//'
+}
+
+fichier_secret() {  # <texte> → chemin d'un fichier temporaire en mémoire (à effacer)
+  local f; f="$(mktemp -p "${TMPDIR_SECRETS:-/run}" .soleos-XXXXXX)"
+  printf '%s' "$1" > "$f"; echo "$f"
+}
+
+# ---------------------------------------------------------------------
+#  Ouverture avec un secret tapé : clé de secours, code (puce TPM) ou mot de passe.
+#  Affiche SECOURS, TPM ou MDP ; code 1 si rien ne marche, 2 si la puce bloque (trop d'essais).
+ouvrir_avec() {  # <partition> <secret>
+  local dev="$1" s="$2" k sortie
+  local discard=(--allow-discards)
+  if k="$(format_secours "$s")"; then
+    if printf '%s' "$k" | cryptsetup open --type luks2 --key-slot $SLOT_SECOURS --key-file=- "${discard[@]}" "$dev" "$NOM" 2>/dev/null; then
+      echo SECOURS; return 0
+    fi
+    return 1
+  fi
+  if a_jeton_tpm "$dev"; then
+    local code; code="$(normaliser_code "$s")"
+    if est_code "$code"; then
+      sortie="$(PIN="$code" "$(cryptsetup_systemd)" attach "$NOM" "$dev" - "tpm2-device=auto,headless=true,discard,tries=1" 2>&1)"
+      if [ -b "/dev/mapper/$NOM" ]; then echo TPM; return 0; fi
+      journal "TPM : $(echo "$sortie" | tr '\n' ' ' | cut -c1-300)"
+      puce_bloquee "$sortie" && return 2
+      return 1
+    fi
+  fi
+  if emplacement_actif "$dev" $SLOT_MDP; then
+    printf '%s' "$s" | cryptsetup open --type luks2 --key-slot $SLOT_MDP --key-file=- "${discard[@]}" "$dev" "$NOM" 2>/dev/null \
+      && { echo MDP; return 0; }
+  fi
+  return 1
+}
+
+# Question posée à l'écran : logo de démarrage (Plymouth), sinon console
+demander() {  # <invite>
+  if [ -n "${SOLEOS_REPONSES:-}" ] && [ -f "$SOLEOS_REPONSES" ]; then   # banc de test : réponses écrites d'avance, une par essai
+    local n; n=$(( $(cat "$SOLEOS_REPONSES.n" 2>/dev/null || echo 0) + 1 )); echo $n > "$SOLEOS_REPONSES.n"
+    [ "$n" -le "$(wc -l < "$SOLEOS_REPONSES")" ] || { echo "BANC : plus de réponses" > /dev/console; kill $$; exit 9; }
+    sed -n "${n}p" "$SOLEOS_REPONSES"; return 0
+  fi
+  if plymouth --ping 2>/dev/null; then
+    plymouth ask-for-password --prompt="$1"
+  else
+    systemd-ask-password --timeout=0 "$1"
+  fi
+}
+afficher() {  # <message> (vide : efface)
+  [ -n "${SOLEOS_REPONSES:-}" ] && [ -f "$SOLEOS_REPONSES" ] && { echo "MESSAGE: $1" > /dev/console; return; }
+  if plymouth --ping 2>/dev/null; then
+    plymouth display-message --text="$1"
+  elif [ -n "$1" ]; then
+    echo "$1" > /dev/console
+  fi
+}
+
+# Pas de clavier (clavier Bluetooth pas encore associé ou pas encore réveillé) : on attend qu'il
+# arrive. Le service soleos-bluetooth associe tout seul un clavier mis en mode association.
+clavier_present() {
+  [ -x /usr/local/bin/soleos-bluetooth ] || return 0
+  /usr/local/bin/soleos-bluetooth etat 2>/dev/null | grep -q '^CLAVIER=1'
+}
+attendre_clavier() {
+  [ -n "${SOLEOS_REPONSES:-}" ] && [ -f "$SOLEOS_REPONSES" ] && return 0
+  clavier_present && return 0
+  afficher "$(t "Aucun clavier trouvé. Clavier Bluetooth : appuyez sur une touche, ou mettez-le en mode association.")"
+  journal "en attente d'un clavier"
+  until clavier_present; do sleep 1; done
+  afficher ""
+  journal "clavier trouvé"
+}
+
+# Montage des données (et des réseaux Wi-Fi enregistrés) juste après leur ouverture, quand le
+# fichier de configuration le demande (« MONTAGE=/home ») : /home n'est pas dans fstab, pour que
+# le Bluetooth puisse démarrer avant la demande du code.
+monter_donnees() {
+  local cible; cible="$(sed -n 's/^MONTAGE=//p' "$CONF" 2>/dev/null | head -1)"
+  [ -n "$cible" ] && [ -b "/dev/mapper/$NOM" ] || return 0
+  if ! mountpoint -q "$cible"; then
+    e2fsck -p "/dev/mapper/$NOM" >> "$JOURNAL" 2>&1
+    mount -o noatime,nosuid,nodev "/dev/mapper/$NOM" "$cible" || { journal "montage de $cible impossible"; return 1; }
+  fi
+  local r="$cible/.soleos/reseaux" n=/etc/NetworkManager/system-connections
+  if [ -d "$r" ] && [ -d "$n" ] && ! mountpoint -q "$n"; then mount --bind "$r" "$n"; fi
+  journal "données montées sur $cible"
+}
+
+ouvrir() {
+  [ -f "$CONF" ] || exit 0
+  [ -b "/dev/mapper/$NOM" ] && { monter_donnees; exit 0; }
+  local dev; dev="$(partition_donnees)" || { journal "partition des données introuvable"; exit 1; }
+  # Premier démarrage : clé provisoire, sans rien demander
+  if [ -f "$PROVISOIRE" ] && cryptsetup open --type luks2 --key-slot $SLOT_PROVISOIRE --key-file "$PROVISOIRE" \
+       --allow-discards "$dev" "$NOM" 2>/dev/null; then
+    journal "données ouvertes avec la clé provisoire (premier démarrage)"; monter_donnees; exit 0
+  fi
+  local invite mot essais=0 r res
+  if a_jeton_tpm "$dev"; then invite="$(t "Entrez votre code")"; mot="Code"; else invite="$(t "Entrez votre mot de passe")"; mot="Mot de passe"; fi
+  attendre_clavier
+  while true; do
+    r="$(demander "$invite")" || { sleep 1; continue; }
+    [ -n "$r" ] || continue
+    afficher "$(t "Vérification…")"
+    local maj=0; [ "$mot" = Code ] && sans_maj "$r" && maj=1
+    res="$(ouvrir_avec "$dev" "$r")"; local code=$?
+    r=""
+    if [ $code -eq 0 ]; then
+      afficher ""
+      journal "données ouvertes ($res)"
+      cut -d. -f1 /proc/uptime > "$ETAT/ouverture"
+      [ "$res" = SECOURS ] && touch "$ETAT/secours-utilisee"
+      monter_donnees
+      exit 0
+    fi
+    essais=$((essais + 1))
+    if [ $maj -eq 1 ] && [ $code -ne 2 ]; then
+      afficher "$(t "Code incorrect. Pour taper les chiffres : touche Maj (⇧) ou pavé numérique.")"
+    elif [ $code -eq 2 ]; then
+      afficher "$(t "Trop d'essais : patientez quelques minutes, ou tapez votre clé de secours.")"
+    elif [ $essais -ge 3 ] && [ "$mot" = Code ]; then
+      afficher "$(t "Code incorrect. Code oublié ? Tapez votre clé de secours à la place.")"
+    elif [ $essais -ge 3 ]; then
+      afficher "$(t "Mot de passe incorrect. Mot de passe oublié ? Tapez votre clé de secours à la place.")"
+    elif [ "$mot" = Code ]; then
+      afficher "$(t "Code incorrect, réessayez.")"
+    else
+      afficher "$(t "Mot de passe incorrect, réessayez.")"
+    fi
+    sleep $(( essais > 5 ? 5 : 1 ))
+  done
+}
+
+# Réparation (système lancé depuis la copie d'origine) : ouvre la partition donnée
+ouvrir_disque() {  # <partition>
+  local dev="$1" s res
+  [ -b "/dev/mapper/$NOM" ] && { echo "OK|déjà ouvert"; return 0; }
+  IFS= read -r s || s=""
+  res="$(ouvrir_avec "$dev" "$s")"; local code=$?
+  s=""
+  case $code in
+    0) echo "OK|$res" ;;
+    2) echo "ERREUR|BLOQUE"; return 2 ;;
+    *) echo "ERREUR|CODE"; return 1 ;;
+  esac
+}
+
+# ---------------------------------------------------------------------
+methode() { cat "$SECU/methode" 2>/dev/null || echo aucune; }
+utilisateur() { getent passwd 1000 | cut -d: -f1; }
+
+etat() {
+  local chiffre=0 m tpm=0 sec=0 verr=0
+  [ -f "$CONF" ] && chiffre=1
+  if [ -f "$PROVISOIRE" ]; then m=provisoire; else m="$(methode)"; fi
+  a_tpm && tpm=1
+  [ -f "$ETAT/secours-utilisee" ] && sec=1
+  [ -f "$ETAT/verrouillable" ] && verr=1
+  echo "CHIFFRE=$chiffre"; echo "METHODE=$m"; echo "TPM=$tpm"; echo "SECOURS_UTILISEE=$sec"; echo "VERROUILLABLE=$verr"
+}
+
+donnees_ouvertes() {
+  [ -f "$CONF" ] || erreur "$(t "Les données ne sont pas chiffrées sur cet ordinateur.")"
+  [ -b "/dev/mapper/$NOM" ] || erreur "$(t "Les données ne sont pas ouvertes.")"
+  [ -f "$SECU/cle-interne" ] || erreur "$(t "Clé interne introuvable.")"
+  chmod 400 "$SECU/cle-interne"; chmod 700 "$SECU"
+  DEV="$(cryptsetup status "$NOM" 2>/dev/null | awk '$1=="device:" {print $2}')"
+  [ -b "$DEV" ] || erreur "$(t "Partition des données introuvable.")"
+}
+
+# Échecs répétés : attente croissante (empêche d'essayer tous les codes)
+VERROU_ECHECS=/run/soleos/echecs
+attendre_si_echecs() {
+  local n; n="$(cat "$VERROU_ECHECS" 2>/dev/null || echo 0)"
+  if [ "$n" -ge 10 ]; then sleep 30; elif [ "$n" -ge 5 ]; then sleep 5; fi
+}
+noter_echec() { local n; n="$(cat "$VERROU_ECHECS" 2>/dev/null || echo 0)"; echo $((n + 1)) > "$VERROU_ECHECS"; sleep 2; }
+noter_reussite() { rm -f "$VERROU_ECHECS"; }
+
+hacher() {  # <secret> [sel] → empreinte SHA-512 crypt
+  local sel="${2:-$(head -c 12 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' | cut -c1-16)}"
+  printf '%s\n' "$1" | openssl passwd -6 -salt "$sel" -stdin
+}
+code_correct() {  # <secret>
+  local h sel s="$1"
+  h="$(cat "$SECU/code" 2>/dev/null)"; [ -n "$h" ] || return 1
+  [ "$(methode)" = code ] && s="$(normaliser_code "$s")"
+  sel="$(echo "$h" | cut -d'$' -f3)"
+  [ "$(hacher "$s" "$sel")" = "$h" ]
+}
+secours_correcte() {  # <secret>
+  local k; k="$(format_secours "$1")" || return 1
+  printf '%s' "$k" | cryptsetup open --test-passphrase --key-slot $SLOT_SECOURS --key-file=- "$DEV" 2>/dev/null
+}
+
+# Vérifie un ancien code (ou la clé de secours) avec attente croissante en cas d'erreur
+verifier_ancien() {  # <secret>
+  exec 8>/run/soleos/verification.verrou; flock 8
+  attendre_si_echecs
+  if code_correct "$1" || secours_correcte "$1"; then noter_reussite; return 0; fi
+  noter_echec; return 1
+}
+
+# Remplace le code (ou mot de passe) : puce TPM + code, sinon mot de passe
+installer_secret() {  # <secret normalisé> <méthode code|motdepasse>
+  local s="$1" m="$2" f g
+  local interne="$SECU/cle-interne"
+  if [ "$m" = code ]; then
+    local sortie r
+    # Ancien code retiré d'abord (sinon systemd-cryptenroll garde l'ancien : « déjà inscrit »)
+    if a_jeton_tpm "$DEV"; then
+      systemd-cryptenroll --unlock-key-file="$interne" --wipe-slot=tpm2 "$DEV" >> "$JOURNAL" 2>&1 \
+        || erreur "$(t "L'ancien code n'a pas pu être retiré.")"
+    fi
+    regler_puce
+    sortie="$(NEWPIN="$s" systemd-cryptenroll --unlock-key-file="$interne" \
+        --tpm2-device=auto --tpm2-with-pin=yes --tpm2-pcrs= "$DEV" 2>&1)"; r=$?
+    echo "$sortie" >> "$JOURNAL"
+    if [ $r -ne 0 ]; then
+      puce_bloquee "$sortie" && erreur "$(t "La puce de sécurité est bloquée après trop d'essais de code. Réessayez dans quelques minutes (ou plus tard).")"
+      erreur "$(t "La puce de sécurité n'a pas accepté le code.")"
+    fi
+    # Plus de mot de passe (si le PC en avait un)
+    if emplacement_actif "$DEV" $SLOT_MDP && ! emplacements_tpm "$DEV" | grep -qx $SLOT_MDP; then
+      cryptsetup luksKillSlot -q --key-file "$interne" "$DEV" $SLOT_MDP >> "$JOURNAL" 2>&1
+    fi
+  else
+    # Pas de puce : mot de passe, protégé par un calcul lent (argon2id)
+    if a_jeton_tpm "$DEV"; then
+      systemd-cryptenroll --unlock-key-file="$interne" --wipe-slot=tpm2 "$DEV" >> "$JOURNAL" 2>&1
+    fi
+    if emplacement_actif "$DEV" $SLOT_MDP; then
+      cryptsetup luksKillSlot -q --key-file "$interne" "$DEV" $SLOT_MDP >> "$JOURNAL" 2>&1 \
+        || erreur "$(t "Impossible de remplacer l'ancien mot de passe.")"
+    fi
+    g="$(fichier_secret "$s")"
+    cryptsetup luksAddKey -q --key-file "$interne" --new-key-slot $SLOT_MDP --pbkdf argon2id \
+        --pbkdf-memory 262144 --iter-time 1500 "$DEV" "$g" >> "$JOURNAL" 2>&1
+    local r=$?; rm -f "$g"
+    [ $r -eq 0 ] || erreur "$(t "Le mot de passe n'a pas pu être enregistré.")"
+  fi
+  # Écran verrouillé et administration : même code
+  hacher "$s" > "$SECU/code.nouveau" && mv "$SECU/code.nouveau" "$SECU/code"
+  echo "$m" > "$SECU/methode"
+  chmod 600 "$SECU/code" "$SECU/methode"
+  appliquer_compte
+}
+
+# Puce TPM : 10 codes faux de suite, puis un essai toutes les 2 minutes
+# (sans effet si la puce est déjà réglée par un autre système : elle garde ses réglages)
+regler_puce() {
+  command -v tpm2_dictionarylockout >/dev/null || return 0
+  [ -f "$SECU/puce-reglee" ] && return 0
+  tpm2_dictionarylockout --setup-parameters --max-tries=10 --recovery-time=120 --lockout-recovery-time=600 \
+    >> "$JOURNAL" 2>&1 && touch "$SECU/puce-reglee"
+  true
+}
+
+appliquer_compte() {
+  local u h; u="$(utilisateur)"; [ -n "$u" ] || return 0
+  h="$(cat "$SECU/code" 2>/dev/null)"
+  [ -n "$h" ] && usermod -p "$h" "$u" >/dev/null 2>&1 && touch "$ETAT/verrouillable"
+  [ -s "$SECU/prenom" ] && usermod -c "$(head -c 60 "$SECU/prenom" | tr -d ':,\n')" "$u" >/dev/null 2>&1
+  true
+}
+
+lire_secret_valide() {  # <variable> : lit une ligne, vérifie la forme attendue
+  local s m
+  IFS= read -r s || s=""
+  if a_tpm; then
+    m=code; s="$(normaliser_code "$s")"
+    est_code "$s" || erreur "$(t "Le code doit contenir exactement {n} chiffres." n "$LONGUEUR_CODE")"
+  else
+    m=motdepasse
+    [ "${#s}" -ge $LONGUEUR_MDP ] || erreur "$(t "Le mot de passe doit contenir au moins {n} caractères." n "$LONGUEUR_MDP")"
+  fi
+  NOUVEAU="$s"; NOUVELLE_METHODE="$m"
+}
+
+preparer_secours() {
+  donnees_ouvertes
+  [ -f "$PROVISOIRE" ] || erreur "$(t "La clé de secours existe déjà (Réglages → Nouvelle clé de secours).")"
+  remplacer_secours
+}
+remplacer_secours() {
+  local k f; k="$(nouvelle_secours)"
+  if emplacement_actif "$DEV" $SLOT_SECOURS; then
+    cryptsetup luksKillSlot -q --key-file "$SECU/cle-interne" "$DEV" $SLOT_SECOURS >> "$JOURNAL" 2>&1 \
+      || erreur "$(t "Impossible de remplacer l'ancienne clé de secours.")"
+  fi
+  f="$(fichier_secret "$k")"
+  cryptsetup luksAddKey -q --key-file "$SECU/cle-interne" --new-key-slot $SLOT_SECOURS --pbkdf pbkdf2 \
+      --pbkdf-force-iterations 100000 "$DEV" "$f" >> "$JOURNAL" 2>&1
+  local r=$?; rm -f "$f"
+  [ $r -eq 0 ] || erreur "$(t "La clé de secours n'a pas pu être créée.")"
+  journal "nouvelle clé de secours"
+  echo "CLE=$k"
+}
+
+definir() {  # [prénom]
+  donnees_ouvertes
+  if [ ! -f "$PROVISOIRE" ] && [ ! -f "$ETAT/secours-utilisee" ]; then
+    erreur "$(t "Pour changer de code, utilisez Réglages → Changer mon code.")"
+  fi
+  if [ -f "$PROVISOIRE" ] && ! emplacement_actif "$DEV" $SLOT_SECOURS; then
+    erreur "$(t "La clé de secours doit d'abord être créée.")"
+  fi
+  lire_secret_valide
+  if [ -n "${1:-}" ]; then printf '%s' "$1" | tr -d ':,\n' | head -c 60 > "$SECU/prenom"; chmod 600 "$SECU/prenom"; fi
+  installer_secret "$NOUVEAU" "$NOUVELLE_METHODE"
+  NOUVEAU=""
+  if [ -f "$PROVISOIRE" ]; then
+    cryptsetup luksKillSlot -q --key-file "$SECU/cle-interne" "$DEV" $SLOT_PROVISOIRE >> "$JOURNAL" 2>&1
+    shred -u "$PROVISOIRE" 2>/dev/null || rm -f "$PROVISOIRE"
+  fi
+  rm -f "$ETAT/secours-utilisee"
+  journal "code défini ($NOUVELLE_METHODE)"
+  echo "OK"
+}
+
+changer() {
+  donnees_ouvertes
+  [ -f "$PROVISOIRE" ] && erreur "$(t "Aucun code n'est encore choisi.")"
+  local ancien; IFS= read -r ancien || ancien=""
+  verifier_ancien "$ancien" || erreur "$(t "Code actuel incorrect.")"
+  ancien=""
+  lire_secret_valide
+  installer_secret "$NOUVEAU" "$NOUVELLE_METHODE"
+  NOUVEAU=""
+  rm -f "$ETAT/secours-utilisee"
+  journal "code changé"
+  echo "OK"
+}
+
+nouvelle_cle() {
+  donnees_ouvertes
+  [ -f "$PROVISOIRE" ] && erreur "$(t "Aucun code n'est encore choisi.")"
+  local s; IFS= read -r s || s=""
+  verifier_ancien "$s" || erreur "$(t "Code incorrect.")"
+  s=""
+  remplacer_secours
+}
+
+# Écran verrouillé : code lu sur l'entrée (terminé par un retour à la ligne ou un caractère nul)
+verifier() {
+  local s
+  IFS= read -r -d '' s || true
+  s="${s%$'\n'}"
+  [ -n "$s" ] || exit 1
+  [ -f "$SECU/code" ] || exit 1
+  exec 8>/run/soleos/verification.verrou; flock 8
+  attendre_si_echecs
+  if code_correct "$s"; then noter_reussite; exit 0; fi
+  # Clé de secours tapée à la place du code : accepté, puis nouveau code demandé
+  if [ -f "$CONF" ] && [ -b "/dev/mapper/$NOM" ]; then
+    DEV="$(cryptsetup status "$NOM" 2>/dev/null | awk '$1=="device:" {print $2}')"
+    if [ -b "$DEV" ] && secours_correcte "$s"; then
+      noter_reussite; touch "$ETAT/secours-utilisee"; exit 0
+    fi
+  fi
+  noter_echec; exit 1
+}
+
+restaurer_compte() {
+  [ -d "$SECU" ] || exit 0
+  appliquer_compte
+}
+
+mkdir -p -m 755 "$ETAT" 2>/dev/null
+case "${1:-}" in
+  ouvrir) ouvrir ;;
+  ouvrir-disque) [ -b "${2:-}" ] || erreur "$(t "Partition non précisée.")"; ouvrir_disque "$2" ;;
+  etat) etat ;;
+  preparer-secours) preparer_secours ;;
+  definir) definir "${2:-}" ;;
+  changer) changer ;;
+  nouvelle-cle) nouvelle_cle ;;
+  verifier) verifier ;;
+  restaurer-compte) restaurer_compte ;;
+  *) echo "Usage : $0 ouvrir | etat | preparer-secours | definir [prénom] | changer | nouvelle-cle | verifier | restaurer-compte" >&2; exit 2 ;;
+esac

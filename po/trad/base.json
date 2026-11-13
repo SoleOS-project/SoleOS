@@ -1763,12 +1763,12 @@
 "Dieses Paket wird in einem separaten Debian-Bereich installiert: Es kann SoleOS nicht beschädigen. Beim ersten Mal wird dieser Bereich heruntergeladen (etwa 50 MB): Rechnen Sie mit einigen Minuten.",
 "此软件包将安装在独立的 Debian 空间中，不会损坏 SoleOS。首次使用时需要下载该空间（约 50 MB），请稍候几分钟。"
 ],
-"Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter flashos-debian ».": [
-"This package contains no app to display (command-line tool): it will be usable in the Console with “distrobox enter flashos-debian”.",
-"Questo pacchetto non contiene applicazioni da mostrare (strumento a riga di comando): sarà utilizzabile nella Console con «distrobox enter flashos-debian».",
-"Este paquete no contiene ninguna aplicación que mostrar (herramienta de línea de comandos): se podrá usar en la Consola con «distrobox enter flashos-debian».",
-"Dieses Paket enthält keine anzuzeigende App (Kommandozeilenwerkzeug): Es ist in der Konsole mit „distrobox enter flashos-debian“ nutzbar.",
-"此软件包不包含可显示的应用（命令行工具）：可在终端中通过“distrobox enter flashos-debian”使用。"
+"Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter soleos-debian ».": [
+"This package contains no app to display (command-line tool): it will be usable in the Console with “distrobox enter soleos-debian”.",
+"Questo pacchetto non contiene applicazioni da mostrare (strumento a riga di comando): sarà utilizzabile nella Console con «distrobox enter soleos-debian».",
+"Este paquete no contiene ninguna aplicación que mostrar (herramienta de línea de comandos): se podrá usar en la Consola con «distrobox enter soleos-debian».",
+"Dieses Paket enthält keine anzuzeigende App (Kommandozeilenwerkzeug): Es ist in der Konsole mit „distrobox enter soleos-debian“ nutzbar.",
+"此软件包不包含可显示的应用（命令行工具）：可在终端中通过“distrobox enter soleos-debian”使用。"
 ],
 "En mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur.": [
 "In trial mode (USB key), first install SoleOS on the computer.",
@@ -2351,12 +2351,12 @@
 "Der Vorgang konnte nicht abgeschlossen werden",
 "操作未能完成"
 ],
-"Détails : /var/log/flashos-installation.log": [
-"Details: /var/log/flashos-installation.log",
-"Dettagli: /var/log/flashos-installation.log",
-"Detalles: /var/log/flashos-installation.log",
-"Details: /var/log/flashos-installation.log",
-"详情：/var/log/flashos-installation.log"
+"Détails : /var/log/soleos-installation.log": [
+"Details: /var/log/soleos-installation.log",
+"Dettagli: /var/log/soleos-installation.log",
+"Detalles: /var/log/soleos-installation.log",
+"Details: /var/log/soleos-installation.log",
+"详情：/var/log/soleos-installation.log"
 ],
 "aujourd'hui": [
 "today",

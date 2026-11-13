@@ -1,8 +1,8 @@
-# FlashOS — traduction (de)
+# SoleOS — traduction (de)
 # © 2026 GDH (Giuseppe D'Arco Holding) — LicenseRef-SoleOS
 msgid ""
 msgstr ""
-"Project-Id-Version: FlashOS\n"
+"Project-Id-Version: SoleOS\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -770,8 +770,8 @@ msgstr "„{nom}“ installieren?"
 msgid "Ce paquet sera installé dans un espace Debian séparé : il ne peut pas abîmer SoleOS. La première fois, cet espace est téléchargé (environ 50 Mo) : comptez quelques minutes."
 msgstr "Dieses Paket wird in einem separaten Debian-Bereich installiert: Es kann SoleOS nicht beschädigen. Beim ersten Mal wird dieser Bereich heruntergeladen (etwa 50 MB): Rechnen Sie mit einigen Minuten."
 
-msgid "Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter flashos-debian »."
-msgstr "Dieses Paket enthält keine anzuzeigende App (Kommandozeilenwerkzeug): Es ist in der Konsole mit „distrobox enter flashos-debian“ nutzbar."
+msgid "Ce paquet ne contient pas d'application à afficher (outil en ligne de commande) : il sera utilisable dans la Console avec « distrobox enter soleos-debian »."
+msgstr "Dieses Paket enthält keine anzuzeigende App (Kommandozeilenwerkzeug): Es ist in der Konsole mit „distrobox enter soleos-debian“ nutzbar."
 
 msgid "En mode essai (clé USB), installez d'abord SoleOS sur l'ordinateur."
 msgstr "Im Testmodus (USB-Stick) installieren Sie zuerst SoleOS auf dem Computer."
@@ -1052,8 +1052,8 @@ msgstr "Das Reparaturwerkzeug kann nicht vorbereitet werden."
 msgid "L'opération n'a pas pu se terminer"
 msgstr "Der Vorgang konnte nicht abgeschlossen werden"
 
-msgid "Détails : /var/log/flashos-installation.log"
-msgstr "Details: /var/log/flashos-installation.log"
+msgid "Détails : /var/log/soleos-installation.log"
+msgstr "Details: /var/log/soleos-installation.log"
 
 msgid "Réduire la barre"
 msgstr "Leiste einklappen"
@@ -1877,6 +1877,9 @@ msgstr ", {d} Zoll"
 msgid "{l} × {h}{pouces}, affichage à {z} %"
 msgstr "{l} × {h}{pouces}, Anzeige mit {z} %"
 
+msgid "Noyau Linux : {v}"
+msgstr "Linux-Kernel: {v}"
+
 msgid "Vos Documents, Images, Musique, Vidéos, Téléchargements et Bureau sont copiés sur une clé USB, un disque ou un dossier du NAS. Rien n'est jamais effacé dans la sauvegarde : un fichier supprimé par erreur s'y retrouve."
 msgstr "Ihre Dokumente, Bilder, Musik, Videos, Downloads und Ihr Schreibtisch werden auf einen USB-Stick, eine Festplatte oder einen NAS-Ordner kopiert. In der Sicherung wird nie etwas gelöscht: Eine versehentlich gelöschte Datei findet sich dort wieder."
 
@@ -2137,6 +2140,33 @@ msgstr "Hier ist Ihr neuer Wiederherstellungsschlüssel. Schreiben Sie ihn auf P
 
 msgid "La clé n'a pas pu être créée."
 msgstr "Der Schlüssel konnte nicht erstellt werden."
+
+msgid "récent"
+msgstr "aktuell"
+
+msgid "stable"
+msgstr "stabil"
+
+msgid "Noyau Linux : {v} ({genre})"
+msgstr "Linux-Kernel: {v} ({genre})"
+
+msgid "Le noyau récent sera essayé au prochain démarrage."
+msgstr "Der aktuelle Kernel wird beim nächsten Start ausprobiert."
+
+msgid "Revenir au noyau stable ({v})"
+msgstr "Zum stabilen Kernel zurückkehren ({v})"
+
+msgid "Ordinateur très récent (Wi-Fi, son ou affichage qui marchent mal) ? Essayez le noyau récent : s'il ne démarre pas bien, SoleOS revient tout seul au noyau stable."
+msgstr "Sehr neuer Computer (WLAN, Ton oder Anzeige funktionieren schlecht)? Probieren Sie den aktuellen Kernel: Startet er nicht richtig, kehrt SoleOS von selbst zum stabilen Kernel zurück."
+
+msgid "Essayer le noyau récent ({v})"
+msgstr "Aktuellen Kernel ausprobieren ({v})"
+
+msgid "Redémarrez l'ordinateur pour appliquer ce choix."
+msgstr "Starten Sie den Computer neu, um diese Wahl anzuwenden."
+
+msgid "Ce choix n'a pas pu être enregistré."
+msgstr "Diese Wahl konnte nicht gespeichert werden."
 
 msgid "%A %-e %B à %H:%M"
 msgstr "%A, %-e. %B um %H:%M"

@@ -1,0 +1,8 @@
+[Unit]
+Description=SoleOS : validation du démarrage après une mise à jour
+ConditionKernelCommandLine=soleos.slot
+RequiresMountsFor=/soleos/demarrage
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/soleos-systeme confirmer

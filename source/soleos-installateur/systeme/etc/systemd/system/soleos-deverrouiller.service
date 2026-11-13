@@ -1,0 +1,20 @@
+[Unit]
+Description=SoleOS : ouverture des données (code ou mot de passe)
+ConditionPathExists=/etc/soleos-chiffrement
+# Après le Bluetooth : un clavier Bluetooth peut taper le code. Les données sont montées sur
+# /home par ce service (pas par fstab) ; la session, le réseau et l'impression l'attendent.
+After=bluetooth.service soleos-bluetooth.service plymouth-start.service keyboard-setup.service systemd-vconsole-setup.service soleos-heure.service
+Wants=bluetooth.service soleos-bluetooth.service
+RequiresMountsFor=/soleos/demarrage
+Before=systemd-user-sessions.service getty@tty1.service soleos-compte.service NetworkManager.service soleos-imprimantes-restaurer.service cups.service umount.target
+Conflicts=umount.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutSec=0
+KeyringMode=shared
+ExecStart=/usr/local/sbin/soleos-securite ouvrir
+
+[Install]
+WantedBy=multi-user.target

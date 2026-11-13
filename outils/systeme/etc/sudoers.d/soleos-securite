@@ -1,0 +1,2 @@
+# SoleOS : choix et changement du code, écran verrouillé (vérifications faites par l'outil)
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-securite etat, /usr/local/sbin/soleos-securite preparer-secours, /usr/local/sbin/soleos-securite definir, /usr/local/sbin/soleos-securite definir *, /usr/local/sbin/soleos-securite changer, /usr/local/sbin/soleos-securite nouvelle-cle, /usr/local/sbin/soleos-securite verifier
