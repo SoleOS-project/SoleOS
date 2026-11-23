@@ -237,7 +237,8 @@ impl Installee {
             Genre::Web(adresse) => return vec![format!("chrome-{}", hote(adresse).to_lowercase())],
             Genre::Lanceur(fichier, c) => {
                 if let Some(a) = c.iter().find_map(|x| x.strip_prefix("--app-id=")) {
-                    return vec![format!("chrome-{}", a.to_lowercase()), format!("crx_{}", a.to_lowercase())];
+                    let a = a.to_lowercase();
+                    return vec![format!("chrome-{a}"), format!("crx_{a}"), format!("msedge-{a}"), format!("brave-{a}")];
                 }
                 // Application d'un conteneur : sa classe de fenêtre, sinon le nom du programme lancé
                 let texte = std::fs::read_to_string(fichier).unwrap_or_default();
@@ -265,6 +266,68 @@ impl Installee {
         }
         m
     }
+}
+
+/// (v1.2) L'appli installée à qui appartient une fenêtre (identifiant Wayland en minuscules) : la
+/// correspondance la plus précise gagne (« chrome-<id>-default » → l'appli web, pas Google Chrome,
+/// dont le motif « chrome » est contenu dans le nom de toutes les fenêtres d'applis web).
+pub fn meilleure_appli<'a>(installees: &'a [Installee], id: &str) -> Option<&'a Installee> {
+    let mut meilleur: Option<(&Installee, usize)> = None;
+    for a in installees {
+        for m in a.motifs() {
+            let score = if m == id {
+                usize::MAX
+            } else if id.contains(m.as_str()) || m.contains(id) {
+                m.len().min(id.len())
+            } else {
+                continue;
+            };
+            if meilleur.map(|(_, s)| score > s).unwrap_or(true) {
+                meilleur = Some((a, score));
+            }
+        }
+    }
+    meilleur.map(|(a, _)| a)
+}
+
+/// Ligne Exec= de la section [Desktop Entry] (pas celles des « actions » d'une appli web)
+pub fn exec_entree(texte: &str) -> Option<String> {
+    let mut dans_entree = false;
+    for l in texte.lines() {
+        let l = l.trim();
+        if l.starts_with('[') {
+            dans_entree = l == "[Desktop Entry]";
+        } else if dans_entree {
+            if let Some(v) = l.strip_prefix("Exec=") {
+                return Some(v.to_string());
+            }
+        }
+    }
+    None
+}
+
+/// (v1.2) Découpe une ligne Exec= : mots séparés par des espaces, sauf entre guillemets doubles ou
+/// apostrophes (Google Chrome de la boutique écrit « flatpak 'run' … ») ; les codes %u, %F… sont retirés.
+pub fn decouper_exec(exec: &str) -> Vec<String> {
+    let mut mots = Vec::new();
+    let mut mot = String::new();
+    let mut entame = false;
+    let mut guillemet: Option<char> = None;
+    let mut c = exec.chars().peekable();
+    while let Some(x) = c.next() {
+        match (guillemet, x) {
+            (None, '"') | (None, '\'') => { guillemet = Some(x); entame = true; }
+            (Some(g), _) if x == g => guillemet = None,
+            (Some('"'), '\\') => { if let Some(n) = c.next() { mot.push(n); } }
+            (None, ' ') | (None, '\t') => {
+                if entame { mots.push(std::mem::take(&mut mot)); entame = false; }
+            }
+            _ => { mot.push(x); entame = true; }
+        }
+    }
+    if entame { mots.push(mot); }
+    mots.retain(|m| !(m.len() == 2 && m.starts_with('%')));
+    mots
 }
 
 /// Lit un fichier .desktop : (nom, icône, NoDisplay)
@@ -414,14 +477,21 @@ pub fn installees() -> Vec<Installee> {
         for e in entrees.flatten() {
             let nom_fichier = e.file_name().to_string_lossy().to_string();
             let Some(stem) = nom_fichier.strip_suffix(".desktop") else { continue };
+            // (v1.2) navigateurs de la boutique (Flatpak) : « com.google.Chrome.flextop.chrome-…-Default »,
+            // « ….flextop.msedge-… », « ….flextop.brave-… » : identifiant = la partie après « .flextop. »
+            let stem = stem.split_once(".flextop.").map(|(_, s)| s).unwrap_or(stem);
+            if liste.iter().any(|a| a.id == stem) {
+                continue; // même appli déjà vue (copie faite par le correctif de la v1.1)
+            }
             let texte = std::fs::read_to_string(e.path()).unwrap_or_default();
             // Raccourcis du navigateur (« chrome-… ») et applications d'un conteneur (Distrobox)
             let conteneur = texte.contains("distrobox-enter") || texte.contains("distrobox enter");
-            if !stem.starts_with("chrome-") && !conteneur {
+            let web = ["chrome-", "msedge-", "brave-"].iter().any(|p| stem.starts_with(p));
+            if !web && !conteneur {
                 continue;
             }
             let (nom, icone, cache) = lire_desktop(&texte);
-            let Some(exec) = texte.lines().find_map(|l| l.strip_prefix("Exec=")) else { continue };
+            let Some(exec) = exec_entree(&texte) else { continue };
             // Console du conteneur (s'ouvre dans un terminal) : elle reste accessible par la Console
             if cache || nom.is_empty() || texte.lines().any(|l| l.trim() == "Terminal=true") {
                 continue;
@@ -431,11 +501,7 @@ pub fn installees() -> Vec<Installee> {
                 Some(i) if conteneur && nom.ends_with(')') => nom[..i].to_string(),
                 _ => nom,
             };
-            let commande: Vec<String> = exec
-                .split_whitespace()
-                .filter(|m| !m.starts_with('%'))
-                .map(|m| m.trim_matches('"').to_string())
-                .collect();
+            let commande = decouper_exec(&exec);
             if commande.is_empty() {
                 continue;
             }
@@ -897,14 +963,30 @@ pub fn normaliser_adresse(texte: &str) -> Option<String> {
 
 /// Icône d'un raccourci du navigateur (rangée dans ~/.local/share/icons)
 fn icone_theme_utilisateur(nom: &str) -> Option<PathBuf> {
+    let mut nom = nom.to_string();
     if nom.starts_with('/') {
-        return Some(PathBuf::from(nom)).filter(|p| p.exists());
+        let p = PathBuf::from(&nom);
+        if p.exists() {
+            return Some(p);
+        }
+        // (v1.2) Chrome de la boutique écrit un chemin interne qui n'existe pas toujours :
+        // on cherche la même image, par son nom, dans les icônes de l'utilisateur
+        nom = p.file_stem().map(|s| s.to_string_lossy().to_string()).unwrap_or_default();
+        if nom.is_empty() {
+            return None;
+        }
     }
-    let base = maison().join(".local/share/icons/hicolor");
-    for taille in ["256x256", "128x128", "96x96", "64x64", "48x48", "32x32"] {
-        let f = base.join(taille).join("apps").join(format!("{nom}.png"));
-        if f.exists() {
-            return Some(f);
+    let bases = [
+        maison().join(".local/share/icons/hicolor"),
+        maison().join(".local/share/flatpak/exports/share/icons/hicolor"),
+        PathBuf::from("/var/lib/flatpak/exports/share/icons/hicolor"),
+    ];
+    for base in &bases {
+        for taille in ["256x256", "512x512", "128x128", "96x96", "64x64", "48x48", "32x32"] {
+            let f = base.join(taille).join("apps").join(format!("{nom}.png"));
+            if f.exists() {
+                return Some(f);
+            }
         }
     }
     None
@@ -1067,6 +1149,27 @@ pub fn commande_mail() -> Option<Vec<String>> {
 #[cfg(test)]
 mod tests_sites {
     use super::*;
+    #[test]
+    fn fenetre_appli_web_pas_chrome() {
+        let chrome = Installee { id: "com.google.Chrome".into(), nom: "Google Chrome".into(), icone: None, genre: Genre::Flatpak };
+        let cmd = |id: &str| vec!["flatpak".to_string(), "run".into(), "com.google.Chrome".into(), format!("--app-id={id}")];
+        let web = |id: &str, nom: &str| Installee { id: format!("chrome-{id}-Default"), nom: nom.into(), icone: None,
+            genre: Genre::Lanceur(PathBuf::from("/x.desktop"), cmd(id)) };
+        // ordre alphabétique : Google Chrome avant Mammouth AI
+        let l = vec![web("fmp", "Claude"), chrome, web("bnf", "Mammouth AI")];
+        assert_eq!(meilleure_appli(&l, "chrome-bnf-default").unwrap().nom, "Mammouth AI");
+        assert_eq!(meilleure_appli(&l, "chrome-fmp-default").unwrap().nom, "Claude");
+        assert_eq!(meilleure_appli(&l, "com.google.chrome").unwrap().nom, "Google Chrome");
+    }
+    #[test]
+    fn exec_avec_apostrophes() {
+        let e = "flatpak 'run' '--command=/app/bin/chrome' 'com.google.Chrome' '--profile-directory=Default' '--app-id=kjb'";
+        assert_eq!(decouper_exec(e), vec!["flatpak", "run", "--command=/app/bin/chrome", "com.google.Chrome", "--profile-directory=Default", "--app-id=kjb"]);
+        assert_eq!(decouper_exec("\"/opt/mon appli/x\" --a %U"), vec!["/opt/mon appli/x", "--a"]);
+        assert_eq!(decouper_exec("chromium --app=https://x.fr/?a=1 %u"), vec!["chromium", "--app=https://x.fr/?a=1"]);
+        let d = "[Desktop Entry]\nName=M\nExec=chrome --app-id=a\n[Desktop Action c]\nExec=chrome --app-id=a --x\n";
+        assert_eq!(exec_entree(d).as_deref(), Some("chrome --app-id=a"));
+    }
     #[test]
     fn boite_debian_ancien_nom() {
         assert_eq!(conteneur_selon(""), "soleos-debian");

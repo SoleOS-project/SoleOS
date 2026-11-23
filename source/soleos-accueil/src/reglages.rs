@@ -964,8 +964,43 @@ impl Reglages {
         page.append(&licence);
         page.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
         page.append(&etiquette(&tr("Cet ordinateur"), "titre-menu"));
-        if let Some(p) = crate::systeme::prenom() {
-            page.append(&etiquette(&trv("Utilisateur : {prenom}", &[("prenom", &p)]), "texte-info"));
+        let utilisateur = etiquette("", "texte-info");
+        let maj_utilisateur = {
+            let u = utilisateur.clone();
+            move || match crate::systeme::prenom() {
+                Some(p) => { u.set_text(&trv("Utilisateur : {prenom}", &[("prenom", &p)])); u.set_visible(true); }
+                None => u.set_visible(false),
+            }
+        };
+        maj_utilisateur();
+        page.append(&utilisateur);
+        // (v1.2) Changer mon prénom (celui de « Bonjour … »)
+        if crate::systeme::prenom().is_some() || std::path::Path::new("/home/.soleos/securite").exists() {
+            let ligne = gtk::Box::new(gtk::Orientation::Horizontal, 8);
+            let saisie = gtk::Entry::builder().placeholder_text(tr("Changer mon prénom")).hexpand(true).max_length(40).build();
+            saisie.add_css_class("champ");
+            let ok = petit(&tr("Changer"), true);
+            let retour = etiquette("", "texte-info");
+            retour.set_visible(false);
+            let valider = {
+                let (saisie, retour) = (saisie.clone(), retour.clone());
+                move || {
+                    let p = saisie.text().trim().to_string();
+                    if p.is_empty() { return; }
+                    match securite::appeler(&["prenom", &p], "") {
+                        Ok(_) => { saisie.set_text(""); retour.set_text(&tr("Prénom changé.")); maj_utilisateur(); }
+                        Err(e) => retour.set_text(&e),
+                    }
+                    retour.set_visible(true);
+                }
+            };
+            let v = std::rc::Rc::new(valider);
+            { let v = v.clone(); ok.connect_clicked(move |_| v()); }
+            saisie.connect_activate(move |_| v());
+            ligne.append(&saisie);
+            ligne.append(&ok);
+            page.append(&ligne);
+            page.append(&retour);
         }
         let processeur = std::fs::read_to_string("/proc/cpuinfo")
             .ok()
@@ -1215,6 +1250,34 @@ impl Reglages {
         let n = &self.navigateur;
         vider(n);
         n.append(&etiquette(&tr("Navigateur"), "nom-appareil"));
+        // (v1.2) Navigateur du bouton « Internet » et de la recherche
+        n.append(&etiquette(&tr("Navigateur du bouton Internet"), "titre-menu"));
+        let actuel = crate::navigateur::choisi();
+        let installes = crate::navigateur::installes();
+        for (id, nom) in &installes {
+            let coche = *id == actuel;
+            let b = gtk::Button::with_label(&format!("{}  {}", if coche { "✓" } else { "    " }, nom));
+            b.add_css_class("menu");
+            if let Some(l) = b.child().and_then(|c| c.downcast::<gtk::Label>().ok()) {
+                l.set_xalign(0.0);
+            }
+            let moi = Rc::downgrade(self);
+            let id = id.clone();
+            b.connect_clicked(move |_| {
+                crate::navigateur::choisir(&id);
+                if let Some(m) = moi.upgrade() {
+                    m.remplir_navigateur();
+                }
+            });
+            n.append(&b);
+        }
+        if installes.len() < 2 {
+            n.append(&etiquette(
+                &tr("Vous préférez Google Chrome, Firefox ou Edge ? Installez-le depuis « Applications » : il apparaîtra ici."),
+                "texte-info",
+            ));
+        }
+        n.append(&etiquette(&tr("Remettre à neuf"), "titre-menu"));
         let (extensions, notifications) = crate::navigateur::etat();
         let mut constat = Vec::new();
         if extensions > 0 {
@@ -1439,6 +1502,66 @@ impl Reglages {
             });
         }
         m.append(&ligne_perso);
+        self.ajouter_resolutions(m);
+    }
+
+    /// (v1.2) Résolution de l'écran du PC (ou du seul écran allumé). Après un changement,
+    /// 15 secondes pour confirmer ; sinon retour à la résolution d'avant (écran illisible…).
+    fn ajouter_resolutions(self: &Rc<Self>, m: &gtk::Box) {
+        let sorties = appareils::lire_ecrans();
+        let Some(ecran) = sorties.iter().filter(|s| s.actif).find(|s| s.interne())
+            .or_else(|| sorties.iter().find(|s| s.actif)).cloned() else { return };
+        let liste = appareils::resolutions(&ecran);
+        if liste.len() < 2 {
+            return;
+        }
+        m.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
+        m.append(&etiquette(&tr("Résolution de l'écran"), "titre-menu"));
+        let choisie = appareils::resolution_choisie(&ecran.nom);
+        let origine = ecran.prefere.map(|p| (p.0, p.1));
+        let nom_res = |r: (u32, u32)| {
+            let t = format!("{} × {}", r.0, r.1);
+            if Some(r) == origine { trv("{res} (d'origine, la plus nette)", &[("res", &t)]) } else { t }
+        };
+        let mut options: Vec<Option<(u32, u32)>> = vec![None];
+        options.extend(liste.into_iter().filter(|r| Some(*r) != origine).map(Some));
+        for r in options {
+            let coche = choisie == r;
+            let texte = match r { None => origine.map(nom_res).unwrap_or_else(|| tr("D'origine")), Some(r) => nom_res(r) };
+            let b = gtk::Button::with_label(&format!("{}  {}", if coche { "✓" } else { "    " }, texte));
+            b.add_css_class("menu");
+            if let Some(l) = b.child().and_then(|c| c.downcast::<gtk::Label>().ok()) {
+                l.set_xalign(0.0);
+            }
+            let moi = Rc::downgrade(self);
+            let nom = ecran.nom.clone();
+            b.connect_clicked(move |_| {
+                if r == choisie { return; }
+                appareils::choisir_resolution(&nom, r);
+                std::thread::spawn(appareils::appliquer_taille);
+                let Some(m) = moi.upgrade() else { return };
+                m.remplir_taille();
+                // Confirmation : « Garder » sinon retour automatique
+                let garde = Rc::new(std::cell::Cell::new(false));
+                let ligne = gtk::Box::new(gtk::Orientation::Horizontal, 8);
+                let question = etiquette(&tr("Garder cette résolution ? Retour à la précédente dans 15 secondes."), "texte-info");
+                question.set_hexpand(true);
+                question.set_wrap(true);
+                let ok = petit(&tr("Garder"), true);
+                { let (g, l) = (garde.clone(), ligne.clone()); ok.connect_clicked(move |_| { g.set(true); l.set_visible(false); }); }
+                ligne.append(&question);
+                ligne.append(&ok);
+                m.taille.append(&ligne);
+                let (moi2, nom2) = (Rc::downgrade(&m), nom.clone());
+                glib::timeout_add_seconds_local_once(15, move || {
+                    if garde.get() { return; }
+                    appareils::choisir_resolution(&nom2, choisie);
+                    std::thread::spawn(appareils::appliquer_taille);
+                    if let Some(m) = moi2.upgrade() { m.remplir_taille(); }
+                });
+            });
+            m.append(&b);
+        }
     }
 
     // --- Date et heure ----------------------------------------------------------------

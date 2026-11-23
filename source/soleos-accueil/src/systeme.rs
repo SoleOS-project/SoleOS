@@ -245,8 +245,16 @@ pub fn prenom() -> Option<String> {
     if let Ok(p) = std::env::var("SOLEOS_TEST_PRENOM") {
         return Some(p).filter(|p| !p.is_empty());
     }
-    let nom = gtk::glib::real_name().to_string_lossy().split(',').next().unwrap_or("").trim().to_string();
     let compte = gtk::glib::user_name().to_string_lossy().to_string();
+    // Relu dans /etc/passwd à chaque fois (glib garde l'ancien : le prénom peut changer dans Réglages)
+    let gecos = std::fs::read_to_string("/etc/passwd").ok().and_then(|t| {
+        t.lines().find_map(|l| {
+            let c: Vec<&str> = l.split(':').collect();
+            (c.len() > 4 && c[0] == compte).then(|| c[4].to_string())
+        })
+    });
+    let nom = gecos.unwrap_or_else(|| gtk::glib::real_name().to_string_lossy().to_string())
+        .split(',').next().unwrap_or("").trim().to_string();
     // Compte pas encore personnalisé : « SoleOS » (clé USB, avant l'assistant de bienvenue)
     if nom.is_empty() || nom == "Unknown" || nom.eq_ignore_ascii_case(&compte) || nom.eq_ignore_ascii_case("soleos") || nom.eq_ignore_ascii_case("soleos") {
         return None;

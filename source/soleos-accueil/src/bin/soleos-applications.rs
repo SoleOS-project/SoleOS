@@ -314,6 +314,26 @@ impl Fenetre {
     // ------------------------------------------------------------------
     fn afficher_selection(self: &Rc<Self>) {
         vider(&self.boutique);
+        // (v1.2) En tête : Google Chrome, pour retrouver ses favoris et mots de passe Google
+        let titre = gtk::Label::new(Some(&tr("Retrouvez vos favoris Google")));
+        titre.add_css_class("categorie");
+        titre.set_xalign(0.0);
+        self.boutique.append(&titre);
+        let intro = etiquette(
+            "Avec Google Chrome et votre compte Google : vos favoris, mots de passe et extensions, comme sur votre ancien ordinateur. \
+             Ensuite, Réglages → Navigateur pour l'ouvrir avec le bouton Internet.",
+            "discret",
+        );
+        intro.set_xalign(0.0);
+        intro.set_justify(gtk::Justification::Left);
+        self.boutique.append(&intro);
+        let haut = gtk::FlowBox::new();
+        haut.set_selection_mode(gtk::SelectionMode::None);
+        haut.set_min_children_per_line(1);
+        haut.set_max_children_per_line(4);
+        haut.set_homogeneous(true);
+        haut.insert(&self.carte("com.google.Chrome", "Google Chrome", "Navigateur web de Google"), -1);
+        self.boutique.append(&haut);
         for cat in applis::CATEGORIES {
             let titre = gtk::Label::new(Some(&tr(cat)));
             titre.add_css_class("categorie");

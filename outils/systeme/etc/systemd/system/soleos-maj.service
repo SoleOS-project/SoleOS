@@ -11,3 +11,6 @@ Nice=19
 IOSchedulingClass=idle
 CPUSchedulingPolicy=idle
 ExecStart=/usr/local/sbin/soleos-systeme maj
+
+# (v1.2) à l'arrêt de l'ordinateur : arrêt rapide (la copie inactive est refaite à la prochaine fois)
+TimeoutStopSec=10

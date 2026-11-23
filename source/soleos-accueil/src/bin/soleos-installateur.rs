@@ -114,6 +114,8 @@ struct Disque {
     nombre: u32,
     /// Réparation : données chiffrées, code (ou clé de secours) nécessaire
     code: bool,
+    /// (v1.2) Mise à jour : version de SoleOS déjà installée sur ce disque
+    version: String,
 }
 
 enum Message {
@@ -121,6 +123,15 @@ enum Message {
     Progres(f64),
     Termine,
     Erreur(String),
+}
+
+/// (v1.2) Un code ne contient que des chiffres ; une clé de secours, des lettres et des tirets.
+/// Sans aucune lettre, tout autre signe vient d'une touche mal tapée sur un clavier AZERTY :
+/// rangée du haut sans Maj (& é " ' …), AltGr au lieu de Maj (~ # { [ …), touche ² (² ~)…
+fn code_mal_tape(t: &str) -> bool {
+    let t: String = t.chars().filter(|c| !c.is_whitespace()).collect();
+    // Un mot de passe (ordinateur sans puce : 8 signes au moins, tous permis) n'est jamais bloqué
+    t.chars().count() == 6 && !t.chars().any(|c| c.is_alphabetic() && c.is_ascii()) && !t.chars().all(|c| c.is_ascii_digit())
 }
 
 fn texte_taille(octets: u64) -> String {
@@ -146,6 +157,10 @@ fn commande_moteur(args: &[&str]) -> Command {
 
 fn detecter(mode: Mode) -> Result<Disque, String> {
     let option = if mode == Mode::Reparation { "--detecter-reparation" } else { "--detecter" };
+    detecter_avec(option)
+}
+
+fn detecter_avec(option: &str) -> Result<Disque, String> {
     let sortie = commande_moteur(&[option]).output().map_err(|e| e.to_string())?;
     let texte = String::from_utf8_lossy(&sortie.stdout);
     let ligne = texte.lines().last().unwrap_or("").trim();
@@ -157,6 +172,7 @@ fn detecter(mode: Mode) -> Result<Disque, String> {
             octets: champs[3].parse().unwrap_or(0),
             nombre: champs[4].parse().unwrap_or(1),
             code: champs.get(5).map(|c| c.trim() == "CODE").unwrap_or(false),
+            version: champs.get(6).map(|v| v.trim().to_string()).unwrap_or_default(),
         }),
         Some(&"AUCUN") => Err(champs.get(1).map(|t| t.to_string()).unwrap_or_else(|| tr("Aucun disque trouvé."))),
         _ => Err(format!(
@@ -204,6 +220,8 @@ fn colonne(espacement: i32) -> gtk::Box {
 struct Installateur {
     fenetre: gtk::ApplicationWindow,
     pages: gtk::Stack,
+    /// (v1.2) Mise à jour depuis la clé (au lieu d'une réparation) : textes et commande
+    maj: std::cell::Cell<bool>,
 }
 
 impl Installateur {
@@ -377,9 +395,14 @@ impl Installateur {
     fn page_code(self: &Rc<Self>, d: Disque, erreur: Option<&str>) {
         let c = colonne(22);
         c.append(&logo(300));
-        c.append(&etiquette(&tr("Réparer SoleOS"), "titre"));
+        let maj = self.maj.get();
+        c.append(&etiquette(&tr(if maj { n_("Mettre à jour SoleOS") } else { n_("Réparer SoleOS") }), "titre"));
         c.append(&etiquette(
-            "Vos fichiers sont protégés. Pour les garder pendant la réparation,\ntapez votre code SoleOS (ou votre clé de secours).",
+            if maj {
+                n_("Vos fichiers sont protégés. Pour les garder pendant la mise à jour,\ntapez votre code SoleOS (ou votre clé de secours).")
+            } else {
+                n_("Vos fichiers sont protégés. Pour les garder pendant la réparation,\ntapez votre code SoleOS (ou votre clé de secours).")
+            },
             "sous-titre",
         ));
         let saisie = gtk::Entry::new();
@@ -402,20 +425,24 @@ impl Installateur {
         message.set_visible(erreur.is_some());
         c.append(&message);
         // Rangée du haut AZERTY tapée sans Maj : on prévient tout de suite
-        let conseil = etiquette(&tr("Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."), "erreur-code");
+        let conseil = etiquette(&tr("Le code ne contient que des chiffres : touche Maj (⇧) + la touche du chiffre, ou pavé numérique. Effacez et retapez."), "erreur-code");
         conseil.set_visible(false);
         c.append(&conseil);
         {
             let conseil = conseil.clone();
             saisie.connect_changed(move |e| {
-                conseil.set_visible(e.text().chars().any(|c| "&é\"'(è_çà".contains(c)));
+                let t = e.text();
+                conseil.set_visible(
+                    code_mal_tape(&t)
+                        || (!t.chars().any(|c| c.is_ascii_alphabetic()) && t.chars().any(|c| "&é\"'(è_çà~²#{[|`\\^@".contains(c))),
+                );
             });
         }
         let boutons = gtk::Box::new(gtk::Orientation::Horizontal, 16);
         boutons.set_halign(gtk::Align::Center);
         let retour = gtk::Button::with_label(&tr("Retour"));
         retour.add_css_class("secondaire");
-        let reparer = gtk::Button::with_label(&tr("Réparer"));
+        let reparer = gtk::Button::with_label(&tr(if maj { n_("Mettre à jour") } else { n_("Réparer") }));
         reparer.add_css_class("principal");
         reparer.add_css_class("orange");
         reparer.set_sensitive(false);
@@ -423,23 +450,38 @@ impl Installateur {
         boutons.append(&reparer);
         c.append(&boutons);
         c.append(&etiquette(
-            "Code oublié et clé de secours perdue : seul « Tout effacer » reste possible.",
+            if maj {
+                n_("Code oublié et clé de secours perdue : seule une nouvelle installation (tout effacer) reste possible.")
+            } else {
+                n_("Code oublié et clé de secours perdue : seul « Tout effacer » reste possible.")
+            },
             "discret",
         ));
         let r2 = reparer.clone();
         saisie.connect_changed(move |e| r2.set_sensitive(!e.text().trim().is_empty()));
         let lancer = {
             let moi = Rc::downgrade(self);
-            let (saisie, d) = (saisie.clone(), d.clone());
+            let (saisie, d, conseil) = (saisie.clone(), d.clone(), conseil.clone());
             move || {
                 let Some(m) = moi.upgrade() else { return };
                 let secret = saisie.text().trim().to_string();
                 if secret.is_empty() {
                     return;
                 }
+                // (v1.2) Code tapé avec d'autres signes que des chiffres (Maj oubliée, « ~ » d'AltGr…) :
+                // on ne l'essaie pas (chaque essai raté compte pour la puce de sécurité)
+                if code_mal_tape(&secret) {
+                    conseil.set_visible(true);
+                    return;
+                }
                 saisie.set_text("");
-                m.page_travail(vec!["--reparer".into(), "systeme".into(), d.chemin.clone()],
-                    "Démarrage de la réparation…", "N'éteignez pas l'ordinateur.", true, Some(secret), Some(d.clone()));
+                if m.maj.get() {
+                    m.page_travail(vec!["--mettre-a-jour".into(), d.chemin.clone()],
+                        "Démarrage de la mise à jour…", "N'éteignez pas l'ordinateur et ne retirez pas la clé USB.", true, Some(secret), Some(d.clone()));
+                } else {
+                    m.page_travail(vec!["--reparer".into(), "systeme".into(), d.chemin.clone()],
+                        "Démarrage de la réparation…", "N'éteignez pas l'ordinateur.", true, Some(secret), Some(d.clone()));
+                }
             }
         };
         let l2 = lancer.clone();
@@ -448,7 +490,7 @@ impl Installateur {
         let moi = Rc::downgrade(self);
         retour.connect_clicked(move |_| {
             if let Some(m) = moi.upgrade() {
-                m.pages.set_visible_child_name("choix-reparation");
+                m.pages.set_visible_child_name(if m.maj.get() { "choix-installation" } else { "choix-reparation" });
             }
         });
         // Page recréée à chaque fois (message d'erreur à jour)
@@ -579,7 +621,11 @@ impl Installateur {
     fn page_fin(self: &Rc<Self>, reparation: bool) {
         let c = colonne(24);
         c.append(&logo(420));
-        if reparation {
+        if self.maj.get() {
+            let version = std::fs::read_to_string("/etc/soleos-version").map(|v| format!(" {}", v.trim())).unwrap_or_default();
+            c.append(&etiquette(&trv("SoleOS{version} est installé, vos fichiers sont gardés !", &[("version", &version)]), "titre"));
+            c.append(&etiquette(&tr("Retirez la clé USB, puis redémarrez l'ordinateur."), "sous-titre"));
+        } else if reparation {
             c.append(&etiquette(&tr("SoleOS est remis à neuf !"), "titre"));
             c.append(&etiquette(&tr("Redémarrez l'ordinateur pour l'utiliser."), "sous-titre"));
         } else {
@@ -594,6 +640,92 @@ impl Installateur {
         });
         c.append(&redemarrer);
         self.afficher(&c, "fin");
+    }
+
+    /// (v1.2) Depuis la clé, SoleOS est déjà installé : mettre à jour (tout est gardé) ou réinstaller
+    fn page_choix_installation(self: &Rc<Self>, installe: Disque, disque: Option<Disque>) {
+        let c = colonne(22);
+        c.append(&logo(300));
+        let nouvelle = std::fs::read_to_string("/etc/soleos-version").map(|v| v.trim().to_string()).unwrap_or_default();
+        c.append(&etiquette(&tr("SoleOS est déjà installé sur cet ordinateur"), "titre"));
+        if !installe.version.is_empty() && !nouvelle.is_empty() {
+            c.append(&etiquette(
+                &trv("Version installée : {ancienne}  —  version de la clé : {nouvelle}", &[("ancienne", &installe.version), ("nouvelle", &nouvelle)]),
+                "sous-titre",
+            ));
+        }
+        let choix = gtk::Box::new(gtk::Orientation::Horizontal, 24);
+        choix.set_halign(gtk::Align::Center);
+        choix.set_homogeneous(true);
+
+        // Mettre à jour
+        let orange = gtk::Box::new(gtk::Orientation::Vertical, 12);
+        orange.add_css_class("carte-choix");
+        orange.add_css_class("carte-orange");
+        orange.set_size_request(380, -1);
+        orange.append(&etiquette(&tr("↻  Mettre à jour SoleOS"), "titre-choix"));
+        orange.append(&etiquette(
+            &format!(
+                "{}{}",
+                tr("SoleOS est remplacé par la version de la clé. Tout est gardé : vos fichiers, vos applications, vos mails, votre navigateur (favoris, mots de passe), vos réglages, vos réseaux Wi-Fi, imprimantes et appareils Bluetooth, votre code et votre clé de secours."),
+                if installe.code { format!("\n\n{}", tr("Votre code (ou votre clé de secours) vous sera demandé.")) } else { String::new() }
+            ),
+            "texte-choix",
+        ));
+        let maj = gtk::Button::with_label(&tr("Mettre à jour"));
+        maj.add_css_class("principal");
+        maj.add_css_class("orange");
+        maj.set_valign(gtk::Align::End);
+        maj.set_vexpand(true);
+        orange.append(&maj);
+
+        // Réinstaller (tout effacer)
+        let rouge = gtk::Box::new(gtk::Orientation::Vertical, 12);
+        rouge.add_css_class("carte-choix");
+        rouge.add_css_class("carte-rouge");
+        rouge.set_size_request(380, -1);
+        rouge.append(&etiquette(&tr("⚠  Effacer et réinstaller"), "titre-choix"));
+        rouge.append(&etiquette(
+            "Nouvelle installation : tout le disque est effacé (fichiers, applications, réglages, comptes).",
+            "texte-choix",
+        ));
+        let reinstaller = gtk::Button::with_label(&tr("Effacer et réinstaller"));
+        reinstaller.add_css_class("secondaire");
+        reinstaller.set_valign(gtk::Align::End);
+        reinstaller.set_vexpand(true);
+        reinstaller.set_sensitive(disque.is_some());
+        rouge.append(&reinstaller);
+
+        choix.append(&orange);
+        choix.append(&rouge);
+        c.append(&choix);
+        c.append(&etiquette(&trv("Disque : {modele}  —  {taille}", &[("modele", &installe.modele), ("taille", &texte_taille(installe.octets))]), "discret"));
+        let fermer = gtk::Button::with_label(&tr("Fermer"));
+        fermer.add_css_class("secondaire");
+        fermer.set_halign(gtk::Align::Center);
+        let f = self.fenetre.clone();
+        fermer.connect_clicked(move |_| f.close());
+        c.append(&fermer);
+
+        let moi = Rc::downgrade(self);
+        let i2 = installe.clone();
+        maj.connect_clicked(move |_| {
+            let Some(m) = moi.upgrade() else { return };
+            m.maj.set(true);
+            if i2.code {
+                m.page_code(i2.clone(), None);
+            } else {
+                m.page_travail(vec!["--mettre-a-jour".into(), i2.chemin.clone()],
+                    "Démarrage de la mise à jour…", "N'éteignez pas l'ordinateur et ne retirez pas la clé USB.", true, None, None);
+            }
+        });
+        let moi = Rc::downgrade(self);
+        reinstaller.connect_clicked(move |_| {
+            let (Some(m), Some(d)) = (moi.upgrade(), disque.clone()) else { return };
+            m.maj.set(false);
+            m.page_conditions(d);
+        });
+        self.afficher(&c, "choix-installation");
     }
 
     /// Démarré sur l'outil de réparation : deux choix
@@ -769,7 +901,7 @@ fn construire(app: &gtk::Application) {
     pages.set_transition_duration(400);
     fenetre.set_child(Some(&pages));
 
-    let inst = Rc::new(Installateur { fenetre: fenetre.clone(), pages });
+    let inst = Rc::new(Installateur { fenetre: fenetre.clone(), pages, maj: std::cell::Cell::new(false) });
     // L'installateur vit aussi longtemps que sa fenêtre
     let garde = RefCell::new(Some(inst.clone()));
     fenetre.connect_destroy(move |_| { garde.borrow_mut().take(); });
@@ -790,15 +922,21 @@ fn construire(app: &gtk::Application) {
     inst.page_recherche();
 
     // Recherche du disque (petit délai pour laisser l'écran s'afficher)
-    let (envoi, reception) = async_channel::bounded::<Result<Disque, String>>(1);
+    let (envoi, reception) = async_channel::bounded::<(Result<Disque, String>, Option<Disque>)>(1);
     glib::timeout_add_local_once(Duration::from_millis(600), move || {
         std::thread::spawn(move || {
-            let _ = envoi.send_blocking(detecter(mode));
+            // (v1.2) Depuis la clé : un SoleOS déjà installé peut être mis à jour
+            let installe = if mode == Mode::Installation { detecter_avec("--detecter-mise-a-jour").ok() } else { None };
+            let _ = envoi.send_blocking((detecter(mode), installe));
         });
     });
     let moi = Rc::downgrade(&inst);
     glib::spawn_future_local(async move {
-        if let (Ok(resultat), Some(m)) = (reception.recv().await, moi.upgrade()) {
+        if let (Ok((resultat, installe)), Some(m)) = (reception.recv().await, moi.upgrade()) {
+            if let Some(i) = installe {
+                m.page_choix_installation(i, resultat.ok());
+                return;
+            }
             match (resultat, mode) {
                 (Ok(d), Mode::Reparation) => {
                     let test_code = std::env::var_os("SOLEOS_TEST_PAGE_CODE").is_some();
@@ -837,4 +975,20 @@ fn main() -> glib::ExitCode {
     // sinon il refuse l'option inconnue et le programme se ferme sans rien afficher.
     let nom = std::env::args().next().unwrap_or_else(|| "soleos-installateur".into());
     app.run_with_args(&[nom])
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn code_azerty() {
+        assert!(!code_mal_tape("482915"));
+        assert!(!code_mal_tape(" 482 915 "));
+        assert!(code_mal_tape("~82915"));
+        assert!(code_mal_tape("&é\"'(-"));
+        assert!(code_mal_tape("²82915"));
+        assert!(!code_mal_tape("cbdefghi-jklnrtuv-cbdefghi"));
+        assert!(!code_mal_tape(""));
+        assert!(!code_mal_tape("12&45678~"));
+    }
 }

@@ -17,6 +17,8 @@ mod appareils;
 mod applis;
 mod bienvenue;
 mod bureau;
+mod dialogue;
+mod notifications;
 mod essai_son;
 mod signaler;
 mod raccourcis;
@@ -85,8 +87,8 @@ const APPLIS: &[Appli] = &[
     Appli {
         nom: "Internet",
         icone: "tuile-internet",
-        commande: &["soleos-web", "--new-window", "https://www.google.fr"],
-        motifs: &["chromium", "chrome"],
+        commande: &["soleos-internet", "https://www.google.fr"],
+        motifs: &["chromium", "chrome", "firefox", "msedge", "microsoft-edge", "brave"],
     },
     Appli { nom: "Fichiers", icone: "tuile-fichiers", commande: &["nautilus", "--new-window"], motifs: &["nautilus"] },
     Appli {
@@ -671,6 +673,12 @@ struct Accueil {
     prechargee: Cell<Option<(u32, u64)>>,
     /// Moment où la Bureautique a été lancée en arrière-plan (en attente de sa fenêtre)
     prechargement: Cell<Option<std::time::Instant>>,
+    /// (v1.2) Nouveaux mails annoncés par Thunderbird depuis sa dernière ouverture
+    mails: Cell<u32>,
+    /// (v1.2) Thunderbird ouvert (réduit ou non) : sinon l'enveloppe est cachée
+    mail_ouvert: Cell<bool>,
+    enveloppe: gtk::Button,
+    compte_mails: gtk::Label,
     /// Bulles de la barre du haut, ouvrables à la demande (« soleos-ouvrir »)
     bulles: Vec<(&'static str, gtk::Popover)>,
     /// Réglages (bouton ⚙) : imprimantes, Bluetooth, écran, taille, code
@@ -720,7 +728,7 @@ impl Accueil {
             lancer(MAIL);
         } else if appli.nom == "Internet" {
             // Page d'accueil selon la langue (Bing en chinois)
-            lancer(&["soleos-web", "--new-window", tr::courante().web]);
+            lancer(&["soleos-internet", tr::courante().web]);
         } else {
             lancer(appli.commande);
         }
@@ -1140,6 +1148,24 @@ impl Accueil {
         colonne
     }
 
+    /// (v1.2) Enveloppe de la barre du bas : visible si Thunderbird a un compte, nombre de nouveaux mails
+    fn maj_enveloppe(&self) {
+        let n = self.mails.get();
+        self.compte_mails.set_text(&if n > 99 { "99+".to_string() } else { n.to_string() });
+        self.compte_mails.set_visible(n > 0);
+        // (v1.2) L'enveloppe n'apparaît que si Thunderbird est lancé (lui seul voit arriver les mails)
+        self.enveloppe.set_visible(self.mail_ouvert.get());
+        if n > 0 {
+            self.enveloppe.set_tooltip_text(Some(&if n > 1 {
+                trv("{n} nouveaux mails", &[("n", &n.to_string())])
+            } else {
+                tr("1 nouveau mail")
+            }));
+        } else {
+            self.enveloppe.set_tooltip_text(Some(&tr("Mail")));
+        }
+    }
+
     /// Met à jour les points sous les tuiles et le bandeau « Applis ouvertes ».
     fn rafraichir(self: &Rc<Self>) {
         let Some(g) = &self.gestionnaire else { return };
@@ -1165,6 +1191,18 @@ impl Accueil {
             }
         }
 
+        // (v1.2) Thunderbird ouvert (réduit ou non) : l'enveloppe apparaît ; fermé : elle disparaît
+        let mail = APPLIS.iter().find(|a| a.nom == "Mail");
+        let ouvert = mail.is_some_and(|m| liste.iter().any(|f| correspond(m, f)));
+        if ouvert != self.mail_ouvert.get() {
+            self.mail_ouvert.set(ouvert);
+            self.maj_enveloppe();
+        }
+        // Mail regardé (fenêtre de Thunderbird au premier plan) : l'enveloppe n'affiche plus de nombre
+        if self.mails.get() > 0 && mail.is_some_and(|m| liste.iter().any(|f| f.active && !f.reduite && correspond(m, f))) {
+            self.mails.set(0);
+            self.maj_enveloppe();
+        }
         if self.en_cours.borrow().iter().any(|(n, _)| *n == "Mail") {
             let avant = self.fenetres_avant.borrow().clone();
             if liste.iter().any(|f| !avant.contains(&f.id)) {
@@ -1664,7 +1702,7 @@ fn icone_fenetre(f: &Fenetre, installees: &[applis::Installee]) -> gtk::Image {
         return icones::image(icone, 32);
     }
     if !id.is_empty() {
-        if let Some(a) = installees.iter().find(|a| a.motifs().iter().any(|m| id.contains(m.as_str()) || m.contains(id.as_str()))) {
+        if let Some(a) = applis::meilleure_appli(installees, &id) {
             if let Some(i) = icones::appli(a.icone.as_deref(), &[a.id.as_str(), &f.app_id], 32) {
                 return i;
             }
@@ -1848,6 +1886,47 @@ fn lancer_installee(a: &applis::Installee) {
             let _ = e.wait();
         });
     }
+}
+
+/// (v1.2) Une mise à jour se prépare-t-elle en ce moment (soleos-systeme maj) ?
+fn maj_en_preparation() -> bool {
+    std::fs::read_dir("/proc").map(|d| d.flatten().any(|e| {
+        std::fs::read(e.path().join("cmdline")).map(|c| {
+            let mots: Vec<&[u8]> = c.split(|&b| b == 0).collect();
+            mots.windows(2).any(|w| w[0].ends_with(b"soleos-systeme") && w[1] == b"maj")
+        }).unwrap_or(false)
+    })).unwrap_or(false)
+}
+
+/// (v1.2) Éteindre / redémarrer : si une mise à jour se prépare, on demande d'abord
+/// (v1.2) Fermer la session (après confirmation) : toutes les applications se ferment
+pub(crate) fn fermer_session(app: &gtk::Application) {
+    dialogue::choisir(app, &tr("Fermer la session"),
+        &tr("Toutes les applications ouvertes vont se fermer. Pensez à enregistrer vos documents."),
+        vec![dialogue::Choix { texte: tr("Fermer la session"), style: "principal",
+            action: Box::new(|| lancer(&["labwc", "--exit"])) }]);
+}
+
+pub(crate) fn arreter_ordinateur(app: &gtk::Application, quoi: &'static str) {
+    if !maj_en_preparation() {
+        lancer(&["systemctl", quoi]);
+        return;
+    }
+    let attendre = if quoi == "reboot" { tr("Redémarrer à la fin") } else { tr("Éteindre à la fin") };
+    let maintenant = if quoi == "reboot" { tr("Redémarrer quand même") } else { tr("Éteindre quand même") };
+    dialogue::choisir(app, &tr("Une mise à jour se prépare"),
+        &tr("SoleOS prépare une mise à jour en arrière-plan. Vous pouvez éteindre maintenant : elle s'arrête proprement et reprendra plus tard. Ou attendre qu'elle soit prête (quelques minutes)."),
+        vec![
+            dialogue::Choix { texte: attendre, style: "secondaire", action: Box::new(move || {
+                std::thread::spawn(move || {
+                    while maj_en_preparation() {
+                        std::thread::sleep(Duration::from_secs(5));
+                    }
+                    let _ = Command::new("systemctl").arg(quoi).status();
+                });
+            }) },
+            dialogue::Choix { texte: maintenant, style: "principal", action: Box::new(move || lancer(&["systemctl", quoi])) },
+        ]);
 }
 
 /// Transmet une demande à l'accueil (fichier « soleos-ouvrir » + réveil de l'accueil)
@@ -2183,6 +2262,21 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
         barre_droite.append(&bouton_son);
         barre_droite.append(&batterie);
     }
+    // (v1.2) Enveloppe des nouveaux mails (visible seulement quand Thunderbird est ouvert)
+    let compte_mails = gtk::Label::new(None);
+    compte_mails.add_css_class("compte-mails");
+    compte_mails.set_visible(false);
+    compte_mails.set_halign(gtk::Align::End);
+    compte_mails.set_valign(gtk::Align::Start);
+    let sur_enveloppe = gtk::Overlay::new();
+    sur_enveloppe.set_child(Some(&icones::image("mail", 26)));
+    sur_enveloppe.add_overlay(&compte_mails);
+    let enveloppe = gtk::Button::builder().child(&sur_enveloppe).build();
+    enveloppe.add_css_class("etat-bas");
+    enveloppe.add_css_class("enveloppe");
+    enveloppe.set_valign(gtk::Align::Center);
+    enveloppe.set_tooltip_text(Some(&tr("Mail")));
+    enveloppe.set_visible(false);
     let maj_prete = gtk::Label::new(Some(&tr("↻ Mise à jour prête")));
     maj_prete.add_css_class("maj-prete");
     maj_prete.set_tooltip_text(Some(&tr("Elle s'installera toute seule au prochain redémarrage.")));
@@ -2257,7 +2351,7 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
         let q = e.text().trim().to_string();
         if !q.is_empty() {
             let adresse = format!("{}{}", tr::courante().recherche, encoder(&q));
-            lancer(&["soleos-web", "--new-window", &adresse]);
+            lancer(&["soleos-internet", &adresse]);
         }
         e.set_text("");
     });
@@ -2538,6 +2632,7 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
         }
         maj_prete.set_valign(gtk::Align::Center);
         bas.droite.append(&maj_prete);
+        bas.droite.append(&enveloppe);
         groupe.append(&bouton_reseau_bas);
         groupe.append(&bouton_son_bas);
         bas.droite.append(&groupe);
@@ -2705,6 +2800,10 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
         sur_secteur: Cell::new(None),
         prechargee: Cell::new(None),
         prechargement: Cell::new(None),
+        mails: Cell::new(0),
+        mail_ouvert: Cell::new(false),
+        enveloppe: enveloppe.clone(),
+        compte_mails: compte_mails.clone(),
         bulles: vec![("wifi", objets_bureau.as_ref().map(|o| o.5.clone()).unwrap_or_else(|| bulle_wifi.clone())), ("mail", choix_mail.clone()), ("bureautique", choix_bureautique.clone())],
         reglages: panneau_reglages.clone(),
         bulle_reglages: bulle_reglages.clone(),
@@ -2717,6 +2816,59 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
         boutons_magique: objets_bureau.as_ref().map(|o| o.2.clone()).unwrap_or_default(),
         bulle_droite: RefCell::new(None),
     });
+    // (v1.2) Notifications des applications (bulle en bas à droite) et nouveaux mails (enveloppe)
+    if couches && std::env::var_os("SOLEOS_SANS_NOTIFICATIONS").is_none() {
+        let mail = APPLIS.iter().find(|a| a.nom == "Mail");
+        {
+            let moi = Rc::downgrade(&accueil);
+            accueil.enveloppe.connect_clicked(move |_| {
+                if let (Some(m), Some(mail)) = (moi.upgrade(), mail) {
+                    m.mails.set(0);
+                    m.maj_enveloppe();
+                    m.ouvrir(mail);
+                }
+            });
+        }
+        let ouverte: Rc<RefCell<Option<(u32, gtk::Window)>>> = Rc::new(RefCell::new(None));
+        let serveur: Rc<RefCell<Option<Rc<notifications::Serveur>>>> = Rc::new(RefCell::new(None));
+        let (moi, app2, o, sv) = (Rc::downgrade(&accueil), app.clone(), ouverte.clone(), serveur.clone());
+        let o2 = ouverte.clone();
+        let s = notifications::demarrer(
+            move |n| {
+                let Some(m) = moi.upgrade() else { return };
+                if n.mail {
+                    m.mails.set(m.mails.get().saturating_add(n.nombre));
+                    m.maj_enveloppe();
+                }
+                if let Some((_, f)) = o.borrow_mut().take() {
+                    f.destroy();
+                }
+                let (moi2, sv2, id, est_mail) = (Rc::downgrade(&m), sv.clone(), n.id, n.mail);
+                let f = bureau::bulle_notification(&app2, &n.appli, &n.titre, &n.texte, n.duree_ms, move || {
+                    if let Some(s) = sv2.borrow().as_ref() {
+                        s.signaler_clic(id);
+                    }
+                    if est_mail {
+                        if let (Some(m), Some(mail)) = (moi2.upgrade(), mail) {
+                            m.mails.set(0);
+                            m.maj_enveloppe();
+                            m.ouvrir(mail);
+                        }
+                    }
+                });
+                *o.borrow_mut() = Some((n.id, f));
+            },
+            move |id| {
+                let mut b = o2.borrow_mut();
+                if b.as_ref().is_some_and(|(i, _)| *i == id) {
+                    if let Some((_, f)) = b.take() {
+                        f.destroy();
+                    }
+                }
+            },
+        );
+        *serveur.borrow_mut() = Some(s);
+    }
     // Bureau v12.5 : barre magique, panneau de l'éclair, Wi-Fi de la barre du bas
     if let Some((_, panneau, boutons, reglages_magique, wifi_bas, _)) = &objets_bureau {
         for (appli, bouton) in boutons {
@@ -2902,10 +3054,15 @@ fn construire(app: &gtk::Application, suivi: Option<(Gestionnaire, async_channel
         let v = verrouiller.clone();
         bulle_alim.connect_show(move |_| v.set_visible(std::path::Path::new("/run/soleos/verrouillable").exists()));
     }
-    let eteindre = entree_menu(&tr("⏻  Éteindre"), &bulle_alim, || lancer(&["systemctl", "poweroff"]));
+    let a2 = app.clone();
+    let eteindre = entree_menu(&tr("⏻  Éteindre"), &bulle_alim, move || arreter_ordinateur(&a2, "poweroff"));
     eteindre.add_css_class("danger");
     menu_alim.append(&eteindre);
-    menu_alim.append(&entree_menu(&tr("↻  Redémarrer"), &bulle_alim, || lancer(&["systemctl", "reboot"])));
+    let a2 = app.clone();
+    menu_alim.append(&entree_menu(&tr("↻  Redémarrer"), &bulle_alim, move || arreter_ordinateur(&a2, "reboot")));
+    // (v1.2) Fermer la session : toutes les applications se ferment, la session repart à neuf
+    let a2 = app.clone();
+    menu_alim.append(&entree_menu(&tr("⇥  Fermer la session"), &bulle_alim, move || fermer_session(&a2)));
     menu_alim.append(&entree_menu(&tr("☾  Mettre en veille"), &bulle_alim, || lancer(&["systemctl", "suspend"])));
     // (La taille d'affichage est dans Réglages ⚙.)
     // Au démarrage : taille adaptée à l'écran (automatique, ou celle choisie)

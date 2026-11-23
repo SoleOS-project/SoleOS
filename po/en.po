@@ -644,6 +644,12 @@ msgstr "Uninstall"
 msgid "Annuler"
 msgstr "Cancel"
 
+msgid "Retrouvez vos favoris Google"
+msgstr "Get your Google bookmarks back"
+
+msgid "Avec Google Chrome et votre compte Google : vos favoris, mots de passe et extensions, comme sur votre ancien ordinateur. Ensuite, Réglages → Navigateur pour l'ouvrir avec le bouton Internet."
+msgstr "With Google Chrome and your Google account: your bookmarks, passwords and extensions, just like on your old computer. Then go to Settings → Browser to open it with the Internet button."
+
 msgid "Logiciels libres et rapides, écrits en Rust par l'équipe ArtCraft. Encore jeunes : gardez Bureautique pour les documents importants."
 msgstr "Free and fast software, written in Rust by the ArtCraft team. Still young: keep Office for important documents."
 
@@ -944,8 +950,14 @@ msgstr "Starting the installation…"
 msgid "N'éteignez pas l'ordinateur et ne retirez pas la clé USB."
 msgstr "Don't turn off the computer and don't remove the USB key."
 
+msgid "Mettre à jour SoleOS"
+msgstr "Update SoleOS"
+
 msgid "Réparer SoleOS"
 msgstr "Repair SoleOS"
+
+msgid "Vos fichiers sont protégés. Pour les garder pendant la mise à jour,\ntapez votre code SoleOS (ou votre clé de secours)."
+msgstr "Your files are protected. To keep them during the update,\ntype your SoleOS code (or your recovery key)."
 
 msgid "Vos fichiers sont protégés. Pour les garder pendant la réparation,\ntapez votre code SoleOS (ou votre clé de secours)."
 msgstr "Your files are protected. To keep them during the repair,\ntype your SoleOS code (or your recovery key)."
@@ -953,14 +965,23 @@ msgstr "Your files are protected. To keep them during the repair,\ntype your Sol
 msgid "Afficher ce que je tape"
 msgstr "Show what I type"
 
-msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
-msgstr "To type digits: Shift key (⇧) or numeric keypad."
+msgid "Le code ne contient que des chiffres : touche Maj (⇧) + la touche du chiffre, ou pavé numérique. Effacez et retapez."
+msgstr "The code contains only digits: Shift (⇧) + the digit key, or the numeric keypad. Clear it and type it again."
+
+msgid "Mettre à jour"
+msgstr "Update"
 
 msgid "Réparer"
 msgstr "Repair"
 
+msgid "Code oublié et clé de secours perdue : seule une nouvelle installation (tout effacer) reste possible."
+msgstr "Forgot your code and lost your recovery key: only a new installation (erasing everything) is possible."
+
 msgid "Code oublié et clé de secours perdue : seul « Tout effacer » reste possible."
 msgstr "Code forgotten and recovery key lost: only “Erase everything” is possible."
+
+msgid "Démarrage de la mise à jour…"
+msgstr "Starting the update…"
 
 msgid "Démarrage de la réparation…"
 msgstr "Starting the repair…"
@@ -980,6 +1001,12 @@ msgstr "Incorrect code. Try again, or type your recovery key."
 msgid "Trop d'essais : la puce de sécurité patiente quelques minutes. Vous pouvez aussi taper votre clé de secours."
 msgstr "Too many attempts: the security chip waits a few minutes. You can also type your recovery key."
 
+msgid "SoleOS{version} est installé, vos fichiers sont gardés !"
+msgstr "SoleOS{version} is installed, your files are kept!"
+
+msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
+msgstr "Remove the USB key, then restart the computer."
+
 msgid "SoleOS est remis à neuf !"
 msgstr "SoleOS is as good as new!"
 
@@ -989,11 +1016,35 @@ msgstr "Restart the computer to use it."
 msgid "SoleOS est installé !"
 msgstr "SoleOS is installed!"
 
-msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
-msgstr "Remove the USB key, then restart the computer."
-
 msgid "Redémarrer maintenant"
 msgstr "Restart now"
+
+msgid "SoleOS est déjà installé sur cet ordinateur"
+msgstr "SoleOS is already installed on this computer"
+
+msgid "Version installée : {ancienne}  —  version de la clé : {nouvelle}"
+msgstr "Installed version: {ancienne}  —  USB stick version: {nouvelle}"
+
+msgid "↻  Mettre à jour SoleOS"
+msgstr "↻  Update SoleOS"
+
+msgid "SoleOS est remplacé par la version de la clé. Tout est gardé : vos fichiers, vos applications, vos mails, votre navigateur (favoris, mots de passe), vos réglages, vos réseaux Wi-Fi, imprimantes et appareils Bluetooth, votre code et votre clé de secours."
+msgstr "SoleOS is replaced by the version on the USB stick. Everything is kept: your files, apps, emails, browser (bookmarks, passwords), settings, Wi-Fi networks, printers and Bluetooth devices, your code and your recovery key."
+
+msgid "Votre code (ou votre clé de secours) vous sera demandé."
+msgstr "You will be asked for your code (or your recovery key)."
+
+msgid "⚠  Effacer et réinstaller"
+msgstr "⚠  Erase and reinstall"
+
+msgid "Nouvelle installation : tout le disque est effacé (fichiers, applications, réglages, comptes)."
+msgstr "New installation: the whole disk is erased (files, apps, settings, accounts)."
+
+msgid "Effacer et réinstaller"
+msgstr "Erase and reinstall"
+
+msgid "Disque : {modele}  —  {taille}"
+msgstr "Disk: {modele}  —  {taille}"
 
 msgid "Réparer ou réinitialiser SoleOS"
 msgstr "Repair or reset SoleOS"
@@ -1003,9 +1054,6 @@ msgstr "⚙  Repair SoleOS"
 
 msgid "Le système est remis à neuf. Vos fichiers, vos applications, vos réglages et vos réseaux Wi-Fi sont conservés.\n\nLe navigateur est remis à zéro (extensions et réglages) ; vos favoris restent."
 msgstr "The system is restored as new. Your files, apps, settings and Wi-Fi networks are kept.\n\nThe browser is reset (extensions and settings); your bookmarks remain."
-
-msgid "Votre code (ou votre clé de secours) vous sera demandé."
-msgstr "You will be asked for your code (or your recovery key)."
 
 msgid "⚠  Tout effacer"
 msgstr "⚠  Erase everything"
@@ -1021,9 +1069,6 @@ msgstr "Erase everything"
 
 msgid "EFFACER"
 msgstr "ERASE"
-
-msgid "Disque : {modele}  —  {taille}"
-msgstr "Disk: {modele}  —  {taille}"
 
 msgid "Annuler et redémarrer normalement"
 msgstr "Cancel and restart normally"
@@ -1111,6 +1156,9 @@ msgstr "Screenshot"
 
 msgid "Signaler un problème"
 msgstr "Report a problem"
+
+msgid "Fermer la session"
+msgstr "Log out"
 
 msgid "Ajouter au bureau"
 msgstr "Add to desktop"
@@ -1291,6 +1339,9 @@ msgstr "Creating the report…"
 
 msgid "Le relevé n'a pas pu être créé."
 msgstr "The report could not be created."
+
+msgid "Origine"
+msgstr "Origin"
 
 msgid "Soleil"
 msgstr "Sun"
@@ -1478,6 +1529,12 @@ msgstr "Screenshot saved in Pictures"
 msgid "À droite :"
 msgstr "On the right:"
 
+msgid "{n} nouveaux mails"
+msgstr "{n} new emails"
+
+msgid "1 nouveau mail"
+msgstr "1 new email"
+
 msgid "Applis ouvertes"
 msgstr "Open apps"
 
@@ -1531,6 +1588,27 @@ msgstr "Hello {prenom}"
 
 msgid "Bonsoir {prenom}"
 msgstr "Good evening {prenom}"
+
+msgid "Toutes les applications ouvertes vont se fermer. Pensez à enregistrer vos documents."
+msgstr "All open apps will close. Remember to save your documents."
+
+msgid "Redémarrer à la fin"
+msgstr "Restart when finished"
+
+msgid "Éteindre à la fin"
+msgstr "Shut down when finished"
+
+msgid "Redémarrer quand même"
+msgstr "Restart anyway"
+
+msgid "Éteindre quand même"
+msgstr "Shut down anyway"
+
+msgid "Une mise à jour se prépare"
+msgstr "An update is being prepared"
+
+msgid "SoleOS prépare une mise à jour en arrière-plan. Vous pouvez éteindre maintenant : elle s'arrête proprement et reprendra plus tard. Ou attendre qu'elle soit prête (quelques minutes)."
+msgstr "SoleOS is preparing an update in the background. You can shut down now: it stops cleanly and will resume later. Or wait until it is ready (a few minutes)."
 
 msgid "Accueil"
 msgstr "Home"
@@ -1601,6 +1679,9 @@ msgstr "⏻  Shut down"
 msgid "↻  Redémarrer"
 msgstr "↻  Restart"
 
+msgid "⇥  Fermer la session"
+msgstr "⇥  Log out"
+
 msgid "☾  Mettre en veille"
 msgstr "☾  Sleep"
 
@@ -1615,6 +1696,9 @@ msgstr "Unable to set the old profile aside ({e})."
 
 msgid "Navigateur remis à neuf : extensions, notifications des sites et réglages effacés. Favoris, mots de passe et historique sont gardés."
 msgstr "Browser reset: extensions, site notifications and settings erased. Bookmarks, passwords and history are kept."
+
+msgid "Chromium (intégré à SoleOS)"
+msgstr "Chromium (built into SoleOS)"
 
 msgid "Bureau"
 msgstr "Desktop"
@@ -1856,6 +1940,15 @@ msgstr "This computer"
 msgid "Utilisateur : {prenom}"
 msgstr "User: {prenom}"
 
+msgid "Changer mon prénom"
+msgstr "Change my first name"
+
+msgid "Changer"
+msgstr "Change"
+
+msgid "Prénom changé."
+msgstr "First name changed."
+
 msgid "inconnu"
 msgstr "unknown"
 
@@ -1940,6 +2033,15 @@ msgstr "The Camera app could not be installed (Internet connection?)."
 msgid "Les applications (navigateur, visio) demandent la permission avant d'utiliser la caméra."
 msgstr "Apps (browser, video calls) ask for permission before using the camera."
 
+msgid "Navigateur du bouton Internet"
+msgstr "Browser for the Internet button"
+
+msgid "Vous préférez Google Chrome, Firefox ou Edge ? Installez-le depuis « Applications » : il apparaîtra ici."
+msgstr "Prefer Google Chrome, Firefox or Edge? Install it from “Applications”: it will appear here."
+
+msgid "Remettre à neuf"
+msgstr "Reset"
+
 msgid "{n} extensions installées"
 msgstr "{n} extensions installed"
 
@@ -2014,6 +2116,21 @@ msgstr "−"
 
 msgid "+"
 msgstr "+"
+
+msgid "Résolution de l'écran"
+msgstr "Screen resolution"
+
+msgid "{res} (d'origine, la plus nette)"
+msgstr "{res} (native, sharpest)"
+
+msgid "D'origine"
+msgstr "Native"
+
+msgid "Garder cette résolution ? Retour à la précédente dans 15 secondes."
+msgstr "Keep this resolution? Reverting to the previous one in 15 seconds."
+
+msgid "Garder"
+msgstr "Keep"
 
 msgid "%A %e %B %Y, %H:%M"
 msgstr "%A, %B %e, %Y, %H:%M"
@@ -2183,6 +2300,9 @@ msgstr "Security tool not found ({e})."
 msgid "L'opération a échoué."
 msgstr "The operation failed."
 
+msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "To type digits: Shift key (⇧) or numeric keypad."
+
 msgid "Décrivez en une phrase ce qui ne marche pas. SoleOS prépare un message pour l'assistance, avec un relevé technique (sans mot de passe ni contenu personnel). Vous le relisez avant de l'envoyer."
 msgstr "Describe in one sentence what does not work. SoleOS prepares a message for support, with a technical report (no passwords or personal content). You review it before sending."
 
@@ -2287,4 +2407,271 @@ msgstr "Connected to “{nom}”."
 
 msgid "Mot de passe incorrect. Réessayez."
 msgstr "Incorrect password. Try again."
+
+msgid "Aucun disque interne d'au moins 32 Go n'a été trouvé."
+msgstr "No internal disk of at least 32 GB was found."
+
+msgid "Aucun SoleOS installé n'a été trouvé sur cet ordinateur."
+msgstr "No installed SoleOS was found on this computer."
+
+msgid "Le chiffrement des données a échoué."
+msgstr "Data encryption failed."
+
+msgid "Ouverture des données chiffrées impossible."
+msgstr "Unable to open the encrypted data."
+
+msgid "Impossible de trouver le système SoleOS d'origine."
+msgstr "Unable to find the original SoleOS system."
+
+msgid "Lecture du système d'origine impossible."
+msgstr "Unable to read the original system."
+
+msgid "Montage du système impossible."
+msgstr "Unable to mount the system."
+
+msgid "La copie des fichiers a échoué."
+msgstr "Copying the files failed."
+
+msgid "Montage des données impossible."
+msgstr "Unable to mount the data."
+
+msgid "Noyau introuvable."
+msgstr "Kernel not found."
+
+msgid "Création du compte impossible."
+msgstr "Unable to create the account."
+
+msgid "Le système de la clé est incomplet (protection du démarrage). Utilisez une autre clé."
+msgstr "The system on the USB stick is incomplete (startup protection). Use another USB stick."
+
+msgid "Préparation du démarrage impossible (initramfs)."
+msgstr "Unable to prepare the startup (initramfs)."
+
+msgid "Montage de la partition de démarrage impossible."
+msgstr "Unable to mount the boot partition."
+
+msgid "Montage EFI impossible."
+msgstr "Unable to mount EFI."
+
+msgid "Installation du démarrage (UEFI) impossible."
+msgstr "Unable to install the startup (UEFI)."
+
+msgid "Installation du démarrage (BIOS) impossible."
+msgstr "Unable to install the startup (BIOS)."
+
+msgid "Écriture du menu de démarrage impossible."
+msgstr "Unable to write the boot menu."
+
+msgid "Menu de démarrage incomplet."
+msgstr "Incomplete boot menu."
+
+msgid "Montage de la copie d'origine impossible."
+msgstr "Unable to mount the original copy."
+
+msgid "Fichiers d'origine introuvables sur la clé."
+msgstr "Original files not found on the USB key."
+
+msgid "Copie d'origine impossible."
+msgstr "Unable to make the original copy."
+
+msgid "Copie d'origine impossible (espace ?)."
+msgstr "Unable to make the original copy (space?)."
+
+msgid "Ce disque est celui de la clé ou du système en cours : opération refusée."
+msgstr "This disk is the USB key or the running system: operation refused."
+
+msgid "L'installation doit être lancée en administrateur."
+msgstr "The installation must be run as administrator."
+
+msgid "Disque introuvable : {disque}"
+msgstr "Disk not found: {disque}"
+
+msgid "Ce disque est trop petit (32 Go au minimum)."
+msgstr "This disk is too small (32 GB minimum)."
+
+msgid "Préparation du disque"
+msgstr "Preparing the disk"
+
+msgid "Le disque n'a pas pu être effacé."
+msgstr "The disk could not be erased."
+
+msgid "Le partitionnement a échoué."
+msgstr "Partitioning failed."
+
+msgid "Les nouvelles partitions ne sont pas apparues."
+msgstr "The new partitions did not appear."
+
+msgid "Formatage EFI impossible."
+msgstr "Unable to format EFI."
+
+msgid "Formatage impossible (démarrage)."
+msgstr "Unable to format (boot)."
+
+msgid "Formatage impossible (A)."
+msgstr "Unable to format (A)."
+
+msgid "Formatage impossible (B)."
+msgstr "Unable to format (B)."
+
+msgid "Formatage impossible (usine)."
+msgstr "Unable to format (factory)."
+
+msgid "Formatage impossible (données)."
+msgstr "Unable to format (data)."
+
+msgid "Copie de SoleOS sur l'ordinateur"
+msgstr "Copying SoleOS to the computer"
+
+msgid "Création de la copie de secours"
+msgstr "Creating the backup copy"
+
+msgid "Installation du démarrage"
+msgstr "Installing the startup"
+
+msgid "Finalisation"
+msgstr "Finishing"
+
+msgid "La réparation doit être lancée en administrateur."
+msgstr "The repair must be run as administrator."
+
+msgid "Mode de réparation inconnu."
+msgstr "Unknown repair mode."
+
+msgid "Ce disque ne contient pas un SoleOS complet."
+msgstr "This disk does not contain a complete SoleOS."
+
+msgid "Préparation"
+msgstr "Preparing"
+
+msgid "Remise à neuf du système impossible."
+msgstr "Unable to restore the system as new."
+
+msgid "Effacement des données"
+msgstr "Erasing the data"
+
+msgid "Effacement des données impossible."
+msgstr "Unable to erase the data."
+
+msgid "Mise à jour de SoleOS"
+msgstr "Updating SoleOS"
+
+msgid "Remise à neuf de SoleOS"
+msgstr "Restoring SoleOS as new"
+
+msgid "Remise à zéro du navigateur"
+msgstr "Resetting the browser"
+
+msgid "Mise à jour de la copie de secours"
+msgstr "Updating the recovery copy"
+
+msgid "Disque non précisé"
+msgstr "Disk not specified"
+
+msgid "Mode ou disque non précisé"
+msgstr "Mode or disk not specified"
+
+msgid "Aucun clavier trouvé. Clavier Bluetooth : appuyez sur une touche, ou mettez-le en mode association."
+msgstr "No keyboard found. Bluetooth keyboard: press a key, or put it in pairing mode."
+
+msgid "Entrez votre code"
+msgstr "Enter your code"
+
+msgid "Entrez votre mot de passe"
+msgstr "Enter your password"
+
+msgid "Code incorrect. Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "Incorrect code. To type digits: Shift key (⇧) or numeric keypad."
+
+msgid "Vérification…"
+msgstr "Checking…"
+
+msgid "Trop d'essais : patientez quelques minutes, ou tapez votre clé de secours."
+msgstr "Too many attempts: wait a few minutes, or type your recovery key."
+
+msgid "Code incorrect. Code oublié ? Tapez votre clé de secours à la place."
+msgstr "Incorrect code. Forgot your code? Type your recovery key instead."
+
+msgid "Mot de passe incorrect. Mot de passe oublié ? Tapez votre clé de secours à la place."
+msgstr "Incorrect password. Forgot your password? Type your recovery key instead."
+
+msgid "Code incorrect, réessayez."
+msgstr "Incorrect code, try again."
+
+msgid "Mot de passe incorrect, réessayez."
+msgstr "Incorrect password, try again."
+
+msgid "Les données ne sont pas chiffrées sur cet ordinateur."
+msgstr "The data is not encrypted on this computer."
+
+msgid "Les données ne sont pas ouvertes."
+msgstr "The data is not open."
+
+msgid "Clé interne introuvable."
+msgstr "Internal key not found."
+
+msgid "Partition des données introuvable."
+msgstr "Data partition not found."
+
+msgid "L'ancien code n'a pas pu être retiré."
+msgstr "The old code could not be removed."
+
+msgid "La puce de sécurité est bloquée après trop d'essais de code. Réessayez dans quelques minutes (ou plus tard)."
+msgstr "The security chip is locked after too many code attempts. Try again in a few minutes (or later)."
+
+msgid "La puce de sécurité n'a pas accepté le code."
+msgstr "The security chip did not accept the code."
+
+msgid "Impossible de remplacer l'ancien mot de passe."
+msgstr "Unable to replace the old password."
+
+msgid "Le mot de passe n'a pas pu être enregistré."
+msgstr "The password could not be saved."
+
+msgid "Le code doit contenir exactement {n} chiffres."
+msgstr "The code must contain exactly {n} digits."
+
+msgid "Le mot de passe doit contenir au moins {n} caractères."
+msgstr "The password must contain at least {n} characters."
+
+msgid "La clé de secours existe déjà (Réglages → Nouvelle clé de secours)."
+msgstr "The recovery key already exists (Settings → New recovery key)."
+
+msgid "Impossible de remplacer l'ancienne clé de secours."
+msgstr "Unable to replace the old recovery key."
+
+msgid "Compte introuvable."
+msgstr "Account not found."
+
+msgid "Tapez votre prénom."
+msgstr "Type your first name."
+
+msgid "Le prénom n'a pas pu être changé."
+msgstr "The first name could not be changed."
+
+msgid "Pour changer de code, utilisez Réglages → Changer mon code."
+msgstr "To change the code, use Settings → Change my code."
+
+msgid "La clé de secours doit d'abord être créée."
+msgstr "The recovery key must be created first."
+
+msgid "Aucun code n'est encore choisi."
+msgstr "No code has been chosen yet."
+
+msgid "Code actuel incorrect."
+msgstr "Incorrect current code."
+
+msgid "Code incorrect."
+msgstr "Incorrect code."
+
+msgid "Partition non précisée."
+msgstr "Partition not specified."
+
+msgid "SoleOS (autre version)"
+msgstr "SoleOS (other version)"
+
+msgid "Langue inconnue."
+msgstr "Unknown language."
+
+msgid "Clavier inconnu."
+msgstr "Unknown keyboard."
 

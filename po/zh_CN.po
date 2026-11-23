@@ -644,6 +644,12 @@ msgstr "卸载"
 msgid "Annuler"
 msgstr "取消"
 
+msgid "Retrouvez vos favoris Google"
+msgstr "找回您的 Google 书签"
+
+msgid "Avec Google Chrome et votre compte Google : vos favoris, mots de passe et extensions, comme sur votre ancien ordinateur. Ensuite, Réglages → Navigateur pour l'ouvrir avec le bouton Internet."
+msgstr "使用 Google Chrome 和您的 Google 帐户：书签、密码和扩展程序都和旧电脑上一样。然后在 设置 → 浏览器 中设置，让“互联网”按钮打开它。"
+
 msgid "Logiciels libres et rapides, écrits en Rust par l'équipe ArtCraft. Encore jeunes : gardez Bureautique pour les documents importants."
 msgstr "由 ArtCraft 团队用 Rust 编写的自由、快速的软件。目前还比较新：重要文档请使用“办公”。"
 
@@ -944,8 +950,14 @@ msgstr "正在开始安装…"
 msgid "N'éteignez pas l'ordinateur et ne retirez pas la clé USB."
 msgstr "请不要关闭电脑，也不要拔出 U 盘。"
 
+msgid "Mettre à jour SoleOS"
+msgstr "更新 SoleOS"
+
 msgid "Réparer SoleOS"
 msgstr "修复 SoleOS"
+
+msgid "Vos fichiers sont protégés. Pour les garder pendant la mise à jour,\ntapez votre code SoleOS (ou votre clé de secours)."
+msgstr "您的文件受到保护。为了在更新时保留它们，\n请输入您的 SoleOS 密码（或恢复密钥）。"
 
 msgid "Vos fichiers sont protégés. Pour les garder pendant la réparation,\ntapez votre code SoleOS (ou votre clé de secours)."
 msgstr "您的文件受到保护。若要在修复时保留它们，\n请输入 SoleOS 密码（或恢复密钥）。"
@@ -953,14 +965,23 @@ msgstr "您的文件受到保护。若要在修复时保留它们，\n请输入 
 msgid "Afficher ce que je tape"
 msgstr "显示输入内容"
 
-msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
-msgstr "输入数字：按 Shift 键（⇧）或使用数字小键盘。"
+msgid "Le code ne contient que des chiffres : touche Maj (⇧) + la touche du chiffre, ou pavé numérique. Effacez et retapez."
+msgstr "密码只包含数字：按 Shift (⇧) + 数字键，或使用数字小键盘。请清除后重新输入。"
+
+msgid "Mettre à jour"
+msgstr "更新"
 
 msgid "Réparer"
 msgstr "修复"
 
+msgid "Code oublié et clé de secours perdue : seule une nouvelle installation (tout effacer) reste possible."
+msgstr "忘记密码且丢失恢复密钥：只能重新安装（全部清除）。"
+
 msgid "Code oublié et clé de secours perdue : seul « Tout effacer » reste possible."
 msgstr "忘记密码且丢失恢复密钥：只能选择“全部清除”。"
+
+msgid "Démarrage de la mise à jour…"
+msgstr "正在开始更新…"
 
 msgid "Démarrage de la réparation…"
 msgstr "正在开始修复…"
@@ -980,6 +1001,12 @@ msgstr "密码错误。请重试，或输入恢复密钥。"
 msgid "Trop d'essais : la puce de sécurité patiente quelques minutes. Vous pouvez aussi taper votre clé de secours."
 msgstr "尝试次数过多：安全芯片需要等待几分钟。您也可以输入恢复密钥。"
 
+msgid "SoleOS{version} est installé, vos fichiers sont gardés !"
+msgstr "SoleOS{version} 已安装，您的文件已保留！"
+
+msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
+msgstr "请拔出 U 盘，然后重启电脑。"
+
 msgid "SoleOS est remis à neuf !"
 msgstr "SoleOS 已焕然一新！"
 
@@ -989,11 +1016,35 @@ msgstr "重启电脑即可使用。"
 msgid "SoleOS est installé !"
 msgstr "SoleOS 已安装！"
 
-msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
-msgstr "请拔出 U 盘，然后重启电脑。"
-
 msgid "Redémarrer maintenant"
 msgstr "立即重启"
+
+msgid "SoleOS est déjà installé sur cet ordinateur"
+msgstr "此电脑上已安装 SoleOS"
+
+msgid "Version installée : {ancienne}  —  version de la clé : {nouvelle}"
+msgstr "已安装版本：{ancienne}  —  U 盘版本：{nouvelle}"
+
+msgid "↻  Mettre à jour SoleOS"
+msgstr "↻  更新 SoleOS"
+
+msgid "SoleOS est remplacé par la version de la clé. Tout est gardé : vos fichiers, vos applications, vos mails, votre navigateur (favoris, mots de passe), vos réglages, vos réseaux Wi-Fi, imprimantes et appareils Bluetooth, votre code et votre clé de secours."
+msgstr "SoleOS 将被替换为 U 盘上的版本。所有内容都会保留：文件、应用、邮件、浏览器（书签、密码）、设置、Wi-Fi 网络、打印机和蓝牙设备、密码和恢复密钥。"
+
+msgid "Votre code (ou votre clé de secours) vous sera demandé."
+msgstr "系统会要求您输入密码（或恢复密钥）。"
+
+msgid "⚠  Effacer et réinstaller"
+msgstr "⚠  清除并重新安装"
+
+msgid "Nouvelle installation : tout le disque est effacé (fichiers, applications, réglages, comptes)."
+msgstr "全新安装：整个磁盘将被清除（文件、应用、设置、帐户）。"
+
+msgid "Effacer et réinstaller"
+msgstr "清除并重新安装"
+
+msgid "Disque : {modele}  —  {taille}"
+msgstr "磁盘：{modele}  —  {taille}"
 
 msgid "Réparer ou réinitialiser SoleOS"
 msgstr "修复或重置 SoleOS"
@@ -1003,9 +1054,6 @@ msgstr "⚙  修复 SoleOS"
 
 msgid "Le système est remis à neuf. Vos fichiers, vos applications, vos réglages et vos réseaux Wi-Fi sont conservés.\n\nLe navigateur est remis à zéro (extensions et réglages) ; vos favoris restent."
 msgstr "系统将恢复如新。您的文件、应用、设置和 Wi-Fi 网络都会保留。\n\n浏览器将被重置（扩展和设置）；书签会保留。"
-
-msgid "Votre code (ou votre clé de secours) vous sera demandé."
-msgstr "系统会要求您输入密码（或恢复密钥）。"
 
 msgid "⚠  Tout effacer"
 msgstr "⚠  全部清除"
@@ -1021,9 +1069,6 @@ msgstr "全部清除"
 
 msgid "EFFACER"
 msgstr "清除"
-
-msgid "Disque : {modele}  —  {taille}"
-msgstr "磁盘：{modele}  —  {taille}"
 
 msgid "Annuler et redémarrer normalement"
 msgstr "取消并正常重启"
@@ -1111,6 +1156,9 @@ msgstr "截图"
 
 msgid "Signaler un problème"
 msgstr "报告问题"
+
+msgid "Fermer la session"
+msgstr "注销"
 
 msgid "Ajouter au bureau"
 msgstr "添加到桌面"
@@ -1291,6 +1339,9 @@ msgstr "正在创建报告…"
 
 msgid "Le relevé n'a pas pu être créé."
 msgstr "无法创建报告。"
+
+msgid "Origine"
+msgstr "起源"
 
 msgid "Soleil"
 msgstr "太阳"
@@ -1478,6 +1529,12 @@ msgstr "截图已保存到“图片”"
 msgid "À droite :"
 msgstr "右侧："
 
+msgid "{n} nouveaux mails"
+msgstr "{n} 封新邮件"
+
+msgid "1 nouveau mail"
+msgstr "1 封新邮件"
+
 msgid "Applis ouvertes"
 msgstr "已打开的应用"
 
@@ -1531,6 +1588,27 @@ msgstr "{prenom}，你好"
 
 msgid "Bonsoir {prenom}"
 msgstr "{prenom}，晚上好"
+
+msgid "Toutes les applications ouvertes vont se fermer. Pensez à enregistrer vos documents."
+msgstr "所有打开的应用都将关闭。请记得保存您的文档。"
+
+msgid "Redémarrer à la fin"
+msgstr "完成后重启"
+
+msgid "Éteindre à la fin"
+msgstr "完成后关机"
+
+msgid "Redémarrer quand même"
+msgstr "仍然重启"
+
+msgid "Éteindre quand même"
+msgstr "仍然关机"
+
+msgid "Une mise à jour se prépare"
+msgstr "正在准备更新"
+
+msgid "SoleOS prépare une mise à jour en arrière-plan. Vous pouvez éteindre maintenant : elle s'arrête proprement et reprendra plus tard. Ou attendre qu'elle soit prête (quelques minutes)."
+msgstr "SoleOS 正在后台准备更新。您现在可以关机：更新会安全停止，稍后继续。也可以等待它完成（几分钟）。"
 
 msgid "Accueil"
 msgstr "主页"
@@ -1601,6 +1679,9 @@ msgstr "⏻  关机"
 msgid "↻  Redémarrer"
 msgstr "↻  重启"
 
+msgid "⇥  Fermer la session"
+msgstr "⇥  注销"
+
 msgid "☾  Mettre en veille"
 msgstr "☾  睡眠"
 
@@ -1615,6 +1696,9 @@ msgstr "无法保留旧的配置文件（{e}）。"
 
 msgid "Navigateur remis à neuf : extensions, notifications des sites et réglages effacés. Favoris, mots de passe et historique sont gardés."
 msgstr "浏览器已重置：扩展、网站通知和设置已清除。书签、密码和历史记录均已保留。"
+
+msgid "Chromium (intégré à SoleOS)"
+msgstr "Chromium（SoleOS 自带）"
 
 msgid "Bureau"
 msgstr "桌面"
@@ -1856,6 +1940,15 @@ msgstr "这台电脑"
 msgid "Utilisateur : {prenom}"
 msgstr "用户：{prenom}"
 
+msgid "Changer mon prénom"
+msgstr "更改我的名字"
+
+msgid "Changer"
+msgstr "更改"
+
+msgid "Prénom changé."
+msgstr "名字已更改。"
+
 msgid "inconnu"
 msgstr "未知"
 
@@ -1940,6 +2033,15 @@ msgstr "无法安装相机应用（请检查网络连接）。"
 msgid "Les applications (navigateur, visio) demandent la permission avant d'utiliser la caméra."
 msgstr "应用（浏览器、视频通话）使用摄像头前会请求许可。"
 
+msgid "Navigateur du bouton Internet"
+msgstr "“互联网”按钮使用的浏览器"
+
+msgid "Vous préférez Google Chrome, Firefox ou Edge ? Installez-le depuis « Applications » : il apparaîtra ici."
+msgstr "更喜欢 Google Chrome、Firefox 或 Edge？请从“应用程序”中安装，它会显示在这里。"
+
+msgid "Remettre à neuf"
+msgstr "重置"
+
 msgid "{n} extensions installées"
 msgstr "已安装 {n} 个扩展"
 
@@ -2014,6 +2116,21 @@ msgstr "−"
 
 msgid "+"
 msgstr "+"
+
+msgid "Résolution de l'écran"
+msgstr "屏幕分辨率"
+
+msgid "{res} (d'origine, la plus nette)"
+msgstr "{res}（原生，最清晰）"
+
+msgid "D'origine"
+msgstr "原生"
+
+msgid "Garder cette résolution ? Retour à la précédente dans 15 secondes."
+msgstr "保留此分辨率？15 秒后将恢复为之前的分辨率。"
+
+msgid "Garder"
+msgstr "保留"
 
 msgid "%A %e %B %Y, %H:%M"
 msgstr "%Y年%-m月%-d日 %A %H:%M"
@@ -2183,6 +2300,9 @@ msgstr "找不到安全工具（{e}）。"
 msgid "L'opération a échoué."
 msgstr "操作失败。"
 
+msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "输入数字：按 Shift 键（⇧）或使用数字小键盘。"
+
 msgid "Décrivez en une phrase ce qui ne marche pas. SoleOS prépare un message pour l'assistance, avec un relevé technique (sans mot de passe ni contenu personnel). Vous le relisez avant de l'envoyer."
 msgstr "用一句话描述哪里不正常。SoleOS 会为支持团队准备一封邮件，并附上技术报告（不含密码和个人内容）。发送前您可以先查看。"
 
@@ -2287,4 +2407,271 @@ msgstr "已连接到“{nom}”。"
 
 msgid "Mot de passe incorrect. Réessayez."
 msgstr "密码错误，请重试。"
+
+msgid "Aucun disque interne d'au moins 32 Go n'a été trouvé."
+msgstr "未找到至少 32 GB 的内置磁盘。"
+
+msgid "Aucun SoleOS installé n'a été trouvé sur cet ordinateur."
+msgstr "此电脑上未找到已安装的 SoleOS。"
+
+msgid "Le chiffrement des données a échoué."
+msgstr "数据加密失败。"
+
+msgid "Ouverture des données chiffrées impossible."
+msgstr "无法打开加密数据。"
+
+msgid "Impossible de trouver le système SoleOS d'origine."
+msgstr "找不到 SoleOS 原始系统。"
+
+msgid "Lecture du système d'origine impossible."
+msgstr "无法读取原始系统。"
+
+msgid "Montage du système impossible."
+msgstr "无法挂载系统。"
+
+msgid "La copie des fichiers a échoué."
+msgstr "复制文件失败。"
+
+msgid "Montage des données impossible."
+msgstr "无法挂载数据。"
+
+msgid "Noyau introuvable."
+msgstr "找不到内核。"
+
+msgid "Création du compte impossible."
+msgstr "无法创建账户。"
+
+msgid "Le système de la clé est incomplet (protection du démarrage). Utilisez une autre clé."
+msgstr "U 盘上的系统不完整（启动保护）。请使用其他 U 盘。"
+
+msgid "Préparation du démarrage impossible (initramfs)."
+msgstr "无法准备启动（initramfs）。"
+
+msgid "Montage de la partition de démarrage impossible."
+msgstr "无法挂载启动分区。"
+
+msgid "Montage EFI impossible."
+msgstr "无法挂载 EFI。"
+
+msgid "Installation du démarrage (UEFI) impossible."
+msgstr "无法安装启动程序（UEFI）。"
+
+msgid "Installation du démarrage (BIOS) impossible."
+msgstr "无法安装启动程序（BIOS）。"
+
+msgid "Écriture du menu de démarrage impossible."
+msgstr "无法写入启动菜单。"
+
+msgid "Menu de démarrage incomplet."
+msgstr "启动菜单不完整。"
+
+msgid "Montage de la copie d'origine impossible."
+msgstr "无法挂载原始副本。"
+
+msgid "Fichiers d'origine introuvables sur la clé."
+msgstr "U 盘上找不到原始文件。"
+
+msgid "Copie d'origine impossible."
+msgstr "无法创建原始副本。"
+
+msgid "Copie d'origine impossible (espace ?)."
+msgstr "无法创建原始副本（空间不足？）。"
+
+msgid "Ce disque est celui de la clé ou du système en cours : opération refusée."
+msgstr "此磁盘是 U 盘或正在运行的系统：操作被拒绝。"
+
+msgid "L'installation doit être lancée en administrateur."
+msgstr "必须以管理员身份运行安装。"
+
+msgid "Disque introuvable : {disque}"
+msgstr "找不到磁盘：{disque}"
+
+msgid "Ce disque est trop petit (32 Go au minimum)."
+msgstr "此磁盘太小（至少需要 32 GB）。"
+
+msgid "Préparation du disque"
+msgstr "正在准备磁盘"
+
+msgid "Le disque n'a pas pu être effacé."
+msgstr "无法擦除磁盘。"
+
+msgid "Le partitionnement a échoué."
+msgstr "分区失败。"
+
+msgid "Les nouvelles partitions ne sont pas apparues."
+msgstr "新分区没有出现。"
+
+msgid "Formatage EFI impossible."
+msgstr "无法格式化 EFI。"
+
+msgid "Formatage impossible (démarrage)."
+msgstr "无法格式化（启动）。"
+
+msgid "Formatage impossible (A)."
+msgstr "无法格式化（A）。"
+
+msgid "Formatage impossible (B)."
+msgstr "无法格式化（B）。"
+
+msgid "Formatage impossible (usine)."
+msgstr "无法格式化（出厂）。"
+
+msgid "Formatage impossible (données)."
+msgstr "无法格式化（数据）。"
+
+msgid "Copie de SoleOS sur l'ordinateur"
+msgstr "正在将 SoleOS 复制到电脑"
+
+msgid "Création de la copie de secours"
+msgstr "正在创建备份副本"
+
+msgid "Installation du démarrage"
+msgstr "正在安装启动程序"
+
+msgid "Finalisation"
+msgstr "正在完成"
+
+msgid "La réparation doit être lancée en administrateur."
+msgstr "必须以管理员身份运行修复。"
+
+msgid "Mode de réparation inconnu."
+msgstr "未知的修复模式。"
+
+msgid "Ce disque ne contient pas un SoleOS complet."
+msgstr "此磁盘不包含完整的 SoleOS。"
+
+msgid "Préparation"
+msgstr "正在准备"
+
+msgid "Remise à neuf du système impossible."
+msgstr "无法将系统恢复如新。"
+
+msgid "Effacement des données"
+msgstr "正在清除数据"
+
+msgid "Effacement des données impossible."
+msgstr "无法清除数据。"
+
+msgid "Mise à jour de SoleOS"
+msgstr "正在更新 SoleOS"
+
+msgid "Remise à neuf de SoleOS"
+msgstr "正在将 SoleOS 恢复如新"
+
+msgid "Remise à zéro du navigateur"
+msgstr "正在重置浏览器"
+
+msgid "Mise à jour de la copie de secours"
+msgstr "正在更新恢复副本"
+
+msgid "Disque non précisé"
+msgstr "未指定磁盘"
+
+msgid "Mode ou disque non précisé"
+msgstr "未指定模式或磁盘"
+
+msgid "Aucun clavier trouvé. Clavier Bluetooth : appuyez sur une touche, ou mettez-le en mode association."
+msgstr "未找到键盘。蓝牙键盘：请按任意键，或将其置于配对模式。"
+
+msgid "Entrez votre code"
+msgstr "请输入密码"
+
+msgid "Entrez votre mot de passe"
+msgstr "请输入密码"
+
+msgid "Code incorrect. Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "密码错误。输入数字：按 Shift 键（⇧）或使用数字小键盘。"
+
+msgid "Vérification…"
+msgstr "正在验证…"
+
+msgid "Trop d'essais : patientez quelques minutes, ou tapez votre clé de secours."
+msgstr "尝试次数过多：请等待几分钟，或输入恢复密钥。"
+
+msgid "Code incorrect. Code oublié ? Tapez votre clé de secours à la place."
+msgstr "密码错误。忘记密码了？请改为输入恢复密钥。"
+
+msgid "Mot de passe incorrect. Mot de passe oublié ? Tapez votre clé de secours à la place."
+msgstr "密码错误。忘记密码了？请改为输入恢复密钥。"
+
+msgid "Code incorrect, réessayez."
+msgstr "密码错误，请重试。"
+
+msgid "Mot de passe incorrect, réessayez."
+msgstr "密码错误，请重试。"
+
+msgid "Les données ne sont pas chiffrées sur cet ordinateur."
+msgstr "此电脑上的数据未加密。"
+
+msgid "Les données ne sont pas ouvertes."
+msgstr "数据未打开。"
+
+msgid "Clé interne introuvable."
+msgstr "找不到内部密钥。"
+
+msgid "Partition des données introuvable."
+msgstr "找不到数据分区。"
+
+msgid "L'ancien code n'a pas pu être retiré."
+msgstr "无法移除旧密码。"
+
+msgid "La puce de sécurité est bloquée après trop d'essais de code. Réessayez dans quelques minutes (ou plus tard)."
+msgstr "尝试次数过多，安全芯片已锁定。请几分钟后（或稍后）再试。"
+
+msgid "La puce de sécurité n'a pas accepté le code."
+msgstr "安全芯片未接受此密码。"
+
+msgid "Impossible de remplacer l'ancien mot de passe."
+msgstr "无法替换旧密码。"
+
+msgid "Le mot de passe n'a pas pu être enregistré."
+msgstr "无法保存密码。"
+
+msgid "Le code doit contenir exactement {n} chiffres."
+msgstr "密码必须正好是 {n} 位数字。"
+
+msgid "Le mot de passe doit contenir au moins {n} caractères."
+msgstr "密码至少需要 {n} 个字符。"
+
+msgid "La clé de secours existe déjà (Réglages → Nouvelle clé de secours)."
+msgstr "恢复密钥已存在（设置 → 新的恢复密钥）。"
+
+msgid "Impossible de remplacer l'ancienne clé de secours."
+msgstr "无法替换旧的恢复密钥。"
+
+msgid "Compte introuvable."
+msgstr "找不到帐户。"
+
+msgid "Tapez votre prénom."
+msgstr "请输入您的名字。"
+
+msgid "Le prénom n'a pas pu être changé."
+msgstr "无法更改名字。"
+
+msgid "Pour changer de code, utilisez Réglages → Changer mon code."
+msgstr "要更改密码，请使用 设置 → 更改密码。"
+
+msgid "La clé de secours doit d'abord être créée."
+msgstr "必须先创建恢复密钥。"
+
+msgid "Aucun code n'est encore choisi."
+msgstr "尚未设置密码。"
+
+msgid "Code actuel incorrect."
+msgstr "当前密码错误。"
+
+msgid "Code incorrect."
+msgstr "密码错误。"
+
+msgid "Partition non précisée."
+msgstr "未指定分区。"
+
+msgid "SoleOS (autre version)"
+msgstr "SoleOS（其他版本）"
+
+msgid "Langue inconnue."
+msgstr "未知语言。"
+
+msgid "Clavier inconnu."
+msgstr "未知键盘。"
 

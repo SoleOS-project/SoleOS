@@ -606,6 +606,12 @@ impl Sortie {
     }
     fn mode_base(&self) -> Option<(u32, u32, f32)> {
         let valide = |m: &(u32, u32, f32)| m.0 > 0 && m.1 > 0;
+        // (v1.2) résolution choisie dans Réglages → Taille d'affichage, si l'écran la propose
+        if let Some((w, h)) = resolution_choisie(&self.nom) {
+            if let Some(m) = self.modes.iter().copied().filter(|m| m.0 == w && m.1 == h).max_by(|a, b| a.2.total_cmp(&b.2)) {
+                return Some(m);
+            }
+        }
         self.prefere.filter(valide).or(self.courant.filter(valide)).or_else(|| self.modes.iter().copied().find(valide))
     }
 }
@@ -738,9 +744,53 @@ pub fn choisir_taille(valeur: Option<f32>) {
     }
 }
 
+// ---------------------------------------------------------------------
+//  (v1.2) Résolution choisie (par écran ; rien = résolution d'origine, la plus nette)
+// ---------------------------------------------------------------------
+
+fn fichier_resolution() -> Option<std::path::PathBuf> {
+    std::env::var_os("HOME").map(|h| std::path::PathBuf::from(h).join(".config/soleos/resolution"))
+}
+
+pub fn analyser_resolutions(texte: &str, nom: &str) -> Option<(u32, u32)> {
+    texte.lines().find_map(|l| {
+        let (n, r) = l.trim().split_once(' ')?;
+        if n != nom { return None; }
+        let (w, h) = r.trim().split_once('x')?;
+        Some((w.parse().ok()?, h.parse().ok()?))
+    })
+}
+
+pub fn resolution_choisie(nom: &str) -> Option<(u32, u32)> {
+    let t = std::fs::read_to_string(fichier_resolution()?).ok()?;
+    analyser_resolutions(&t, nom)
+}
+
+pub fn choisir_resolution(nom: &str, r: Option<(u32, u32)>) {
+    let Some(f) = fichier_resolution() else { return };
+    let ancien = std::fs::read_to_string(&f).unwrap_or_default();
+    let mut lignes: Vec<String> = ancien.lines().filter(|l| l.split(' ').next() != Some(nom) && !l.trim().is_empty()).map(String::from).collect();
+    if let Some((w, h)) = r {
+        lignes.push(format!("{nom} {w}x{h}"));
+    }
+    if let Some(d) = f.parent() {
+        let _ = std::fs::create_dir_all(d);
+    }
+    let _ = std::fs::write(f, lignes.join("\n") + "\n");
+}
+
+/// Résolutions proposées : une par taille (sans doublons de fréquence), la plus grande d'abord
+pub fn resolutions(s: &Sortie) -> Vec<(u32, u32)> {
+    let mut v: Vec<(u32, u32)> = s.modes.iter().filter(|m| m.0 >= 800 && m.1 >= 600).map(|m| (m.0, m.1)).collect();
+    v.sort_by(|a, b| (b.0 * b.1).cmp(&(a.0 * a.1)).then(b.0.cmp(&a.0)));
+    v.dedup();
+    v.truncate(12);
+    v
+}
+
 /// Agrandissement automatique : selon le nombre de points par pouce de l'écran
 pub fn echelle_auto(s: &Sortie) -> f32 {
-    let Some(m) = s.prefere.or(s.courant) else { return 1.0 };
+    let Some(m) = s.mode_base() else { return 1.0 };
     if s.mm.0 < 100 {
         return 1.0; // taille inconnue (vidéoprojecteur, machine virtuelle…)
     }
@@ -777,8 +827,8 @@ pub fn appliquer_taille() {
         return;
     }
     for s in sorties.iter().filter(|s| s.actif) {
-        // Toujours la résolution d'origine de l'écran (la plus nette)
-        if let (Some(p), Some(c)) = (s.prefere, s.courant) {
+        // La résolution d'origine de l'écran (la plus nette), sauf si une autre a été choisie
+        if let (Some(p), Some(c)) = (s.mode_base(), s.courant) {
             if (p.0, p.1) != (c.0, c.1) {
                 let _ = sortie("wlr-randr", &["--output", &s.nom, "--mode", &mode_txt(p)]);
             }
@@ -1446,6 +1496,13 @@ pub fn diagnostic(args: &[String]) -> i32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn resolution_memorisee() {
+        let t = "eDP-1 1280x800\nHDMI-A-1 1920x1080\n";
+        assert_eq!(analyser_resolutions(t, "HDMI-A-1"), Some((1920, 1080)));
+        assert_eq!(analyser_resolutions(t, "DP-2"), None);
+    }
 
     const LPINFO: &str = "Device: uri = usb://HP/LaserJet%20M110w?serial=ABC
         class = direct

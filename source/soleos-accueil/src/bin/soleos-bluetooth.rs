@@ -7,6 +7,8 @@
 //!                                       Bluetooth mis en mode association, tant qu'il manque
 //!                                       un clavier ou une souris (s secondes au plus, 900 par défaut)
 //!   soleos-bluetooth attendre [s]      attend un clavier et une souris (s secondes au plus)
+//!   soleos-bluetooth audio             (session) reconnecte l'enceinte ou le casque utilisé
+//!                                       en dernier, à l'ouverture de la session et au réveil
 //!
 //! Sans clavier ni souris, on ne peut pas associer un appareil Bluetooth depuis les Réglages :
 //! ce service le fait à leur place, avant même la demande du code. Les messages (code
@@ -400,6 +402,99 @@ fn attendre(duree: u64) -> i32 {
     }
 }
 
+// =====================================================================
+//  (v1.2) Enceintes et casques : reconnexion à l'ouverture de la session et au réveil
+// =====================================================================
+
+const A2DP_SINK: &str = "0000110b-0000-1000-8000-00805f9b34fb";
+
+fn fichier_audio() -> std::path::PathBuf {
+    let base = std::env::var("HOME").unwrap_or_default();
+    std::path::PathBuf::from(base).join(".config/soleos/bluetooth-audio")
+}
+
+/// Adresses déjà utilisées, la plus récente d'abord (au plus 5)
+fn lire_utilises() -> Vec<String> {
+    std::fs::read_to_string(fichier_audio()).unwrap_or_default()
+        .lines().map(|l| l.trim().to_string()).filter(|l| !l.is_empty()).take(5).collect()
+}
+
+fn noter_utilise(adresse: &str) {
+    let mut l = lire_utilises();
+    if l.first().map(String::as_str) == Some(adresse) { return; }
+    l.retain(|a| a != adresse);
+    l.insert(0, adresse.to_string());
+    l.truncate(5);
+    let f = fichier_audio();
+    if let Some(d) = f.parent() { let _ = std::fs::create_dir_all(d); }
+    let _ = std::fs::write(f, l.join("\n") + "\n");
+}
+
+struct Audio { chemin: String, adresse: String, connecte: bool, confiance: bool }
+
+fn appareils_audio(c: &gio::DBusConnection) -> (bool, Vec<Audio>) {
+    let mut allume = false;
+    let mut v = vec![];
+    for (chemin, ifs) in objets(c) {
+        if let Some(a) = ifs.get("org.bluez.Adapter1") {
+            allume |= booleen(a, "Powered");
+        }
+        let Some(p) = ifs.get("org.bluez.Device1") else { continue };
+        let uuids = p.get("UUIDs").and_then(|u| u.get::<Vec<String>>()).unwrap_or_default();
+        if !booleen(p, "Paired") || !uuids.iter().any(|u| u.eq_ignore_ascii_case(A2DP_SINK)) { continue; }
+        v.push(Audio { chemin, adresse: texte(p, "Address"), connecte: booleen(p, "Connected"), confiance: booleen(p, "Trusted") });
+    }
+    (allume, v)
+}
+
+/// Ordre des essais : les appareils déjà utilisés (le dernier d'abord) ; s'il n'y en a aucun,
+/// les enceintes et casques associés et « de confiance »
+fn ordre_essais<'a>(apps: &'a [Audio], utilises: &[String]) -> Vec<&'a Audio> {
+    let mut r: Vec<&Audio> = utilises.iter().filter_map(|u| apps.iter().find(|a| &a.adresse == u)).collect();
+    if r.is_empty() {
+        r = apps.iter().filter(|a| a.confiance).collect();
+    }
+    r
+}
+
+/// Tourne pendant toute la session : retient l'enceinte ou le casque utilisé ; pendant 30 s après
+/// l'ouverture de la session et après chaque réveil, le reconnecte s'il est allumé et à portée.
+fn audio() -> i32 {
+    let Ok(c) = gio::bus_get_sync(gio::BusType::System, gio::Cancellable::NONE) else { return 1 };
+    let uptime = || std::fs::read_to_string("/proc/uptime").ok()
+        .and_then(|t| t.split_whitespace().next().and_then(|x| x.parse::<f64>().ok())).unwrap_or(0.0);
+    // Instant ne compte pas le temps passé en veille, /proc/uptime si : l'écart grandit à chaque veille
+    let (t0, u0) = (Instant::now(), uptime());
+    let ecart = || uptime() - u0 - t0.elapsed().as_secs_f64();
+    let mut veille = ecart();
+    let mut fin_essais = Instant::now() + Duration::from_secs(30);
+    let mut dernier_essai: HashMap<String, Instant> = HashMap::new();
+    loop {
+        let e = ecart();
+        if e - veille > 5.0 {
+            fin_essais = Instant::now() + Duration::from_secs(30);
+            dernier_essai.clear();
+        }
+        veille = e;
+        let (allume, apps) = appareils_audio(&c);
+        if let Some(a) = apps.iter().find(|a| a.connecte) {
+            noter_utilise(&a.adresse);
+            fin_essais = Instant::now();
+        } else if allume && Instant::now() < fin_essais {
+            for a in ordre_essais(&apps, &lire_utilises()) {
+                if dernier_essai.get(&a.adresse).is_some_and(|t| t.elapsed() < Duration::from_secs(10)) { continue; }
+                dernier_essai.insert(a.adresse.clone(), Instant::now());
+                if appeler(&c, &a.chemin, "org.bluez.Device1", "Connect", None).is_ok() {
+                    noter_utilise(&a.adresse);
+                    fin_essais = Instant::now();
+                    break;
+                }
+            }
+        }
+        std::thread::sleep(Duration::from_secs(if Instant::now() < fin_essais { 3 } else { 15 }));
+    }
+}
+
 fn main() {
     tr::initialiser();
     let args: Vec<String> = std::env::args().collect();
@@ -412,8 +507,9 @@ fn main() {
         }
         Some("associer") => associer(duree(900)),
         Some("attendre") => attendre(duree(180)),
+        Some("audio") => audio(),
         _ => {
-            eprintln!("Usage : soleos-bluetooth etat | associer [secondes] | attendre [secondes]");
+            eprintln!("Usage : soleos-bluetooth etat | associer [secondes] | attendre [secondes] | audio");
             2
         }
     };
@@ -445,5 +541,19 @@ B: EV=17
         assert_eq!(analyser(EXEMPLE), (true, true));
         // Bouton d'alimentation seul : pas un clavier
         assert_eq!(analyser(EXEMPLE.split("\n\n").next().unwrap()), (false, false));
+    }
+}
+
+#[cfg(test)]
+mod tests_audio {
+    use super::*;
+    fn a(ad: &str, conf: bool) -> Audio { Audio { chemin: format!("/x/{ad}"), adresse: ad.into(), connecte: false, confiance: conf } }
+    #[test]
+    fn ordre_dernier_utilise_dabord() {
+        let apps = vec![a("AA", true), a("BB", true), a("CC", false)];
+        let o = ordre_essais(&apps, &["CC".into(), "AA".into(), "ZZ".into()]);
+        assert_eq!(o.iter().map(|x| x.adresse.as_str()).collect::<Vec<_>>(), ["CC", "AA"]);
+        let o = ordre_essais(&apps, &[]);
+        assert_eq!(o.iter().map(|x| x.adresse.as_str()).collect::<Vec<_>>(), ["AA", "BB"]);
     }
 }

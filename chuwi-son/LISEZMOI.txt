@@ -1,0 +1,5 @@
+Correctif des haut-parleurs du Chuwi CoreBook Air Plus (sous-système audio 0x20147054)
+Repris tel quel de https://github.com/avrora13377/Chuwi-CoreBook-Air-Audio-Fix
+(commit 1113ac4, 2026-11-08), licence MIT (voir LICENSE). Merci à ses auteurs.
+SoleOS ajoute seulement : la détection du modèle (rien n'est fait sur les autres PC)
+et la relance du son de la session quelques secondes après chaque réveil.

@@ -590,6 +590,11 @@ heure_appliquer() {  # au démarrage
 }
 
 case "${1:-}" in
+  arret-precedent)
+    # (v1.2) ce qui a retenu le dernier arrêt de l'ordinateur (pour « Signaler un problème »)
+    journalctl -b -1 --no-pager -o short-iso 2>/dev/null \
+      | grep -E -i 'stop job|timed out|timeout|killing process|failed to stop|still around|watchdog|soleos-maj' | tail -40
+    journalctl -b -1 --no-pager -o short-iso -n 5 2>/dev/null | sed 's/^/[fin] /' ;;
   heure-etat) heure_etat ;;
   fuseau) heure_fuseau "${2:-}" ;;
   heure-auto) heure_auto "${2:-}" ;;

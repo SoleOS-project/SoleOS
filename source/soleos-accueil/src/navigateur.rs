@@ -136,6 +136,57 @@ fn uid() -> String {
         .unwrap_or_default()
 }
 
+// =====================================================================
+//  (v1.2) Navigateur du bouton « Internet » (et de la recherche) : Chromium ou un navigateur installé
+// =====================================================================
+
+/// Navigateurs connus (Flathub) : identifiant, nom affiché
+pub const CONNUS: &[(&str, &str)] = &[
+    ("com.google.Chrome", "Google Chrome"),
+    ("org.mozilla.firefox", "Firefox"),
+    ("com.microsoft.Edge", "Microsoft Edge"),
+    ("com.brave.Browser", "Brave"),
+    ("com.opera.Opera", "Opera"),
+    ("com.vivaldi.Vivaldi", "Vivaldi"),
+    ("io.gitlab.librewolf-community", "LibreWolf"),
+];
+
+fn fichier_choix() -> Option<PathBuf> {
+    std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".config/soleos/navigateur"))
+}
+
+/// Une application Flatpak installée (pour tous ou pour l'utilisateur)
+pub fn flatpak_installe(id: &str) -> bool {
+    let mut lieux = vec![PathBuf::from("/var/lib/flatpak/app").join(id)];
+    if let Some(h) = std::env::var_os("HOME") {
+        lieux.push(PathBuf::from(h).join(".local/share/flatpak/app").join(id));
+    }
+    lieux.iter().any(|p| p.join("current").exists())
+}
+
+/// Navigateurs installés, Chromium (intégré) en premier : (identifiant, nom) ; "chromium" = intégré
+pub fn installes() -> Vec<(String, String)> {
+    let mut v = vec![("chromium".to_string(), tr("Chromium (intégré à SoleOS)"))];
+    v.extend(CONNUS.iter().filter(|(id, _)| flatpak_installe(id)).map(|(id, n)| (id.to_string(), n.to_string())));
+    v
+}
+
+/// Choix actuel ("chromium" si rien de choisi ou si le navigateur choisi a été désinstallé)
+pub fn choisi() -> String {
+    let c = fichier_choix().and_then(|f| std::fs::read_to_string(f).ok()).map(|t| t.trim().to_string()).unwrap_or_default();
+    if !c.is_empty() && c != "chromium" && flatpak_installe(&c) { c } else { "chromium".into() }
+}
+
+pub fn choisir(id: &str) {
+    if let Some(f) = fichier_choix() {
+        if let Some(d) = f.parent() {
+            let _ = std::fs::create_dir_all(d);
+        }
+        let _ = std::fs::write(f, id);
+    }
+}
+
+
 #[cfg(test)]
 mod tests {
     use super::*;

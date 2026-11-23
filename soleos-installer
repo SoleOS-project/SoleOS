@@ -12,6 +12,13 @@
 #        systeme : système remis à neuf, fichiers et réglages conservés (navigateur remis à zéro).
 #                  Données chiffrées : code ou clé de secours sur l'entrée standard.
 #        tout    : retour au premier jour, tout est effacé
+#    soleos-installer --detecter-mise-a-jour
+#        → « DISQUE|/dev/xxx|modèle|taille|1|CODE ou vide|version installée » (un SoleOS installé
+#          sur un disque interne, depuis la clé) ou « AUCUN|raison »
+#    soleos-installer --mettre-a-jour /dev/xxx
+#        (v1.2, depuis la clé) SoleOS remplacé par la version de la clé : fichiers, applications,
+#        réglages, Wi-Fi, imprimantes, Bluetooth, langue, code et clé de secours gardés ; navigateur
+#        intact. La copie d'origine (réparation) est remplacée aussi. Code sur l'entrée standard.
 #
 #  La partition des données est chiffrée (LUKS2). Jusqu'au premier démarrage, elle s'ouvre
 #  avec une clé provisoire (partition de démarrage) ; l'assistant de bienvenue la remplace
@@ -134,6 +141,31 @@ detecter_reparation() {
 }
 
 # ---------------------------------------------------------------------
+# (v1.2) Depuis la clé : un SoleOS déjà installé sur un disque interne (à mettre à jour)
+detecter_mise_a_jour() {
+  local exclus=" $(disque_de "$SUPPORT" | tr '\n' ' ') $(disque_de / | tr '\n' ' ') "
+  local NAME TYPE d version pa pu
+  while read -r NAME TYPE; do
+    [ "$TYPE" = disk ] || continue
+    case "$exclus" in *" $NAME "*) continue ;; esac
+    d="/dev/$NAME"
+    pa="$(partition_nommee "$d" SOLEOS-A)"; [ -n "$pa" ] || continue
+    [ -n "$(partition_nommee "$d" SOLEOS-DONNEES)" ] && [ -n "$(partition_nommee "$d" SOLEOS-USINE)" ] || continue
+    version=""
+    mkdir -p /mnt/soleos-lecture
+    for p in "$pa" "$(partition_nommee "$d" SOLEOS-B)"; do
+      [ -n "$version" ] && break
+      [ -b "$p" ] && mount -o ro "$p" /mnt/soleos-lecture 2>/dev/null || continue
+      version="$(head -c 40 /mnt/soleos-lecture/etc/soleos-version 2>/dev/null | head -1 | tr -d '|\r')"
+      umount /mnt/soleos-lecture
+    done
+    local code=""; besoin_code "$d" && code=CODE
+    echo "DISQUE|$d|$(modele_de "$NAME")|$(lsblk -dbno SIZE "$d")|1|$code|$version"
+    return 0
+  done < <(lsblk -dnr -o NAME,TYPE 2>/dev/null)
+  echo "AUCUN|$(t "Aucun SoleOS installé n'a été trouvé sur cet ordinateur.")"
+}
+
 nettoyer() {
   # Préparation du démarrage encore en cours (installation interrompue) : on la laisse finir
   [ -n "${INITRAMFS_PID:-}" ] && wait "$INITRAMFS_PID" 2>/dev/null
@@ -224,6 +256,26 @@ installer_systeme() {
   local uuid_a; uuid_a="$(blkid -s UUID -o value "$pa")"
   mkdir -p "$CIBLE"; lancer mount "$pa" "$CIBLE" || echec "$(t "Montage du système impossible.")"
 
+  # (v1.2) Depuis la clé : extraction directe du fichier système, sur tous les cœurs (bien plus
+  # rapide que la copie depuis le système monté) ; en cas d'échec, la copie habituelle (rsync)
+  # complète ou refait le travail.
+  local sq=""
+  [ -z "${SOLEOS_RACINE_SOURCE:-}" ] && sq="$(ls "$(dossier_live)"/*.squashfs 2>/dev/null | head -1)"
+  if [ -n "$sq" ] && command -v unsquashfs >/dev/null; then
+    echo "+ unsquashfs ($(nproc) cœurs) $sq" >> "$JOURNAL"
+    unsquashfs -f -d "$CIBLE" -percentage -processors "$(nproc)" "$sq" 2>> "$JOURNAL" \
+      | { dernier=-1; while read -r l; do
+          case "$l" in ''|*[!0-9]*) continue ;; esac
+          v=$((p0 + l * (p1 - p0) / 100))
+          [ "$v" -ne "$dernier" ] && { progres "$v"; dernier=$v; }
+        done; }
+    if [ "${PIPESTATUS[0]}" -eq 0 ] && [ -x "$CIBLE/usr/bin/bash" ]; then
+      sq=ok
+    else
+      echo "!!! extraction rapide impossible : copie habituelle (rsync)" >> "$JOURNAL"
+    fi
+  fi
+  if [ "$sq" != ok ]; then
   rsync -aHAX --numeric-ids --info=progress2 --no-inc-recursive \
         --exclude='/proc/*' --exclude='/sys/*' --exclude='/dev/*' --exclude='/run/*' \
         --exclude='/tmp/*' --exclude='/mnt/*' --exclude='/media/*' --exclude='/lost+found' \
@@ -236,6 +288,7 @@ installer_systeme() {
         [ "$v" -ne "$dernier" ] && { progres "$v"; dernier=$v; }
       done; }
   [ "${PIPESTATUS[0]}" -eq 0 ] || echec "$(t "La copie des fichiers a échoué.")"
+  fi
 
   # Système en lecture seule : mise à jour du cache des bibliothèques (ldconfig…) marquée comme faite,
   # sinon elle serait refaite à chaque démarrage
@@ -258,6 +311,8 @@ installer_systeme() {
     echo "UUID=$uuid_dem  /soleos/demarrage  ext4  defaults,noatime,nosuid,nodev,noexec  0  2"
     [ -n "$uuid_efi" ] && echo "UUID=$uuid_efi  /boot/efi  vfat  umask=0077,nofail  0  2"
     [ -n "$CHIFFRE_UUID" ] || echo "/home/.soleos/reseaux  /etc/NetworkManager/system-connections  none  bind,nofail,x-systemd.requires-mounts-for=/home  0  0"
+    # (v1.2) journal du système gardé d'un démarrage à l'autre (dans les données)
+    [ -n "$CHIFFRE_UUID" ] || echo "/home/.soleos/journal  /var/log/journal  none  bind,nofail,x-systemd.requires-mounts-for=/home  0  0"
     # Appareils Bluetooth associés : sur la partition de démarrage (lisible par root seul), pour
     # qu'un clavier Bluetooth puisse taper le code avant l'ouverture des données
     echo "/soleos/demarrage/bluetooth  /var/lib/bluetooth  none  bind,nofail,x-systemd.requires-mounts-for=/soleos/demarrage  0  0"
@@ -332,6 +387,8 @@ installer_systeme() {
   chmod 700 "$CIBLE/home/$compte"
 
   # Réseaux Wi-Fi : conservés dans la partition des données
+  mkdir -p "$CIBLE/home/.soleos/journal"; chmod 2755 "$CIBLE/home/.soleos/journal"
+  chroot "$CIBLE" chown root:systemd-journal /home/.soleos/journal 2>/dev/null
   mkdir -p "$CIBLE/home/.soleos/reseaux" "$CIBLE/etc/NetworkManager/system-connections"
   chmod 755 "$CIBLE/home/.soleos"
   chmod 700 "$CIBLE/home/.soleos/reseaux"
@@ -341,6 +398,10 @@ installer_systeme() {
     cp -a /etc/NetworkManager/system-connections/. "$CIBLE/home/.soleos/reseaux/" 2>/dev/null
   fi
 
+  # (v1.2) Garde-fou : sans ce script exécutable, l'ordinateur démarrerait sans sa couche en mémoire
+  # (système bloqué en lecture seule, pas d'interface)
+  [ -x "$CIBLE/etc/initramfs-tools/scripts/local-bottom/soleos-protection" ] \
+    || echec "$(t "Le système de la clé est incomplet (protection du démarrage). Utilisez une autre clé.")"
   lancer chroot "$CIBLE" systemd-machine-id-setup
   echo "$uuid_a" > "$CIBLE/etc/soleos-emplacement"
   # Fichier de démarrage du noyau (initramfs) : préparé en arrière-plan (calcul), pendant que la
@@ -545,11 +606,12 @@ installer() {
 }
 
 # ---------------------------------------------------------------------
-reparer() {  # <systeme|tout> <disque>
+reparer() {  # <systeme|tout|maj> <disque>   (maj : mise à jour depuis la clé, v1.2)
   local mode_rep="$1" disque="$2"
   : > "$JOURNAL"
   [ "$(id -u)" -eq 0 ] || echec "$(t "La réparation doit être lancée en administrateur.")"
-  case "$mode_rep" in systeme|tout) ;; *) echec "$(t "Mode de réparation inconnu.")" ;; esac
+  case "$mode_rep" in systeme|tout|maj) ;; *) echec "$(t "Mode de réparation inconnu.")" ;; esac
+  [ "$mode_rep" = maj ] && garde_disque "$disque"
   local pe pdem pa pb pu pd mode
   pa="$(partition_nommee "$disque" SOLEOS-A)"; pb="$(partition_nommee "$disque" SOLEOS-B)"
   pdem="$(partition_nommee "$disque" SOLEOS-DEMARRAGE)"; pu="$(partition_nommee "$disque" SOLEOS-USINE)"
@@ -566,13 +628,15 @@ reparer() {  # <systeme|tout> <disque>
     if [ -d "$SUPPORT/flashos-usine" ]; then CHEMIN_USINE=flashos-usine
     elif [ -d "$SUPPORT/live" ]; then CHEMIN_USINE=live; fi
   fi
+  # Mise à jour depuis la clé : la copie d'origine du disque est refaite (dossier « soleos-usine »)
+  [ "$mode_rep" = maj ] && CHEMIN_USINE="$DOSSIER_USINE"
   echo "Réparation ($mode_rep) de $disque — démarrage : $mode — source : $SOURCE — origine : $CHEMIN_USINE" >> "$JOURNAL"
 
   etape "$(t "Préparation")"
   progres 3
   # Données chiffrées : on les ouvre avant de toucher à quoi que ce soit (code vérifié)
   DONNEES="$pd"
-  if [ "$mode_rep" = systeme ] && cryptsetup isLuks "$pd" 2>/dev/null; then
+  if [ "$mode_rep" != tout ] && cryptsetup isLuks "$pd" 2>/dev/null; then
     ouvrir_coffre "$pd" "$pdem"
   fi
   # En cas de coupure pendant la réparation, l'ordinateur revient ici au prochain démarrage
@@ -595,7 +659,7 @@ reparer() {  # <systeme|tout> <disque>
   fi
   progres 8
 
-  etape "$(t "Remise à neuf de SoleOS")"
+  if [ "$mode_rep" = maj ]; then etape "$(t "Mise à jour de SoleOS")"; else etape "$(t "Remise à neuf de SoleOS")"; fi
   local garder=1; [ "$mode_rep" = tout ] && garder=0
   installer_systeme "$pa" "$DONNEES" "$( [ -n "$pe" ] && blkid -s UUID -o value "$pe")" "$(blkid -s UUID -o value "$pdem")" 8 85 "$garder"
 
@@ -617,8 +681,19 @@ reparer() {  # <systeme|tout> <disque>
   installer_demarrage "$disque" "$mode" "$pe" "$pdem" "$ua" "$ub" "$(blkid -s UUID -o value "$pu")"
   progres 98
 
+  if [ "$mode_rep" = maj ]; then
+    # En dernier : le système à jour démarre déjà ; si cette copie était interrompue, seule la
+    # réparation serait à refaire (en relançant la mise à jour depuis la clé)
+    etape "$(t "Mise à jour de la copie de secours")"
+    installer_usine "$pu"
+  fi
   etape "$(t "Finalisation")"
-  cp "$JOURNAL" "$CIBLE/home/.soleos/reparation.log" 2>/dev/null
+  if [ "$mode_rep" = maj ]; then
+    { echo "$(date '+%F %T') : mise à jour vers SoleOS $(cat /etc/soleos-version 2>/dev/null)"; } >> "$CIBLE/home/.soleos/mises-a-jour.txt" 2>/dev/null
+    cp "$JOURNAL" "$CIBLE/home/.soleos/mise-a-jour.log" 2>/dev/null
+  else
+    cp "$JOURNAL" "$CIBLE/home/.soleos/reparation.log" 2>/dev/null
+  fi
   nettoyer
   progres 100
   echo "TERMINE"
@@ -628,6 +703,9 @@ case "${1:-}" in
   --detecter) detecter ;;
   --detecter-reparation) detecter_reparation ;;
   --installer) [ -n "${2:-}" ] || { echo "ERREUR|$(t "Disque non précisé")"; exit 1; }; installer "$2" ;;
-  --reparer) [ -n "${3:-}" ] || { echo "ERREUR|$(t "Mode ou disque non précisé")"; exit 1; }; reparer "$2" "$3" ;;
-  *) echo "Usage : $0 --detecter | --installer /dev/disque | --detecter-reparation | --reparer systeme|tout /dev/disque" >&2; exit 2 ;;
+  --reparer) [ -n "${3:-}" ] || { echo "ERREUR|$(t "Mode ou disque non précisé")"; exit 1; }
+    case "$2" in systeme|tout) reparer "$2" "$3" ;; *) echo "ERREUR|$(t "Mode de réparation inconnu.")"; exit 1 ;; esac ;;
+  --detecter-mise-a-jour) detecter_mise_a_jour ;;
+  --mettre-a-jour) [ -n "${2:-}" ] || { echo "ERREUR|$(t "Disque non précisé")"; exit 1; }; reparer maj "$2" ;;
+  *) echo "Usage : $0 --detecter | --installer /dev/disque | --detecter-reparation | --reparer systeme|tout /dev/disque | --detecter-mise-a-jour | --mettre-a-jour /dev/disque" >&2; exit 2 ;;
 esac

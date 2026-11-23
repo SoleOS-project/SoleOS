@@ -1,3 +1,4 @@
 # SoleOS : commandes d'administration dans un terminal séparé, et tracées (ANSSI R33, R39)
 Defaults use_pty
 Defaults log_subcmds
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-systeme arret-precedent

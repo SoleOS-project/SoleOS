@@ -16,6 +16,8 @@ Il est pensé pour les gens qui veulent un ordinateur qui marche, sans administr
 - **Sauvegarde en un clic** vers une clé USB, un disque ou un NAS, chaque semaine si vous le voulez. Rien n'est jamais effacé dans la sauvegarde.
 - **Mode grand confort** : textes plus grands et pointeur bien visible.
 - **Réparation intégrée** : remise à neuf du système en gardant vos fichiers (Réglages → Réparer ou réinitialiser).
+- **Nouvelle version sans tout réinstaller** (depuis la v1.2) : démarrez sur la clé de la nouvelle version et choisissez « Mettre à jour SoleOS » ; fichiers, applications, mails, navigateur, réglages et code sont gardés.
+- **Notifications** : nouveaux mails signalés par une enveloppe dans la barre du bas.
 - **Vie privée** : aucun compte, aucune télémétrie, rien n'est envoyé sans votre accord ; navigateur sans publicités ni traqueurs, cookies tiers bloqués.
 - **Applications** : LibreOffice, Thunderbird, Chromium, VLC, KeePassXC, et la logithèque Flathub ; paquets `.deb` et AppImage acceptés dans un espace séparé.
 - **6 langues** : français, anglais, italien, espagnol, allemand, chinois simplifié.
@@ -41,7 +43,7 @@ Sur une machine Debian 13 (amd64), en root, avec tout le contenu de ce dépôt d
 bash construire-iso-soleos.sh
 ```
 
-Résultat : `SoleOS-v1.1.iso` et son empreinte `SoleOS-v1.1.iso.sha256`. Copiez l'ISO sur une clé USB (par exemple avec `dd` ou Balena Etcher), démarrez dessus : la clé s'ouvre en mode essai, puis propose **Installer SoleOS sur cet ordinateur**.
+Résultat : `SoleOS-v1.2.iso` et son empreinte `SoleOS-v1.2.iso.sha256`. Copiez l'ISO sur une clé USB (par exemple avec `dd` ou Balena Etcher), démarrez dessus : la clé s'ouvre en mode essai, puis propose **Installer SoleOS sur cet ordinateur**.
 
 Recompiler l'interface (facultatif, les programmes compilés sont fournis) :
 
@@ -63,6 +65,7 @@ cd source/soleos-accueil && cargo build --release
 | `fonds/`, `polices/`, `craft/` | fonds d'écran, polices, icônes |
 | `outils/` | logo, fichiers système, utilitaires |
 | `docs/` | guide, fiche technique, captures |
+| `chuwi-son/` | haut-parleurs du Chuwi CoreBook Air Plus : [Chuwi-CoreBook-Air-Audio-Fix](https://github.com/avrora13377/Chuwi-CoreBook-Air-Audio-Fix) (licence MIT, merci à ses auteurs) |
 
 ## Signaler un problème
 

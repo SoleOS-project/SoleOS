@@ -15,6 +15,7 @@
 #    soleos-securite ouvrir-disque <part.>  (réparation) secret sur l'entrée standard
 #    soleos-securite etat                   CHIFFRE= METHODE= TPM= SECOURS_UTILISEE= VERROUILLABLE=
 #    soleos-securite preparer-secours       (premier démarrage) crée la clé de secours → CLE=…
+#    soleos-securite prenom <prénom>         (Réglages → À propos) change le prénom affiché
 #    soleos-securite definir [prénom]       (premier démarrage / après la clé de secours) code sur l'entrée
 #    soleos-securite changer                ancien code (ou clé de secours) puis nouveau, sur l'entrée
 #    soleos-securite nouvelle-cle           code sur l'entrée → CLE=… (l'ancienne clé ne marche plus)
@@ -100,7 +101,8 @@ puce_bloquee() { echo "$1" | grep -qiE 'lockout|0x0+921'; }
 normaliser_code() { printf '%s' "$1" | tr -d ' '; }
 # Signes de la rangée du haut d'un clavier AZERTY sans Maj : on prévient la personne
 # (une clé de secours, faite de lettres et de tirets, n'est pas concernée)
-sans_maj() { [[ ! "$1" =~ [a-zA-Z] ]] && printf '%s' "$1" | LC_ALL=C.UTF-8 grep -q '[&é"'"'"'(è_çà-]'; }
+# (v1.2) aussi « ~ # { [ | ` \ ^ @ » (AltGr au lieu de Maj) et « ² » (touche à gauche du 1)
+sans_maj() { [[ ! "$1" =~ [a-zA-Z] ]] && printf '%s' "$1" | LC_ALL=C.UTF-8 grep -q '[&é"'"'"'(è_çà~²#{[|`\\^@-]'; }
 est_code() { [[ "$1" =~ ^[0-9]{6}$ ]]; }
 
 # Clé de secours : 64 lettres (c b d e f g h i j k l n r t u v), par groupes de 8.
@@ -199,6 +201,13 @@ monter_donnees() {
   fi
   local r="$cible/.soleos/reseaux" n=/etc/NetworkManager/system-connections
   if [ -d "$r" ] && [ -d "$n" ] && ! mountpoint -q "$n"; then mount --bind "$r" "$n"; fi
+  # (v1.2) journal du système gardé d'un démarrage à l'autre, dans les données chiffrées : on
+  # retrouve ainsi ce qui a ralenti un arrêt (« Signaler un problème »)
+  local j="$cible/.soleos/journal"
+  if [ -d "$cible/.soleos" ] && ! mountpoint -q /var/log/journal; then
+    mkdir -p "$j" /var/log/journal && chown root:systemd-journal "$j" 2>/dev/null && chmod 2755 "$j"
+    mount --bind "$j" /var/log/journal && { journalctl --rotate >/dev/null 2>&1; journalctl --flush >/dev/null 2>&1; }
+  fi
   journal "données montées sur $cible"
 }
 
@@ -217,8 +226,12 @@ ouvrir() {
   while true; do
     r="$(demander "$invite")" || { sleep 1; continue; }
     [ -n "$r" ] || continue
+    # (v1.2) Code mal tapé (signes au lieu de chiffres) : pas d'essai, la puce ne le compte pas
+    if [ "$mot" = Code ] && sans_maj "$r"; then
+      r=""; afficher "$(t "Code incorrect. Pour taper les chiffres : touche Maj (⇧) ou pavé numérique.")"; sleep 1; continue
+    fi
     afficher "$(t "Vérification…")"
-    local maj=0; [ "$mot" = Code ] && sans_maj "$r" && maj=1
+    local maj=0
     res="$(ouvrir_avec "$dev" "$r")"; local code=$?
     r=""
     if [ $code -eq 0 ]; then
@@ -413,6 +426,16 @@ remplacer_secours() {
   echo "CLE=$k"
 }
 
+changer_prenom() {  # <prénom> (v1.2 : Réglages → À propos)
+  local u p; u="$(utilisateur)"; [ -n "$u" ] || erreur "$(t "Compte introuvable.")"
+  p="$(printf '%s' "$1" | tr -d ':,\n' | head -c 60)"
+  [ -n "$p" ] || erreur "$(t "Tapez votre prénom.")"
+  if [ -d "$SECU" ]; then printf '%s' "$p" > "$SECU/prenom"; chmod 600 "$SECU/prenom"; fi
+  usermod -c "$p" "$u" >/dev/null 2>&1 || erreur "$(t "Le prénom n'a pas pu être changé.")"
+  journal "prénom changé"
+  echo "OK"
+}
+
 definir() {  # [prénom]
   donnees_ouvertes
   if [ ! -f "$PROVISOIRE" ] && [ ! -f "$ETAT/secours-utilisee" ]; then
@@ -490,8 +513,9 @@ case "${1:-}" in
   preparer-secours) preparer_secours ;;
   definir) definir "${2:-}" ;;
   changer) changer ;;
+  prenom) changer_prenom "${2:-}" ;;
   nouvelle-cle) nouvelle_cle ;;
   verifier) verifier ;;
   restaurer-compte) restaurer_compte ;;
-  *) echo "Usage : $0 ouvrir | etat | preparer-secours | definir [prénom] | changer | nouvelle-cle | verifier | restaurer-compte" >&2; exit 2 ;;
+  *) echo "Usage : $0 ouvrir | etat | preparer-secours | definir [prénom] | changer | prenom <prénom> | nouvelle-cle | verifier | restaurer-compte" >&2; exit 2 ;;
 esac

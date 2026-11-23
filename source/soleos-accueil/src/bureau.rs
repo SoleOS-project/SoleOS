@@ -529,6 +529,77 @@ pub fn bulle_info(app: &gtk::Application, texte: &str) {
     glib::timeout_add_seconds_local_once(3, move || f.destroy());
 }
 
+/// (v1.2) Notification d'une application : bulle en bas à droite, au-dessus de la barre.
+/// Un clic l'ouvre (`clic`) ; elle disparaît seule après `duree_ms`.
+pub fn bulle_notification(app: &gtk::Application, appli: &str, titre: &str, texte: &str, duree_ms: u32, clic: impl Fn() + 'static) -> gtk::Window {
+    let f = gtk::Window::builder().application(app).decorated(false).title("Notification").build();
+    f.add_css_class("fenetre-bas");
+    f.init_layer_shell();
+    f.set_layer(Layer::Overlay);
+    f.set_namespace(Some("soleos-notification"));
+    f.set_anchor(Edge::Bottom, true);
+    f.set_anchor(Edge::Right, true);
+    f.set_margin(Edge::Bottom, HAUTEUR_BAS + 14);
+    f.set_margin(Edge::Right, 14);
+    f.set_exclusive_zone(-1);
+    f.set_keyboard_mode(KeyboardMode::None);
+    let boite = gtk::Box::new(gtk::Orientation::Vertical, 4);
+    boite.add_css_class("bulle-notification");
+    boite.set_size_request(340, -1);
+    let haut = gtk::Box::new(gtk::Orientation::Horizontal, 6);
+    let source = gtk::Label::new(Some(appli));
+    source.add_css_class("notification-appli");
+    source.set_xalign(0.0);
+    source.set_hexpand(true);
+    source.set_ellipsize(gtk::pango::EllipsizeMode::End);
+    let fermer = gtk::Button::with_label("×");
+    fermer.add_css_class("notification-fermer");
+    haut.append(&source);
+    haut.append(&fermer);
+    boite.append(&haut);
+    let t = gtk::Label::new(Some(titre));
+    t.add_css_class("notification-titre");
+    t.set_xalign(0.0);
+    t.set_wrap(true);
+    t.set_max_width_chars(40);
+    t.set_lines(2);
+    t.set_ellipsize(gtk::pango::EllipsizeMode::End);
+    boite.append(&t);
+    if !texte.trim().is_empty() {
+        let c = gtk::Label::new(Some(texte.trim()));
+        c.add_css_class("notification-texte");
+        c.set_xalign(0.0);
+        c.set_wrap(true);
+        c.set_max_width_chars(40);
+        c.set_lines(3);
+        c.set_ellipsize(gtk::pango::EllipsizeMode::End);
+        boite.append(&c);
+    }
+    f.set_child(Some(&boite));
+    {
+        let f2 = f.clone();
+        fermer.connect_clicked(move |_| f2.destroy());
+    }
+    let geste = gtk::GestureClick::new();
+    {
+        let f2 = f.clone();
+        geste.connect_released(move |g, _, _, _| {
+            g.set_state(gtk::EventSequenceState::Claimed);
+            clic();
+            f2.destroy();
+        });
+    }
+    boite.add_controller(geste);
+    f.present();
+    let faible = f.downgrade();
+    glib::timeout_add_local_once(std::time::Duration::from_millis(duree_ms as u64), move || {
+        if let Some(f) = faible.upgrade() {
+            f.destroy();
+        }
+    });
+    f
+}
+
 /// Le panneau de l'éclair
 pub struct PanneauEclair {
     pub fenetre: gtk::Window,
@@ -645,6 +716,11 @@ pub fn panneau_eclair(app: &gtk::Application) -> Rc<PanneauEclair> {
         });
     }
     bas_panneau.append(&signaler);
+    // (v1.2) Fermer la session (sur la clé USB : pas de session à rouvrir, donc absent)
+    let fermer_session = gtk::Button::with_label(&tr("Fermer la session"));
+    fermer_session.add_css_class("lien-son");
+    fermer_session.set_visible(!std::path::Path::new("/run/live/medium").exists());
+    bas_panneau.append(&fermer_session);
     if let Ok(v) = std::fs::read_to_string("/etc/soleos-version") {
         let version = gtk::Label::new(Some(&format!("SoleOS {}", v.trim())));
         version.add_css_class("version-eclair");
@@ -694,17 +770,28 @@ pub fn panneau_eclair(app: &gtk::Application) -> Rc<PanneauEclair> {
             lancer(&["systemctl", "suspend"]);
         });
     }
+    // (v1.2) Mise à jour en préparation : on propose d'attendre qu'elle finisse
     {
-        let fe = fermer.clone();
+        let (fe, a) = (fermer.clone(), app.clone());
         redemarrer.connect_clicked(move |_| {
             fe();
-            lancer(&["systemctl", "reboot"]);
+            crate::arreter_ordinateur(&a, "reboot");
         });
     }
-    eteindre.connect_clicked(move |_| {
-        fermer();
-        lancer(&["systemctl", "poweroff"]);
-    });
+    {
+        let (fe, a) = (fermer.clone(), app.clone());
+        eteindre.connect_clicked(move |_| {
+            fe();
+            crate::arreter_ordinateur(&a, "poweroff");
+        });
+    }
+    {
+        let a = app.clone();
+        fermer_session.connect_clicked(move |_| {
+            fermer();
+            crate::fermer_session(&a);
+        });
+    }
     p
 }
 
@@ -735,7 +822,7 @@ impl Accueil {
                     lancer(appli.commande);
                 }
             }
-            "Internet" => lancer(&["soleos-web", "--new-window", tr::courante().web]),
+            "Internet" => lancer(&["soleos-internet", tr::courante().web]),
             _ => lancer(appli.commande),
         }
     }
@@ -876,7 +963,7 @@ impl Accueil {
     pub(crate) fn chercher_web(&self, q: &str) {
         self.fermer_eclair();
         let adresse = format!("{}{}", tr::courante().recherche, encoder(q.trim()));
-        lancer(&["soleos-web", "--new-window", &adresse]);
+        lancer(&["soleos-internet", &adresse]);
     }
 
     /// Barre du bas : un bouton par fenêtre ouverte, dans l'ordre d'ouverture
@@ -1035,6 +1122,12 @@ button.bouton-panneau, button.web-eclair, button.tache, button.lanceur, button.e
 .cadre-signaler { border: 1px solid alpha(white, 0.15); border-radius: 12px; }
 .champ-signaler, .champ-signaler text { background-color: #141A2E; color: #F2F4F8; font-size: 14px; }
 .bulle-info { background-color: alpha(#0E1426, 0.96); color: #F2F4F8; border: 1px solid #FFC23D; border-radius: 14px; padding: 12px 20px; font-size: 14px; }
+.bulle-notification { background-color: alpha(#0E1426, 0.97); color: #F2F4F8; border: 1px solid alpha(#FFC23D, 0.7); border-radius: 14px; padding: 10px 14px 12px 16px; }
+.notification-appli { font-size: 12px; color: alpha(#F2F4F8, 0.65); }
+.notification-titre { font-size: 15px; font-weight: 600; }
+.notification-texte { font-size: 13px; color: alpha(#F2F4F8, 0.85); }
+.notification-fermer { min-width: 24px; min-height: 24px; padding: 0; background: none; border: none; box-shadow: none; color: alpha(#F2F4F8, 0.7); font-size: 16px; }
+.compte-mails { background-color: #E5484D; color: white; border-radius: 9px; min-width: 18px; padding: 0 4px; font-size: 11px; font-weight: 700; margin: 0; }
 .version-bureau { font-size: 12px; color: alpha(#E9ECF5, 0.55); }
 .version-eclair { font-size: 11.5px; color: #8B93A8; }
 button.lien-son, .feuille button.lien-son, popover button.lien-son, .panneau-eclair button.lien-son { background: none; border: none; box-shadow: none; padding: 2px 0; color: #FFC23D; font-size: 13px; min-height: 0; }

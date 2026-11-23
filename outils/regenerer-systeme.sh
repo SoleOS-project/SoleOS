@@ -14,7 +14,7 @@ bloc=$(mktemp)
     echo "FINSYS"
   done
   (cd $S && find . -type f | sed 's#^\./##' | sort) | while read -r f; do
-    case "$f" in etc/sudoers.d/*) echo "chmod 440 \"\$I/$f\"" ;; *) if [ -x "$S/$f" ]; then echo "chmod 755 \"\$I/$f\""; fi ;; esac
+    case "$f" in etc/sudoers.d/*) echo "chmod 440 \"\$I/$f\"" ;; *) if [ -x "$S/$f" ] || [ "$(head -c 2 "$S/$f")" = '#!' ]; then echo "chmod 755 \"\$I/$f\""; fi ;; esac
   done
   echo '# <<< FICHIERS SYSTEME'
 } > $bloc

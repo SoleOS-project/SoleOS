@@ -17,6 +17,8 @@ pub struct Fond {
 }
 
 pub const FONDS: &[Fond] = &[
+    // (v1.2) fond par défaut des nouvelles installations
+    Fond { id: "origine", nom: n_("Origine") },
     // « eclair » : identifiant gardé (choix déjà enregistrés) ; le fond est le Soleil de SoleOS
     Fond { id: "eclair", nom: n_("Soleil") },
     Fond { id: "circuit", nom: n_("Circuit") },
@@ -26,8 +28,9 @@ pub const FONDS: &[Fond] = &[
     Fond { id: "nuit", nom: n_("Nuit (uni)") },
 ];
 
-/// Fond choisi à la première ouverture
-pub const PAR_DEFAUT: &str = "eclair";
+/// Fond choisi à la première ouverture (v1.2 : « Origine » ; les PC installés avant gardent
+/// « Soleil », enregistré comme leur choix par soleos-preparer-utilisateur)
+pub const PAR_DEFAUT: &str = "origine";
 
 const DOSSIER: &str = "/usr/share/soleos/fonds";
 
@@ -66,7 +69,7 @@ pub fn choisi() -> String {
     // Anciens noms (jusqu'à la v10) : « fond-nuit », « fond-aube »…
     let nom = match nom {
         "fond-nuit" => "nuit",
-        n if n.starts_with("fond-") => PAR_DEFAUT,
+        n if n.starts_with("fond-") => "eclair",
         n => n,
     };
     if FONDS.iter().any(|f| f.id == nom) && (nom == "nuit" || image(nom).is_some()) {

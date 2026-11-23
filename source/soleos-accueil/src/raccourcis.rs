@@ -2,12 +2,14 @@
 //!
 //! Raccourcis sur le bureau (v13.1), comme Windows et macOS : le contenu du dossier « Bureau »
 //! s'affiche en icônes sur le fond d'écran, en colonnes, à droite de la barre magique.
-//! - double-clic (ou Entrée) : ouvrir ;
+//! - double-clic (ou Entrée) : ouvrir ; (v1.2) clic lent sur le nom d'une icône sélectionnée : renommer ;
 //! - clic droit (ou appui long) : Ouvrir, Retirer du bureau (raccourci) ou Mettre à la corbeille ;
 //! - un fichier ou un dossier glissé depuis Fichiers devient un raccourci (le fichier ne bouge pas) ;
 //! - « Ajouter au bureau » dans l'éclair (applications) et dans Fichiers (clic droit → Scripts).
 //! Le dossier est surveillé : un changement s'affiche tout de suite. Rien ne tourne sinon.
+//! (v1.2) Les icônes se déplacent à la souris sur une grille invisible ; leur place est gardée.
 
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::rc::Rc;
 
@@ -196,34 +198,131 @@ fn image_element(e: &Element) -> gtk::Image {
     icones::image("appli", T)
 }
 
+// ---------------------------------------------------------------------
+//  (v1.2) Grille invisible : place de chaque icône (colonne, rangée), gardée par nom de fichier
+// ---------------------------------------------------------------------
+
+/// Taille d'une case de la grille (en points)
+const CASE_L: i32 = 110;
+const CASE_H: i32 = 122;
+
+fn fichier_positions() -> PathBuf {
+    glib::user_config_dir().join("soleos/bureau-positions")
+}
+
+pub fn analyser_positions(texte: &str) -> HashMap<String, (u32, u32)> {
+    texte
+        .lines()
+        .filter_map(|l| {
+            let (case, nom) = l.split_once('\t')?;
+            let (c, r) = case.split_once(' ')?;
+            Some((nom.to_string(), (c.parse().ok()?, r.parse().ok()?)))
+        })
+        .collect()
+}
+
+fn lire_positions() -> HashMap<String, (u32, u32)> {
+    analyser_positions(&std::fs::read_to_string(fichier_positions()).unwrap_or_default())
+}
+
+fn ecrire_positions(p: &HashMap<String, (u32, u32)>) {
+    let mut lignes: Vec<String> = p.iter().map(|(n, (c, r))| format!("{c} {r}\t{n}")).collect();
+    lignes.sort();
+    let f = fichier_positions();
+    if let Some(d) = f.parent() {
+        let _ = std::fs::create_dir_all(d);
+    }
+    let _ = std::fs::write(f, lignes.join("\n") + "\n");
+}
+
+/// Place de chaque élément (dans l'ordre donné) : sa place gardée si elle est libre et dans la
+/// grille, sinon la première case libre, colonne par colonne (comme avant la v1.2)
+pub fn placer(noms: &[String], gardees: &HashMap<String, (u32, u32)>, colonnes: u32, rangees: u32) -> Vec<(u32, u32)> {
+    let (colonnes, rangees) = (colonnes.max(1), rangees.max(1));
+    let mut prises: std::collections::HashSet<(u32, u32)> = std::collections::HashSet::new();
+    let mut places: Vec<Option<(u32, u32)>> = noms
+        .iter()
+        .map(|n| {
+            gardees.get(n).copied().filter(|&(c, r)| c < colonnes && r < rangees && prises.insert((c, r)))
+        })
+        .collect();
+    let mut libre = (0..colonnes).flat_map(|c| (0..rangees).map(move |r| (c, r)));
+    for p in places.iter_mut().filter(|p| p.is_none()) {
+        *p = libre.by_ref().find(|x| !prises.contains(x));
+        if let Some(x) = *p {
+            prises.insert(x);
+        }
+    }
+    // Plus d'icônes que de cases : les dernières à la suite, dans une colonne de plus
+    let mut extra = 0;
+    places
+        .into_iter()
+        .map(|p| {
+            p.unwrap_or_else(|| {
+                extra += 1;
+                (colonnes + (extra - 1) / rangees, (extra - 1) % rangees)
+            })
+        })
+        .collect()
+}
+
+/// Le nom de fichier change (Renommer) : sa place le suit
+fn deplacer_position(ancien: &str, nouveau: &str) {
+    let mut p = lire_positions();
+    if let Some(x) = p.remove(ancien) {
+        p.insert(nouveau.to_string(), x);
+        ecrire_positions(&p);
+    }
+}
+
 pub struct Bureau {
-    pub racine: gtk::FlowBox,
+    pub racine: gtk::Fixed,
     _moniteur: Option<gio::FileMonitor>,
     ouvrir_appli: Box<dyn Fn(&str)>,
+    colonnes: u32,
+    rangees: u32,
+    /// Nom de fichier → case occupée (affichage en cours)
+    cases: std::cell::RefCell<HashMap<String, (u32, u32)>>,
 }
 
 impl Bureau {
     /// `ouvrir_appli` : ouvre une application SoleOS par son identifiant
     pub fn nouveau(ouvrir_appli: impl Fn(&str) + 'static) -> Rc<Self> {
-        let racine = gtk::FlowBox::new();
+        let racine = gtk::Fixed::new();
         racine.add_css_class("icones-bureau");
-        racine.set_orientation(gtk::Orientation::Vertical);
-        racine.set_selection_mode(gtk::SelectionMode::None);
-        racine.set_halign(gtk::Align::Start);
-        racine.set_valign(gtk::Align::Start);
-        racine.set_homogeneous(true);
-        racine.set_column_spacing(4);
-        racine.set_row_spacing(4);
-        // Rangées par colonne : autant que la hauteur de l'écran le permet
-        let hauteur = gdk::Display::default()
+        racine.set_hexpand(true);
+        racine.set_vexpand(true);
+        // Rangées par colonne : autant que la hauteur de l'écran le permet ; colonnes : la largeur
+        let (largeur, hauteur) = gdk::Display::default()
             .and_then(|d| d.monitors().item(0))
             .and_downcast::<gdk::Monitor>()
-            .map(|m| m.geometry().height())
-            .unwrap_or(768);
-        racine.set_max_children_per_line((((hauteur - 56 - 60) / 120).max(3)) as u32);
-        racine.set_min_children_per_line(1);
+            .map(|m| (m.geometry().width(), m.geometry().height()))
+            .unwrap_or((1366, 768));
+        let rangees = ((hauteur - 56 - 60) / 120).max(3) as u32;
+        let colonnes = ((largeur - 118 - 40) / CASE_L).max(3) as u32;
         let moniteur = gio::File::for_path(dossier()).monitor_directory(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE).ok();
-        let b = Rc::new(Bureau { racine, _moniteur: moniteur, ouvrir_appli: Box::new(ouvrir_appli) });
+        let b = Rc::new(Bureau {
+            racine,
+            _moniteur: moniteur,
+            ouvrir_appli: Box::new(ouvrir_appli),
+            colonnes,
+            rangees,
+            cases: std::cell::RefCell::new(HashMap::new()),
+        });
+        // Icône lâchée sur une case : elle y va (échange avec l'icône qui l'occupait)
+        {
+            let depot = gtk::DropTarget::new(glib::types::Type::STRING, gdk::DragAction::MOVE);
+            let moi = Rc::downgrade(&b);
+            depot.connect_drop(move |_, valeur, x, y| {
+                let (Some(b), Ok(nom)) = (moi.upgrade(), valeur.get::<String>()) else { return false };
+                let Some(nom) = nom.strip_prefix("soleos-bureau:").map(String::from) else { return false };
+                let c = ((x.max(0.0) as i32) / CASE_L).min(b.colonnes as i32 - 1) as u32;
+                let r = ((y.max(0.0) as i32) / CASE_H).min(b.rangees as i32 - 1) as u32;
+                b.deplacer(&nom, (c, r));
+                true
+            });
+            b.racine.add_controller(depot);
+        }
         if let Some(m) = &b._moniteur {
             let moi = Rc::downgrade(&b);
             // Plusieurs changements d'un coup : un seul rafraîchissement
@@ -245,6 +344,24 @@ impl Bureau {
         b
     }
 
+    /// Met l'icône `nom` dans la case `case` ; celle qui y était prend l'ancienne place
+    fn deplacer(self: &Rc<Self>, nom: &str, case: (u32, u32)) {
+        let mut cases = self.cases.borrow().clone();
+        let Some(&avant) = cases.get(nom) else { return };
+        if avant == case {
+            return;
+        }
+        if let Some(autre) = cases.iter().find(|(_, p)| **p == case).map(|(n, _)| n.clone()) {
+            cases.insert(autre, avant);
+        }
+        cases.insert(nom.to_string(), case);
+        // On garde aussi les places des fichiers absents pour l'instant (clé USB, partage réseau…)
+        let mut gardees = lire_positions();
+        gardees.extend(cases.clone());
+        ecrire_positions(&gardees);
+        self.remplir();
+    }
+
     pub fn remplir(self: &Rc<Self>) {
         while let Some(e) = self.racine.first_child() {
             self.racine.remove(&e);
@@ -260,9 +377,16 @@ impl Bureau {
             };
             (rang, e.nom.to_lowercase())
         });
-        for e in elements {
-            self.racine.insert(&self.icone(e), -1);
+        let noms: Vec<String> = elements.iter().map(|e| nom_fichier(&e.chemin)).collect();
+        let places = placer(&noms, &lire_positions(), self.colonnes, self.rangees);
+        let mut cases = HashMap::new();
+        for ((e, nom), (c, r)) in elements.into_iter().zip(noms).zip(places) {
+            let w = self.icone(e);
+            w.set_size_request(CASE_L - 6, -1);
+            self.racine.put(&w, (c as i32 * CASE_L) as f64, (r as i32 * CASE_H) as f64);
+            cases.insert(nom, (c, r));
         }
+        *self.cases.borrow_mut() = cases;
     }
 
     fn ouvrir(&self, e: &Element) {
@@ -297,20 +421,50 @@ impl Bureau {
         }
         let b = gtk::Button::builder().child(&boite).build();
         b.add_css_class("icone-bureau");
+        // (v1.2) Glisser l'icône pour la déplacer sur la grille
+        {
+            let glisser = gtk::DragSource::new();
+            glisser.set_actions(gdk::DragAction::MOVE);
+            let nom = format!("soleos-bureau:{}", nom_fichier(&e.chemin));
+            glisser.connect_prepare(move |_, _, _| Some(gdk::ContentProvider::for_value(&nom.to_value())));
+            let im = image.clone();
+            glisser.connect_drag_begin(move |g, _| {
+                let p = gtk::WidgetPaintable::new(Some(&im));
+                g.set_icon(Some(&p), 26, 26);
+            });
+            b.add_controller(glisser);
+        }
         // Double-clic : ouvrir (un simple clic sélectionne, comme sous Windows)
         let double = gtk::GestureClick::new();
         double.set_button(1);
         double.set_propagation_phase(gtk::PropagationPhase::Capture);
         {
-            let (moi, e2) = (Rc::downgrade(self), e.clone());
-            double.connect_pressed(move |g, n, _, _| {
-                if let Some(w) = g.widget() {
-                    w.grab_focus();
-                }
-                if n == 2 {
+            // (v1.2) Comme sous Windows : un clic lent sur le NOM d'une icône déjà sélectionnée
+            // ouvre « Renommer » (annulé si c'est en fait un double-clic)
+            let jeton = Rc::new(std::cell::Cell::new(0u32));
+            let (moi, e2, nom2) = (Rc::downgrade(self), e.clone(), nom.clone());
+            double.connect_pressed(move |g, n, x, y| {
+                let Some(w) = g.widget() else { return };
+                let deja_selectionnee = w.is_focus();
+                w.grab_focus();
+                jeton.set(jeton.get().wrapping_add(1));
+                if n >= 2 {
                     if let Some(b) = moi.upgrade() {
                         b.ouvrir(&e2);
                     }
+                    return;
+                }
+                let sur_nom = nom2.compute_bounds(&w).is_some_and(|r| r.contains_point(&gtk::graphene::Point::new(x as f32, y as f32)));
+                if deja_selectionnee && sur_nom {
+                    let (j, attendu, w2, e3) = (jeton.clone(), jeton.get(), w.clone(), e2.clone());
+                    glib::timeout_add_local_once(std::time::Duration::from_millis(600), move || {
+                        if j.get() != attendu {
+                            return;
+                        }
+                        if let Some(app) = w2.root().and_downcast::<gtk::Window>().and_then(|f| f.application()) {
+                            fenetre_renommer(&app, &e3);
+                        }
+                    });
                 }
             });
         }
@@ -370,6 +524,10 @@ impl Bureau {
         crate::attacher_menu_contextuel(&b, &bulle);
         b.upcast()
     }
+}
+
+fn nom_fichier(p: &Path) -> String {
+    p.file_name().map(|n| n.to_string_lossy().to_string()).unwrap_or_default()
 }
 
 /// Fenêtre « Renommer » (couche du dessus, clavier pris) : Entrée valide, Échap annule
@@ -465,7 +623,9 @@ fn renommer(e: &Element, nouveau: &str) -> std::io::Result<()> {
     if cible.symlink_metadata().is_ok() {
         return Err(std::io::Error::new(std::io::ErrorKind::AlreadyExists, "existe"));
     }
-    std::fs::rename(&e.chemin, cible)
+    std::fs::rename(&e.chemin, &cible)?;
+    deplacer_position(&nom_fichier(&e.chemin), &nom);
+    Ok(())
 }
 
 /// Le fond d'écran accepte les fichiers et dossiers glissés depuis Fichiers
@@ -483,7 +643,6 @@ pub fn accepter_depots(cible: &impl IsA<gtk::Widget>) {
 
 pub const STYLE: &str = r#"
 .icones-bureau { margin: 26px 0 0 118px; }
-.icones-bureau flowboxchild { padding: 0; background: none; }
 button.icone-bureau { background: none; background-image: none; border: 1.5px solid transparent; box-shadow: none; border-radius: 12px;
   padding: 8px 4px 6px 4px; min-width: 96px; transition: background-color 120ms ease-out; }
 button.icone-bureau:hover { background-color: alpha(white, 0.10); }
@@ -496,6 +655,22 @@ button.icone-bureau:focus-visible, button.icone-bureau:focus { background-color:
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn grille_du_bureau() {
+        let noms: Vec<String> = ["a", "b", "c", "d"].iter().map(|s| s.to_string()).collect();
+        // Rien de gardé : colonne par colonne (3 rangées)
+        assert_eq!(placer(&noms, &HashMap::new(), 4, 3), vec![(0, 0), (0, 1), (0, 2), (1, 0)]);
+        // « c » gardé en (0,0) : les autres prennent les cases libres ; hors grille → case libre
+        let g = analyser_positions("0 0\tc\n9 9\td\n");
+        assert_eq!(placer(&noms, &g, 4, 3), vec![(0, 1), (0, 2), (0, 0), (1, 0)]);
+        // Deux icônes sur la même case : la seconde va ailleurs
+        let g = analyser_positions("2 1\ta\n2 1\tb\n");
+        assert_eq!(placer(&noms[..2], &g, 4, 3)[0], (2, 1));
+        assert_ne!(placer(&noms[..2], &g, 4, 3)[1], (2, 1));
+        // Plus d'icônes que de cases : à la suite
+        assert_eq!(placer(&noms, &HashMap::new(), 1, 3)[3], (1, 0));
+    }
 
     #[test]
     fn echappement_exec() {

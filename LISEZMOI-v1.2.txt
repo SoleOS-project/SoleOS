@@ -1,6 +1,57 @@
-SoleOS v1.1
+SoleOS v1.2
 Créé par Giuseppe D'Arco – © 2026 GDH
 Licence non commerciale (PolyForm Noncommercial 1.0.0 + autorisations supplémentaires) : voir LICENSE
+
+v1.2 : mise à jour depuis la clé, notifications, navigateur au choix
+--------------------------------------------------------------------------------------
+  Mettre à jour SoleOS sans rien réinstaller
+  - La clé v1.2 démarrée sur un ordinateur où SoleOS est déjà installé (v1.1 ou plus ancien)
+    propose « Mettre à jour SoleOS » : le système est remplacé par celui de la clé, tout le
+    reste est gardé (fichiers, applications, mails, navigateur et Chrome, réglages, Wi-Fi,
+    imprimantes, Bluetooth, langue, code et clé de secours). Le navigateur n'est PAS remis
+    à zéro (contrairement à « Réparer »). La copie de secours (réparation) passe en v1.2.
+  - Version visible sur la clé : fichier SoleOS-v1.2.txt à la racine, menu de démarrage
+    « SoleOS v1.2 » (le nom du volume reste « SoleOS »).
+  - Installation et mise à jour plus rapides : le système est extrait directement de la
+    clé, sur tous les cœurs du processeur (copie habituelle en secours).
+
+  Bureau
+  - Notifications des applications (bulle en bas à droite). Mail : enveloppe dans la barre
+    du bas (seulement quand Thunderbird est ouvert) avec le nombre de nouveaux mails ; un clic l'affiche.
+  - Nouveau fond d'écran « Origine », par défaut sur les nouvelles installations (les PC déjà
+    installés gardent le leur).
+  - Icônes du bureau déplaçables sur une grille invisible ; leur place est gardée.
+  - Bureau : un clic lent sur le nom d'une icône déjà sélectionnée la renomme (comme sous Windows).
+  - Réglages → Navigateur : « Navigateur du bouton Internet » (Chromium, ou Chrome, Firefox,
+    Edge, Brave… installés depuis Applications). Applications : Google Chrome mis en avant
+    (« Retrouvez vos favoris Google »).
+  - Réglages → Taille d'affichage : choix de la résolution (gardée et réappliquée ;
+    15 secondes pour confirmer, sinon retour à la précédente).
+  - Réglages → À propos : « Changer mon prénom ».
+  - Menu de l'éclair : « Fermer la session ». Éteindre / Redémarrer pendant la préparation
+    d'une mise à jour : « Éteindre à la fin » ou « Éteindre quand même ».
+  - Copier/coller gardé après la fermeture de l'application d'origine (sauf mots de passe).
+  - Enceinte ou casque Bluetooth reconnecté tout seul à l'ouverture de la session et au
+    réveil (le dernier utilisé d'abord).
+  - Barre du bas : chaque fenêtre a la bonne icône (Mammouth AI n'a plus celle de Chrome).
+  - Applications web de Chrome, Edge, Brave (Flatpak) : icônes visibles et lançables
+    (noms en « .flextop. », apostrophes dans la commande, icônes de Flatpak).
+  - Modèles « Nouveau document » dans Fichiers (texte, Word, Excel, PowerPoint) ; les
+    fichiers texte et vides s'ouvrent avec Notepad Next.
+
+  Système
+  - Arrêt : 15 secondes au plus par service (au lieu de 90) ; la préparation des mises à jour
+    s'arrête tout de suite. Le diagnostic contient la fin de l'arrêt précédent ; le journal
+    du système est gardé d'un démarrage à l'autre.
+  - Chuwi CoreBook Air Plus (son 0x20147054 seulement) : haut-parleurs démarrés, y compris
+    après la veille. Correctif « Chuwi-CoreBook-Air-Audio-Fix » (licence MIT), merci à ses
+    auteurs : github.com/avrora13377/Chuwi-CoreBook-Air-Audio-Fix. Ne fait rien sur les
+    autres ordinateurs.
+  - Corrigé : la fin d'un script de construction (liens de compatibilité, ldconfig…) ne
+    s'exécutait pas depuis la v1.0 (fin de bloc mal fermée).
+
+  Tests : voir le rapport de la v1.2.
+
 
 v1.1 : tous les noms techniques passent à « soleos »
 --------------------------------------------------------------------------------------

@@ -644,6 +644,12 @@ msgstr "Disinstalla"
 msgid "Annuler"
 msgstr "Annulla"
 
+msgid "Retrouvez vos favoris Google"
+msgstr "Ritrova i tuoi preferiti Google"
+
+msgid "Avec Google Chrome et votre compte Google : vos favoris, mots de passe et extensions, comme sur votre ancien ordinateur. Ensuite, Réglages → Navigateur pour l'ouvrir avec le bouton Internet."
+msgstr "Con Google Chrome e il tuo account Google: preferiti, password ed estensioni, come sul tuo vecchio computer. Poi Impostazioni → Browser per aprirlo con il pulsante Internet."
+
 msgid "Logiciels libres et rapides, écrits en Rust par l'équipe ArtCraft. Encore jeunes : gardez Bureautique pour les documents importants."
 msgstr "Software libero e veloce, scritto in Rust dal team ArtCraft. Ancora giovane: usa Ufficio per i documenti importanti."
 
@@ -944,8 +950,14 @@ msgstr "Avvio dell'installazione…"
 msgid "N'éteignez pas l'ordinateur et ne retirez pas la clé USB."
 msgstr "Non spegnere il computer e non rimuovere la chiavetta USB."
 
+msgid "Mettre à jour SoleOS"
+msgstr "Aggiorna SoleOS"
+
 msgid "Réparer SoleOS"
 msgstr "Ripara SoleOS"
+
+msgid "Vos fichiers sont protégés. Pour les garder pendant la mise à jour,\ntapez votre code SoleOS (ou votre clé de secours)."
+msgstr "I tuoi file sono protetti. Per conservarli durante l'aggiornamento,\ndigita il tuo codice SoleOS (o la chiave di recupero)."
 
 msgid "Vos fichiers sont protégés. Pour les garder pendant la réparation,\ntapez votre code SoleOS (ou votre clé de secours)."
 msgstr "I tuoi file sono protetti. Per conservarli durante la riparazione,\ndigita il tuo codice SoleOS (o la chiave di recupero)."
@@ -953,14 +965,23 @@ msgstr "I tuoi file sono protetti. Per conservarli durante la riparazione,\ndigi
 msgid "Afficher ce que je tape"
 msgstr "Mostra ciò che digito"
 
-msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
-msgstr "Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico."
+msgid "Le code ne contient que des chiffres : touche Maj (⇧) + la touche du chiffre, ou pavé numérique. Effacez et retapez."
+msgstr "Il codice contiene solo cifre: tasto Maiusc (⇧) + il tasto della cifra, oppure il tastierino numerico. Cancella e riscrivi."
+
+msgid "Mettre à jour"
+msgstr "Aggiorna"
 
 msgid "Réparer"
 msgstr "Ripara"
 
+msgid "Code oublié et clé de secours perdue : seule une nouvelle installation (tout effacer) reste possible."
+msgstr "Codice dimenticato e chiave di recupero persa: resta possibile solo una nuova installazione (cancella tutto)."
+
 msgid "Code oublié et clé de secours perdue : seul « Tout effacer » reste possible."
 msgstr "Codice dimenticato e chiave di recupero persa: è possibile solo «Cancella tutto»."
+
+msgid "Démarrage de la mise à jour…"
+msgstr "Avvio dell'aggiornamento…"
 
 msgid "Démarrage de la réparation…"
 msgstr "Avvio della riparazione…"
@@ -980,6 +1001,12 @@ msgstr "Codice errato. Riprova, oppure digita la chiave di recupero."
 msgid "Trop d'essais : la puce de sécurité patiente quelques minutes. Vous pouvez aussi taper votre clé de secours."
 msgstr "Troppi tentativi: il chip di sicurezza attende qualche minuto. Puoi anche digitare la chiave di recupero."
 
+msgid "SoleOS{version} est installé, vos fichiers sont gardés !"
+msgstr "SoleOS{version} è installato, i tuoi file sono conservati!"
+
+msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
+msgstr "Rimuovi la chiavetta USB, poi riavvia il computer."
+
 msgid "SoleOS est remis à neuf !"
 msgstr "SoleOS è come nuovo!"
 
@@ -989,11 +1016,35 @@ msgstr "Riavvia il computer per usarlo."
 msgid "SoleOS est installé !"
 msgstr "SoleOS è installato!"
 
-msgid "Retirez la clé USB, puis redémarrez l'ordinateur."
-msgstr "Rimuovi la chiavetta USB, poi riavvia il computer."
-
 msgid "Redémarrer maintenant"
 msgstr "Riavvia ora"
+
+msgid "SoleOS est déjà installé sur cet ordinateur"
+msgstr "SoleOS è già installato su questo computer"
+
+msgid "Version installée : {ancienne}  —  version de la clé : {nouvelle}"
+msgstr "Versione installata: {ancienne}  —  versione della chiavetta: {nouvelle}"
+
+msgid "↻  Mettre à jour SoleOS"
+msgstr "↻  Aggiorna SoleOS"
+
+msgid "SoleOS est remplacé par la version de la clé. Tout est gardé : vos fichiers, vos applications, vos mails, votre navigateur (favoris, mots de passe), vos réglages, vos réseaux Wi-Fi, imprimantes et appareils Bluetooth, votre code et votre clé de secours."
+msgstr "SoleOS viene sostituito dalla versione della chiavetta. Tutto viene conservato: file, applicazioni, mail, browser (preferiti, password), impostazioni, reti Wi-Fi, stampanti e dispositivi Bluetooth, il codice e la chiave di recupero."
+
+msgid "Votre code (ou votre clé de secours) vous sera demandé."
+msgstr "Ti verrà chiesto il codice (o la chiave di recupero)."
+
+msgid "⚠  Effacer et réinstaller"
+msgstr "⚠  Cancella e reinstalla"
+
+msgid "Nouvelle installation : tout le disque est effacé (fichiers, applications, réglages, comptes)."
+msgstr "Nuova installazione: tutto il disco viene cancellato (file, applicazioni, impostazioni, account)."
+
+msgid "Effacer et réinstaller"
+msgstr "Cancella e reinstalla"
+
+msgid "Disque : {modele}  —  {taille}"
+msgstr "Disco: {modele}  —  {taille}"
 
 msgid "Réparer ou réinitialiser SoleOS"
 msgstr "Ripara o reimposta SoleOS"
@@ -1003,9 +1054,6 @@ msgstr "⚙  Ripara SoleOS"
 
 msgid "Le système est remis à neuf. Vos fichiers, vos applications, vos réglages et vos réseaux Wi-Fi sont conservés.\n\nLe navigateur est remis à zéro (extensions et réglages) ; vos favoris restent."
 msgstr "Il sistema viene rimesso a nuovo. I tuoi file, le applicazioni, le impostazioni e le reti Wi-Fi vengono conservati.\n\nIl browser viene azzerato (estensioni e impostazioni); i preferiti restano."
-
-msgid "Votre code (ou votre clé de secours) vous sera demandé."
-msgstr "Ti verrà chiesto il codice (o la chiave di recupero)."
 
 msgid "⚠  Tout effacer"
 msgstr "⚠  Cancella tutto"
@@ -1021,9 +1069,6 @@ msgstr "Cancella tutto"
 
 msgid "EFFACER"
 msgstr "CANCELLA"
-
-msgid "Disque : {modele}  —  {taille}"
-msgstr "Disco: {modele}  —  {taille}"
 
 msgid "Annuler et redémarrer normalement"
 msgstr "Annulla e riavvia normalmente"
@@ -1111,6 +1156,9 @@ msgstr "Screenshot"
 
 msgid "Signaler un problème"
 msgstr "Segnala un problema"
+
+msgid "Fermer la session"
+msgstr "Chiudi la sessione"
 
 msgid "Ajouter au bureau"
 msgstr "Aggiungi al desktop"
@@ -1291,6 +1339,9 @@ msgstr "Creazione del rapporto…"
 
 msgid "Le relevé n'a pas pu être créé."
 msgstr "Non è stato possibile creare il rapporto."
+
+msgid "Origine"
+msgstr "Origine"
 
 msgid "Soleil"
 msgstr "Sole"
@@ -1478,6 +1529,12 @@ msgstr "Screenshot salvato in Immagini"
 msgid "À droite :"
 msgstr "A destra:"
 
+msgid "{n} nouveaux mails"
+msgstr "{n} nuove mail"
+
+msgid "1 nouveau mail"
+msgstr "1 nuova mail"
+
 msgid "Applis ouvertes"
 msgstr "App aperte"
 
@@ -1531,6 +1588,27 @@ msgstr "Buongiorno {prenom}"
 
 msgid "Bonsoir {prenom}"
 msgstr "Buonasera {prenom}"
+
+msgid "Toutes les applications ouvertes vont se fermer. Pensez à enregistrer vos documents."
+msgstr "Tutte le applicazioni aperte verranno chiuse. Ricordati di salvare i tuoi documenti."
+
+msgid "Redémarrer à la fin"
+msgstr "Riavvia alla fine"
+
+msgid "Éteindre à la fin"
+msgstr "Spegni alla fine"
+
+msgid "Redémarrer quand même"
+msgstr "Riavvia comunque"
+
+msgid "Éteindre quand même"
+msgstr "Spegni comunque"
+
+msgid "Une mise à jour se prépare"
+msgstr "Un aggiornamento è in preparazione"
+
+msgid "SoleOS prépare une mise à jour en arrière-plan. Vous pouvez éteindre maintenant : elle s'arrête proprement et reprendra plus tard. Ou attendre qu'elle soit prête (quelques minutes)."
+msgstr "SoleOS sta preparando un aggiornamento in background. Puoi spegnere ora: si interrompe in modo sicuro e riprenderà più tardi. Oppure attendere che sia pronto (qualche minuto)."
 
 msgid "Accueil"
 msgstr "Home"
@@ -1601,6 +1679,9 @@ msgstr "⏻  Spegni"
 msgid "↻  Redémarrer"
 msgstr "↻  Riavvia"
 
+msgid "⇥  Fermer la session"
+msgstr "⇥  Chiudi la sessione"
+
 msgid "☾  Mettre en veille"
 msgstr "☾  Sospendi"
 
@@ -1615,6 +1696,9 @@ msgstr "Impossibile mettere da parte il vecchio profilo ({e})."
 
 msgid "Navigateur remis à neuf : extensions, notifications des sites et réglages effacés. Favoris, mots de passe et historique sont gardés."
 msgstr "Browser rimesso a nuovo: estensioni, notifiche dei siti e impostazioni cancellate. Preferiti, password e cronologia sono conservati."
+
+msgid "Chromium (intégré à SoleOS)"
+msgstr "Chromium (integrato in SoleOS)"
 
 msgid "Bureau"
 msgstr "Desktop"
@@ -1856,6 +1940,15 @@ msgstr "Questo computer"
 msgid "Utilisateur : {prenom}"
 msgstr "Utente: {prenom}"
 
+msgid "Changer mon prénom"
+msgstr "Cambia il mio nome"
+
+msgid "Changer"
+msgstr "Cambia"
+
+msgid "Prénom changé."
+msgstr "Nome cambiato."
+
 msgid "inconnu"
 msgstr "sconosciuto"
 
@@ -1940,6 +2033,15 @@ msgstr "Impossibile installare l'app Fotocamera (connessione a Internet?)."
 msgid "Les applications (navigateur, visio) demandent la permission avant d'utiliser la caméra."
 msgstr "Le applicazioni (browser, videochiamate) chiedono il permesso prima di usare la fotocamera."
 
+msgid "Navigateur du bouton Internet"
+msgstr "Browser del pulsante Internet"
+
+msgid "Vous préférez Google Chrome, Firefox ou Edge ? Installez-le depuis « Applications » : il apparaîtra ici."
+msgstr "Preferisci Google Chrome, Firefox o Edge? Installalo da «Applicazioni»: apparirà qui."
+
+msgid "Remettre à neuf"
+msgstr "Ripristina"
+
 msgid "{n} extensions installées"
 msgstr "{n} estensioni installate"
 
@@ -2014,6 +2116,21 @@ msgstr "−"
 
 msgid "+"
 msgstr "+"
+
+msgid "Résolution de l'écran"
+msgstr "Risoluzione dello schermo"
+
+msgid "{res} (d'origine, la plus nette)"
+msgstr "{res} (originale, la più nitida)"
+
+msgid "D'origine"
+msgstr "Originale"
+
+msgid "Garder cette résolution ? Retour à la précédente dans 15 secondes."
+msgstr "Mantenere questa risoluzione? Ritorno alla precedente tra 15 secondi."
+
+msgid "Garder"
+msgstr "Mantieni"
 
 msgid "%A %e %B %Y, %H:%M"
 msgstr "%A %e %B %Y, %H:%M"
@@ -2183,6 +2300,9 @@ msgstr "Strumento di sicurezza non trovato ({e})."
 msgid "L'opération a échoué."
 msgstr "L'operazione non è riuscita."
 
+msgid "Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico."
+
 msgid "Décrivez en une phrase ce qui ne marche pas. SoleOS prépare un message pour l'assistance, avec un relevé technique (sans mot de passe ni contenu personnel). Vous le relisez avant de l'envoyer."
 msgstr "Descrivete in una frase cosa non funziona. SoleOS prepara un messaggio per l'assistenza, con un rapporto tecnico (senza password né contenuti personali). Lo rileggete prima di inviarlo."
 
@@ -2287,4 +2407,271 @@ msgstr "Connesso a «{nom}»."
 
 msgid "Mot de passe incorrect. Réessayez."
 msgstr "Password errata. Riprova."
+
+msgid "Aucun disque interne d'au moins 32 Go n'a été trouvé."
+msgstr "Non è stato trovato alcun disco interno di almeno 32 GB."
+
+msgid "Aucun SoleOS installé n'a été trouvé sur cet ordinateur."
+msgstr "Non è stato trovato alcun SoleOS installato su questo computer."
+
+msgid "Le chiffrement des données a échoué."
+msgstr "La cifratura dei dati non è riuscita."
+
+msgid "Ouverture des données chiffrées impossible."
+msgstr "Impossibile aprire i dati cifrati."
+
+msgid "Impossible de trouver le système SoleOS d'origine."
+msgstr "Impossibile trovare il sistema SoleOS originale."
+
+msgid "Lecture du système d'origine impossible."
+msgstr "Impossibile leggere il sistema originale."
+
+msgid "Montage du système impossible."
+msgstr "Impossibile montare il sistema."
+
+msgid "La copie des fichiers a échoué."
+msgstr "La copia dei file non è riuscita."
+
+msgid "Montage des données impossible."
+msgstr "Impossibile montare i dati."
+
+msgid "Noyau introuvable."
+msgstr "Kernel non trovato."
+
+msgid "Création du compte impossible."
+msgstr "Impossibile creare l'account."
+
+msgid "Le système de la clé est incomplet (protection du démarrage). Utilisez une autre clé."
+msgstr "Il sistema della chiavetta è incompleto (protezione dell'avvio). Usa un'altra chiavetta."
+
+msgid "Préparation du démarrage impossible (initramfs)."
+msgstr "Impossibile preparare l'avvio (initramfs)."
+
+msgid "Montage de la partition de démarrage impossible."
+msgstr "Impossibile montare la partizione di avvio."
+
+msgid "Montage EFI impossible."
+msgstr "Impossibile montare EFI."
+
+msgid "Installation du démarrage (UEFI) impossible."
+msgstr "Impossibile installare l'avvio (UEFI)."
+
+msgid "Installation du démarrage (BIOS) impossible."
+msgstr "Impossibile installare l'avvio (BIOS)."
+
+msgid "Écriture du menu de démarrage impossible."
+msgstr "Impossibile scrivere il menu di avvio."
+
+msgid "Menu de démarrage incomplet."
+msgstr "Menu di avvio incompleto."
+
+msgid "Montage de la copie d'origine impossible."
+msgstr "Impossibile montare la copia originale."
+
+msgid "Fichiers d'origine introuvables sur la clé."
+msgstr "File originali non trovati sulla chiavetta."
+
+msgid "Copie d'origine impossible."
+msgstr "Impossibile creare la copia originale."
+
+msgid "Copie d'origine impossible (espace ?)."
+msgstr "Impossibile creare la copia originale (spazio?)."
+
+msgid "Ce disque est celui de la clé ou du système en cours : opération refusée."
+msgstr "Questo disco è la chiavetta o il sistema in uso: operazione rifiutata."
+
+msgid "L'installation doit être lancée en administrateur."
+msgstr "L'installazione deve essere avviata come amministratore."
+
+msgid "Disque introuvable : {disque}"
+msgstr "Disco non trovato: {disque}"
+
+msgid "Ce disque est trop petit (32 Go au minimum)."
+msgstr "Questo disco è troppo piccolo (minimo 32 GB)."
+
+msgid "Préparation du disque"
+msgstr "Preparazione del disco"
+
+msgid "Le disque n'a pas pu être effacé."
+msgstr "Non è stato possibile cancellare il disco."
+
+msgid "Le partitionnement a échoué."
+msgstr "Il partizionamento non è riuscito."
+
+msgid "Les nouvelles partitions ne sont pas apparues."
+msgstr "Le nuove partizioni non sono comparse."
+
+msgid "Formatage EFI impossible."
+msgstr "Impossibile formattare EFI."
+
+msgid "Formatage impossible (démarrage)."
+msgstr "Formattazione impossibile (avvio)."
+
+msgid "Formatage impossible (A)."
+msgstr "Formattazione impossibile (A)."
+
+msgid "Formatage impossible (B)."
+msgstr "Formattazione impossibile (B)."
+
+msgid "Formatage impossible (usine)."
+msgstr "Formattazione impossibile (originale)."
+
+msgid "Formatage impossible (données)."
+msgstr "Formattazione impossibile (dati)."
+
+msgid "Copie de SoleOS sur l'ordinateur"
+msgstr "Copia di SoleOS sul computer"
+
+msgid "Création de la copie de secours"
+msgstr "Creazione della copia di sicurezza"
+
+msgid "Installation du démarrage"
+msgstr "Installazione dell'avvio"
+
+msgid "Finalisation"
+msgstr "Completamento"
+
+msgid "La réparation doit être lancée en administrateur."
+msgstr "La riparazione deve essere avviata come amministratore."
+
+msgid "Mode de réparation inconnu."
+msgstr "Modalità di riparazione sconosciuta."
+
+msgid "Ce disque ne contient pas un SoleOS complet."
+msgstr "Questo disco non contiene un SoleOS completo."
+
+msgid "Préparation"
+msgstr "Preparazione"
+
+msgid "Remise à neuf du système impossible."
+msgstr "Impossibile rimettere a nuovo il sistema."
+
+msgid "Effacement des données"
+msgstr "Cancellazione dei dati"
+
+msgid "Effacement des données impossible."
+msgstr "Impossibile cancellare i dati."
+
+msgid "Mise à jour de SoleOS"
+msgstr "Aggiornamento di SoleOS"
+
+msgid "Remise à neuf de SoleOS"
+msgstr "Ripristino di SoleOS"
+
+msgid "Remise à zéro du navigateur"
+msgstr "Azzeramento del browser"
+
+msgid "Mise à jour de la copie de secours"
+msgstr "Aggiornamento della copia di ripristino"
+
+msgid "Disque non précisé"
+msgstr "Disco non specificato"
+
+msgid "Mode ou disque non précisé"
+msgstr "Modalità o disco non specificati"
+
+msgid "Aucun clavier trouvé. Clavier Bluetooth : appuyez sur une touche, ou mettez-le en mode association."
+msgstr "Nessuna tastiera trovata. Tastiera Bluetooth: premi un tasto o mettila in modalità associazione."
+
+msgid "Entrez votre code"
+msgstr "Inserisci il tuo codice"
+
+msgid "Entrez votre mot de passe"
+msgstr "Inserisci la tua password"
+
+msgid "Code incorrect. Pour taper les chiffres : touche Maj (⇧) ou pavé numérique."
+msgstr "Codice errato. Per digitare le cifre: tasto Maiusc (⇧) o tastierino numerico."
+
+msgid "Vérification…"
+msgstr "Verifica…"
+
+msgid "Trop d'essais : patientez quelques minutes, ou tapez votre clé de secours."
+msgstr "Troppi tentativi: attendi qualche minuto o digita la chiave di recupero."
+
+msgid "Code incorrect. Code oublié ? Tapez votre clé de secours à la place."
+msgstr "Codice errato. Hai dimenticato il codice? Digita invece la chiave di recupero."
+
+msgid "Mot de passe incorrect. Mot de passe oublié ? Tapez votre clé de secours à la place."
+msgstr "Password errata. Hai dimenticato la password? Digita invece la chiave di recupero."
+
+msgid "Code incorrect, réessayez."
+msgstr "Codice errato, riprova."
+
+msgid "Mot de passe incorrect, réessayez."
+msgstr "Password errata, riprova."
+
+msgid "Les données ne sont pas chiffrées sur cet ordinateur."
+msgstr "I dati non sono cifrati su questo computer."
+
+msgid "Les données ne sont pas ouvertes."
+msgstr "I dati non sono aperti."
+
+msgid "Clé interne introuvable."
+msgstr "Chiave interna non trovata."
+
+msgid "Partition des données introuvable."
+msgstr "Partizione dei dati non trovata."
+
+msgid "L'ancien code n'a pas pu être retiré."
+msgstr "Non è stato possibile rimuovere il vecchio codice."
+
+msgid "La puce de sécurité est bloquée après trop d'essais de code. Réessayez dans quelques minutes (ou plus tard)."
+msgstr "Il chip di sicurezza è bloccato dopo troppi tentativi. Riprova tra qualche minuto (o più tardi)."
+
+msgid "La puce de sécurité n'a pas accepté le code."
+msgstr "Il chip di sicurezza non ha accettato il codice."
+
+msgid "Impossible de remplacer l'ancien mot de passe."
+msgstr "Impossibile sostituire la vecchia password."
+
+msgid "Le mot de passe n'a pas pu être enregistré."
+msgstr "Non è stato possibile salvare la password."
+
+msgid "Le code doit contenir exactement {n} chiffres."
+msgstr "Il codice deve contenere esattamente {n} cifre."
+
+msgid "Le mot de passe doit contenir au moins {n} caractères."
+msgstr "La password deve contenere almeno {n} caratteri."
+
+msgid "La clé de secours existe déjà (Réglages → Nouvelle clé de secours)."
+msgstr "La chiave di recupero esiste già (Impostazioni → Nuova chiave di recupero)."
+
+msgid "Impossible de remplacer l'ancienne clé de secours."
+msgstr "Impossibile sostituire la vecchia chiave di recupero."
+
+msgid "Compte introuvable."
+msgstr "Account non trovato."
+
+msgid "Tapez votre prénom."
+msgstr "Digita il tuo nome."
+
+msgid "Le prénom n'a pas pu être changé."
+msgstr "Non è stato possibile cambiare il nome."
+
+msgid "Pour changer de code, utilisez Réglages → Changer mon code."
+msgstr "Per cambiare codice, usa Impostazioni → Cambia il mio codice."
+
+msgid "La clé de secours doit d'abord être créée."
+msgstr "Prima bisogna creare la chiave di recupero."
+
+msgid "Aucun code n'est encore choisi."
+msgstr "Nessun codice è ancora stato scelto."
+
+msgid "Code actuel incorrect."
+msgstr "Codice attuale errato."
+
+msgid "Code incorrect."
+msgstr "Codice errato."
+
+msgid "Partition non précisée."
+msgstr "Partizione non specificata."
+
+msgid "SoleOS (autre version)"
+msgstr "SoleOS (altra versione)"
+
+msgid "Langue inconnue."
+msgstr "Lingua sconosciuta."
+
+msgid "Clavier inconnu."
+msgstr "Tastiera sconosciuta."
 

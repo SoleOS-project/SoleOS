@@ -6,7 +6,8 @@
 #      bash construire-iso-soleos.sh
 #  À placer dans le même dossier : soleos-accueil, soleos-applications, soleos-installateur, soleos-bluetooth,
 #  soleos-installer, soleos-systeme, soleos-securite, et les dossiers « fonds », « craft », « polices »
-#  et « locale » (traductions : anglais, italien, espagnol, allemand, chinois).
+#  et « locale » (traductions : anglais, italien, espagnol, allemand, chinois), et « chuwi-son »
+#  (haut-parleurs du Chuwi CoreBook Air Plus, facultatif).
 #
 #  SoleOS – créé par Giuseppe D'Arco – © 2026 GDH
 #  Licence non commerciale SoleOS (PolyForm Noncommercial 1.0.0 + autorisations, voir LICENSE)
@@ -21,7 +22,7 @@
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
-VERSION_SOLEOS="v1.1"   # affichée dans SoleOS (menu ⏻) et dans le nom de l'ISO
+VERSION_SOLEOS="v1.2"   # affichée dans SoleOS (menu ⏻) et dans le nom de l'ISO
 ESPACE_NECESSAIRE=15   # en Go
 DOSSIER_SCRIPT="$(cd "$(dirname "$0")" && pwd)"
 UTILISATEUR="$(id -nu 1000 2>/dev/null || echo root)"
@@ -33,7 +34,7 @@ ATELIER=/srv/soleos-iso
 if [ "$(id -u)" -ne 0 ]; then
   echo "Ce script doit être lancé en root (commande : su -  puis relancer)."; exit 1
 fi
-for f in soleos-accueil soleos-applications soleos-installateur soleos-bluetooth soleos-installer soleos-systeme soleos-securite; do
+for f in soleos-accueil soleos-applications soleos-installateur soleos-bluetooth soleos-installer soleos-systeme soleos-securite LICENSE; do
   if [ ! -f "$DOSSIER_SCRIPT/$f" ]; then
     echo "Le fichier $f doit être dans le même dossier que ce script."; exit 1
   fi
@@ -109,6 +110,22 @@ lb config \
 C="$ATELIER/config"
 I="$C/includes.chroot"
 
+# (v1.2) Version visible sur la clé sans la démarrer : un fichier à la racine (le nom de la clé
+# reste « SoleOS » : le démarrage de la clé le cherche sous ce nom)
+mkdir -p "$C/includes.binary"
+rm -f "$C/includes.binary"/SoleOS-v*.txt
+cat > "$C/includes.binary/SoleOS-$VERSION_SOLEOS.txt" <<VERS
+SoleOS $VERSION_SOLEOS
+Clé créée le $(date '+%d/%m/%Y').
+
+- Démarrez l'ordinateur sur cette clé : mode essai, rien n'est modifié sur l'ordinateur.
+- « Installer SoleOS sur cet ordinateur » : le disque choisi est entièrement effacé.
+- Un SoleOS est déjà installé ? « Mettre à jour SoleOS » : vos fichiers, applications et
+  réglages sont gardés.
+
+SoleOS – créé par Giuseppe D'Arco – © 2026 GDH – https://github.com/SoleOS-project/SoleOS
+VERS
+
 # --- 3. Liste des logiciels -------------------------------------------------
 cat > "$C/package-lists/soleos.list.chroot" <<'FIN'
 # Affichage et session
@@ -149,6 +166,8 @@ pipewire pipewire-pulse pipewire-alsa wireplumber
 grim slurp wlsunset swappy wl-clipboard
 # Outils de diagnostic (assistance) et essai du son : aplay, amixer, speaker-test, lspci, rfkill
 alsa-utils pciutils rfkill
+# Haut-parleurs du Chuwi CoreBook Air Plus : maintien de la broche qui allume l'ampli (gpioset)
+gpiod
 network-manager wpasupplicant iw wireless-regdb
 # Écran de démarrage (le texte sert aussi à demander le code)
 plymouth plymouth-themes plymouth-label
@@ -208,6 +227,8 @@ mkdir -p "$I/usr/local/bin" "$I/usr/local/sbin" "$I/etc/xdg/labwc" "$I/etc/xdg/f
          "$I/etc/systemd/system/getty@tty1.service.d"
 
 install -m 755 "$DOSSIER_SCRIPT/soleos-accueil" "$I/usr/local/bin/soleos-accueil"
+# (v1.2) texte de la licence (Réglages → À propos → Lire la licence) : le fichier LICENSE du paquet
+install -D -m 644 "$DOSSIER_SCRIPT/LICENSE" "$I/usr/share/soleos/LICENSE"
 install -m 755 "$DOSSIER_SCRIPT/soleos-installateur" "$I/usr/local/bin/soleos-installateur"
 install -m 755 "$DOSSIER_SCRIPT/soleos-applications" "$I/usr/local/bin/soleos-applications"
 install -m 755 "$DOSSIER_SCRIPT/soleos-bluetooth" "$I/usr/local/bin/soleos-bluetooth"
@@ -231,6 +252,96 @@ install -m 644 "$DOSSIER_SCRIPT"/fonds/vignettes/soleos-*.jpg "$I/usr/share/sole
 if [ -d "$DOSSIER_SCRIPT/craft" ]; then
   mkdir -p "$I/usr/share/soleos/craft"
   install -m 644 "$DOSSIER_SCRIPT"/craft/*.png "$I/usr/share/soleos/craft/"
+fi
+#  Haut-parleurs du Chuwi CoreBook Air Plus (codec Conexant SN6180, sous-système 0x20147054) :
+#  l'amplificateur n'est pas démarré par Linux. Correctif « Chuwi-CoreBook-Air-Audio-Fix »
+#  (licence MIT, github.com/avrora13377/Chuwi-CoreBook-Air-Audio-Fix). Ne fait rien sur les autres PC.
+if [ -d "$DOSSIER_SCRIPT/chuwi-son" ]; then
+  L=/usr/local/lib/corebook-audio
+  install -D -m 755 "$DOSSIER_SCRIPT/chuwi-son/pa-bringup.py" "$I$L/pa-bringup.py"
+  install -D -m 755 "$DOSSIER_SCRIPT/chuwi-son/maintain-stream.py" "$I$L/maintain-stream.py"
+  install -D -m 755 "$DOSSIER_SCRIPT/chuwi-son/speaker-restore.sh" "$I$L/speaker-restore.sh"
+  install -D -m 644 "$DOSSIER_SCRIPT/chuwi-son/firmware/pa8022_fw.hex" "$I$L/firmware/pa8022_fw.hex"
+  install -D -m 644 "$DOSSIER_SCRIPT/chuwi-son/LICENSE" "$I/usr/share/doc/soleos/chuwi-son/LICENSE"
+  cat > "$I$L/est-airplus" <<'FINCHUWI'
+#!/bin/sh
+# Vrai seulement sur le Chuwi CoreBook Air Plus (sous-système audio 0x20147054)
+for i in $(seq 1 20); do
+  ls /proc/asound/card*/codec#* >/dev/null 2>&1 && break
+  sleep 1
+done
+grep -qs 'Subsystem Id: 0x20147054' /proc/asound/card*/codec#*
+FINCHUWI
+  cat > "$I$L/resync-session" <<'FINCHUWI'
+#!/bin/sh
+# Après une veille : l'ampli est reconfiguré mais PipeWire n'envoie plus le son aux haut-parleurs.
+# Couper puis remettre le son de la sortie par défaut le relance (sauf si l'utilisateur l'a coupé).
+for d in /run/user/*; do
+  u="${d##*/}"; case "$u" in ''|*[!0-9]*) continue;; esac
+  n="$(id -nu "$u" 2>/dev/null)" || continue
+  w() { runuser -u "$n" -- env XDG_RUNTIME_DIR="$d" wpctl "$@"; }
+  v="$(w get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)" || continue
+  case "$v" in *MUTED*) continue;; esac
+  w set-mute @DEFAULT_AUDIO_SINK@ 1 && sleep 0.3 && w set-mute @DEFAULT_AUDIO_SINK@ 0
+done
+exit 0
+FINCHUWI
+  chmod 755 "$I$L/est-airplus" "$I$L/resync-session"
+  mkdir -p "$I/etc/systemd/system"
+  mkdir -p "$I/etc/systemd/system"
+  cat > "$I/etc/systemd/system/corebook-speakers.service" <<'FINCHUWI'
+[Unit]
+Description=Haut-parleurs du Chuwi CoreBook Air Plus (démarrage de l'amplificateur)
+Documentation=https://github.com/avrora13377/Chuwi-CoreBook-Air-Audio-Fix
+After=sound.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+KillMode=process
+TimeoutStartSec=180
+EnvironmentFile=-/etc/default/corebook-audio
+ExecCondition=/usr/local/lib/corebook-audio/est-airplus
+ExecStart=/usr/local/lib/corebook-audio/speaker-restore.sh
+
+[Install]
+WantedBy=multi-user.target
+FINCHUWI
+  cat > "$I/etc/systemd/system/corebook-speakers-keepalive.service" <<'FINCHUWI'
+[Unit]
+Description=Haut-parleurs du Chuwi CoreBook Air Plus (maintien du flux)
+After=corebook-speakers.service
+PartOf=corebook-speakers.service
+StartLimitIntervalSec=120
+StartLimitBurst=10
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/corebook-audio
+ExecCondition=/usr/local/lib/corebook-audio/est-airplus
+ExecStart=/usr/bin/python3 /usr/local/lib/corebook-audio/maintain-stream.py 0.2
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+FINCHUWI
+  mkdir -p "$I/etc/systemd/system/multi-user.target.wants" "$I/usr/lib/systemd/system-sleep"
+  ln -sf ../corebook-speakers.service "$I/etc/systemd/system/multi-user.target.wants/corebook-speakers.service"
+  ln -sf ../corebook-speakers-keepalive.service "$I/etc/systemd/system/multi-user.target.wants/corebook-speakers-keepalive.service"
+  cat > "$I/usr/lib/systemd/system-sleep/soleos-chuwi-son" <<'FINCHUWI'
+#!/bin/sh
+# Au réveil : l'ampli a perdu sa configuration (on la refait), puis on relance le son de la session
+[ "$1" = post ] || exit 0
+grep -qs "Subsystem Id: 0x20147054" /proc/asound/card*/codec#* || exit 0
+systemctl restart --no-block corebook-speakers.service corebook-speakers-keepalive.service
+systemd-run --no-block --quiet --on-active=8 /usr/local/lib/corebook-audio/resync-session
+systemd-run --no-block --quiet --on-active=20 /usr/local/lib/corebook-audio/resync-session
+exit 0
+FINCHUWI
+  chmod 755 "$I/usr/lib/systemd/system-sleep/soleos-chuwi-son"
+else
+  echo "ATTENTION : dossier « chuwi-son » absent, pas de correctif son pour le Chuwi CoreBook Air Plus."
 fi
 echo "$VERSION_SOLEOS" > "$I/etc/soleos-version"
 # >>> FICHIERS SYSTEME (générés depuis soleos-installateur/systeme : ne pas modifier ici)
@@ -390,6 +501,7 @@ cat > "$I/etc/sudoers.d/soleos-journal" <<'FINSYS'
 # SoleOS : commandes d'administration dans un terminal séparé, et tracées (ANSSI R33, R39)
 Defaults use_pty
 Defaults log_subcmds
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-systeme arret-precedent
 FINSYS
 mkdir -p "$I/etc/sudoers.d"
 cat > "$I/etc/sudoers.d/soleos-noyau" <<'FINSYS'
@@ -403,7 +515,7 @@ FINSYS
 mkdir -p "$I/etc/sudoers.d"
 cat > "$I/etc/sudoers.d/soleos-securite" <<'FINSYS'
 # SoleOS : choix et changement du code, écran verrouillé (vérifications faites par l'outil)
-ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-securite etat, /usr/local/sbin/soleos-securite preparer-secours, /usr/local/sbin/soleos-securite definir, /usr/local/sbin/soleos-securite definir *, /usr/local/sbin/soleos-securite changer, /usr/local/sbin/soleos-securite nouvelle-cle, /usr/local/sbin/soleos-securite verifier
+ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-securite etat, /usr/local/sbin/soleos-securite preparer-secours, /usr/local/sbin/soleos-securite definir, /usr/local/sbin/soleos-securite definir *, /usr/local/sbin/soleos-securite changer, /usr/local/sbin/soleos-securite prenom *, /usr/local/sbin/soleos-securite nouvelle-cle, /usr/local/sbin/soleos-securite verifier
 FINSYS
 mkdir -p "$I/etc/sudoers.d"
 cat > "$I/etc/sudoers.d/soleos-son" <<'FINSYS'
@@ -479,6 +591,12 @@ cat > "$I/etc/systemd/journald.conf.d/soleos.conf" <<'FINSYS'
 SystemMaxUse=48M
 RuntimeMaxUse=32M
 MaxRetentionSec=2week
+FINSYS
+mkdir -p "$I/etc/systemd/system.conf.d"
+cat > "$I/etc/systemd/system.conf.d/90-soleos-arret.conf" <<'FINSYS'
+# SoleOS (v1.2) : un programme qui ne se ferme pas ne retient plus l'arrêt de l'ordinateur que 15 s (au lieu de 90)
+[Manager]
+DefaultTimeoutStopSec=15s
 FINSYS
 mkdir -p "$I/etc/systemd/system/NetworkManager.service.d"
 cat > "$I/etc/systemd/system/NetworkManager.service.d/soleos.conf" <<'FINSYS'
@@ -662,6 +780,9 @@ Nice=19
 IOSchedulingClass=idle
 CPUSchedulingPolicy=idle
 ExecStart=/usr/local/sbin/soleos-systeme maj
+
+# (v1.2) à l'arrêt de l'ordinateur : arrêt rapide (la copie inactive est refaite à la prochaine fois)
+TimeoutStopSec=10
 FINSYS
 mkdir -p "$I/etc/systemd/system"
 cat > "$I/etc/systemd/system/soleos-maj.timer" <<'FINSYS'
@@ -722,6 +843,12 @@ ExecStart=/bin/sh -c 'for t in /dev/tty1 /dev/tty2 /dev/tty3 /dev/tty4 /dev/tty5
 
 [Install]
 WantedBy=sysinit.target
+FINSYS
+mkdir -p "$I/etc/systemd/user.conf.d"
+cat > "$I/etc/systemd/user.conf.d/90-soleos-arret.conf" <<'FINSYS'
+# SoleOS (v1.2) : un programme qui ne se ferme pas ne retient plus l'arrêt de l'ordinateur que 15 s (au lieu de 90)
+[Manager]
+DefaultTimeoutStopSec=15s
 FINSYS
 mkdir -p "$I/etc/systemd/user"
 cat > "$I/etc/systemd/user/soleos-session.target" <<'FINSYS'
@@ -1037,6 +1164,7 @@ Interfaces=org.freedesktop.impl.portal.Wallpaper
 UseIn=wlroots;labwc
 FINSYS
 chmod 755 "$I/etc/initramfs-tools/scripts/local-bottom/soleos-protection"
+chmod 755 "$I/etc/nftables.conf"
 chmod 440 "$I/etc/sudoers.d/soleos-heure"
 chmod 440 "$I/etc/sudoers.d/soleos-journal"
 chmod 440 "$I/etc/sudoers.d/soleos-noyau"
@@ -1049,6 +1177,12 @@ chmod 755 "$I/usr/local/libexec/soleos-verifier-code"
 chmod 755 "$I/usr/local/sbin/soleos-energie"
 chmod 755 "$I/usr/local/sbin/soleos-son"
 # <<< FICHIERS SYSTEME
+# (v1.2) Garde-fou : sans ces scripts exécutables, le PC installé démarre sans sa couche en mémoire
+# (services en échec, pas d'interface) ou l'écran verrouillé refuse le code
+for f in etc/initramfs-tools/scripts/local-bottom/soleos-protection usr/local/libexec/soleos-verifier-code \
+         usr/local/bin/soleos-veille usr/local/bin/soleos-verrouiller usr/local/sbin/soleos-energie usr/local/sbin/soleos-son; do
+  [ -x "$I/$f" ] || { echo "!!  $f n'est pas exécutable : construction arrêtée."; exit 1; }
+done
 #  Sur la clé, l'installateur peut lancer son moteur en administrateur sans mot de passe
 mkdir -p "$I/etc/sudoers.d"
 echo 'ALL ALL=(root) NOPASSWD: /usr/local/sbin/soleos-installer' > "$I/etc/sudoers.d/soleos-installateur"
@@ -1059,6 +1193,16 @@ cat > "$I/usr/local/bin/soleos-web" <<'FIN'
 # Les réglages de Chromium sont dans /etc/chromium.d/soleos (communs à toutes les façons de l'ouvrir)
 exec chromium "$@"
 FIN
+# (v1.2) Bouton « Internet » et recherche : le navigateur choisi dans Réglages → Navigateur
+cat > "$I/usr/local/bin/soleos-internet" <<'FIN'
+#!/bin/sh
+c="$(cat "$HOME/.config/soleos/navigateur" 2>/dev/null | tr -cd 'A-Za-z0-9._-')"
+if [ -n "$c" ] && [ "$c" != chromium ] && { [ -e "/var/lib/flatpak/app/$c/current" ] || [ -e "$HOME/.local/share/flatpak/app/$c/current" ]; }; then
+  exec flatpak run "$c" "$@"
+fi
+exec /usr/local/bin/soleos-web --new-window "$@"
+FIN
+chmod 755 "$I/usr/local/bin/soleos-internet"
 
 #  Connexion automatique du premier utilisateur (essai : « soleos » ; après installation : le vôtre)
 cat > "$I/usr/local/sbin/soleos-getty" <<'FIN'
@@ -1136,12 +1280,39 @@ xdg-user-dirs-update 2>/dev/null || true
 if [ ! -f "$HOME/.config/gtk-4.0/gtk.css" ]; then
   mkdir -p "$HOME/.config/gtk-4.0" && cp /usr/share/soleos/gtk4.css "$HOME/.config/gtk-4.0/gtk.css"
 fi
+# (v1.2) Nouveau fond par défaut (« Origine ») : un utilisateur d'avant la v1.2 qui n'avait jamais
+# choisi de fond garde « Soleil », l'ancien fond par défaut (une seule fois)
+if [ ! -e "$HOME/.config/soleos/fond-v12" ]; then
+  if [ -e "$HOME/.config/soleos/fonds-copies" ] && [ ! -e "$HOME/.config/soleos/fond" ]; then
+    echo eclair > "$HOME/.config/soleos/fond"
+  fi
+  mkdir -p "$HOME/.config/soleos" && touch "$HOME/.config/soleos/fond-v12"
+fi
 # Fonds d'écran SoleOS rangés aussi dans le dossier Images (une seule fois)
 IMAGES="$(xdg-user-dir PICTURES 2>/dev/null)"
 if [ -n "$IMAGES" ] && [ "$IMAGES" != "$HOME" ] && [ ! -e "$HOME/.config/soleos/fonds-copies" ]; then
   mkdir -p "$IMAGES/Fonds SoleOS" "$HOME/.config/soleos" && \
     for f in /usr/share/soleos/fonds/soleos-*.jpg; do n="$(basename "$f" .jpg)"; n="${n#soleos-}"; [ "$n" = eclair ] && n=soleil; cp -n "$f" "$IMAGES/Fonds SoleOS/soleos-$n.jpg" 2>/dev/null; done; \
     touch "$HOME/.config/soleos/fonds-copies"
+fi
+# (v1.2) Modèles pour Fichiers → clic droit → Nouveau document (une seule fois, dans la langue choisie)
+MODELES="$(xdg-user-dir TEMPLATES 2>/dev/null)"
+if [ -n "$MODELES" ] && [ "$MODELES" != "$HOME" ] && [ ! -e "$HOME/.config/soleos/modeles-v12" ] && [ -d /usr/share/soleos/modeles ]; then
+  case "$(cat /run/soleos/langue 2>/dev/null)" in
+    en) noms="Text document|Word document|Excel workbook|PowerPoint presentation" ;;
+    it) noms="Documento di testo|Documento Word|Cartella di lavoro Excel|Presentazione PowerPoint" ;;
+    es) noms="Documento de texto|Documento de Word|Libro de Excel|Presentación de PowerPoint" ;;
+    de) noms="Textdokument|Word-Dokument|Excel-Arbeitsmappe|PowerPoint-Präsentation" ;;
+    zh) noms="文本文档|Word 文档|Excel 工作簿|PowerPoint 演示文稿" ;;
+    *)  noms="Document texte|Document Word|Classeur Excel|Présentation PowerPoint" ;;
+  esac
+  mkdir -p "$MODELES" "$HOME/.config/soleos"
+  IFS='|' read -r n_txt n_doc n_xls n_ppt <<< "$noms"
+  for p in "txt:$n_txt" "docx:$n_doc" "xlsx:$n_xls" "pptx:$n_ppt"; do
+    e="${p%%:*}"; n="${p#*:}"
+    [ -f "/usr/share/soleos/modeles/vide.$e" ] && cp -n "/usr/share/soleos/modeles/vide.$e" "$MODELES/$n.$e"
+  done
+  touch "$HOME/.config/soleos/modeles-v12"
 fi
 # Trousseau (mots de passe des dossiers réseau, des applications) toujours ouvert, sans mot de
 # passe à retaper : trousseau « login » sans mot de passe, créé une fois. Il est rangé dans les
@@ -1415,6 +1586,10 @@ sh -c 'while true; do /usr/local/bin/soleos-accueil; sleep 1; done' >/dev/null 2
 sh -c 'while true; do /usr/local/bin/soleos-veille; sleep 2; done' >/dev/null 2>&1 &
 /usr/local/bin/soleos-saisie >/dev/null 2>&1 &
 /usr/local/bin/soleos-barre >/dev/null 2>&1 &
+# (v1.2) copier/coller gardé après la fermeture de l'application source
+sh -c 'while true; do /usr/local/bin/soleos-presse-papiers; sleep 2; done' >/dev/null 2>&1 &
+# (v1.2) enceinte ou casque Bluetooth reconnecté à l'ouverture de la session et au réveil
+sh -c 'while true; do /usr/local/bin/soleos-bluetooth audio; sleep 10; done' >/dev/null 2>&1 &
 # Notepad Next, Impression, Caméra et KeePassXC installés d'office (une fois, en arrière-plan, quand Internet est là)
 sh -c 'sleep 40; nice -n 10 /usr/local/bin/soleos-applis-defaut' >/dev/null 2>&1 &
 FIN
@@ -1457,6 +1632,10 @@ cmd() { printf '$ %s\n' "$*"; timeout 20 "$@" 2>&1 | head -60; }
   cmd soleos-accueil --fenetres
   echo "rail : $(cat "$HOME/.config/soleos/rail" 2>/dev/null | paste -sd' ')"
   echo "-- fin du journal de la session"; tail -40 "$HOME/.soleos.log" 2>/dev/null
+
+  # (v1.2) ce qui a retenu le dernier arrêt (journal gardé d'un démarrage à l'autre)
+  titre "Arrêt précédent"
+  cmd sudo -n /usr/local/sbin/soleos-systeme arret-precedent
 
   titre "Wi-Fi"
   cmd nmcli general
@@ -1587,6 +1766,32 @@ F="$D/mesure-soleos-$(date +%Y%m%d-%H%M).txt"
 echo "Relevé enregistré : $F"
 FIN
 chmod 755 "$I/usr/local/bin/soleos-mesure"
+
+# (v1.2) Presse-papiers gardé après la fermeture de l'application d'où vient la copie (sous Wayland,
+# la copie appartient à l'application : fermée, plus rien à coller). Texte seulement ; jamais un mot
+# de passe copié depuis un gestionnaire de mots de passe (KeePassXC le marque « sensible »).
+cat > "$I/usr/local/bin/soleos-presse-papiers" <<'FIN'
+#!/bin/bash
+G="${XDG_RUNTIME_DIR:-/tmp}/soleos-presse-papiers"
+if [ "${1:-}" != "--garde" ]; then
+  rm -f "$G"
+  exec wl-paste --type text --watch "$0" --garde
+fi
+case "${CLIPBOARD_STATE:-}" in
+  data)
+    t="$(mktemp "$G.XXXXXX")" || exit 0
+    head -c 1048576 > "$t"
+    if [ -s "$t" ]; then mv -f "$t" "$G"; chmod 600 "$G"; else rm -f "$t"; fi ;;
+  sensitive)
+    cat > /dev/null; rm -f "$G" ;;
+  nil|clear)
+    cat > /dev/null
+    [ -s "$G" ] && wl-copy --type text/plain < "$G" ;;
+  *) cat > /dev/null ;;
+esac
+exit 0
+FIN
+chmod 755 "$I/usr/local/bin/soleos-presse-papiers"
 
 cat > "$I/usr/local/bin/soleos-touche" <<'FIN'
 #!/bin/sh
@@ -1956,7 +2161,16 @@ audio/opus=vlc.desktop
 audio/webm=vlc.desktop
 application/ogg=vlc.desktop
 application/x-matroska=vlc.desktop
+text/plain=com.github.dail8859.NotepadNext.desktop;libreoffice-writer.desktop;
+application/x-zerosize=com.github.dail8859.NotepadNext.desktop;libreoffice-writer.desktop;
+text/markdown=com.github.dail8859.NotepadNext.desktop;
+text/x-log=com.github.dail8859.NotepadNext.desktop;
+application/x-shellscript=com.github.dail8859.NotepadNext.desktop;
+application/json=com.github.dail8859.NotepadNext.desktop;
+application/xml=com.github.dail8859.NotepadNext.desktop;
+text/xml=com.github.dail8859.NotepadNext.desktop;
 FIN
+[ -f "$I/etc/xdg/mimeapps.list" ] && sed 's/^\[Default Applications\]$/[Added Associations]/' "$I/etc/xdg/mimeapps.list" | grep -E '^\[|^(text/|application/(x-zerosize|json|xml|x-shellscript))' >> "$I/etc/xdg/mimeapps.list"
 
 #  LibreOffice : présentation à onglets (moderne), pas d'astuce au démarrage, enregistrement
 #  aux formats Word / Excel / PowerPoint (ceux qu'on échange le plus) sans avertissement
@@ -5836,64 +6050,70 @@ AO54A9qfvNLNHlOEAAAAAElFTkSuQmCC
 FIN
 cp "$IMG/logo.png" "$I/usr/share/plymouth/themes/soleos/logo.png"
 # Pastille de version sous le logo (dessinée pour la v13 ; autre version : texte simple)
-PASTILLE_VERSION=v1.1
+PASTILLE_VERSION=v1.2
 base64 -d > "$IMG/version.png" <<'FIN'
-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
-T0BaGJAH14QAAAAASUVORK5CYII=
+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
 FIN
 if [ "$VERSION_SOLEOS" = "$PASTILLE_VERSION" ]; then
   cp "$IMG/version.png" "$I/usr/share/plymouth/themes/soleos/version.png"
@@ -5991,6 +6211,7 @@ touch "$I/etc/skel/.hushlogin"
 cat > "$C/hooks/normal/9100-soleos-demarrage.hook.binary" <<FIN
 #!/bin/sh
 IMG="$IMG"
+VERSION_SOLEOS="$VERSION_SOLEOS"
 FIN
 cat >> "$C/hooks/normal/9100-soleos-demarrage.hook.binary" <<'FIN'
 for f in $(find . -name 'splash*.png' 2>/dev/null); do
@@ -6046,17 +6267,17 @@ if [ -n "$noyau" ] && [ -n "$initrd" ] && [ -f boot/grub/grub.cfg ]; then
     echo 'set gfxpayload=keep'
     echo 'terminal_output gfxterm'
     echo 'background_image -m stretch ($root)/boot/grub/soleos.png'
-    echo 'menuentry "SoleOS" {'
+    echo "menuentry \"SoleOS $VERSION_SOLEOS\" {"
     echo "  linux $noyau"
     echo "  initrd $initrd"
     echo '}'
     if [ -n "$recent" ]; then
-      echo 'menuentry "SoleOS (noyau récent : PC très récent)" {'
+      echo "menuentry \"SoleOS $VERSION_SOLEOS (noyau récent : PC très récent)\" {"
       echo "  linux $recent soleos.noyau=recent"
       echo "  initrd $recent_initrd"
       echo '}'
     fi
-    echo 'menuentry "SoleOS (mode de secours : affichage simple)" {'
+    echo "menuentry \"SoleOS $VERSION_SOLEOS (mode de secours : affichage simple)\" {"
     echo "  linux $secours nomodeset"
     echo "  initrd $initrd"
     echo '}'
@@ -6164,7 +6385,9 @@ flatpak override --system --filesystem=xdg-run/gvfs --filesystem=xdg-run/gvfsd >
 # (sites en applications, PWA) crée ses raccourcis dans les applications de l'utilisateur (v1.0.1)
 for n in com.google.Chrome org.chromium.Chromium com.microsoft.Edge com.brave.Browser com.vivaldi.Vivaldi io.github.ungoogled_software.ungoogled_chromium; do
   mkdir -p /var/lib/flatpak/overrides
-  printf '[Context]\nfilesystems=xdg-data/applications:create;xdg-data/icons:create;\n' > "/var/lib/flatpak/overrides/$n"
+  # (v1.2) aussi la forme « ~/.local/share/… » : c'est elle que Google Chrome vérifie avant
+  # d'accepter « Installer l'application » (sinon : « This Flatpak does not have write access… »)
+  printf '[Context]\nfilesystems=xdg-data/applications:create;xdg-data/icons:create;~/.local/share/applications:create;~/.local/share/icons:create;\n' > "/var/lib/flatpak/overrides/$n"
 done
 # Clavier et souris Bluetooth dès le démarrage (association automatique, attente avant la session)
 systemctl enable soleos-deverrouiller.service soleos-bluetooth.service soleos-peripheriques.service soleos-heure.service >/dev/null 2>&1 || true
@@ -6402,37 +6625,9 @@ VENDOR_NAME="GDH"
 DEBIAN_VERSION_FULL=$(cat /etc/debian_version 2>/dev/null)
 OSR
 mkdir -p /usr/share/doc/soleos
-cat > /usr/share/doc/soleos/LICENSE <<'LICFIN'
-SoleOS — Licence / License
-==========================
-
-Required Notice: Copyright © 2026 GDH (https://github.com/SoleOS-project)
-Créé par / Created by Giuseppe D'Arco.
-
-RÉSUMÉ (français) — le texte juridique qui fait foi est en anglais, plus bas
----------------------------------------------------------------------------
-SoleOS est GRATUIT pour tous ceux qui ne gagnent pas d'argent avec lui :
-  - les particuliers (usage personnel, familial) ;
-  - les associations et structures à but non lucratif, y compris quand elles remettent
-    ou revendent des ordinateurs reconditionnés avec SoleOS ;
-  - les écoles, universités, administrations et services publics ;
-  - les entreprises qui l'installent sur leurs propres ordinateurs, pour leur usage interne.
-Toute UTILISATION COMMERCIALE exige une licence payante de GDH, par exemple :
-  préinstaller SoleOS sur des ordinateurs vendus par une entreprise, le revendre,
-  l'inclure dans un produit ou un service payant, vendre une assistance ou des
-  personnalisations autour de SoleOS. Contact : gdarco7@gmail.com
-SoleOS est fourni « tel quel », sans aucune garantie (voir « No Liability » ci-dessous).
-Le nom et le logo « SoleOS » sont des signes distinctifs de GDH : ils ne sont pas couverts
-par cette licence.
-
-SUMMARY (English)
------------------
-SoleOS is FREE for anyone who does not make money with it: individuals, non-profit
-organizations (including when they hand out or sell refurbished computers with SoleOS),
-schools, universities, public administrations, and companies using it internally on their
-own computers. Any COMMERCIAL USE requires a paid license from GDH (contact:
-gdarco7@gmail.com). SoleOS is provided "as is", without any warranty. The "SoleOS" name
-and logo are not licensed under these terms.
+: <<'LICFIN'
+(v1.2) Le texte de la licence n'est plus recopié ici : /usr/share/doc/soleos/LICENSE est le fichier
+LICENSE du paquet, installé dans l'image avant la construction (section 5).
 
 THIRD-PARTY SOFTWARE
 --------------------
@@ -6585,7 +6780,12 @@ contract, or otherwise.  Control can be direct or indirect.
 software under these terms.
 
 **Use** means anything you do with the software requiring one
-of your licenses.LICFIN
+of your licenses.
+LICFIN
+# (v1.2) Corrigé : la ligne de fin ci-dessus était collée au texte (« licenses.LICFIN ») ; tout ce qui
+# suit dans ce crochet (AUTHORS, liens, update-initramfs, ldconfig…) partait dans le fichier de licence
+# au lieu d'être exécuté. Licence : copiée depuis le paquet (section 5).
+cp /usr/share/soleos/LICENSE /usr/share/doc/soleos/LICENSE 2>/dev/null || true
 cat > /usr/share/doc/soleos/AUTHORS <<'AUT'
 SoleOS
 Créé par Giuseppe D'Arco
@@ -6605,6 +6805,18 @@ for f in /usr/local/bin/soleos-*; do
   [ -e "$f" ] && ln -sfn "$(basename "$f")" "/usr/local/bin/flashos-${f##*/soleos-}"
 done
 ln -sfn soleos /usr/share/flashos
+# (v1.2) Modèles de documents (Fichiers → clic droit → Nouveau document) : un document Word, un
+# classeur Excel et une présentation PowerPoint vides, faits ici par LibreOffice
+M=/usr/share/soleos/modeles; mkdir -p "$M"; : > "$M/vide.txt"
+( cd /tmp && rm -rf soleos-modeles && mkdir soleos-modeles && cd soleos-modeles \
+  && printf 'x\n' > vide.csv && : > vide.txt \
+  && printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' '<office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" office:version="1.3" office:mimetype="application/vnd.oasis.opendocument.presentation"><office:body><office:presentation><draw:page draw:name="page1"/></office:presentation></office:body></office:document>' > vide.fodp \
+  && HOME=/tmp/soleos-modeles timeout 120 soffice --headless --norestore --convert-to docx vide.txt >/dev/null 2>&1 \
+  && HOME=/tmp/soleos-modeles timeout 120 soffice --headless --norestore --convert-to xlsx vide.csv >/dev/null 2>&1 \
+  && HOME=/tmp/soleos-modeles timeout 120 soffice --headless --norestore --convert-to pptx vide.fodp >/dev/null 2>&1 ; \
+  for e in docx xlsx pptx; do [ -s "vide.$e" ] && cp "vide.$e" "$M/vide.$e"; done; cd /tmp && rm -rf soleos-modeles ) \
+  || echo "SoleOS : modèles de documents incomplets (seul le texte sera proposé)."
+ls "$M"
 update-initramfs -u -k all
 # Démarrage plus rapide sur la clé : bibliothèques et caches déjà à jour dans l'image
 # (sinon ldconfig et consorts tournent à chaque démarrage : environ 3 s sur clé USB)
